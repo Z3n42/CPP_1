@@ -1,0 +1,5 @@
+*.swp
+*.swo
+main.c
+a.out
+.DS_Store
