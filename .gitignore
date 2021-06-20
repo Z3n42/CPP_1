@@ -54,7 +54,6 @@ dkms.conf
 # Propias
 *.swp
 *.swo
-*main.c
 a.out
 .DS_Store
 *.a
