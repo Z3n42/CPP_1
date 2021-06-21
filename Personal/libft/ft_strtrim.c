@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 12:14:28 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/06/20 13:58:45 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/06/21 15:58:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while ((len >= 0) && (ft_compare(s1[len], set) == 1))
 		len--;
 	if (total == s1count)
-		return ("");
+		array = ft_substr(s1, s1count, 0);
 	else
 		array = ft_substr(s1, s1count, (len - s1count) + 1);
 	return (array);

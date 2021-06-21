@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 12:35:30 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/06/20 18:59:40 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/06/21 15:34:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ static int	ft_count(char const *s, char c)
 	return (pos + 1);
 }
 
-static void	*ft_free(char **tab, int pos)
+static void	*ft_free(char **tab, int pos, char *str)
 {
-	while (tab[--pos])
-		free (tab[pos]);
+	while (pos)
+		free (tab[--pos]);
 	free (tab);
+	free (str);
 	return (NULL);
 }
 
@@ -55,26 +56,28 @@ static char	**ft_instr(char **tab, char *str, char c)
 			{
 				tab[pos] = ft_substr(str, (count - len) + 1, len);
 				if (!tab[pos])
-					return (ft_free(tab, pos));
+					return (ft_free(tab, pos, str));
 				pos++;
 				len = 0;
 			}
 		}
 	}
 	tab[pos] = NULL;
+	free(str);
 	return (tab);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	*str;
-	char	*set;
 	char	**tab;
 	int		pos;
+	char	set[2];
 
+	set[0] = c;
+	set[1] = '\0';
 	if (!s)
 		return (NULL);
-	set = &c;
 	str = ft_strtrim(s, set);
 	if (!str)
 		return (NULL);
