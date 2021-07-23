@@ -6,12 +6,13 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 12:32:47 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/07/20 21:31:42 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/07/23 14:18:34 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -49,10 +50,15 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
+int		ft_putchar_fd(char c, int fd);
+int		ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+int		ft_putnbr_fd(int n, int fd);
+int		ft_putnbr_long(long int n, int fd);
+int		ft_putnbr_hex(unsigned int n, int fd);
+int		ft_putnbr_hexmay(unsigned int n, int fd);
+int		ft_putnbr_p(uintptr_t n, int fd);
+
 
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstadd_front(t_list **alst, t_list *new);
