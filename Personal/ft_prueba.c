@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_prueba.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/28 13:55:39 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/07/24 14:32:35 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/07/24 14:35:59 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/07/24 15:25:57 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_prueba(int n, int fd)
 {
 	unsigned int	numb;
-	static int len;
-	
+	static char		*str;
+
+	str[0] = '\0';
 	if (n < 0)
 	{
 		numb = (unsigned int)(n * (-1));
@@ -27,13 +28,14 @@ int	ft_putnbr_fd(int n, int fd)
 		numb = (unsigned int) n;
 	if (numb > 9)
 	{
-		ft_putnbr_fd (numb / 10, fd);
-		ft_putnbr_fd (numb % 10, fd);
+		ft_prueba(numb / 10, fd);
+		ft_prueba(numb % 10, fd);
 	}
 	else
 	{
-		len++;
-		ft_putchar_fd (numb + '0', fd);
+		numb = numb + '0';
+		str = ft_strjoin(str, numb);
+		ft_putstr_fd(str, 1);
 	}
-	return (len);
+	return (ft_strlen(str));
 }

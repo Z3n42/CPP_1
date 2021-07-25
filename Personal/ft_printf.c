@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 18:55:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/07/23 19:52:51 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/07/24 14:50:23 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdarg.h>
@@ -25,7 +25,7 @@ int	ft_puts(va_list ap, const char *format, int count, int len)
 		len += ft_putnbr_p(va_arg(ap, unsigned long), 1);
 	}
 	if(format[count] == 'd' || format[count] == 'i')
-		len += ft_putnbr_fd(va_arg(ap, int), 1);
+		len += ft_prueba(va_arg(ap, int), 1);
 	if(format[count] == 'u')
 		len += ft_putnbr_long(va_arg(ap, unsigned int), 1);
 	if(format[count] == 'x')
