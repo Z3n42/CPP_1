@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: jofernan <jofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 19:15:55 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/03 20:02:25 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/06/03 12:58:45 by jofernan          #+#    #+#             */
+/*   Updated: 2021/06/03 12:58:46 by jofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char	*array;
-	size_t			max;
-	size_t			counter;
+	unsigned char	*aux;
+	unsigned char	*aux2;
+	size_t			i;
 
-	counter = 0;
-	max = count * size;
-	array = (unsigned char *)malloc(max);
-	if (array == NULL)
+	if (!dst && !src)
 		return (NULL);
-	while (counter < max)
+	i = 0;
+	aux = dst;
+	aux2 = (unsigned char *)src;
+	while (i < n)
 	{
-		array[counter] = '\0';
-		counter++;
+		aux[i] = aux2[i];
+		i++;
 	}
-	return (array);
+	return (aux);
 }

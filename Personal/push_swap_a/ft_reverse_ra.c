@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_reverse_ra.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 19:15:55 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/03 20:02:25 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/01 13:26:35 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/05 18:39:24 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
+#include <unistd.h>
 
-#include "libft.h"
-#include <stdlib.h>
-
-void	*ft_calloc(size_t count, size_t size)
+void	ft_reverse_ra(int argc, int *a)
 {
-	unsigned char	*array;
-	size_t			max;
-	size_t			counter;
+	int	count;
+	int swap;
 
-	counter = 0;
-	max = count * size;
-	array = (unsigned char *)malloc(max);
-	if (array == NULL)
-		return (NULL);
-	while (counter < max)
+	/* printf("Agrc in RRA: %d\n", argc); */
+	swap = a[argc - 1];
+	count = argc - 1;
+	while(count >= 1)
 	{
-		array[counter] = '\0';
-		counter++;
+		a[count] = a[count - 1];
+		count--;
 	}
-	return (array);
+	a[0] = swap;
+	write(1, "rra\n", 4);
 }

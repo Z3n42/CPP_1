@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_cheker.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 19:15:55 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/03 20:02:25 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/02 14:07:22 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/05 19:46:09 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
-#include "libft.h"
-#include <stdlib.h>
-
-void	*ft_calloc(size_t count, size_t size)
+int	ft_checker(int argc, int *a)
 {
-	unsigned char	*array;
-	size_t			max;
-	size_t			counter;
+	int count;
+	int less;
 
-	counter = 0;
-	max = count * size;
-	array = (unsigned char *)malloc(max);
-	if (array == NULL)
-		return (NULL);
-	while (counter < max)
+	count = 0;
+	less = 0;
+	while(count < (argc - 1))
 	{
-		array[counter] = '\0';
-		counter++;
-	}
-	return (array);
+		if(a[count] < a[count + 1])
+			less++;
+		count++;
+	}	
+	if(less == (argc - 1))
+		return (1);
+	else
+		return (0);
 }

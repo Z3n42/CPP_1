@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_mincheck.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 19:15:55 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/03 20:02:25 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/04 12:53:43 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/05 18:37:40 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
+#include <stdio.h>
 
-#include "libft.h"
-#include <stdlib.h>
-
-void	*ft_calloc(size_t count, size_t size)
+int	ft_mincheck(int args, int *c)
 {
-	unsigned char	*array;
-	size_t			max;
-	size_t			counter;
+	int i;
+	int	j;
+	int min;
 
-	counter = 0;
-	max = count * size;
-	array = (unsigned char *)malloc(max);
-	if (array == NULL)
-		return (NULL);
-	while (counter < max)
+	i = 0;
+	j = 1;
+	min = 0;
+	/* printf("Minagcr	in=%d\n", args); */
+	while(i < (args))
 	{
-		array[counter] = '\0';
-		counter++;
+		while(j < (args))
+		{
+			if((c[i] < c[j]) && (c[i] < c[min]))
+				min = i;
+			j++;
+		}
+		i++;
+		j = 0;
 	}
-	return (array);
+	/* printf("Min pos = %d\n", min); */
+	return (min);
 }

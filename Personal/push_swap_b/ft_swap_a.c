@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_swap_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 19:15:55 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/03 20:02:25 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/07/30 16:59:10 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/05 16:40:37 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
+#include "push_swap.h"
 
-#include "libft.h"
-#include <stdlib.h>
-
-void	*ft_calloc(size_t count, size_t size)
+void	ft_swap_a(int *a)
 {
-	unsigned char	*array;
-	size_t			max;
-	size_t			counter;
-
-	counter = 0;
-	max = count * size;
-	array = (unsigned char *)malloc(max);
-	if (array == NULL)
-		return (NULL);
-	while (counter < max)
-	{
-		array[counter] = '\0';
-		counter++;
-	}
-	return (array);
+	int swap;
+	
+	swap = a[0];
+	a[0] = a[1];
+	a[1] = swap;
+	write(1, "sa\n", 3);
 }

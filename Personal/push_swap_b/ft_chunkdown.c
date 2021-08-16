@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_chunkdown.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 19:15:55 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/03 20:02:25 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/08 15:10:55 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/13 15:04:21 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
-#include "libft.h"
-#include <stdlib.h>
-
-void	*ft_calloc(size_t count, size_t size)
+int	ft_chunkdown(int args, int chunk, int *a)
 {
-	unsigned char	*array;
-	size_t			max;
-	size_t			counter;
+	int	count;
 
-	counter = 0;
-	max = count * size;
-	array = (unsigned char *)malloc(max);
-	if (array == NULL)
-		return (NULL);
-	while (counter < max)
+	count = args;
+	/* printf("Chunkdw  args[%d]\n", args); */
+	/* printf("Chunkdw  count[%d]\n", count); */
+	while (count >= 0)
 	{
-		array[counter] = '\0';
-		counter++;
-	}
-	return (array);
+		if(a[count] <= chunk)
+		{
+			/* printf("Chunkdw chunk****%d**\n", chunk); */
+			/* printf("Chunkdw  pos****%d**\n", a[count]); */
+			return (count);
+		}
+		count--;
+	}	
+	return(ft_mincheck(args, a));
 }

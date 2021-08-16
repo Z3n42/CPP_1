@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_reverse_rr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 19:15:55 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/03 20:02:25 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/02 12:26:41 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/02 12:36:47 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
+#include <unistd.h>
 
-#include "libft.h"
-#include <stdlib.h>
-
-void	*ft_calloc(size_t count, size_t size)
+void	ft_reverse_rr(int argc, int *a, int *b)
 {
-	unsigned char	*array;
-	size_t			max;
-	size_t			counter;
+	int	count;
+	int swap;
+	int swapb;
 
-	counter = 0;
-	max = count * size;
-	array = (unsigned char *)malloc(max);
-	if (array == NULL)
-		return (NULL);
-	while (counter < max)
+	swap = a[argc - 2];
+	swapb = b[argc - 2];
+	count = argc - 2;
+	while(count >= 1)
 	{
-		array[counter] = '\0';
-		counter++;
+		a[count] = a[count - 1];
+		b[count] = b[count - 1];
+		count--;
 	}
-	return (array);
+	a[0] = swap;
+	b[0] = swapb;
+	write(1, "rrr\n", 4);
 }

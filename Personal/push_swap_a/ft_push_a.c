@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_push_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 19:15:55 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/03 20:02:25 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/07/31 19:09:25 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/05 18:19:37 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
+#include "push_swap.h"
 
-#include "libft.h"
-#include <stdlib.h>
-
-void	*ft_calloc(size_t count, size_t size)
+void	ft_push_a(int argc, int *a, int *b)
 {
-	unsigned char	*array;
-	size_t			max;
-	size_t			counter;
+	int	count;
 
-	counter = 0;
-	max = count * size;
-	array = (unsigned char *)malloc(max);
-	if (array == NULL)
-		return (NULL);
-	while (counter < max)
+	count = argc;
+	while(count >= 1)
 	{
-		array[counter] = '\0';
-		counter++;
+		a[count] = a[count - 1];
+		count--;
 	}
-	return (array);
+	a[0] = b[0];
+	count = 0;
+	while(argc >= (count + 1))
+	{
+		b[count] = b[count + 1];
+		count++;
+	}
+	b[count] = 0;
+	write(1, "pa\n", 3);	
 }
