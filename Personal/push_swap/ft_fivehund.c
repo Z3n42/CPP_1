@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 16:26:10 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/17 18:29:12 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/08/16 18:55:13 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -25,9 +25,9 @@ void	ft_fivehund(int args, int *a, int *b)
 	/* printf("Hundred args[%d]\n", args); */
 	count = args;
 	/* printf("Hundred count[%d]\n", count); */
-	pos = args/12;
+	pos = args/11;
 	/* printf("Hundred pos[%d]\n", pos); */
-	plus = args/12;
+	plus = args/11;
 	/*array = */ft_chunk(args, a);
 	counter = 0;
 	/* while(counter < args) */
@@ -44,7 +44,7 @@ void	ft_fivehund(int args, int *a, int *b)
 			/* printf("***************Chunkup in: %d\n", ft_chunkup(count, chunk, a)); */
 			/* printf("***************Chunkdown in: %d\n", ft_chunkdown(count, chunk, a)); */
 			/* printf("****************Chunkdiff  in: %d\n", (count - ft_chunkdown(count, chunk, a))); */
-			while((ft_chunkup(count, chunk, a)) != 0  && (a[0] > chunk))
+			while((ft_chunkup(count, chunk, a)) != 0 && (a[0] > chunk))
 			{
 			/* printf("***************Chunkup in: %d\n", ft_chunkup(count, chunk, a)); */
 			/* printf("***************Chunkdown in: %d\n", ft_chunkdown(count, chunk, a)); */
@@ -53,14 +53,9 @@ void	ft_fivehund(int args, int *a, int *b)
 				ft_rotate_a(count, a);
 			}
 			/* printf("Chunkup Push[%d] : %d\n", count, a[ft_chunkup(count, chunk, a)]); */
-			/* if(a[0] < b[0]) */
-			/* { */
-			/* 	ft_push_b(args, a, b); */
-			/* 	ft_swap_b(b); */
-			/* } */
-			/* printf("COUNT UP -----> %d\n", count); */
-			/* else */
-				ft_push_b(args, a, b);
+			/* if(a[0] > b[0]) */
+			/* 	ft_rotate_b(args, b); */
+			ft_push_b(args, a, b);
 			count--;
 			/* printf("COUNT UP -----> %d\n", count); */
 			counter++;
@@ -88,14 +83,7 @@ void	ft_fivehund(int args, int *a, int *b)
 			}
 			/* printf("Chunkdown Push[%d] : %d\n", count, a[ft_chunkdown(count, chunk, a)]); */	
 			/* if(a[0] > b[0]) */
-			/* 	ft_rotate_b(args, b); */	
-			/* if(a[0] < b[0]) */
-			/* { */
-			/* 	ft_push_b(args, a, b); */
-			/* 	ft_swap_b(b); */
-			/* } */
-			/* printf("COUNT UP -----> %d\n", count); */
-			/* else */
+			/* 	ft_rotate_b(args, b); */
 			ft_push_b(args, a, b);
 			count--;
 			/* printf("COUNT DOWN -----> %d\n", count); */
@@ -135,11 +123,11 @@ void	ft_fivehund(int args, int *a, int *b)
 		{
 			while(ft_maxcheck(argb, b) != 0)
 			{
-				if((ft_maxcheck(args, b) == 1) && ((b[0]) < (b[1])))
-					ft_swap_b(b);
-				else
+			if((ft_maxcheck(args, b) == 1) && (b[0] < (b[1])))
+				ft_swap_b(b);
+			else
 				/* printf("Maxcheck up : %d\n", ft_maxcheck(count, b)); */
-					ft_rotate_b(argb, b);
+				ft_rotate_b(argb, b);
 				/* sleep(1); */
 			}
 			/* printf("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW_UP_WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n"); */

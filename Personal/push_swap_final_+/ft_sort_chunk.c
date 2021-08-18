@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 13:28:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/16 16:13:55 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/08/16 14:39:07 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -33,10 +33,10 @@ void	ft_sort_chunk(int size, int *chunk)
 		}
 		count++;
 	}
-	/* count = 0; */
-	/* while(count < size) */
-	/* { */
-	/* 	printf("chunk short [%d] :%d\n", count, chunk[count]); */
-	/* 	count++; */
-	/* } */
+	count = 0;
+	while(count < size)
+	{
+		printf("chunk short [%d] :%d\n", count, chunk[count]);
+		count++;
+	}
 }

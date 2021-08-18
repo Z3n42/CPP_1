@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_chunk.c                                    :+:      :+:    :+:   */
+/*   ft_cheker.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 13:28:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/16 16:13:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/02 14:07:22 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/05 19:46:09 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	ft_sort_chunk(int size, int *chunk)
+int	ft_checker(int argc, int *a)
 {
-	int	change;
-	int	count;
-	int	pos;
+	int count;
+	int less;
 
 	count = 0;
-	while (count < size)
+	less = 0;
+	while(count < (argc - 1))
 	{
-		pos = count + 1;
-		while (pos < size)
-		{
-			if (chunk[count] > chunk[pos])
-			{
-				change = chunk[count];
-				chunk[count] = chunk[pos];
-				chunk[pos] = change;
-			}
-			pos++;
-		}
+		if(a[count] < a[count + 1])
+			less++;
 		count++;
-	}
-	/* count = 0; */
-	/* while(count < size) */
-	/* { */
-	/* 	printf("chunk short [%d] :%d\n", count, chunk[count]); */
-	/* 	count++; */
-	/* } */
+	}	
+	if(less == (argc - 1))
+		return (1);
+	else
+		return (0);
 }

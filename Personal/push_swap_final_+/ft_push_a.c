@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_chunk.c                                    :+:      :+:    :+:   */
+/*   ft_push_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 13:28:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/16 16:13:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/07/31 19:09:25 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/13 15:05:05 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 #include "push_swap.h"
 
-void	ft_sort_chunk(int size, int *chunk)
+void	ft_push_a(int argc, int *a, int *b)
 {
-	int	change;
 	int	count;
-	int	pos;
 
+	count = argc;
+	while(count >= 1)
+	{	
+		/* printf("1st PA_a[%d]-%d === %d\n", count, a[count], a[count - 1]); */
+		a[count] = a[count - 1];
+		count--;
+	}
+	a[0] = b[0];
 	count = 0;
-	while (count < size)
-	{
-		pos = count + 1;
-		while (pos < size)
-		{
-			if (chunk[count] > chunk[pos])
-			{
-				change = chunk[count];
-				chunk[count] = chunk[pos];
-				chunk[pos] = change;
-			}
-			pos++;
-		}
+	while(argc >= (count + 1))
+	{	
+		/* printf("2nd PA_b[%d]-%d === %d\n", count, b[count], b[count + 1]); */
+		b[count] = b[count + 1];
 		count++;
 	}
-	/* count = 0; */
-	/* while(count < size) */
-	/* { */
-	/* 	printf("chunk short [%d] :%d\n", count, chunk[count]); */
-	/* 	count++; */
-	/* } */
+	b[count] = 0;
+	write(1, "pa\n", 3);	
 }

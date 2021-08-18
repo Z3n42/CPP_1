@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_chunk.c                                    :+:      :+:    :+:   */
+/*   ft_reverse_ra.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 13:28:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/16 16:13:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/01 13:26:35 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/13 15:05:33 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+#include <unistd.h>
 
-void	ft_sort_chunk(int size, int *chunk)
+void	ft_reverse_ra(int argc, int *a)
 {
-	int	change;
 	int	count;
-	int	pos;
+	int swap;
 
-	count = 0;
-	while (count < size)
+	/* printf("Agrc in RRA: %d\n", argc); */
+	swap = a[argc - 1];
+	count = argc - 1;
+	while(count >= 1)
 	{
-		pos = count + 1;
-		while (pos < size)
-		{
-			if (chunk[count] > chunk[pos])
-			{
-				change = chunk[count];
-				chunk[count] = chunk[pos];
-				chunk[pos] = change;
-			}
-			pos++;
-		}
-		count++;
+		a[count] = a[count - 1];
+		count--;
 	}
-	/* count = 0; */
-	/* while(count < size) */
-	/* { */
-	/* 	printf("chunk short [%d] :%d\n", count, chunk[count]); */
-	/* 	count++; */
-	/* } */
+	a[0] = swap;
+	write(1, "rra\n", 4);
 }

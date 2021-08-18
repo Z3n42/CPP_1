@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_chunk.c                                    :+:      :+:    :+:   */
+/*   ft_pushtoa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 13:28:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/16 16:13:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/17 19:27:25 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/18 15:09:33 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	ft_sort_chunk(int size, int *chunk)
+void	ft_pushtoa(int args, int argb, int count, int *a, int *b)
 {
-	int	change;
-	int	count;
-	int	pos;
-
-	count = 0;
-	while (count < size)
+	while(count < args)
 	{
-		pos = count + 1;
-		while (pos < size)
+		if(ft_maxcheck(argb, b) <= (argb / 2))
 		{
-			if (chunk[count] > chunk[pos])
+			while(ft_maxcheck(argb, b) != 0)
 			{
-				change = chunk[count];
-				chunk[count] = chunk[pos];
-				chunk[pos] = change;
+				if((ft_maxcheck(argb, b) == 1) && (b[0] < b[1]))
+					ft_swap_b(b);
+				else
+					ft_rotate_b(argb, b);
 			}
-			pos++;
+			ft_push_a(argb, a, b);
+			argb--;
+			count++;
 		}
-		count++;
+		else
+		{
+			while(ft_maxcheck(argb, b) != 0)
+				ft_reverse_rb(argb, b);
+			ft_push_a(argb, a, b);
+			argb--;	
+			count++;
+		}
 	}
-	/* count = 0; */
-	/* while(count < size) */
-	/* { */
-	/* 	printf("chunk short [%d] :%d\n", count, chunk[count]); */
-	/* 	count++; */
-	/* } */
 }

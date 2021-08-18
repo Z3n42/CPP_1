@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 14:09:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/18 15:48:14 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/08/16 15:16:41 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef	PUSH_SWAP_H
@@ -42,9 +42,6 @@ void	ft_three(int argc, int *a);
 void	ft_five(int args, int *a, int *b);
 void	ft_hundred(int args, int *a, int *b);
 void	ft_fivehund(int args, int *a, int *b);
-void	ft_pushtoa(int args, int argb, int count, int *a, int *b);
-int		ft_rotup(int args, int count, int chunk, int *a, int *b);
-int		ft_rotdown(int args, int count, int chunk, int *a, int *b);
 
 #endif
 

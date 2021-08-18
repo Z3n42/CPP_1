@@ -23,14 +23,11 @@ int main(int argc, char **argv)
 	/* args = (char **)malloc((argc - 1) * sizeof(char *)); */
 	if(argc > 1)
 	{
-		/* if(argc == 2) */
-		/* { */
-		/* 	count = 0 */
+		/* count = 1; */
 		/* while(count <= (argc - 1)) */
 		/* { */
 		/* 	args = ft_split(argv[count], ' '); */
 		/* 	count++; */
-		/* } */
 		/* } */
 		count = 0;
 		while(argc > (count + 1))

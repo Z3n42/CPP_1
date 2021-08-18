@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_chunk.c                                    :+:      :+:    :+:   */
+/*   ft_chunkdown.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 13:28:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/16 16:13:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/08 15:10:55 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/16 13:16:30 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	ft_sort_chunk(int size, int *chunk)
+int	ft_chunkdown(int args, int chunk, int *a)
 {
-	int	change;
 	int	count;
-	int	pos;
 
-	count = 0;
-	while (count < size)
+	count = args;
+	/* printf("Chunkdw  args[%d]\n", args); */
+	/* printf("Chunkdw  count[%d]\n", count); */
+	while (count >= 0)
 	{
-		pos = count + 1;
-		while (pos < size)
+		if(a[count] <= chunk)
 		{
-			if (chunk[count] > chunk[pos])
-			{
-				change = chunk[count];
-				chunk[count] = chunk[pos];
-				chunk[pos] = change;
-			}
-			pos++;
+			/* printf("Chunkdw chunk****%d**\n", chunk); */
+			/* printf("Chunkdw  pos****%d**\n", a[count]); */
+			return (count);
 		}
-		count++;
-	}
-	/* count = 0; */
-	/* while(count < size) */
-	/* { */
-	/* 	printf("chunk short [%d] :%d\n", count, chunk[count]); */
-	/* 	count++; */
-	/* } */
+		count--;
+	}	
+	return(ft_mincheck(args, a));
 }

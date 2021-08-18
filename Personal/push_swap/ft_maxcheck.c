@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_chunk.c                                    :+:      :+:    :+:   */
+/*   ft_maxcheck.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 13:28:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/16 16:13:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/11 16:35:24 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/12 19:36:38 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	ft_sort_chunk(int size, int *chunk)
+int	ft_maxcheck(int args, int *c)
 {
-	int	change;
-	int	count;
-	int	pos;
+	int i;
+	int	j;
+	int max;
 
-	count = 0;
-	while (count < size)
+	i = 0;
+	j = 1;
+	max = 0;
+	while(i < (args))
 	{
-		pos = count + 1;
-		while (pos < size)
+		while(j < (args))
 		{
-			if (chunk[count] > chunk[pos])
-			{
-				change = chunk[count];
-				chunk[count] = chunk[pos];
-				chunk[pos] = change;
-			}
-			pos++;
+			if((c[i] > c[j]) && (c[i] > c[max]))
+				max = i;
+			j++;
 		}
-		count++;
+		i++;
+		j = 0;
 	}
-	/* count = 0; */
-	/* while(count < size) */
-	/* { */
-	/* 	printf("chunk short [%d] :%d\n", count, chunk[count]); */
-	/* 	count++; */
-	/* } */
+	return (max);
 }

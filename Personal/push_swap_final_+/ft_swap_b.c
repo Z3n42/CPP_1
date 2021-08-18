@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chunkup.c                                       :+:      :+:    :+:   */
+/*   ft_swap_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/08 15:08:01 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/16 10:47:53 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/07/31 13:50:59 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/07/31 14:28:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
 #include "push_swap.h"
 
-int	ft_chunkup(int args, int chunk, int *a)
+void	ft_swap_b(int *b)
 {
-	int	count;
-
-	count = 0;
-	while(count < args)
-	{
-		if(a[count] <= chunk)
-		{
-			/* printf("chunkup count[%d]\n", count); */
-			return (count);
-		}
-		count++;
-	}
-	return(ft_mincheck(args, a));
+	int swap;
+	
+	swap = b[0];
+	b[0] = b[1];
+	b[1] = swap;
+	write(1, "sb\n", 3);
 }

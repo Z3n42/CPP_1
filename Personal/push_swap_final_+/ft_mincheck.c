@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_chunk.c                                    :+:      :+:    :+:   */
+/*   ft_mincheck.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 13:28:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/16 16:13:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2021/08/04 12:53:43 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/08/05 18:37:40 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+#include <stdio.h>
 
-void	ft_sort_chunk(int size, int *chunk)
+int	ft_mincheck(int args, int *c)
 {
-	int	change;
-	int	count;
-	int	pos;
+	int i;
+	int	j;
+	int min;
 
-	count = 0;
-	while (count < size)
+	i = 0;
+	j = 1;
+	min = 0;
+	/* printf("Minagcr	in=%d\n", args); */
+	while(i < (args))
 	{
-		pos = count + 1;
-		while (pos < size)
+		while(j < (args))
 		{
-			if (chunk[count] > chunk[pos])
-			{
-				change = chunk[count];
-				chunk[count] = chunk[pos];
-				chunk[pos] = change;
-			}
-			pos++;
+			if((c[i] < c[j]) && (c[i] < c[min]))
+				min = i;
+			j++;
 		}
-		count++;
+		i++;
+		j = 0;
 	}
-	/* count = 0; */
-	/* while(count < size) */
-	/* { */
-	/* 	printf("chunk short [%d] :%d\n", count, chunk[count]); */
-	/* 	count++; */
-	/* } */
+	/* printf("Min pos = %d\n", min); */
+	return (min);
 }

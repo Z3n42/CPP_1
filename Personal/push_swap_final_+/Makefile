@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2021/08/17 21:05:15 by ingonzal         ###   ########.fr        #
+#    Updated: 2021/08/16 15:17:29 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,8 +48,6 @@ FILES = ft_error \
 		../libft_pass/ft_calloc \
 		../libft_pass/ft_isalpha \
 		ft_index \
-		ft_pushtoa \
-		ft_rotup \
 		ft_cheker \
 
 SRCS_DIR = ./
