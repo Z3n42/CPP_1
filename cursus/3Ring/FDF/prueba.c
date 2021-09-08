@@ -6,19 +6,14 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 12:52:33 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/08/29 14:54:39 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/09/05 14:30:18 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
+#include <stdio.h>
 #include "./minilibx/mlx.h"
-
-typedef struct s_data{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+#include "./libft/libft.h"
+#include "fdf.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -40,30 +35,37 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-	int 	count;
-	int		times;
+	void		*mlx;
+	void		*mlx_win;
+	t_data		img;
+	float	 	x;
+	float		y;
+	int			avance;
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	count = 0;
-	times = 1;
-	while(times < 900)
+	x = 500;
+	y = 1;
+	avance = 0;
+	while(avance < 500)
 	{
-		while(count < 900)
+		while(x > 300)
 		{
-			my_mlx_pixel_put(&img, 100 + count, 100 + times, 0x00FF0000);
-			my_mlx_pixel_put(&img, 100 + count, 1000, 0x00FF0000);
-			my_mlx_pixel_put(&img, 1000 , 100 + count, 0x00FF0000);
-			my_mlx_pixel_put(&img, 100 + times, 100 + count, 0x00FF0000);
-			count++;
+			/* my_mlx_pixel_put(&img, 300 + count, 450, 0x00FF0000); */
+			my_mlx_pixel_put(&img, avance + x, 50 + y, 0x00FF0000);
+			/* my_mlx_pixel_put(&img, 50 + x, 50 + y, 0x00FF0000); */
+			/* my_mlx_pixel_put(&img, 100 + x, 50 + y, 0x00FF0000); */
+			/* my_mlx_pixel_put(&img, 1000 , 100 + count, 0x00FF0000); */
+			/* my_mlx_pixel_put(&img, 100 + times, 100 + count, 0x00FF0000); */
+			x -= 0.5;
+			y += 1;
 		}
-		count = 0;
-		times += 50;
+		x = 500;
+		y = 1;
+		avance += 50;
+		ft_printf("%d\n", avance);
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	/* mlx_key_hook(win_ptr, deal_key, (void *)0); */
