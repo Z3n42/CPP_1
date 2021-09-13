@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 19:07:36 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/09/07 20:20:43 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/09/11 21:27:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ void ft_brasenham(t_data *img, int x, int y, int x1, int y1)
 	dy = y1 - y;		
 	m = dy/dx;
 	p = 2 * (dy - dx);
-	my_mlx_pixel_put(img, x, y, 0x00FFFFFF);
-	while(x < x1)
+	/* my_mlx_pixel_put(img, x, y, 0x00FFFFFF); */
+	if 
+	while (x < x1)
 	{
-		if (p <= 0)
+		if (p > 0)
 		{
 			x++;
 			p = p+(2*dy);
@@ -77,9 +78,9 @@ void ft_draw(t_aux *aux)
 	avance = 0;
 	vert = 0;
 	/* ft_brasenham(&img, 0, 0, 50, 50); */
-	while(vert < aux->y)
+	while (vert < aux->y)
 	{
-		while(avance < aux->x)
+		while (avance < aux->x)
 		{
 			ft_brasenham(&img, x, y, x1, y1);
 			x += 1000/aux->x;
@@ -105,9 +106,9 @@ void ft_draw(t_aux *aux)
 	y1 = y;
 	avance = 0;
 	vert = 0;
-	while(vert < aux->x)
+	while (vert < aux->x)
 	{
-		while(avance < aux->y)
+		while (avance < aux->y)
 		{
 			ft_brasenham(&img, x, y, x1, y1);
 			y += 500/aux->y;

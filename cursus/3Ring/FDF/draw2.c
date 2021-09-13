@@ -1,0 +1,272 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw2.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/12 13:26:55 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/09/13 14:40:40 by ingonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+#include <stdio.h>
+#include "./minilibx/mlx.h"
+#include "./libft/libft.h"
+#include "fdf.h"
+#include <stdlib.h>
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+void ft_plotlow(t_data *img, int x, int y, int x1, int y1)
+{
+	int	dx;
+	int dy;
+	int m;
+	int p;
+	int yi;
+
+	dx = x1 - x;
+	dy = y1 - y;		
+	m = dy/dx;
+	yi = 1;
+	if (dy < 0)
+	{
+		yi = -1;
+		dy = dy * -1;
+	}
+	p = 2 * (dy - dx);
+	while (y < y1)
+	{
+		/* printf("low\n"); */
+		my_mlx_pixel_put(img, x, y, 0x00FFFFFF);
+		if (p > 0)
+		{
+			y = y + yi;
+			p = p + (2 * (dy + dx));
+		}
+		else
+		{
+			/* y = y + yi; */
+			/* x = x + yi; */
+			p = p + 2*dy;
+		}
+	}
+}
+
+void ft_plothigh(t_data *img, int x, int y, int x1, int y1)
+{
+	int	dx;
+	int dy;
+	int m;
+	int p;
+	int xi;
+
+	dx = x1 - x;
+	dy = y1 - y;		
+	m = dy/dx;
+	xi = 1;
+	if (dx < 0)
+	{
+		xi = -1;
+		dx = dx * -1;
+	}
+	p = 2 * (dx - dy);
+	while (x < x1)
+	{
+		/* printf("high\n"); */
+		my_mlx_pixel_put(img, x, y, 0x00FFFFFF);
+		if (p > 0)
+		{
+			x = x + xi;
+			p = p + (2 * (dx + dy));
+		}
+		else
+		{
+			/* x = x + xi; */
+			/* y = y + xi; */	
+			p = p + (2*dx);
+		}
+	}
+}
+
+void ft_brasenham(t_data *img, int x, int y, int x1, int y1)
+{
+	/* int	dx; */
+	/* int dy; */
+	/* int m; */
+	/* int p; */
+
+	/* dx = x1 - x; */
+	/* dy = y1 - y; */		
+	/* m = dy/dx; */
+	/* p = 2 * (dy - dx); */
+	/* my_mlx_pixel_put(img, x, y, 0x00FFFFFF); */
+	if (abs(y1 - y) > abs(x1 - x))
+	{
+		printf("abs y => %d abs x => %d\n", abs(y1 - y), abs(x1 - x));
+		if (x > x1)
+		{
+			printf("1-Low\n");
+			ft_plotlow(img, x1, y1, x, y);
+		}
+		else
+		{
+			printf("2-Low\n");
+			ft_plotlow(img, x, y, x1, y1);
+		}
+	}
+	else
+	{
+		printf("abs y => %d abs x => %d\n", abs(y1 - y), abs(x1 - x));
+		if (y > y1)
+		{
+			printf("3-high\n");
+			ft_plothigh(img, x1, y1, x, y);
+		}
+		else
+		{
+			printf("4-high\n");
+			ft_plothigh(img, x, y, x1, y1);
+		}
+ 	/* while (x < x1) */
+	/* { */
+	/* 	if (p > 0) */
+	/* 	{ */
+	/* 		x++; */
+	/* 		p = p+(2*dy); */
+	/* 	} */
+	/* 	else */
+	/* 	{ */
+	/* 		x++; */
+	/* 		y++; */
+	/* 		p = p+(2*dy)+(2*dx); */
+	/* 	} */
+		/* printf("X => %d, Y => %d\n", x, y); */
+		/* my_mlx_pixel_put(img, x, y, 0x00FFFFFF); */
+	}
+}
+
+void ft_draw(t_aux *aux)
+{
+	void		*mlx;
+	void		*mlx_win;
+	t_data		img;
+	int	 		x;
+	int		 	x1;
+	int			y;
+	int			y1;
+	int			avance;
+	int			vert;
+
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "FDF");
+	img.img = mlx_new_image(mlx, 1920, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	x = 500;
+	y = 250;
+	x1 = x + 800/aux->x;
+	y1 = y;
+	avance = 0;
+	vert = 0;
+	/* ft_brasenham(&img, 0, 0, 50, 50); */
+	while (vert < aux->y)
+	{
+		while (avance < aux->x)
+		{
+			printf("X-Brash\n");
+			ft_brasenham(&img, x, y, x1, y1);
+			/* if (abs(y1 - y) < abs(x1 - x)) */
+			/* { */
+			/* 	printf("XLow X => %d Y =>%d\n", x, y); */
+			/* 	printf("XLow X1 => %d Y1 =>%d\n", x1, y1); */
+			/* 	if (x > x1) */
+			/* 		ft_plotlow(&img, x1, y1, x, y); */
+			/* 	else */
+			/* 		ft_plotlow(&img, x, y, x1, y1); */
+			/* } */
+			/* else */
+			/* { */
+			/* 	printf("XHigh X => %d Y =>%d\n", x, y); */
+			/* 	printf("XHigh X1 => %d Y1 =>%d\n", x1, y1); */
+			/* 	if (y > y1) */
+			/* 		ft_plothigh(&img, x1, y1, x, y); */
+			/* 	else */
+			/* 		ft_plothigh(&img, x, y, x1, y1); */
+			/* } */
+
+			x += 800/aux->x;
+			x1 += 800/aux->x;
+			avance++;
+			/* printf("Avance %d\n", avance); */
+		}
+		x = 500;
+		x1 = x + 800/aux->x;
+		avance = 0;
+		y += 500/aux->y;
+		y1 += 500/aux->y;
+		vert++;
+		/* printf("Vert %d\n", vert); */
+		/* x = 500; */
+		/* y = 1; */
+		/* avance += 50; */
+		/* ft_printf("%d\n", avance); */
+	}
+	x = 500;
+	y = 250;
+	x1 = x + 800/aux->x;
+	y1 = y;
+	avance = 0;
+	vert = 0;
+	while (vert < aux->x)
+	{
+		while (avance < aux->y)
+		{
+			printf("Y-Brash\n");
+			ft_brasenham(&img, x, y, x1, y1);
+			/* if (abs(y1 - y) < abs(x1 - x)) */
+			/* { */
+			/* 	printf("YLow X => %d Y =>%d\n", x, y); */
+			/* 	printf("YLow X1 => %d Y1 =>%d\n", x1, y1); */
+			/* 	if (x > x1) */
+			/* 		ft_plotlow(&img, x1, y1, x, y); */
+			/* 	else */
+			/* 		ft_plotlow(&img, x, y, x1, y1); */
+			/* } */
+			/* else */
+			/* { */
+			/* 	printf("YHigh X => %d Y =>%d\n", x, y); */
+			/* 	printf("YHigh X1 => %d Y1 =>%d\n", x1, y1); */
+			/* 	if (y > y1) */
+			/* 		ft_plothigh(&img, x1, y1, x, y); */
+			/* 	else */
+			/* 		ft_plothigh(&img, x, y, x1, y1); */
+			/* } */
+			y += 500/aux->y;
+			y1 += 500/aux->y;
+			avance++;
+			/* printf("Avance %d\n", avance); */
+		}
+		y = 250;
+		y1 = y + 500/aux->y;
+		avance = 0;
+		x += 800/aux->x;
+		x1 += 800/aux->x;
+		vert++;
+		/* printf("Vert %d\n", vert); */
+		/* x = 500; */
+		/* y = 1; */
+		/* avance += 50; */
+		/* ft_printf("%d\n", avance); */
+	}
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	/* mlx_key_hook(win_ptr, deal_key, (void *)0); */
+	mlx_loop(mlx);
+}
