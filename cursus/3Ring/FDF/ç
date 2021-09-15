@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 13:26:55 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/09/14 21:08:31 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/09/13 18:38:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "./libft/libft.h"
 #include "fdf.h"
 #include <stdlib.h>
-#include <math.h>
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -29,12 +28,14 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 void ft_plotlow(t_data *img, int x, int y, int x1, int y1)
 {
 	int	dx;
-	int	dy;
-	int	p;
-	int	yi;
+	int dy;
+	int m;
+	int p;
+	int yi;
 
 	dx = x1 - x;
 	dy = y1 - y;		
+	m = dy/dx;
 	yi = 1;
 	if (dy < 0)
 	{
@@ -42,22 +43,20 @@ void ft_plotlow(t_data *img, int x, int y, int x1, int y1)
 		dy = dy * -1;
 	}
 	p = 2 * (dy - dx);
-	while (x++ < x1)
+	while (x < x1)
 	{
-		printf("x %d y %d\n", x, y);
 		/* printf("low\n"); */
-		if (x < 1900 && y < 1000 && x > 0 && y > 0)
-			my_mlx_pixel_put(img, x, y, 0x00FFFFFF);
+		my_mlx_pixel_put(img, x, y, 0x00FFFFFF);
 		if (p > 0)
 		{
-			/* x = x + yi; */
+			x++;
 			y = y + yi;
-			p = p + (2 * (dy - dx));
+			p = p + (2 * (dy + dx));
 		}
 		else
 		{
-			/* x = x + yi; */
-			/* x++; */
+			/* y = y + yi; */
+			x++;
 			p = p + (2*dy);
 		}
 	}
@@ -66,12 +65,14 @@ void ft_plotlow(t_data *img, int x, int y, int x1, int y1)
 void ft_plothigh(t_data *img, int x, int y, int x1, int y1)
 {
 	int	dx;
-	int	dy;
-	int	p;
-	int	xi;
+	int dy;
+	int m;
+	int p;
+	int xi;
 
 	dx = x1 - x;
 	dy = y1 - y;		
+	m = dy/dx;
 	xi = 1;
 	if (dx < 0)
 	{
@@ -79,29 +80,26 @@ void ft_plothigh(t_data *img, int x, int y, int x1, int y1)
 		dx = dx * -1;
 	}
 	p = 2 * (dx - dy);
-	while (y++ < y1)
+	while (y < y1)
 	{
-		printf("x %d y %d\n", x, y);
-		if (x < 1900 && y < 1000 && x > 0 && y > 0)
-			my_mlx_pixel_put(img, x, y, 0x00FFFFFF);
 		/* printf("high\n"); */
+		my_mlx_pixel_put(img, x, y, 0x00FFFFFF);
 		if (p > 0)
 		{
-			/* y++; */
-			/* y = y + xi; */
+			y++;
 			x = x + xi;
-			p = p + (2 * (dx - dy));
+			p = p + (2 * (dx + dy));
 		}
 		else
 		{
-			/* y = y + xi; */
-			/* y++; */	
+			/* x = x + xi; */
+			y++;	
 			p = p + (2*dx);
 		}
 	}
 }
 
-void ft_brasenham(t_data *img, int	x, int	y, int	x1, int	y1)
+void ft_brasenham(t_data *img, int x, int y, int x1, int y1)
 {
 	/* int	dx; */
 	/* int dy; */
@@ -115,33 +113,29 @@ void ft_brasenham(t_data *img, int	x, int	y, int	x1, int	y1)
 	/* my_mlx_pixel_put(img, x, y, 0x00FFFFFF); */
 	if (abs(y1 - y) < abs(x1 - x))
 	{
-		/* printf("abs y => %d abs x => %d\n", abs(y1 - y), abs(x1 - x)); */
+		printf("abs y => %d abs x => %d\n", abs(y1 - y), abs(x1 - x));
 		if (x > x1)
 		{
 			printf("1-Low\n");
-			printf("x %d y %d x1  %d y1  %d\n", x, y, x1, y1);
 			ft_plotlow(img, x1, y1, x, y);
 		}
 		else
 		{
 			printf("2-Low\n");
-			printf("x %d y %d x1  %d y1  %d\n", x, y, x1, y1);
 			ft_plotlow(img, x, y, x1, y1);
 		}
 	}
 	else
 	{
-		/* printf("abs y => %d abs x => %d\n", abs(y1 - y), abs(x1 - x)); */
+		printf("abs y => %d abs x => %d\n", abs(y1 - y), abs(x1 - x));
 		if (y > y1)
 		{
 			printf("3-high\n");
-			printf("x %d y %d x1  %d y1  %d\n", x, y, x1, y1);
 			ft_plothigh(img, x1, y1, x, y);
 		}
 		else
 		{
 			printf("4-high\n");
-			printf("x %d y %d x1  %d y1  %d\n", x, y, x1, y1);
 			ft_plothigh(img, x, y, x1, y1);
 		}
  	/* while (x < x1) */
@@ -167,19 +161,18 @@ void ft_draw(t_aux *aux)
 	void		*mlx;
 	void		*mlx_win;
 	t_data		img;
-	int		 	x;
+	int	 		x;
 	int		 	x1;
 	int			y;
 	int			y1;
 	int			avance;
 	int			vert;
-	int			z;
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "FDF");
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	x = 650;
+	x = 500;
 	y = 250;
 	x1 = x + 800/aux->x;
 	y1 = y;
@@ -188,49 +181,77 @@ void ft_draw(t_aux *aux)
 	/* ft_brasenham(&img, 0, 0, 50, 50); */
 	while (vert < aux->y)
 	{
-		while (avance < aux->x - 1)
+		while (avance < aux->x)
 		{
-			z = (aux->mat[vert][avance]) * 5;
-	//		printf("++%d", aux->mat[vert][avance]);
-			/* printf("X-Brash\n"); */
-				/* ft_brasenham(&img, x, y, x1, y1); */
-				//ft_brasenham(&img, ((x - y) * cos(0.8)) + 600, ((y + x) * sin(0.8)) - 550 - z, (((x1 - y1) * cos(0.8)) + 600), (((y1 + x1) * sin(0.8)) - 550) - z);
-				ft_brasenham(&img, ((x - y) * cos(0.7)) + 600, ((y + x) * sin(0.7)) - 450 - ((aux->mat[vert][avance]) * 5), ((x1 - y1) * cos(0.7)) + 600, (((y1 + x1) * sin(0.7)) - 450) - ((aux->mat[vert][avance + 1]) * 5));
-			x = x1;
-			/* printf("X=========>%d\n", x); */
-				x1 += 800/aux->x;
+			printf("X-Brash\n");
+			ft_brasenham(&img, x, y, x1, y1);
+			/* if (abs(y1 - y) < abs(x1 - x)) */
+			/* { */
+			/* 	printf("XLow X => %d Y =>%d\n", x, y); */
+			/* 	printf("XLow X1 => %d Y1 =>%d\n", x1, y1); */
+			/* 	if (x > x1) */
+			/* 		ft_plotlow(&img, x1, y1, x, y); */
+			/* 	else */
+			/* 		ft_plotlow(&img, x, y, x1, y1); */
+			/* } */
+			/* else */
+			/* { */
+			/* 	printf("XHigh X => %d Y =>%d\n", x, y); */
+			/* 	printf("XHigh X1 => %d Y1 =>%d\n", x1, y1); */
+			/* 	if (y > y1) */
+			/* 		ft_plothigh(&img, x1, y1, x, y); */
+			/* 	else */
+			/* 		ft_plothigh(&img, x, y, x1, y1); */
+			/* } */
+
+			x += 800/aux->x;
+			x1 += 800/aux->x;
 			avance++;
 			/* printf("Avance %d\n", avance); */
 		}
-		x = 650;
+		x = 500;
 		x1 = x + 800/aux->x;
 		avance = 0;
 		y += 500/aux->y;
 		y1 += 500/aux->y;
 		vert++;
-		printf("\n");
 		/* printf("Vert %d\n", vert); */
 		/* x = 500; */
 		/* y = 1; */
 		/* avance += 50; */
 		/* ft_printf("%d\n", avance); */
 	}
-	x = 650;
+	x = 500;
 	y = 250;
-	x1 = x;
-	y1 = y + 500/aux->y;
+	x1 = x + 800/aux->x;
+	y1 = y;
 	avance = 0;
 	vert = 0;
 	while (vert < aux->x)
 	{
-		while (avance < aux->y - 1)
+		while (avance < aux->y)
 		{
-			;
-		//	printf("--%d", aux->mat[avance][vert]);
-			/* printf("Y-Brash\n"); */
-				/* ft_brasenham(&img, x, y, x1, y1); */
-				ft_brasenham(&img, ((x - y) * cos(0.7)) + 600, ((y + x) * sin(0.7)) - 450 - ((aux->mat[avance][vert]) * 5), ((x1 - y1) * cos(0.7)) + 600, (((y1 + x1) * sin(0.7)) - 450) - ((aux->mat[avance + 1][vert]) * 5));
-			y = y1;
+			printf("Y-Brash\n");
+			ft_brasenham(&img, x, y, x1, y1);
+			/* if (abs(y1 - y) < abs(x1 - x)) */
+			/* { */
+			/* 	printf("YLow X => %d Y =>%d\n", x, y); */
+			/* 	printf("YLow X1 => %d Y1 =>%d\n", x1, y1); */
+			/* 	if (x > x1) */
+			/* 		ft_plotlow(&img, x1, y1, x, y); */
+			/* 	else */
+			/* 		ft_plotlow(&img, x, y, x1, y1); */
+			/* } */
+			/* else */
+			/* { */
+			/* 	printf("YHigh X => %d Y =>%d\n", x, y); */
+			/* 	printf("YHigh X1 => %d Y1 =>%d\n", x1, y1); */
+			/* 	if (y > y1) */
+			/* 		ft_plothigh(&img, x1, y1, x, y); */
+			/* 	else */
+			/* 		ft_plothigh(&img, x, y, x1, y1); */
+			/* } */
+			y += 500/aux->y;
 			y1 += 500/aux->y;
 			avance++;
 			/* printf("Avance %d\n", avance); */
