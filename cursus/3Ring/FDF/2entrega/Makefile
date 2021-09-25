@@ -6,25 +6,29 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2021/09/21 19:11:30 by ingonzal         ###   ########.fr        #
+#    Updated: 2021/09/18 15:56:50 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = printf.a
+NAME = fdf
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
+
 AR = ar rcs
+
 RM = rm -f
 
-FILES = ft_printf \
-		ft_putchar_fd \
-		ft_putstr_fd \
-		ft_putnbr_p \
-		ft_putnbr_fd \
-		ft_putnbr_long \
-		ft_putnbr_hex \
-		ft_putnbr_hexmay \
+S = -fsanitize=address -g3
+
+FRAME = -framework Opengl -framework AppKit
+
+LIBFT = -Llibft -lft
+MLX = -Lmlx -lmlx
+
+FILES = fdf \
+		draw2 \
+		drw_aux \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))
@@ -32,15 +36,16 @@ SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))
 OBJS_DIR = ./
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 
-.c.o: $(SRCS)
-		$(CC) $(CFLAGS) -c -o $@ $<
-
 $(NAME): $(OBJS)
-		$(AR) $@ $^
+		$(MAKE) -C ./libft
+		$(MAKE) -C ./mlx
+		$(CC) $(FLAGS) $^ $(LIBFT) $(MLX) $(FRAME) -o $@ 
 
 all: $(NAME)
 
 clean:
+		$(MAKE) clean -C ./libft
+		$(MAKE) clean -C ./mlx
 		$(RM) $(OBJS)
 
 fclean: clean

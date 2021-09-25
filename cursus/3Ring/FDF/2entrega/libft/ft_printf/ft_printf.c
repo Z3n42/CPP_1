@@ -6,13 +6,12 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 18:55:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/09/21 19:05:15 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/08/24 20:12:54 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdio.h>
-#include "ft_printf.h"
+#include "../libft.h"
 
 int	ft_puts(va_list ap, const char *format, int count)
 {
@@ -20,9 +19,9 @@ int	ft_puts(va_list ap, const char *format, int count)
 
 	len = 0;
 	if (format[count] == 'c')
-		len += ft_putchar_fd(va_arg(ap, int), 1);
+		len += ft_putchar_pfd(va_arg(ap, int), 1);
 	if (format[count] == 's')
-		len += ft_putstr_fd(va_arg(ap, char *), 1);
+		len += ft_putstr_pfd(va_arg(ap, char *), 1);
 	if (format[count] == 'p')
 	{
 		len = 2;
@@ -30,7 +29,7 @@ int	ft_puts(va_list ap, const char *format, int count)
 		ft_putnbr_p(va_arg(ap, uintptr_t), 1, &len);
 	}
 	if (format[count] == 'd' || format[count] == 'i')
-		ft_putnbr_fd(va_arg(ap, int), 1, &len);
+		ft_putnbr_pfd(va_arg(ap, int), 1, &len);
 	if (format[count] == 'u')
 		ft_putnbr_long(va_arg(ap, unsigned int), 1, &len);
 	if (format[count] == 'x')
@@ -38,7 +37,7 @@ int	ft_puts(va_list ap, const char *format, int count)
 	if (format[count] == 'X')
 		ft_putnbr_hexmay(va_arg(ap, unsigned int), 1, &len);
 	if (format[count] == '%')
-		len += ft_putchar_fd('%', 1);
+		len += ft_putchar_pfd('%', 1);
 	return (len);
 }
 
@@ -61,23 +60,11 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			ft_putchar_fd(format[count], 1);
+			ft_putchar_pfd(format[count], 1);
 			count++;
 			len++;
 		}
 	}
 	va_end(ap);
 	return (len);
-}
-
-int	main(void)
-{	
-	char 			a;
-	int 			b;
-	char*	c = "deeq";
-
-	a = 'a';
-	b =	1050;
-	ft_printf("mia: c%c, s%s, d%d, x%x, p%p\n", a, c, b, b, 20);
-	printf("ori: c%c, s%s, d%d, x%x, p%p", a, c, b, b, 20);
 }
