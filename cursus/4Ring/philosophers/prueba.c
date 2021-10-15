@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 13:54:47 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/10/08 20:05:18 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/10/11 22:41:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <sys/time.h>
 
 
 int mails = 0;
@@ -33,7 +34,7 @@ void *routine()
 	}
 	pthread_mutex_unlock(&mutex);
 	printf("Despues =>%d\n", mails);
-	/* return (0); */
+	return (0);
 }
 
 int	main(int argc, char** argv)
@@ -41,6 +42,8 @@ int	main(int argc, char** argv)
 
 	(void)argc;
 	(void)argv;
+	struct timeval time;
+	gettimeofday(&time, NULL);
 	pthread_mutex_init(&mutex, NULL);
 	pthread_t t1;
 	pthread_t t2;
@@ -48,7 +51,7 @@ int	main(int argc, char** argv)
 	pthread_create(&t2, NULL, &routine, NULL);
 	pthread_join(t1, NULL);
 	pthread_join(t2, NULL);
-	printf("Total =>%d\n", mails);
+	printf("Total =>%d\nHora =>%d", mails, time.tv_usec);
 	pthread_mutex_destroy(&mutex);
 	return (0);
 }
