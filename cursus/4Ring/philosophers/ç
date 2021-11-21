@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/20 16:04:42 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/20 14:36:39 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,16 +152,16 @@ void	ft_fork(t_ph *ph/*, t_tab *tab*/)
 	/* while (ph->life < ph->die) */
 	/* { */
 		/* ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000); */
-		/* if (ph->eaten == 0) */
-		/* { */
-		/* 	gettimeofday(&take, NULL); */
-		/* 	printf("%ldXXXXXXXXXX__id->%d\n", (take.tv_sec * 1000) + (take.tv_usec / 1000), ph->id); */
-		/* 	ph->die = (take.tv_sec * 1000) + (take.tv_usec / 1000) + ph->blood; */
-		/* 	printf("%ldDIE__id->%d\n", ph->die, ph->id); */
-		/* } */
+		if (ph->eaten == 0)
+		{
+			gettimeofday(&take, NULL);
+			printf("%ldXXXXXXXXXX__id->%d\n", (take.tv_sec * 1000) + (take.tv_usec / 1000), ph->id);
+			ph->die = (take.tv_sec * 1000) + (take.tv_usec / 1000) + ph->blood;
+			printf("%ldDIE__id->%d\n", ph->die, ph->id);
+		}
+		pthread_mutex_lock(&ph->mutex[ph->id - 1]);
 		if (ph->id == 1 &&/* ph->fk[ph->num] == 0 && */ph->fk[ph->id - 1] == -1)
 		{
-			pthread_mutex_lock(&ph->mutex[ph->id - 1]);
 			gettimeofday(&take, NULL);
 			ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 			if ((ph->die - ph->life) < 0)
@@ -185,12 +185,12 @@ void	ft_fork(t_ph *ph/*, t_tab *tab*/)
 			}
 			else
 			{
-				printf("Id ->>%d_OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n", ph->id);
-				usleep(take.tv_usec * 1000);
+				printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
 				gettimeofday(&take, NULL);
 				ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 				if ((ph->die - ph->life) < 0)
 						ft_die(ph);
+				/* usleep(take.tv_usec / 1000); */
 				if (ph->fk[ph->num - 1] == -1)
 				{
 					ph->fk[ph->num - 1] = 0;
@@ -215,7 +215,7 @@ void	ft_fork(t_ph *ph/*, t_tab *tab*/)
 		}
 		else if (ph->fk[ph->id - 1] == -1/* && ph->fk[ph->id - 2] == 0*/)
 		{
-			pthread_mutex_lock(&ph->mutex[ph->id - 1]);
+			/* pthread_mutex_lock(&ph->mutex[ph->id - 1]); */
 			gettimeofday(&take, NULL);
 			ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 			printf("%ld %d has taken a R2.fork\n", (ph->die - ph->life), ph->id);
@@ -237,12 +237,12 @@ void	ft_fork(t_ph *ph/*, t_tab *tab*/)
 			}
 			else
 			{
-				printf("id->>%d_OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n", ph->id);
-				usleep(take.tv_usec * 1000);
+				printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
 				gettimeofday(&take, NULL);
 				ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 				if ((ph->die - ph->life) < 0)
 					ft_die(ph);
+				/* usleep(take.tv_usec / 1000); */
 				if (ph->fk[ph->id - 2] == -1)
 				{
 					ph->fk[ph->id - 2] = 0;
@@ -285,20 +285,20 @@ void	*ft_routine(void *tid)
 	long			pairtime;
 
 	ph = *(t_ph *)tid;
-	pthread_mutex_unlock(ph.mutex);
+	pthread_mutex_unlock(&ph.mutex[ph.id]);
 	/* len = -1; */
 	/* while (++len < ph.num) */
 	/* { */
 	/*	printf("%d......%d................................\n", ph.num, ph.fk[len]);*/
 	/* } */
-	gettimeofday(&live, NULL);
-	ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
-	ph.die = (live.tv_sec * 1000) + (live.tv_usec / 1000) + ph.blood;
+	/* gettimeofday(&live, NULL); */
+	/* ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000); */
+	/* ph.die = (live.tv_sec * 1000) + (live.tv_usec / 1000) + ph.blood; */
 	while (/*ph.life < ph.die && */ph.kill == 0)
 	{
 		gettimeofday(&live, NULL);
 		ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
-		if ((ph.id % 2) == 0 && ph.wait == 0)
+		if ((ph.id % 2) != 0 && ph.wait == 1)
 		{
 			
 			gettimeofday(&live, NULL);
@@ -334,7 +334,7 @@ void	ft_create(t_ph *ph)
 	i = -1;
 	while (++i < ph->num)
 	{
-		pthread_mutex_lock(ph->mutex);
+		pthread_mutex_lock(&ph.mutex[ph.id]);
 		ph->id = i + 1;
 		gettimeofday(&time, NULL);
 		/* ph->die = (time.tv_sec * 1000) + (time.tv_usec / 1000) + ph->blood; */
