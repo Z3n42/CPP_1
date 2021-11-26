@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 13:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/26 18:16:50 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:37:57 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,17 @@ typedef struct s_ph{
 	pthread_mutex_t	*mutex;
 }	t_ph;
 
-void 	ft_die(t_ph *ph);
-void	ft_sleep(t_ph *ph);
-void 	ft_sleeptime(t_ph *ph);
-void	ft_eat(t_ph *ph);
-void	ft_eatime(t_ph *ph);
-void	ft_fork(t_ph *ph);
-void	ft_fk1(t_ph *ph);
-void	ft_fkl1a(t_ph *ph, struct timeval take);
-void	ft_fkl1b(t_ph *ph, struct timeval take);
-void	ft_fk2(t_ph *ph);
-void	ft_fkl2a(t_ph *ph, struct timeval take2);
-void	ft_fkl2b(t_ph *ph, struct timeval take2);
-void	ft_freeforks(t_ph *ph);
+/* typedef struct s_tab{ */
+/* 	int		*fk; */
+/* }	t_tab; */
+
+void ft_die(t_ph *ph);
+void	ft_sleep(t_ph *ph/*, t_tab *tab*/);
+void	ft_eat(t_ph *ph/*, t_tab *tab*/);
+void	ft_fork(t_ph *ph/*, t_tab *tab*/);
 void	*ft_routine(void *tid);
-void	ft_pairtime(t_ph *ph, struct timeval live);
 void	ft_create(t_ph *ph);
 void	ft_init(int argc, char **argv);
+
 
 # endif
