@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/25 17:08:51 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/24 17:43:04 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	ft_sleep(t_ph *ph)
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
 		printf("%ld %d is thinking\n", (ph->die - ph->life), ph->id);
-		if (ph->num % 2 != 0 && ph->eaten == 0)
+		if (ph->num % 2 != 0/* && ph->eaten == 0*/)
 		{
-			usleep(100 + sleep.tv_usec / 1000);
-			ph->eaten = 1;
+			usleep(sleep.tv_usec / 1000);
+			/* ph->eaten = 1; */
 		}
 	}
 	gettimeofday(&sleep, NULL);
@@ -104,7 +104,6 @@ void	ft_eat(t_ph *ph/*, t_tab *tab*/)
 			ft_die(ph);
 		printf("%ld %d is eating\n", (ph->die - ph->life), ph->id);
 		ph->die = (eat.tv_sec * 1000) + (eat.tv_usec / 1000) + ph->blood;
-		ph->print = 0;
 	}
 	/* time = (eat.tv_sec * 1000) + (eat.tv_usec / 1000); */
 	/* usleep(ph->eat * 1000); */
@@ -112,12 +111,8 @@ void	ft_eat(t_ph *ph/*, t_tab *tab*/)
 		/* time = (eat.tv_sec * 1000) + (eat.tv_usec / 1000); */
 	if (ph->id == 1)
 	{
-		pthread_mutex_lock(&ph->mutex[ph->id - 1]);
 		ph->fk[ph->id - 1] = -1;
-		pthread_mutex_unlock(&ph->mutex[ph->id - 1]);
-		pthread_mutex_lock(&ph->mutex[ph->num - 1]);
 		ph->fk[ph->num - 1] = -1;
-		pthread_mutex_unlock(&ph->mutex[ph->num - 1]);
 		/* pthread_mutex_unlock(ph->mutex); */
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
@@ -125,12 +120,8 @@ void	ft_eat(t_ph *ph/*, t_tab *tab*/)
 	}
 	else
 	{
-		pthread_mutex_lock(&ph->mutex[ph->id - 1]);
 		ph->fk[ph->id - 1] = -1;
-		pthread_mutex_unlock(&ph->mutex[ph->id - 1]);
-		pthread_mutex_lock(&ph->mutex[ph->id - 2]);
 		ph->fk[ph->id - 2] = -1;
-		pthread_mutex_unlock(&ph->mutex[ph->id - 2]);
 		/* pthread_mutex_unlock(ph->mutex); */
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
@@ -151,16 +142,12 @@ void	ft_fk1(t_ph *ph)
 			ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 			if ((ph->die - ph->life) < 0)
 				ft_die(ph);
-			if (ph->print == 0)
-			{
-				printf("%ld %d has taken a R1.fork\n", (ph->die - ph->life), ph->id);
-				ph->print = 1;
-			}
+			printf("%ld %d has taken a R1.fork\n", (ph->die - ph->life), ph->id);
 			/* printf("__________________________%d\n", ph->fk[ph->num - 1]); */
 			pthread_mutex_lock(&ph->mutex[ph->num - 1]);
 			if (ph->fk[ph->num - 1] == -1) 
 			{
-				printf("id->>%d_YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\n", ph->id);
+				/* printf("id->>%d_YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\n", ph->id); */
 				ph->fk[ph->num - 1] = 0;
 				pthread_mutex_unlock(&ph->mutex[ph->num - 1]);
 				gettimeofday(&take, NULL);
@@ -186,7 +173,7 @@ void	ft_fk1(t_ph *ph)
 				{
 					ph->fk[ph->num - 1] = 0;
 					pthread_mutex_unlock(&ph->mutex[ph->num - 1]);
-					printf("id->>%d_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", ph->id);
+					/* printf("id->>%d_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", ph->id); */
 					gettimeofday(&take, NULL);
 					ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 					printf("%ld %d has taken a L1B.fork\n", (ph->die - ph->life), ph->id);
@@ -195,13 +182,12 @@ void	ft_fk1(t_ph *ph)
 				else
 				{
 					ph->fk[ph->id - 1] = -1;
+					pthread_mutex_unlock(&ph->mutex[ph->num - 1]);
 					pthread_mutex_unlock(&ph->mutex[ph->id - 1]); 
-					/* usleep(100 + take.tv_usec / 1000); */
+					usleep(take.tv_usec / 1000);
 					/* if ((ph->die - ph->life) > ph->eat * 500) */
 					/* printf("id->>%d_FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\n", ph->id); */
-					if (ph->num == 1)
-						usleep(1000);
-					ft_fk1(ph/*, tab*/);
+					ft_fork(ph/*, tab*/);
 				}
 			}
 			/* if ((ph->die - ph->life) < 1) */
@@ -223,18 +209,12 @@ void	ft_fk2(t_ph *ph)
 			pthread_mutex_unlock(&ph->mutex[ph->id - 1]);
 			gettimeofday(&take2, NULL);
 			ph->life = (take2.tv_sec * 1000) + (take2.tv_usec / 1000);
-			if ((ph->die - ph->life) < 0)
-				ft_die(ph);
-			if (ph->print == 0)
-			{
-				printf("%ld %d has taken a R2.fork\n", (ph->die - ph->life), ph->id);
-				ph->print = 1;
-			}
+			printf("%ld %d has taken a R2.fork\n", (ph->die - ph->life), ph->id);
 			/* printf("__________________________%d\n", ph->fk[ph->id - 2]); */
 			pthread_mutex_lock(&ph->mutex[ph->id - 2]);
 			if (ph->fk[ph->id - 2] == -1) 
 			{
-				printf("id->>%d_YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\n", ph->id);
+				/* printf("id->>%d_YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\n", ph->id); */
 				ph->fk[ph->id - 2] = 0;
 				pthread_mutex_unlock(&ph->mutex[ph->id - 2]);
 				gettimeofday(&take2, NULL);
@@ -258,7 +238,7 @@ void	ft_fk2(t_ph *ph)
 				pthread_mutex_lock(&ph->mutex[ph->id - 2]);
 				if (ph->fk[ph->id - 2] == -1)
 				{
-					printf("id->>%d_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", ph->id);
+					/* printf("id->>%d_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", ph->id); */
 					ph->fk[ph->id - 2] = 0;
 					pthread_mutex_unlock(&ph->mutex[ph->id - 2]);
 					gettimeofday(&take2, NULL);
@@ -268,12 +248,13 @@ void	ft_fk2(t_ph *ph)
 				}
 				else
 				{
+					pthread_mutex_unlock(&ph->mutex[ph->id - 2]);
 					/* printf("id->>%d_FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\n", ph->id); */
 					ph->fk[ph->id - 1] = -1;
 					pthread_mutex_unlock(&ph->mutex[ph->id - 1]); 
-					/* usleep(100 + take2.tv_usec / 1000); */
+					usleep(take2.tv_usec / 1000);
 					/* if ((ph->die - ph->life) > ph->eat * 500) */
-					ft_fk2(ph/*, tab*/);
+					ft_fork(ph/*, tab*/);
 				}
 				/* ph->fk[ph->id - 1] = 0; */
 				/* pthread_mutex_unlock(ph->mutex); */
@@ -313,14 +294,14 @@ void	*ft_routine(void *tid)
 	gettimeofday(&live, NULL);
 	ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
 	ph.die = (live.tv_sec * 1000) + (live.tv_usec / 1000) + ph.blood;
-	while (ph.life < ph.die && ph.kill == 0)
+	while (/*ph.life < ph.die && */ph.kill == 0)
 	{
 		gettimeofday(&live, NULL);
 		ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
 		if ((ph.id % 2) != 0 && ph.wait == 0)
 		{
-			/* if (ph.num % 2 != 0 && ph.id == ph.num + 1) */
-			/* 		usleep(100 + live.tv_usec / 1000); */
+			if (ph.num % 2 != 0 && ph.id == ph.num + 1)
+					usleep(ph.eat/2);
 			gettimeofday(&live, NULL);
 			ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
 			pairtime = (live.tv_sec * 1000) + (live.tv_usec / 1000) + (ph.eat/2);
@@ -383,7 +364,6 @@ void	ft_init(int argc, char **argv)
 	ph.kill = 0;
 	ph.wait = 0;
 	ph.eaten = 0;
-	ph.print = 0;
 	/* i = 0; */
 	/* while(i < philo.num) */
 	/* { */
