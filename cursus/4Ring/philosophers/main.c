@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/26 19:52:29 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/27 14:15:37 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void ft_die(t_ph *ph)
 	struct timeval	die;
 
 	/* pthread_mutex_lock(&ph->mutex[ph->id - 1]); */ 
-	memset(ph->fk, 0, (ph->num * 4));
+	/* memset(ph->fk, 0, (ph->num * 4)); */
 	/* memset(ph->mutex, 0, (ph->num * 4)); */
 	if (ph->kill == 0)
 	{
@@ -287,13 +287,13 @@ void	ft_fk2(t_ph *ph)
 
 void	ft_fork(t_ph *ph)
 {
-	if (ph->kill == 0)
-	{
+	/* if (ph->kill == 0) */
+	/* { */
 		if (ph->id == 1)
 			ft_fk1(ph);
 		else
 			ft_fk2(ph);
-	}
+	/* } */
 }
 
 void	ft_pairtime(t_ph *ph, struct timeval live)
@@ -370,7 +370,6 @@ void	ft_init(int argc, char **argv)
 	ph.sleep = ft_atoi(argv[4]);
 	ph.kill = 0;
 	ph.wait = 0;
-	ph.eaten = 0;
 	ph.print = 0;
 	if (argc < 5 || ph.num < 1 || ph.life < 1 || ph.eat < 1 || ph.sleep < 1)
 		return ;

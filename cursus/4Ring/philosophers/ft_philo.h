@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 13:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/26 18:16:50 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/26 20:58:24 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_ph{
 	int				times;
 	int				kill;
 	int				wait;
-	int				eaten;
 	int				print;
 	int				*fk;
 	pthread_mutex_t	*mutex;
