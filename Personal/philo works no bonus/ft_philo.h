@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 13:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/28 14:55:56 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/28 14:00:57 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_ph{
 }	t_ph;
 
 int		ft_atoi(const char *str);
-void	ft_die(t_ph *ph);
+void 	ft_die(t_ph *ph);
 void	ft_sleep(t_ph *ph);
-void	ft_sleeptime(t_ph *ph);
+void 	ft_sleeptime(t_ph *ph);
 void	ft_eat(t_ph *ph);
 void	ft_eatime(t_ph *ph);
 void	ft_fork(t_ph *ph);
@@ -50,4 +50,4 @@ void	ft_pairtime(t_ph *ph, struct timeval live);
 void	ft_create(t_ph *ph);
 void	ft_init(int argc, char **argv);
 
-#endif
+# endif
