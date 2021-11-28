@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/27 14:15:37 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/28 14:01:40 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,64 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "libft/libft.h"
 #include "ft_philo.h"
+
+static int	ft_integer(const char *str)
+{
+	int	integer;
+
+	integer = 0;
+	while (*str > 47 && *str < 58 )
+	{
+		integer = (integer * 10) + (*str - '0');
+		str++;
+	}
+	return (integer);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	minus;
+	int	plus;
+	int	integer;
+
+	while (*str == ' ' || (*str > 8 && *str < 14))
+		str++;
+	minus = 0;
+	plus = 0;
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			minus++;
+		plus++;
+		str++;
+	}
+	if (minus > 1 || plus > 1)
+		return (0);
+	integer = ft_integer(str);
+	if ((minus % 2) != 0)
+		integer = integer * (-1);
+	return (integer);
+}
 
 void ft_die(t_ph *ph)
 {
 	struct timeval	die;
 
-	/* pthread_mutex_lock(&ph->mutex[ph->id - 1]); */ 
+	pthread_mutex_lock(&ph->mutex[0]); 
 	/* memset(ph->fk, 0, (ph->num * 4)); */
 	/* memset(ph->mutex, 0, (ph->num * 4)); */
 	if (ph->kill == 0)
 	{
 		gettimeofday(&die, NULL);
 		ph->life = (die.tv_sec * 1000) + (die.tv_usec / 1000);
-		printf("%ld %d died+++++++++++++++++++++++\n", (ph->die - ph->life), ph->id);
+		if (ph->stat[0] == 0)
+			printf("%ld %d died+++++++++++++++++++++++\n", (ph->die - ph->life), ph->id);
+		ph->stat[0] = 1;
 		ph->kill = 1;
-		printf("%d......%d\n", ph->kill, ph->id);
-		/* pthread_mutex_unlock(&ph->mutex[ph->id - 1]); */ 
+		/* printf("%d......%d\n", ph->kill, ph->id); */
 	}
+	pthread_mutex_unlock(&ph->mutex[0]); 
 	/* pthread_mutex_unlock(&ph->mutex[ph->id - 1]); */ 
 	/* ft_fork(ph); */
 }
@@ -68,7 +107,8 @@ void	ft_sleep(t_ph *ph)
 		ph->life = (sleep.tv_sec * 1000) + (sleep.tv_usec / 1000);
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
-		printf("%ld %d is sleeping\n", (ph->die - ph->life), ph->id);
+		if (ph->stat[0] == 0)
+			printf("%ld %d is sleeping\n", (ph->die - ph->life), ph->id);
 		if (ph->num % 2 != 0)
 			usleep(500);
 		ft_sleeptime(ph);
@@ -76,7 +116,8 @@ void	ft_sleep(t_ph *ph)
 		ph->life = (sleep.tv_sec * 1000) + (sleep.tv_usec / 1000);
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
-		printf("%ld %d is thinking\n", (ph->die - ph->life), ph->id);
+		if (ph->stat[0] == 0)
+			printf("%ld %d is thinking\n", (ph->die - ph->life), ph->id);
 		if (ph->num % 2 != 0)
 			usleep(500);
 	}
@@ -143,7 +184,11 @@ void	ft_eat(t_ph *ph)
 		ph->life = (eat.tv_sec * 1000) + (eat.tv_usec / 1000);
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
-		printf("%ld %d is eating\n", (ph->die - ph->life), ph->id);
+		if (ph->kill == 0)
+		{
+			if (ph->stat[0] == 0)
+			printf("%ld %d is eating\n", (ph->die - ph->life), ph->id);
+		}
 		ph->die = (eat.tv_sec * 1000) + (eat.tv_usec / 1000) + ph->blood;
 		ph->print = 0;
 	}
@@ -161,7 +206,8 @@ void	ft_fkl1a(t_ph *ph, struct timeval take)
 		ft_die(ph);
 	gettimeofday(&take, NULL);
 	ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
-	printf("%ld %d has taken a L1A.fork\n", (ph->die - ph->life), ph->id);
+	if (ph->stat[0]== 0)
+		printf("%ld %d has taken a L1A.fork\n", (ph->die - ph->life), ph->id);
 	if (ph->kill == 0)
 		ft_eat(ph);
 }
@@ -180,7 +226,8 @@ void	ft_fkl1b(t_ph *ph, struct timeval take)
 		pthread_mutex_unlock(&ph->mutex[ph->num - 1]);
 		gettimeofday(&take, NULL);
 		ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
-		printf("%ld %d has taken a L1B.fork\n", (ph->die - ph->life), ph->id);
+		if (ph->stat[0] == 0)
+			printf("%ld %d has taken a L1B.fork\n", (ph->die - ph->life), ph->id);
 		ft_eat(ph);
 	}
 	else
@@ -210,7 +257,8 @@ void	ft_fk1(t_ph *ph)
 			ft_die(ph);
 		if (ph->print == 0)
 			{
-				printf("%ld %d has taken a R1.fork\n", (ph->die - ph->life), ph->id);
+				if (ph->stat[0] == 0)
+					printf("%ld %d has taken a R1.fork\n", (ph->die - ph->life), ph->id);
 				ph->print = 1;
 			}
 		if (ph->fk[ph->num - 1] == -1) 
@@ -229,7 +277,8 @@ void	ft_fkl2a(t_ph *ph, struct timeval take2)
 	ph->life = (take2.tv_sec * 1000) + (take2.tv_usec / 1000);
 	if ((ph->die - ph->life) < 0)
 		ft_die(ph);
-	printf("%ld %d has taken a L2A.fork\n", (ph->die - ph->life), ph->id);
+	if (ph->stat[0] == 0)
+		printf("%ld %d has taken a L2A.fork\n", (ph->die - ph->life), ph->id);
 	ft_eat(ph);
 }
 
@@ -247,7 +296,8 @@ void	ft_fkl2b(t_ph *ph, struct timeval take2)
 		pthread_mutex_unlock(&ph->mutex[ph->id - 2]);
 		gettimeofday(&take2, NULL);
 		ph->life = (take2.tv_sec * 1000) + (take2.tv_usec / 1000);
-		printf("%ld %d has taken a L2B.fork\n", (ph->die - ph->life), ph->id);
+		if (ph->stat[0] == 0)
+			printf("%ld %d has taken a L2B.fork\n", (ph->die - ph->life), ph->id);
 		ft_eat(ph);
 	}
 	else
@@ -275,7 +325,8 @@ void	ft_fk2(t_ph *ph)
 				ft_die(ph);
 		if (ph->print == 0)
 		{
-			printf("%ld %d has taken a R2.fork\n", (ph->die - ph->life), ph->id);
+			if (ph->stat[0] == 0)
+				printf("%ld %d has taken a R2.fork\n", (ph->die - ph->life), ph->id);
 			ph->print = 1;
 		}
 		if (ph->fk[ph->id - 2] == -1) 
@@ -355,6 +406,7 @@ void	ft_create(t_ph *ph)
 	free(ph->fk);
 	free(ph->mutex);
 	free(thread);
+	free(ph->stat);
 }
 
 void	ft_init(int argc, char **argv)
@@ -363,11 +415,13 @@ void	ft_init(int argc, char **argv)
 	ph.num = ft_atoi(argv[1]);
 	ph.mutex = (pthread_mutex_t *)malloc((ph.num) * sizeof(pthread_mutex_t));
 	ph.fk = malloc((ph.num) * sizeof(int));
+	ph.stat = malloc(1 * sizeof(int));
 	memset(ph.fk, -1, (ph.num * 4));
 	ph.life = ft_atoi(argv[2]);
 	ph.blood = ph.life;
 	ph.eat = ft_atoi(argv[3]);
 	ph.sleep = ft_atoi(argv[4]);
+	ph.stat[0] = 0;
 	ph.kill = 0;
 	ph.wait = 0;
 	ph.print = 0;
