@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/28 14:54:10 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:30:47 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_init(int argc, char **argv)
 	ph.blood = ph.life;
 	ph.eat = ft_atoi(argv[3]);
 	ph.sleep = ft_atoi(argv[4]);
-	ph.stat[0] = 0;
+	memset(ph.stat, 0, 4);
 	ph.kill = 0;
 	ph.wait = 0;
 	ph.print = 0;

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/29 15:00:28 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:36:39 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 #include "ft_philo.h"
 
 void	ft_die(t_ph *ph)
@@ -55,10 +56,9 @@ void	ft_sleep(t_ph *ph)
 {
 	struct timeval	sleep;
 
-	if (ph->kill == 0)
+	if (ph->stat == 0)
 	{
-		if (ph->stat[0] == 0)
-			printf("%ld %d is sleeping\n", (ph->die - ph->life), ph->id);
+		printf("%ld %d is sleeping\n", (ph->die - ph->life), ph->id);
 		if (ph->num % 2 != 0)
 			usleep(500);
 		ft_sleeptime(ph);
@@ -66,8 +66,7 @@ void	ft_sleep(t_ph *ph)
 		ph->life = (sleep.tv_sec * 1000) + (sleep.tv_usec / 1000);
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
-		if (ph->stat[0] == 0)
-			printf("%ld %d is thinking\n", (ph->die - ph->life), ph->id);
+		printf("%ld %d is thinking\n", (ph->die - ph->life), ph->id);
 		if (ph->num % 2 != 0)
 			usleep(500);
 	}

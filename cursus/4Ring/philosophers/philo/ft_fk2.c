@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/29 11:42:50 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:35:24 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	ft_fkl2a(t_ph *ph, struct timeval take2)
 
 void	ft_fkl2b(t_ph *ph, struct timeval take2)
 {
+	usleep(400 + take2.tv_usec / 10000);
 	gettimeofday(&take2, NULL);
 	ph->life = (take2.tv_sec * 1000) + (take2.tv_usec / 1000);
-	usleep(400 + take2.tv_usec / 10000);
 	if ((ph->die - ph->life) < 0)
 		ft_die(ph);
 	if (ph->fk[ph->id - 2] == -1)

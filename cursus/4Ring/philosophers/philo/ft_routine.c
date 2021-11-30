@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/28 14:58:25 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:27:35 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 void	ft_fork(t_ph *ph)
 {
+	if ((ph->die - ph->life) < 0)
+		ft_die(ph);
 	if (ph->id == 1)
 		ft_fk1(ph);
 	else
@@ -33,6 +35,8 @@ void	ft_pairtime(t_ph *ph, struct timeval live)
 	{
 		gettimeofday(&live, NULL);
 		ph->life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
+		if ((ph->die - ph->life) < 0)
+			ft_die(ph);
 	}
 	ph->wait = 1;
 }
@@ -47,14 +51,16 @@ void	*ft_routine(void *tid)
 	gettimeofday(&live, NULL);
 	ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
 	ph.die = (live.tv_sec * 1000) + (live.tv_usec / 1000) + ph.blood;
-	while (ph.kill == 0)
+	while (ph.stat[0] == 0)
 	{
 		gettimeofday(&live, NULL);
 		ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
+		if ((ph.die - ph.life) < 0)
+			ft_die(&ph);
 		if ((ph.id % 2) != 0 && ph.wait == 0)
 			ft_pairtime(&ph, live);
 		ft_fork(&ph);
-		if (ph.kill == 1)
+		if (ph.stat[0] == 1)
 			break ;
 	}
 	return (0);

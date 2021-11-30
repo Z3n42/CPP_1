@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/28 15:29:18 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:30:55 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,14 @@ void	ft_fkl1a(t_ph *ph, struct timeval take)
 	ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 	if (ph->stat[0] == 0)
 		printf("%ld %d has taken a fork\n", (ph->die - ph->life), ph->id);
-	if (ph->kill == 0)
-		ft_eat(ph);
+	ft_eat(ph);
 }
 
 void	ft_fkl1b(t_ph *ph, struct timeval take)
 {
+	usleep(400 + take.tv_usec / 10000);
 	gettimeofday(&take, NULL);
 	ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
-	usleep(400 + take.tv_usec / 10000);
 	if ((ph->die - ph->life) < 0)
 		ft_die(ph);
 	if (ph->fk[ph->num - 1] == -1)

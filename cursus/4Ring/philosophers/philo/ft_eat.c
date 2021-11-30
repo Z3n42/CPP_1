@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/28 15:38:18 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:39:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	ft_eatime(t_ph *ph)
 	eatime = 0;
 	gettimeofday(&eatt, NULL);
 	ph->life = (eatt.tv_sec * 1000) + (eatt.tv_usec / 1000);
+	if ((ph->die - ph->life) < 0)
+		ft_die(ph);
 	eatime = (eatt.tv_sec * 1000) + (eatt.tv_usec / 1000) + ph->eat;
 	while (ph->life < eatime)
 	{
