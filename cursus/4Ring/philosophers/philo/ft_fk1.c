@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/30 19:30:55 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:01:12 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_fk1(t_ph *ph)
 {
 	struct timeval	take;
 
-	if (ph->fk[ph->id - 1] == -1)
+	if (ph->fk[ph->id - 1] == -1 && ph->stat[0] == 0)
 	{
 		pthread_mutex_lock(&ph->mutex[ph->id - 1]);
 		ph->fk[ph->id - 1] = 0;

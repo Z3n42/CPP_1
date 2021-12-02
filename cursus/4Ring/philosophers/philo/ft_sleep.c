@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/30 19:36:39 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:57:54 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ void	ft_sleep(t_ph *ph)
 {
 	struct timeval	sleep;
 
-	if (ph->stat == 0)
+	if (ph->kill == 0 && ph->stat[0] == 0)
 	{
-		printf("%ld %d is sleeping\n", (ph->die - ph->life), ph->id);
+		if (ph->stat[0] == 0)
+			printf("%ld %d is sleeping\n", (ph->die - ph->life), ph->id);
 		if (ph->num % 2 != 0)
 			usleep(500);
 		ft_sleeptime(ph);
@@ -66,7 +67,8 @@ void	ft_sleep(t_ph *ph)
 		ph->life = (sleep.tv_sec * 1000) + (sleep.tv_usec / 1000);
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
-		printf("%ld %d is thinking\n", (ph->die - ph->life), ph->id);
+		if (ph->stat[0] == 0)
+			printf("%ld %d is thinking\n", (ph->die - ph->life), ph->id);
 		if (ph->num % 2 != 0)
 			usleep(500);
 	}

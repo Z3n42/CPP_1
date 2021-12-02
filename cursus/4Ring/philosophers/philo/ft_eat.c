@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/30 19:39:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:56:03 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_eat(t_ph *ph)
 {
 	struct timeval	eat;
 
-	if (ph->kill == 0)
+	if (ph->kill == 0 && ph->stat[0] == 0)
 	{
 		ft_eatime(ph);
 		gettimeofday(&eat, NULL);

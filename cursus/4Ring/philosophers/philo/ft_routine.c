@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/11/30 19:27:35 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:05:32 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	*ft_routine(void *tid)
 	ph.die = (live.tv_sec * 1000) + (live.tv_usec / 1000) + ph.blood;
 	while (ph.stat[0] == 0)
 	{
-		gettimeofday(&live, NULL);
+			gettimeofday(&live, NULL);
 		ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
 		if ((ph.die - ph.life) < 0)
 			ft_die(&ph);
