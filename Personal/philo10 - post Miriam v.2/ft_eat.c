@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/04 15:16:17 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/04 15:09:45 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	ft_eat(t_ph *ph)
 			ft_die(ph);
 		if (ph->kill == 0 && ph->stat[0] == 0)
 		{
-			printf("%ld %d is eating\n", (ph->die - ph->life), ph->id);
-			if (ph->max != -1)
+			printf("%ld %d is eating-%d\n", (ph->die - ph->life), ph->id, ph->times + 1);
+			if (ph->max != - 1)
 				ph->times += 1;
 		}
 		ph->die = (eat.tv_sec * 1000) + (eat.tv_usec / 1000) + ph->blood;

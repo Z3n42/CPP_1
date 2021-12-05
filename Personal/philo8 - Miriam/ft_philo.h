@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 13:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/04 14:59:15 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/11/28 14:55:56 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,15 @@ typedef struct s_ph{
 	int				blood;
 	int				eat;
 	int				sleep;
+	int				times;
 	int				kill;
 	int				wait;
 	int				print;
 	int				*fk;
 	int				*stat;
-	int				times;
-	int				full;
-	int				max;
 	pthread_mutex_t	*mutex;
 }	t_ph;
 
-void	ft_maxtimes(t_ph *ph);
 int		ft_atoi(const char *str);
 void	ft_die(t_ph *ph);
 void	ft_sleep(t_ph *ph);

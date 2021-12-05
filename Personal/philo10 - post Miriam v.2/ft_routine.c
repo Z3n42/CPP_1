@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/04 15:29:05 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/04 15:09:47 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_maxtimes(t_ph *ph)
 		if (max == ph->num)
 			ph->stat[0] = 1;
 	}
+
 }
 
 void	*ft_routine(void *tid)
@@ -71,10 +72,10 @@ void	*ft_routine(void *tid)
 		ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
 		if ((ph.die - ph.life) < 0)
 			ft_die(&ph);
-		if ((ph.id % 2) == 0 && ph.wait == 0)
+		if ((ph.id % 2) != 0 && ph.wait == 0)
 			ft_pairtime(&ph, live);
 		ft_fork(&ph);
-		if (ph.max != -1 && ph.times == ph.max)
+		if (ph.max != - 1 && ph.times == ph.max)
 			ft_maxtimes(&ph);
 		if (ph.stat[0] == 1)
 			break ;

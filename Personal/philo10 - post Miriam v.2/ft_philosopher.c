@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/04 15:14:48 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/04 14:58:36 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_init(int argc, char **argv)
 	ph.fk = malloc((ph.num) * sizeof(int));
 	ph.stat = malloc(1 * sizeof(int));
 	memset(ph.fk, -1, (ph.num * 4));
-	ph.max = -1;
+	ph.max = - 1;
 	if (argc == 6)
 		ph.max = ft_atoi(argv[5]);
 	ph.life = ft_atoi(argv[2]);
@@ -94,11 +94,11 @@ void	ft_init(int argc, char **argv)
 	ph.eat = ft_atoi(argv[3]);
 	ph.sleep = ft_atoi(argv[4]);
 	memset(ph.stat, 0, 4);
+	ph.times = 0;
 	ph.full = 0;
 	ph.kill = 0;
 	ph.wait = 0;
 	ph.print = 0;
-	ph.times = 0;
 	if (argc < 5 || ph.num < 1 || ph.life < 1 || ph.eat < 1 || ph.sleep < 1)
 		return ;
 	if (!ph.num || !ph.life || !ph.eat || !ph.sleep)
