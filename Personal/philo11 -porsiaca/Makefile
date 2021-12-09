@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2021/12/06 17:38:56 by ingonzal         ###   ########.fr        #
+#    Updated: 2021/12/03 13:32:53 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ AR = ar rcs
 
 RM = rm -f
 
-#S = -fsanitize=address -g3
+S = -fsanitize=address -g3
 
 FILES = ft_philosopher \
 		ft_routine \
