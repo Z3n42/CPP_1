@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 15:21:19 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/09 15:21:48 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:08:11 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ typedef struct s_bg{
 	char	c;
 	float	x;
 	float	y;
-	float	radius;
-	char	circle;
+	float	wid;
+	float	hei;
+	char	sqr;
 	char 	**array;
 }	t_bg;
 
@@ -64,28 +65,33 @@ void	ft_charge(t_bg *bg)
 	int		w;
 	int		h;
 	float	xa;
+	float	xlt;
 	float	ya;
+	float	ylt;
 
 	xa = bg->x;
 	ya = bg->y;
+	xlt = xa + bg->width;
+	ylt = ya + bg->height;
+
 	h = 0;
 	while (h < bg->height)
 	{
 		w = 0; 
 		while (w < bg->width)
 		{
-			if (bg->c == 'c')
+			if (bg->c == 'r')
 			{
-				if (((sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) <= bg->radius))
+				if ((w >= xa && h >= ya) && (w <= xlt && h <= ylt))
 				{
-					if (bg->radius - (sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) < 1)
-						bg->array[h][w] = bg->circle;
+					if (((xa - w) < 1 && (ya - h) < 1) || ((xlt - w) < 1 && (ylt - h) < 1))
+						bg->array[h][w] = bg->sqr;
 				}
 			}
 			else
 			{
-				if (((sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) <= bg->radius))
-					bg->array[h][w] = bg->circle;
+				if ((w >= xa && h >= ya) && (w <= xlt && h <= ylt))
+					bg->array[h][w] = bg->sqr;
 
 			}
 			w++;
@@ -144,7 +150,7 @@ int	main(int argc, char **argv)
 	res = 0;
 	while (res != -1)
 	{
-		res = fscanf(of, "%c %f %f %f %c\n", &bg.c, &bg.x, &bg.y, &bg.radius, &bg.circle);
+		res = fscanf(of, "%c %f %f %f %f %c\n", &bg.c, &bg.x, &bg.y, &bg.wid, &bg.hei, &bg.sqr);
 		if (res == -1)
 		{
 			fclose(of);
@@ -152,7 +158,7 @@ int	main(int argc, char **argv)
 			ft_free(&bg);
 			return (0);
 		}
-		if ((res != 5 && res != -1) || (bg.c != 'c' && bg.c != 'C') || (bg.radius <= 0))
+		if ((res != 5 && res != -1) || (bg.c != 'r' && bg.c != 'R') || (bg.wid <= 0) || (bg.hei <= 0))
 		{
 			write(1, "Error: Operation file corrupted\n", 32);
 			ft_free(&bg);
