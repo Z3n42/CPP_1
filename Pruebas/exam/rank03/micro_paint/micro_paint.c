@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 15:21:19 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/11 16:08:11 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/14 13:03:54 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	ft_charge(t_bg *bg)
 
 	xa = bg->x;
 	ya = bg->y;
-	xlt = xa + bg->width;
-	ylt = ya + bg->height;
+	xlt = xa + bg->wid;
+	ylt = ya + bg->hei;
 
 	h = 0;
 	while (h < bg->height)
@@ -84,7 +84,7 @@ void	ft_charge(t_bg *bg)
 			{
 				if ((w >= xa && h >= ya) && (w <= xlt && h <= ylt))
 				{
-					if (((xa - w) < 1 && (ya - h) < 1) || ((xlt - w) < 1 && (ylt - h) < 1))
+					if ((w - xa) < 1 || (h - ya) < 1 || (xlt - w) < 1 || (ylt - h) < 1)
 						bg->array[h][w] = bg->sqr;
 				}
 			}
@@ -92,7 +92,6 @@ void	ft_charge(t_bg *bg)
 			{
 				if ((w >= xa && h >= ya) && (w <= xlt && h <= ylt))
 					bg->array[h][w] = bg->sqr;
-
 			}
 			w++;
 		}
@@ -158,7 +157,7 @@ int	main(int argc, char **argv)
 			ft_free(&bg);
 			return (0);
 		}
-		if ((res != 5 && res != -1) || (bg.c != 'r' && bg.c != 'R') || (bg.wid <= 0) || (bg.hei <= 0))
+		if ((res != 6 && res != -1) || (bg.c != 'r' && bg.c != 'R') || (bg.wid <= 0) || (bg.hei <= 0))
 		{
 			write(1, "Error: Operation file corrupted\n", 32);
 			ft_free(&bg);

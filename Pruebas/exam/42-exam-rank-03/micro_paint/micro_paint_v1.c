@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 15:21:19 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/14 13:03:54 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:56:10 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,15 @@ void	ft_charge(t_bg *bg)
 		{
 			if (bg->c == 'r')
 			{
-				if ((w >= xa && h >= ya) && (w <= xlt && h <= ylt))
+				if ((w >= xa && w <= xlt  && h >= ya && h <= ylt))
 				{
-					if ((w - xa) < 1 || (h - ya) < 1 || (xlt - w) < 1 || (ylt - h) < 1)
+					if ((w - xa) < 1 || (xlt - w) < 1 || (h - ya) < 1 || (ylt - h) < 1)
 						bg->array[h][w] = bg->sqr;
 				}
 			}
 			else
 			{
-				if ((w >= xa && h >= ya) && (w <= xlt && h <= ylt))
+				if ((w >= xa && w <= xlt)  && (h >= ya && h <= ylt))
 					bg->array[h][w] = bg->sqr;
 			}
 			w++;
