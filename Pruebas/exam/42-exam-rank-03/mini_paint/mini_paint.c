@@ -19,7 +19,7 @@ void	ft_free(t_bg *bg)
 {
 	int i;
 
-	i = bg->height;
+	i = bg->height - 1;
 	while (i >= 0)
 	{
 		free(bg->array[i]);
