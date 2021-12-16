@@ -64,15 +64,15 @@ void	ft_charge(t_bg *bg)
 		{
 			if (bg->c == 'c')
 			{
-				if ((sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) <= bg->rad)
+				if ((sqrtf((xa - w) * (xa - w)) + (sqrtf(ya - h) * (ya - h))) <= bg->rad)
 				{
-					if (bg->rad - (sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) < 1)
+					if (bg->rad - (sqrtf((xa - w) * (xa - w)) + (sqrtf(ya - h) * (ya - h))) < 1)
 						bg->array[h][w] = bg->circ;
 				}
 			}
 			else
 			{
-				if ((sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) <= bg->rad)
+				if ((sqrtf((xa - w) * (xa - w)) + (sqrtf(ya - h) * (ya - h))) <= bg->rad)
 					bg->array[h][w] = bg->circ;
 			}
 			w++;
