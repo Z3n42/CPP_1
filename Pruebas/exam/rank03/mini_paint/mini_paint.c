@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 10:12:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/09 15:15:06 by ingonzal         ###   ########.fr       */
+/*   Updated: 2021/12/19 07:17:34 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -30,7 +30,7 @@ void	ft_free(t_bg *bg)
 {
 	int i;
 
-	i = bg->height;
+	i = bg->height - 1;
 	while (i >= 0)
 	{
 		free(bg->array[i]);
@@ -77,7 +77,7 @@ void	ft_charge(t_bg *bg)
 			{
 				if (((sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) <= bg->radius))
 				{
-					if (bg->radius - (sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) < 1)
+					if (bg->radius - (sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) <= 1)
 						bg->array[h][w] = bg->circle;
 				}
 			}

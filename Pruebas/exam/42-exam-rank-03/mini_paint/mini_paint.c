@@ -4,8 +4,8 @@
 #include <stdlib.h>
 
 typedef struct s_bg{
-	int	width;
-	int	height;
+	int		width;
+	int		height;
 	char	bgc;
 	char	c;
 	float	x;
@@ -49,8 +49,8 @@ void	ft_print(t_bg *bg)
 
 void	ft_charge(t_bg *bg)
 {
-	int	w;
-	int	h;
+	int		w;
+	int		h;
 	float	xa;
 	float	ya;
 
@@ -90,7 +90,7 @@ void	ft_backgr(t_bg *bg)
 	h = 0;
 	while (h < bg->height)
 	{
-		bg->array[h] = (char *)malloc((bg->width +1) * sizeof(char));
+		bg->array[h] = (char *)malloc((bg->width + 1) * sizeof(char));
 		w = 0;
 		while (w < bg->width)
 		{
@@ -111,7 +111,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write(1, "Error argumen\n", 16);
+		write(1, "Error: argument\n", 16);
 		return (1);
 	}
 	of = fopen(argv[1], "r");
