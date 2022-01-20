@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 13:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/04 14:59:15 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/01/20 19:06:00 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_ph{
 	int				date;
 	long			die;
 	long			life;
+	long			born;
 	int				blood;
 	int				eat;
 	int				sleep;

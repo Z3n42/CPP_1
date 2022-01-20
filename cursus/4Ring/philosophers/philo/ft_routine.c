@@ -6,13 +6,14 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/04 15:29:05 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/01/20 19:06:49 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/time.h>
 #include <pthread.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "ft_philo.h"
 
 void	ft_fork(t_ph *ph)
@@ -38,6 +39,7 @@ void	ft_pairtime(t_ph *ph, struct timeval live)
 		ph->life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
+		usleep(250);
 	}
 	ph->wait = 1;
 }
@@ -55,6 +57,19 @@ void	ft_maxtimes(t_ph *ph)
 	}
 }
 
+void	ft_wait(t_ph *ph)
+{
+	static int door;
+
+	door += 1;
+	while(door != ph->num)
+	{
+		/* printf("Door %d --> Num %d\n", door, ph->num); */
+		if (door != ph->num)
+			usleep(50);
+	}
+}
+
 void	*ft_routine(void *tid)
 {
 	t_ph			ph;
@@ -62,9 +77,14 @@ void	*ft_routine(void *tid)
 
 	ph = *(t_ph *)tid;
 	pthread_mutex_unlock(&ph.mutex[0]);
+	ft_wait(&ph);
+	/* if ((ph.id % 2) == 0 && ph.wait == 0) */
+	/* 	usleep(50); */
 	gettimeofday(&live, NULL);
 	ph.life = (live.tv_sec * 1000) + (live.tv_usec / 1000);
 	ph.die = (live.tv_sec * 1000) + (live.tv_usec / 1000) + ph.blood;
+	ph.born = ph.life;
+	printf("ID - %d Time - %ld\n", ph.id, ph.born);
 	while (ph.stat[0] == 0)
 	{
 		gettimeofday(&live, NULL);
@@ -72,7 +92,11 @@ void	*ft_routine(void *tid)
 		if ((ph.die - ph.life) < 0)
 			ft_die(&ph);
 		if ((ph.id % 2) == 0 && ph.wait == 0)
-			ft_pairtime(&ph, live);
+		{
+			/* ph.wait = 1; */
+			usleep(50);
+			/* ft_pairtime(&ph, live); */
+		}
 		ft_fork(&ph);
 		if (ph.max != -1 && ph.times == ph.max)
 			ft_maxtimes(&ph);

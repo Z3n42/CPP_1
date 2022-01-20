@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/01 13:57:54 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/01/20 19:17:24 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_die(t_ph *ph)
 		gettimeofday(&die, NULL);
 		ph->life = (die.tv_sec * 1000) + (die.tv_usec / 1000);
 		if (ph->stat[0] == 0)
-			printf("%ld %d died\n", (ph->die - ph->life), ph->id);
+			printf("%ld %d died\n", (ph->life - ph->born), ph->id);
 		ph->stat[0] = 1;
 		ph->kill = 1;
 	}
@@ -49,6 +49,7 @@ void	ft_sleeptime(t_ph *ph)
 		ph->life = (sleept.tv_sec * 1000) + (sleept.tv_usec / 1000);
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
+		usleep(100);
 	}
 }
 
@@ -59,18 +60,18 @@ void	ft_sleep(t_ph *ph)
 	if (ph->kill == 0 && ph->stat[0] == 0)
 	{
 		if (ph->stat[0] == 0)
-			printf("%ld %d is sleeping\n", (ph->die - ph->life), ph->id);
+			printf("%ld %d is sleeping\n", (ph->life - ph->born), ph->id);
 		if (ph->num % 2 != 0)
-			usleep(500);
+			usleep(600);
 		ft_sleeptime(ph);
 		gettimeofday(&sleep, NULL);
 		ph->life = (sleep.tv_sec * 1000) + (sleep.tv_usec / 1000);
 		if ((ph->die - ph->life) < 0)
 			ft_die(ph);
 		if (ph->stat[0] == 0)
-			printf("%ld %d is thinking\n", (ph->die - ph->life), ph->id);
+			printf("%ld %d is thinking\n", (ph->life - ph->born), ph->id);
 		if (ph->num % 2 != 0)
-			usleep(500);
+			usleep(600);
 	}
 	gettimeofday(&sleep, NULL);
 	ph->life = (sleep.tv_sec * 1000) + (sleep.tv_usec / 1000);

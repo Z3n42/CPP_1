@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mini_paint.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/23 09:00:47 by ingonzal          #+#    #+#             */
+/*   Updated: 2021/12/23 09:48:37 by ingonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <stdio.h>
 #include <unistd.h>
 #include <math.h>
 #include <stdlib.h>
 
+
 typedef struct s_bg{
-	int		width;
-	int		height;
+	int 	width;
+	int 	height;
 	char	bgc;
 	char	c;
 	float	x;
@@ -64,16 +76,17 @@ void	ft_charge(t_bg *bg)
 		{
 			if (bg->c == 'c')
 			{
-				if ((sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) <= bg->rad)
+				if ((sqrtf(xa - w) * (xa - w) + (ya - h) * (ya - h)) <= bg->rad)
 				{
-					if (bg->rad - (sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) < 1)
+					if (bg->rad - (sqrtf(xa - w) * (xa - w) + (ya - h) * (ya - h)) < 1)
 						bg->array[h][w] = bg->circ;
 				}
 			}
 			else
 			{
-				if ((sqrtf((xa - w) * (xa - w) + (ya - h) * (ya - h))) <= bg->rad)
+				if ((sqrtf(xa - w) * (xa - w) + (ya - h) * (ya - h)) <= bg->rad)
 					bg->array[h][w] = bg->circ;
+
 			}
 			w++;
 		}
@@ -97,7 +110,7 @@ void	ft_backgr(t_bg *bg)
 			bg->array[h][w] = bg->bgc;
 			w++;
 		}
-		bg->array[h][w] = '\0'; 
+		bg->array[h][w] = '\0';
 		h++;
 	}
 	bg->array[h] = NULL;
@@ -107,7 +120,7 @@ int	main(int argc, char **argv)
 {
 	t_bg	bg;
 	FILE	*of;
-	int	res;
+	int		res;
 
 	if (argc != 2)
 	{
@@ -123,7 +136,8 @@ int	main(int argc, char **argv)
 	res = fscanf(of, "%d %d %c\n", &bg.width, &bg.height, &bg.bgc);
 	if (res != 3 || bg.width <= 0 || bg.width > 300 || bg.height <= 0 || bg.height > 300)
 	{
-		write(1, "Error: Operation file corrupted\n", 32);
+		write(1, "Error: operation file corrupted\n", 32);
+		fclose(of);
 		return (1);
 	}
 	else
@@ -139,7 +153,7 @@ int	main(int argc, char **argv)
 			ft_free(&bg);
 			return (0);
 		}
-		if ((res != 5 && res != -1) || (bg.c != 'c' && bg.c != 'C') || bg.rad <= 0)
+		if((res != 5 && res != -1) || (bg.c != 'c' && bg.c != 'C') || bg.rad <= 0)
 		{
 			write(1, "Error: Operation file corrupted\n", 32);
 			fclose(of);
