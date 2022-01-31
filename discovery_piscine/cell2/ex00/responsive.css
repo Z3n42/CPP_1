@@ -1,0 +1,19 @@
+table {
+	border:1;
+	position:absolute;
+	top:0;
+	left:0;
+	border-collapse:collapse;
+	width:100%; 
+	height:100%;
+}
+
+#first {
+	background-color:#999950; 
+	width:50%;
+}
+
+#second {
+	background-color:#FDAB9F;
+	width:50%;
+}
