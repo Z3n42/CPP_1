@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/02/01 19:52:33 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/02/01 16:45:11 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,14 @@ AR = ar rcs
 
 RM = rm -f
 
-#S = -fsanitize=address -g3
+S = -fsanitize=address -g3
 
 FILES = ft_philosopher \
 		ft_routine \
+		ft_fk1 \
+		ft_fk2 \
 		ft_eat \
+		ft_sleep \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))

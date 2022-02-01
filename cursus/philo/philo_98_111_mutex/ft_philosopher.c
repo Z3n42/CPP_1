@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/02/01 19:57:11 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:46:35 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_create(t_ph *ph)
 {
 	int				i;
 	pthread_t		*thread;
-
+	
 	i = -1;
 	while (++i < ph->num)
 		pthread_mutex_init(&ph->mutex[i], NULL);
@@ -76,6 +76,7 @@ void	ft_create(t_ph *ph)
 	i = -1;
 	while (++i < ph->num)
 		pthread_mutex_destroy(&ph->mutex[i]);
+	free(ph->fk);
 	free(ph->mutex);
 	free(thread);
 	free(ph->stat);
@@ -86,9 +87,10 @@ void	ft_init(int argc, char **argv)
 	t_ph	ph;
 
 	ph.num = ft_atoi(argv[1]);
-	ph.mutex = (pthread_mutex_t *)malloc(ph.num * sizeof(pthread_mutex_t));
+	ph.mutex = (pthread_mutex_t *)malloc((ph.num) * sizeof(pthread_mutex_t));
+	ph.fk = malloc((ph.num) * sizeof(int));
 	ph.stat = malloc(1 * sizeof(int));
-	memset(ph.stat, 0, 4);
+	memset(ph.fk, -1, (ph.num * 4));
 	ph.max = -1;
 	if (argc == 6)
 		ph.max = ft_atoi(argv[5]);
@@ -96,6 +98,7 @@ void	ft_init(int argc, char **argv)
 	ph.blood = ph.life;
 	ph.eat = ft_atoi(argv[3]);
 	ph.sleep = ft_atoi(argv[4]);
+	memset(ph.stat, 0, 4);
 	ph.full = 0;
 	ph.kill = 0;
 	ph.wait = 0;

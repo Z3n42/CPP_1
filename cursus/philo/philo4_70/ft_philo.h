@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 13:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/02/01 19:37:55 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:46:40 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct s_ph{
 	int				id;
 	int				num;
+	int				date;
 	long			die;
 	long			life;
 	long			born;
@@ -25,6 +26,7 @@ typedef struct s_ph{
 	int				kill;
 	int				wait;
 	int				print;
+	int				*fk;
 	int				*stat;
 	int				times;
 	int				full;
@@ -38,10 +40,19 @@ void	ft_maxtimes(t_ph *ph);
 int		ft_atoi(const char *str);
 void	ft_die(t_ph *ph);
 void	ft_sleep(t_ph *ph);
+void	ft_sleeptime(t_ph *ph);
 void	ft_eat(t_ph *ph);
 void	ft_eatime(t_ph *ph);
+void	ft_fork(t_ph *ph);
 void	ft_fk1(t_ph *ph);
+void	ft_fkl1a(t_ph *ph, struct timeval take);
+void	ft_fkl1b(t_ph *ph, struct timeval take);
+void	ft_fk2(t_ph *ph);
+void	ft_fkl2a(t_ph *ph, struct timeval take2);
+void	ft_fkl2b(t_ph *ph, struct timeval take2);
+void	ft_freeforks(t_ph *ph);
 void	*ft_routine(void *tid);
+void	ft_pairtime(t_ph *ph, struct timeval live);
 void	ft_create(t_ph *ph);
 void	ft_init(int argc, char **argv);
 

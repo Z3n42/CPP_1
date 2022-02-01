@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2021/12/04 15:14:48 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/01/31 21:36:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ void	ft_create(t_ph *ph)
 	int				i;
 	pthread_t		*thread;
 
-	pthread_mutex_init(ph->mutex, NULL);
+	i = -1;
+	while (++i < ph->num)
+		pthread_mutex_init(&ph->mutex[i], NULL);
 	thread = malloc(ph->num * sizeof(pthread_t));
 	i = -1;
 	while (++i < ph->num)
@@ -70,7 +72,9 @@ void	ft_create(t_ph *ph)
 	i = -1;
 	while (++i < ph->num)
 		pthread_join(thread[i], NULL);
-	pthread_mutex_destroy(ph->mutex);
+	i = -1;
+	while (++i < ph->num)
+		pthread_mutex_destroy(&ph->mutex[i]);
 	free(ph->fk);
 	free(ph->mutex);
 	free(thread);
