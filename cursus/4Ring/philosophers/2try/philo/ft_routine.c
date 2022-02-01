@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/02/01 20:27:10 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/02/01 20:44:21 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*ft_routine(void *tid)
 	ph.born = ph.life;
 	while (ph.stat[0] == 0)
 	{
-		if ((ph.id % 2) != 0 && ph.wait == 0)
+		if ((ph.id % 2) == 0 && ph.wait == 0)
 		{
 			ph.wait = 1;
 			usleep(1500);

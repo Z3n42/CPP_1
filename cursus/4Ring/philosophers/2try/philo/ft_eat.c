@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/02/01 20:17:03 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/02/01 21:17:02 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,18 +116,21 @@ void	ft_fk1(t_ph *ph)
 	pthread_mutex_lock(&ph->mutex[ph->right]);
 	gettimeofday(&take, NULL);
 	ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
-	if ((ph->die - ph->life) < 0)
-		ft_die(ph);
 	if (ph->print == 0 && ph->stat[0] == 0)
 	{
 		printf("%ld %d has taken a fork\n", (ph->life - ph->born), ph->id);
 		ph->print = 1;
 	}
-	pthread_mutex_lock(&ph->mutex[ph->left]);
+	if (ph->num == 1)
+	{
+		usleep(ph->blood * 1000);
+		pthread_mutex_unlock(&ph->mutex[ph->right]);
+	}
 	gettimeofday(&take, NULL);
 	ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 	if ((ph->die - ph->life) < 0)
 		ft_die(ph);
+	pthread_mutex_lock(&ph->mutex[ph->left]);
 	gettimeofday(&take, NULL);
 	ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 	if (ph->stat[0] == 0)
