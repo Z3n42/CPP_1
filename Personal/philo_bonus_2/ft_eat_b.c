@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_eat.c                                           :+:      :+:    :+:   */
+/*   ft_eat_b.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:08:07 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/02/05 14:43:55 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/02/04 20:25:02 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/time.h>
-#include <pthread.h>
-#include <stdio.h>
 #include <unistd.h>
-#include "ft_philo.h"
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <semaphore.h>
+#include <sys/wait.h>
+#include <sys/time.h>
+#include <signal.h>
+#include "ft_philo_b.h"
 
 void	ft_die(t_ph *ph)
 {
 	struct timeval	die;
-	pthread_mutex_t	mutex;
 
-	pthread_mutex_init(&mutex, NULL);
-	pthread_mutex_lock(&mutex);
+	sem_wait(ph->semd);
 	if (ph->kill == 0 && ph->stat[0] == 0)
 	{
 		ph->stat[0] = 1;
@@ -30,9 +32,8 @@ void	ft_die(t_ph *ph)
 		gettimeofday(&die, NULL);
 		ph->life = (die.tv_sec * 1000) + (die.tv_usec / 1000);
 		printf("%ld %d died\n", (ph->life - ph->born), ph->id);
-		pthread_mutex_unlock(&mutex);
+		exit(1);
 	}
-	pthread_mutex_destroy(&mutex);
 }
 
 void	ft_sleep(t_ph *ph)
@@ -86,28 +87,28 @@ void	ft_eat(t_ph *ph)
 {
 	struct timeval	eat;
 
-	if (ph->kill == 0 && ph->stat[0] == 0)
-	{
+	/* if (ph->kill == 0 && ph->stat[0] == 0) */
+	/* { */
 		gettimeofday(&eat, NULL);
 		ph->life = (eat.tv_sec * 1000) + (eat.tv_usec / 1000);
-		if ((ph->die - ph->life) < 0)
-			ft_die(ph);
-		if (ph->kill == 0 && ph->stat[0] == 0)
-		{
+		/* if (ph->kill == 0 && ph->stat[0] == 0) */
+		/* { */
 			printf("%ld %d is eating\n", (ph->life - ph->born), ph->id);
 			if (ph->max != -1)
 				ph->times += 1;
 			if (ph->max != -1 && ph->times == ph->max)
 				ft_maxtimes(ph);
-		}
+		/* } */
 		ft_eatime(ph);
 		gettimeofday(&eat, NULL);
 		ph->life = (eat.tv_sec * 1000) + (eat.tv_usec / 1000);
 		ph->die = (eat.tv_sec * 1000) + (eat.tv_usec / 1000) + ph->blood;
+		if ((ph->die - ph->life) < 0)
+			ft_die(ph);
 		ph->print = 0;
-	}
-	pthread_mutex_unlock(&ph->mutex[ph->right]);
-	pthread_mutex_unlock(&ph->mutex[ph->left]);
+	/* } */
+	sem_post(ph->sem);
+	sem_post(ph->sem);
 	ft_sleep(ph);
 }
 
@@ -115,24 +116,24 @@ void	ft_fk1(t_ph *ph)
 {
 	struct timeval	take;
 
-	pthread_mutex_lock(&ph->mutex[ph->right]);
+	sem_wait(ph->sem);
+	sem_wait(ph->sem);
 	gettimeofday(&take, NULL);
 	ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
-	if (ph->print == 0 && ph->stat[0] == 0)
-	{
+	/* if (ph->print == 0 && ph->stat[0] == 0) */
+	/* { */
 		printf("%ld %d has taken a fork\n", (ph->life - ph->born), ph->id);
-		ph->print = 1;
-	}
+		/* ph->print = 1; */
+	/* } */
 	if (ph->num == 1)
 	{
 		usleep(ph->blood * 1000);
-		pthread_mutex_unlock(&ph->mutex[ph->right]);
+		ft_die(ph);
 	}
 	gettimeofday(&take, NULL);
 	ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 	if ((ph->die - ph->life) < 0)
 		ft_die(ph);
-	pthread_mutex_lock(&ph->mutex[ph->left]);
 	gettimeofday(&take, NULL);
 	ph->life = (take.tv_sec * 1000) + (take.tv_usec / 1000);
 	if (ph->stat[0] == 0)
