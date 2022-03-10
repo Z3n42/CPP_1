@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:20:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/03/05 15:23:06 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/03/10 21:06:28 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,51 @@ int main (int argc, char *argv[], char **envp)
 	int	fd[2];
 	int	pid;
 	int status;
+	int i;
+	int j;
 	
 	pipe(fd);
-	pid = fork();
-
-	if (pid == 0 && argc > 0)
+	i = 1;
+	j = i;
+	while (i < argc)
 	{
-		if (strcmp("cd", argv[1]) == 0)
+		while (argv[j] != NULL || j < argc)
 		{
-			printf("yess\n");
-			return 0;
+			if (strcmp(argv[j], ";") == 0)
+				break;
+			pid = fork();
+			if (pid == 0 && argc > 0)
+			{
+				execve(argv[j], &argv[j], envp);
+			}
+			/* else */
+			/* { */
+			waitpid(0, &status, 0);
+			j++;
+			/* } */
 		}
-		execve(argv[1], &argv[1], envp);
+		i = j;
 	}
-	else
-		waitpid(0, &status, 0);
+	return (0);
+
+	/* pipe(fd); */
+	/* pid = fork(); */
+
+	/* if (pid == 0 && argc > 0) */
+	/* { */
+	/* 	if (strcmp("cd", argv[i]) == 0) */
+	/* 	{ */
+	/* 		chdir(argv[i + 1]); */
+	/* 		return 0; */
+	/* 	} */
+	/* 	else */
+	/* 	{ */
+	/* 		/1* printf("Nooo\n"); *1/ */
+	/* 		execve(argv[i], &argv[i], envp); */
+	/* 		return 0; */
+	/* 	} */
+	/* } */
+	/* else */
+	/* 	waitpid(0, &status, 0); */
 
 }
