@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:20:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/03/10 21:06:28 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/03/11 14:08:42 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int main (int argc, char *argv[], char **envp)
 	int status;
 	int i;
 	int j;
-	
+	int	aux;
+
 	pipe(fd);
 	i = 1;
 	j = i;
@@ -31,17 +32,28 @@ int main (int argc, char *argv[], char **envp)
 		while (argv[j] != NULL || j < argc)
 		{
 			if (strcmp(argv[j], ";") == 0)
+			{
+				j++;
 				break;
+			}
 			pid = fork();
 			if (pid == 0 && argc > 0)
 			{
-				execve(argv[j], &argv[j], envp);
+				aux = j;
+				while (argv[aux] && argv[aux][0] != ';')
+					aux++;
+				argv[aux] = NULL;
+				/* if (strcmp(argv[j], "cd") == 0) */
+				/* { */
+				/* 	chdir(argv[j + 1]); */
+				/* 	j++; */
+				/* 	exit(0); */
+				/* } */
+				/* else */
+					execve(argv[j], &argv[j], envp);
 			}
-			/* else */
-			/* { */
 			waitpid(0, &status, 0);
 			j++;
-			/* } */
 		}
 		i = j;
 	}
