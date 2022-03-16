@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:20:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/03/11 14:08:42 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:49:21 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,55 @@ int main (int argc, char *argv[], char **envp)
 	int i;
 	int j;
 	int	aux;
+	int dir;
 
 	pipe(fd);
 	i = 1;
 	j = i;
+	printf("XXXXXXXX ARGC Strcmp %i\n", argc);
 	while (i < argc)
 	{
 		while (argv[j] != NULL || j < argc)
 		{
-			if (strcmp(argv[j], ";") == 0)
+			printf("1 - PRE Strcmp %i\n", j);
+			if (argv[j] != NULL)
 			{
-				j++;
-				break;
+				if (strcmp(argv[j], ";") == 0)
+				{
+					/* printf("2 - Strcmp %s\n", argv[j]); */
+					j++;
+					break;
+				}
+				pid = fork();
+				if (pid == 0)
+				{
+					aux = j;
+					while (argv[aux] && argv[aux][0] != ';')
+						aux++;
+					argv[aux] = NULL;
+					if (strcmp(argv[j], "cd") == 0)
+					{
+						j++;
+						/* printf("3 - %s\n", argv[j]); */
+						dir = chdir(argv[j]);
+						/* printf("4 - POST %i\n", dir); */
+						exit(1);
+					}
+					else
+					{
+						execve(argv[j], &argv[j], envp);
+						exit(1);
+						/* j++; */
+					}
+				}
 			}
-			pid = fork();
-			if (pid == 0 && argc > 0)
-			{
-				aux = j;
-				while (argv[aux] && argv[aux][0] != ';')
-					aux++;
-				argv[aux] = NULL;
-				/* if (strcmp(argv[j], "cd") == 0) */
-				/* { */
-				/* 	chdir(argv[j + 1]); */
-				/* 	j++; */
-				/* 	exit(0); */
-				/* } */
-				/* else */
-					execve(argv[j], &argv[j], envp);
-			}
-			waitpid(0, &status, 0);
+			waitpid(-1, &status, 0);
 			j++;
+			printf("2 - **POST Strcmp %i\n", j);
 		}
-		i = j;
+		/* if (i <= j ) */
+			i = j;
+		printf("3 - EXIT Strcmp %i\n", i);
 	}
 	return (0);
 
