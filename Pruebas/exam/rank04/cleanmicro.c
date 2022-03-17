@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   microshell.c                                       :+:      :+:    :+:   */
+/*   cleanmicro.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:20:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/03/17 19:59:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:39:00 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,53 +29,37 @@ int main (int argc, char *argv[], char **envp)
 	pipe(fd);
 	i = 1;
 	j = i;
-	printf("XXXXXXXX ARGC Strcmp %i\n", argc);
 	while (i < argc)
 	{
 		while (argv[j] != NULL || j < argc)
 		{
-			printf("1 - PRE Strcmp %i\n", j);
 			if (argv[j] != NULL)
 			{
-				printf(">>>>>>>>>>>>- %s\n", argv[j]);
 				if (strcmp(argv[j], "cd") == 0)
 				{
 					j++;
-					printf(")))))))))3 - %s\n", argv[j]);
-					if (argc > 3 && j < argc)
+					if (argc > 3 && j < (argc - 1))
 					{
 						if (argv[j + 1][0] != ';')
 						{
 							aux = j;
 							while (argv[aux] && argv[aux][0] != ';')
-							{
-								printf("PPPPPPPPPPPPPP%c\n", argv[aux][0]);
 								aux++;
-							}
-							printf("AUX %i\n", aux);
-							printf("J %i\n", j);
 							if ((aux - j) != 1)
 							{
-								printf("++++++++++3 - %s\n", argv[j]);
 								printf("error: cd: bad arguments\n");
 								j = aux;
 								break;
 							}
-						/* else */
 							j = aux;
 						}
 					}
-					/* if (argv[j][0] == ';') */
-					/* 	break; */
-					printf("======== %s\n", argv[j]);
 					dir = chdir(argv[j]);
-					printf("kkkkkkkkkkkkk %i\n", dir);
 					if(dir == -1)
 					{
 						printf("error: cd: cannot change directory to path_to_change\n");
 						exit(0);	
 					}
-					/* printf("4 - POST %i\n", dir); */
 				}
 				else
 				{
@@ -83,36 +67,26 @@ int main (int argc, char *argv[], char **envp)
 					if (pid == 0)
 					{
 						if (strcmp(argv[j], ";") == 0)
-						{
-							/* printf("2 - Strcmp %s\n", argv[j]); */
 							exit(0);
-						}
 						aux = j;
 						while (argv[aux] && argv[aux][0] != ';')
 							aux++;
 						argv[aux] = NULL;
 						if (strcmp(argv[j - 1], "cd") != 0)		
 						{
-							/* printf("oooooooooooooooooooooooooo\n"); */
-							printf("***********3 - %s\n", argv[j]);
 							if (execve(argv[j], &argv[j], envp) == -1)
 								printf("error: cannot execute executable_that_failed\n");
 						}
 						exit(0);
-						/* j++; */
 					}
-				/* printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"); */
 					waitpid(0, &status, 0);
-					if (status != 0)
-						return (0);
+					/* if (status != 0) */
+					/* 	return (0); */
 				}
 			}
 			j++;
-			printf("2 - **POST Strcmp %i\n", j);
 		}
-		/* if (i <= j ) */
 		i = j;
-		printf("3 - EXIT Strcmp %i\n", i);
 	}
 	return (0);
 }
