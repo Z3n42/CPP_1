@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanmicro.c                                       :+:      :+:    :+:   */
+/*   pipemicro.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:20:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/03/18 18:02:55 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/03/18 21:26:32 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main (int argc, char *argv[], char **envp)
 {
-	int	fd[2];
+	int	fd[2][2];
 	int	pid;
 	int status;
 	int j;
@@ -25,7 +25,12 @@ int main (int argc, char *argv[], char **envp)
 	int dir;
 
 	pid = 0;
-	pipe(fd);
+	j = 0;
+	while (j < 2)
+	{
+		pipe(fd[j]);
+		j++;
+	}
 	j = 1;
 	while (argv[j] != NULL || j < argc)
 	{
@@ -65,7 +70,7 @@ int main (int argc, char *argv[], char **envp)
 					if (strcmp(argv[j], ";") == 0)
 						exit(0);
 					aux = j;
-					while (argv[aux] && argv[aux][0] != ';')
+					while (argv[aux] && argv[aux][0] != ';' && argv[aux][0] != '|')
 						aux++;
 					argv[aux] = NULL;
 					if (execve(argv[j], &argv[j], envp) == -1)
