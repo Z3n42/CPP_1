@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:20:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/03/18 21:26:32 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/03/23 17:57:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,16 @@ int main (int argc, char *argv[], char **envp)
 	j = 0;
 	while (j < 2)
 	{
-		pipe(fd[j]);
+		aux = pipe(fd[j]);
+		if (aux != 0)
+		{
+			printf("error: fatal\n");
+			return (0);
+		}
 		j++;
 	}
 	j = 1;
-	while (argv[j] != NULL || j < argc)
+	while (argv[j] || j < argc)
 	{
 		if (argv[j] != NULL && argv[j])
 		{
@@ -64,11 +69,18 @@ int main (int argc, char *argv[], char **envp)
 			}
 			else
 			{
+				if (strcmp(argv[j], ";") == 0 || strcmp(argv[j], "|") == 0)
+					j++;
 				pid = fork();
+				if (pid == -1)
+				{
+					printf("error: fatal\n");
+					return (0);
+				}
 				if (pid == 0)
 				{
-					if (strcmp(argv[j], ";") == 0)
-						exit(0);
+					/* if (strcmp(argv[j], ";") == 0) */
+					/* 	exit(0); */
 					aux = j;
 					while (argv[aux] && argv[aux][0] != ';' && argv[aux][0] != '|')
 						aux++;
@@ -79,7 +91,7 @@ int main (int argc, char *argv[], char **envp)
 				}
 				waitpid(0, &status, 0);
 				aux = j;
-				while (argv[aux] && argv[aux][0] != ';' && aux < (argc - 1))
+				while (argv[aux] && argv[aux][0] != ';' && argv[aux][0] != '|' && aux < (argc - 1))
 					aux++;
 				if ((aux - j) != 1)
 					j = aux;
