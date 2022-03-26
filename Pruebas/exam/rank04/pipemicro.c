@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:20:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/03/23 17:57:26 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/03/26 15:27:34 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@ int main (int argc, char *argv[], char **envp)
 	int	pid;
 	int status;
 	int j;
+	int pip;
+	int sc;
 	int	aux;
 	int dir;
 
+	pip = 0;
 	pid = 0;
+	sc = 1;
 	j = 0;
 	while (j < 2)
 	{
@@ -39,7 +43,7 @@ int main (int argc, char *argv[], char **envp)
 	j = 1;
 	while (argv[j] || j < argc)
 	{
-		if (argv[j] != NULL && argv[j])
+		if (argv[j] != NULL && argv[j] && argv[j][0] != ';' && argv[j][0] != '|')
 		{
 			if (strcmp(argv[j], "cd") == 0)
 			{
@@ -55,7 +59,7 @@ int main (int argc, char *argv[], char **envp)
 						{
 							printf("error: cd: bad arguments\n");
 							j = aux;
-							break;
+							continue;
 						}
 						j = aux;
 					}
@@ -69,6 +73,18 @@ int main (int argc, char *argv[], char **envp)
 			}
 			else
 			{
+				pip = 0;
+				aux = j;
+				while (argv[aux] && argv[aux][0] != ';')
+				{
+					if (strcmp(argv[aux], "|") == 0)
+					{
+						pip++;
+						break;
+					}
+					aux++;
+				}
+				printf("Pipes->%i, Semicolon->%i\n", pip, sc);
 				if (strcmp(argv[j], ";") == 0 || strcmp(argv[j], "|") == 0)
 					j++;
 				pid = fork();
@@ -79,27 +95,95 @@ int main (int argc, char *argv[], char **envp)
 				}
 				if (pid == 0)
 				{
-					/* if (strcmp(argv[j], ";") == 0) */
-					/* 	exit(0); */
+					if (pip == 1 && sc == 1)
+					{
+						printf(" 1º DUP IN - FD[1][1] = %d\n", fd[1][1]);
+						close(fd[0][0]);
+						close(fd[0][1]);
+						close(fd[1][0]);
+						dup2(fd[1][1],STDOUT_FILENO);
+					}
+					if (pip == 1 && sc == 0)
+					{
+						printf(" 2º DUP IN  - FD[0][0] = %d\n", fd[0][0]);
+						printf(" 3º DUP OUT - FD[1][1] = %d\n", fd[1][1]);
+						dup2(fd[0][0],STDIN_FILENO);
+						dup2(fd[1][1],STDOUT_FILENO);
+					}
+					if (pip == 0 && sc == 0)
+					{
+						printf(" 4º DUP IN - FD[0][0] = %d\n", fd[0][0]);
+						close(fd[0][1]);
+						close(fd[1][0]);
+						close(fd[1][1]);
+						dup2(fd[0][0],STDIN_FILENO);
+					}
 					aux = j;
 					while (argv[aux] && argv[aux][0] != ';' && argv[aux][0] != '|')
 						aux++;
 					argv[aux] = NULL;
+					printf("A  %s\n", argv[j]);
 					if (execve(argv[j], &argv[j], envp) == -1)
 						printf("error: cannot execute %s\n", argv[j]);
+					printf("B  %s\n", argv[j]);
 					exit(0);
 				}
+				close(fd[1][1]);
+				close(fd[0][1]);
 				waitpid(0, &status, 0);
+				printf(" 5º CLOSE - FD[0][0] = %d\n", fd[0][0]);
+				printf(" 6º CLOSE - FD[0][1] = %d\n", fd[0][1]);
+				printf(" 7º EQUAL - FD[1][0] = %d\n", fd[1][0]);
+				printf(" 8º EQUAL - FD[1][1] = %d\n", fd[1][1]);
+				close(fd[0][0]);
+				close(fd[0][1]);
+				fd[0][0] = fd[1][0];
+				fd[0][1] = fd[1][1];
+				/* close(fd[1][0]); */
+				/* close(fd[1][1]); */
+				printf(" 9º RECIBE - FD[0][0] = %d\n", fd[0][0]);
+				printf(" 10º RECIBE - FD[0][1] = %d\n", fd[0][1]);
+				printf(" 11º  CLOSE - FD[1][0] = %d\n", fd[1][0]);
+				printf(" 12º CLOSE - FD[1][1] = %d\n", fd[1][1]);
+				if (pipe(fd[1]) == -1)
+				{
+					printf("error: fatal\n");
+					return (0);
+				}
+				printf(" 13º FD[0][0] = %d\n", fd[0][0]);
+				printf(" 14º FD[0][1] = %d\n", fd[0][1]);
+				printf(" 15º FD[1][0] = %d\n", fd[1][0]);
+				printf(" 16º FD[1][1] = %d\n", fd[1][1]);
 				aux = j;
-				while (argv[aux] && argv[aux][0] != ';' && argv[aux][0] != '|' && aux < (argc - 1))
+				while (argv[aux] && argv[aux][0] != ';' && argv[aux][0] != '|')
 					aux++;
 				if ((aux - j) != 1)
-					j = aux;
+					j = aux - 1;
 				if ((argv[aux + 1]) == NULL)
-					return (0);
+				{
+					/* close(fd[0][0]); */
+					/* close(fd[0][1]); */
+					/* close(fd[1][0]); */
+					/* close(fd[1][1]); */
+					/* return (0); */
+					break;	
+				}
+				
 			}
-			j++;
 		}
+		if (argv[j] != NULL && argv[j] && argv[j][0] == ';')
+			sc = 1;
+		if (argv[j] != NULL && argv[j] && argv[j][0] == '|')
+			sc = 0;
+		j++;
 	}
+	printf(" 17º CLOSE - FD[0][0] = %d\n", fd[0][0]);
+	printf(" 18º CLOSE - FD[0][1] = %d\n", fd[0][1]);
+	printf(" 19º EQUAL - FD[1][0] = %d\n", fd[1][0]);
+	printf(" 20º EQUAL - FD[1][1] = %d\n", fd[1][1]);
+	close(fd[0][0]);
+	close(fd[0][1]);
+	close(fd[1][0]);
+	close(fd[1][1]);
 	return (0);
 }
