@@ -29,8 +29,3 @@ Don't forget to pass the environment variable to execve
 
 Hints:
 Do not leak file descriptors!
-
-
-/bin/ls | /usr/bin/grep micro ; /bin/ls | /usr/bin/grep micro ; /bin/ls | /usr/bin/grep micro ; /bin/ls | /usr/bin/grep micro ;
-microshell
-m
