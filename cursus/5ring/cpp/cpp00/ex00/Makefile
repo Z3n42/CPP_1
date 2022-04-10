@@ -6,13 +6,12 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/04/08 19:27:20 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/04/10 13:19:46 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+NAME = megaphone
 
-NAME = philo_bonus
-
-CC = gcc
+CC = clang++
 
 FLAGS = -Wall -Wextra -Werror -g
 
@@ -22,32 +21,30 @@ RM = rm -f
 
 #S = -fsanitize=address -g3
 
-FILES = ft_philosopher_bonus \
-		ft_routine_bonus \
-		ft_eat_bonus \
+FILES = megaphone \
 
 SRCS_DIR = ./
-SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))
+SRCS = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(FILES)))
 
 OBJS_DIR = ./
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 
-.c.o: $(SRCS)
+.cpp.o: $(SRCS)
 	@$(CC) $(FLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
 		@$(CC) $(FLAGS) $(S) $^ -o $@ 
-		@echo "Preparando Spaguetis"
+		@echo "Compilando"
 
 all: $(NAME)
 
 clean:
 		@$(RM) $(OBJS)
-		@echo "Recogiendo los platos"
+		@echo "Limpiando"
 
 fclean: clean
 		@$(RM) $(NAME)
-		@echo "Tirando Spaguettis de ayer"
+		@echo "a fondo"
 
 re: clean all
 
