@@ -9,7 +9,7 @@
 #    Updated: 2022/04/19 19:15:47 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = blacklist
+NAME = DreamJob
 
 CC = clang++
 
@@ -22,7 +22,7 @@ RM = rm -f
 S = -fsanitize=address -g3
 
 FILES = tests \
-		Account \
+	Account \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(FILES)))
