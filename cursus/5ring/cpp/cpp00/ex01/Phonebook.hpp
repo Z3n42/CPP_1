@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 14:15:57 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/04/20 17:19:51 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/04/21 15:24:04 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ class Phonebook{
 		Phonebook(void);
 		~Phonebook(void);
 };
-
-int	ft_atoi(const char *str);
 
 #endif

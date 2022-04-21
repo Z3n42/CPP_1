@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/04/19 19:15:47 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/04/21 14:08:36 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = DreamJob
@@ -22,7 +22,7 @@ RM = rm -f
 S = -fsanitize=address -g3
 
 FILES = tests \
-	Account \
+		Account \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(FILES)))

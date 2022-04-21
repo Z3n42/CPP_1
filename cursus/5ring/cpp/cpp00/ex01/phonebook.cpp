@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 14:33:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/04/20 17:28:52 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/04/21 15:25:44 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,44 +20,6 @@ Phonebook::Phonebook(void){
 
 Phonebook::~Phonebook(void){
 	return;
-}
-
-static int	ft_integer(const char *str)
-{
-	int	integer;
-
-	integer = 0;
-	while (*str > 47 && *str < 58)
-	{
-		integer = (integer * 10) + (*str - '0');
-		str++;
-	}
-	return (integer);
-}
-
-int	ft_atoi(const char *str)
-{
-	int	minus;
-	int	plus;
-	int	integer;
-
-	while (*str == ' ' || (*str > 8 && *str < 14))
-		str++;
-	minus = 0;
-	plus = 0;
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			minus++;
-		plus++;
-		str++;
-	}
-	if (minus > 1 || plus > 1)
-		return (0);
-	integer = ft_integer(str);
-	if ((minus % 2) != 0)
-		integer = integer * (-1);
-	return (integer);
 }
 
 void Phonebook::ft_show(Phonebook *list, int i)
@@ -111,7 +73,7 @@ void Phonebook::ft_search(Phonebook *list, int  max)
 		std::cout << std::endl;
 		std::cout << "Show Contact Number: ";
 		std::cin  >> index;
-		i = ft_atoi(index);
+		i = std::atoi(index);
 		std::cout << std::endl;
 		if (i > 0 && i < 9 && i <= max)
 			list->ft_show(list, i - 1);
