@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/05/03 20:21:30 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/05/04 18:16:15 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = replace
@@ -44,6 +44,7 @@ clean:
 
 fclean: clean
 		@$(RM) $(NAME)
+		@$(RM) *.repla*
 		@echo "Deep Cleaning"
 
 re: clean all
