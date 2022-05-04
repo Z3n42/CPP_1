@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:31:58 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/04/25 14:25:37 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:27:56 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Weapon{
 	public:
 		Weapon(std::string name);
 		std::string const& get_type();
-		void setType(std::string new_type);
+		void setType(std::string other_type);
 		~Weapon(void);
 };
 

@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:37:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/04/27 19:13:34 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:39:49 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
+HumanB::HumanB(std::string name) : _name(name)
 {
+}
+/* Se podría inicializar this->_weapon = NULL en el constructor, pero se comporta igual; */
 
+void HumanB::attack(void)
+{
+	if (this->_weapon != NULL)
+		std::cout << this->_name << " attack with his " << _weapon->get_type() << std::endl; 
+	else
+		std::cout << this->_name << " attack with his own hands " << std::endl; 
 }
 
-void HumanA::attack(void)
+void HumanB::setWeapon(Weapon &other_weapon)
 {
-	std::cout << this->_name << " attack with his " << _weapon.get_type() << std::endl; 
+	this->_weapon = &other_weapon;
 }
 
-HumanA::~HumanA(void)
+HumanB::~HumanB(void)
 {
 	
 }
