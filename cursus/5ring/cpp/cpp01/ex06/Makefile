@@ -6,10 +6,10 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/06/05 16:35:33 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/06/05 19:28:25 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = Karen
+NAME = KarenFilter
 
 CC = clang++
 

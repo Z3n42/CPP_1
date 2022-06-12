@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 13:58:15 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/10 20:52:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2022/06/08 17:43:52 by ingonzal          #+#    #+#             */
+/*   Updated: 2022/06/09 17:49:07 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-int main(void)
-{
-	int N;
+class Fixed{
 
-	std::cout << "How many Zombies want at your horde Lord Necromancer => ";
-	std::cin >> N;
+public:
+	Fixed(void);
+	~Fixed(void);
+	Fixed(Fixed const & src);
 
-	Zombie* tom = zombieHorde(N, "Tom from the heap");
+	Fixed & operator=(Fixed const & rhs);
+	
+	int getRawBits(void) const;
+	void setRawBits(int const raw);
 
-	delete [] tom;
+private:
+	int _in;
+	static const int bit = 8;
+};
 
-	return (0);
-}
+#endif

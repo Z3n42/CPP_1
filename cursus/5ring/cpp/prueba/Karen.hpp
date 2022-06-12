@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Karen.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 13:58:15 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/10 20:52:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2022/05/06 13:38:07 by ingonzal          #+#    #+#             */
+/*   Updated: 2022/06/05 15:16:32 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef KAREN_HPP
+# define KAREN_HPP
 
-int main(void)
-{
-	int N;
+#include <iostream>
 
-	std::cout << "How many Zombies want at your horde Lord Necromancer => ";
-	std::cin >> N;
+class Karen{
 
-	Zombie* tom = zombieHorde(N, "Tom from the heap");
+	private:
+		void _debug(void);
+		void _info(void);
+		void _warning(void);
+		void _error(void);
 
-	delete [] tom;
+	public:
+		Karen(void);
+		void complain(std::string level);
+		~Karen(void);
+};
 
-	return (0);
-}
+#endif

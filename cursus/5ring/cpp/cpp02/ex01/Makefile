@@ -6,10 +6,10 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/06/05 16:35:33 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/06/08 18:35:44 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = Karen
+NAME = FixedPoint
 
 CC = clang++
 
@@ -22,7 +22,7 @@ RM = rm -f
 # S = -fsanitize=address -g3
 
 FILES = main \
-	karen \
+	Fixed \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(FILES)))

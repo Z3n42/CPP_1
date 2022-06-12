@@ -5,23 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 13:58:15 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/10 20:52:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2022/06/05 15:08:59 by ingonzal          #+#    #+#             */
+/*   Updated: 2022/06/05 19:08:52 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Karen.hpp"
+#include <unistd.h>
 
-int main(void)
+int	main(void)
 {
-	int N;
+	Karen	karen;
+	std::string level;
+	std::string lvl[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	std::cout << "How many Zombies want at your horde Lord Necromancer => ";
-	std::cin >> N;
-
-	Zombie* tom = zombieHorde(N, "Tom from the heap");
-
-	delete [] tom;
-
+	std::cout << "A Karen just entered into the store." << std::endl << std::endl;
+	sleep(3);
+	while(1)
+	{
+		level = lvl[rand () % 4];
+		std::cout << "[ " << level << " ]" << std::endl;
+		karen.complain(level);
+		std::cout << std::endl;
+		sleep(3);
+	}
 	return (0);
 }

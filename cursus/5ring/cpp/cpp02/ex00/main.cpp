@@ -5,23 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 13:58:15 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/10 20:52:55 by ingonzal         ###   ########.fr       */
+/*   Created: 2022/06/08 17:35:53 by ingonzal          #+#    #+#             */
+/*   Updated: 2022/06/08 17:42:50 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
+#include <iostream>
 
-int main(void)
-{
-	int N;
+int	main(void) {
 
-	std::cout << "How many Zombies want at your horde Lord Necromancer => ";
-	std::cin >> N;
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
 
-	Zombie* tom = zombieHorde(N, "Tom from the heap");
+	c = b;
 
-	delete [] tom;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 
-	return (0);
+	return 0;
 }
