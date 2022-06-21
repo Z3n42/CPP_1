@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 17:43:52 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/13 18:53:11 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/17 18:54:16 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 	Fixed(int const n);
 	Fixed(float const n);
 
-	Fixed & operator=(Fixed const & rhs);
+	Fixed & operator=(Fixed & rhs);
 
 	bool operator>(Fixed const & rhs)const;
 	bool operator<(Fixed const & rhs)const;
@@ -57,6 +57,8 @@ public:
 	static const Fixed & min(const Fixed & a, const Fixed & b);
 	static const Fixed & max(const Fixed & a, const Fixed & b);
 
+	/* Fixed *w1 = new Fixed((e_x * (a_y - p_y) + e_y * (p_x - a_x)) / (d_x * e_y - d_y * e_x)); */
+	/* Fixed *w2 = new Fixed((p_y - a_y - *w1 * d_y) / e_y); */
 private:
 	int _in;
 	static const int _fracbit = 8;

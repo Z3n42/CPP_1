@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 17:35:53 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/12 19:33:25 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:47:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void) {
 
 	std::cout << b << std::endl;
 
-	std::cout << Fixed::max(a, b) << std::endl;
+	std::cout << Fixed::max(a + 1, b) << std::endl;
 
 	/* *Pruebas propias* */
 	/* >, < */
