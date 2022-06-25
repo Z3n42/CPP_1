@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 19:51:50 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/21 14:15:16 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/21 20:01:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(void){
 	std::cout << std::endl;
 
 	FragTrap Ding("Ding");
-	ScavTrap Dong("Dong");
+	FragTrap Dong("Dong");
 	std::cout << std::endl;
 
 	std::cout << "-- Equalizing Traps --" << std::endl;

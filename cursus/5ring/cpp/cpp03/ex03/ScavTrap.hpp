@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 17:32:34 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/20 18:59:53 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:06:52 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-class ScavTrap : public ClapTrap{
+class ScavTrap : virtual public ClapTrap{
 
 private:
-	std::string _Name;
-	unsigned int _Hitpoints;
-	unsigned int _EnergyPoints;
-	unsigned int _AttackDamage;
 	static const std::string _Class;
 
 public:
@@ -32,6 +28,7 @@ public:
 	ScavTrap(ScavTrap const &src);
 
 	ScavTrap & operator=(ScavTrap const & rhs);
+	std::string getClass(void) const;
 	void attack(std::string const & target);
 	void guardGate();
 };

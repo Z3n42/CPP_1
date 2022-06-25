@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 17:56:17 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/21 15:03:10 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:06:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScavTrap.hpp"
@@ -17,7 +17,8 @@ ScavTrap::ScavTrap(void){
 	std::cout << "Unnamed ScavTrap has been summoned." << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : _Name(name), _Hitpoints(100), _EnergyPoints(50), _AttackDamage(20){
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20){
+	this->_EnergyPoints = 50;
 	std::cout << this->_Class << this->_Name << " has been summoned." << std::endl;
 }
 
@@ -40,6 +41,10 @@ ScavTrap & ScavTrap::operator=(ScavTrap const & rhs){
 	return(*this);
 }
 
+std::string ScavTrap::getClass(void) const{
+	return(this->_Class);
+}
+
 void ScavTrap::attack(std::string const & target){
 	std::cout << this->_Class  << this->_Name;
 	std::cout << " attacks " << target;
@@ -50,7 +55,7 @@ void ScavTrap::attack(std::string const & target){
 void ScavTrap::guardGate(){
 	std::cout << std::endl;
 	std::cout << this->_Class <<  "*SPECIAL*" << std::endl;
-	std::cout << this->_Name;
+	std::cout  << this->_Name;
 	std::cout << " have enterred in Gate Keeper mode." << std::endl;
 	std::cout << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:46:27 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/21 15:01:28 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:03:44 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ FragTrap::FragTrap(void){
 	std::cout << "Unnamed FragTrap has been summoned." << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) : _Name(name), _Hitpoints(100), _EnergyPoints(100), _AttackDamage(30){
+FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30){
+	this->_Hitpoints = 100;
+	this->_AttackDamage = 30;
 	std::cout << this->_Class << this->_Name << " has been summoned." << std::endl;
 }
 
@@ -40,6 +42,10 @@ FragTrap & FragTrap::operator=(FragTrap const & rhs){
 	this->_AttackDamage = rhs._AttackDamage;	
 
 	return(*this);
+}
+
+std::string FragTrap::getClass(void) const{
+	return(this->_Class);
 }
 
 void FragTrap::attack(std::string const & target){
@@ -71,4 +77,5 @@ void FragTrap::highFiveGuys(void){
 	sleep(2);
 	std::cout << "So... Am i the big PAPA..? Maybe???" << std::endl;
 	sleep(3);
+	std::cout << std::endl;
 }

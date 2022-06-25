@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 17:32:34 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/21 19:18:37 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:01:50 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ public:
 	void setEnergy(int const new_amount);
 	void setDamage(int const new_amount);
 
-	virtual void attack(std::string const & target);
+	void attack(std::string const & target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 };

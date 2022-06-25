@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:02:11 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/21 14:04:17 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/21 20:02:39 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@
 class FragTrap : public ClapTrap{
 
 private:
-	std::string _Name;
-	unsigned int _Hitpoints;
-	unsigned int _EnergyPoints;
-	unsigned int _AttackDamage;
 	static const std::string _Class;
 
 public:

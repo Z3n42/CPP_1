@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:46:27 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/21 15:01:28 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/21 19:58:51 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ FragTrap::FragTrap(void){
 	std::cout << "Unnamed FragTrap has been summoned." << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) : _Name(name), _Hitpoints(100), _EnergyPoints(100), _AttackDamage(30){
+FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30){
 	std::cout << this->_Class << this->_Name << " has been summoned." << std::endl;
 }
 

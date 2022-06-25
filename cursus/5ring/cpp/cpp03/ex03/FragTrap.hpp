@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:02:11 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/21 14:04:17 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:04:56 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
 
-class FragTrap : public ClapTrap{
+class FragTrap : virtual public ClapTrap{
 
 private:
-	std::string _Name;
-	unsigned int _Hitpoints;
-	unsigned int _EnergyPoints;
-	unsigned int _AttackDamage;
 	static const std::string _Class;
 
 public:
@@ -32,6 +28,7 @@ public:
 	FragTrap(FragTrap const &src);
 
 	FragTrap & operator=(FragTrap const & rhs);
+	std::string getClass(void) const;
 	void attack(std::string const & target);
 	void highFiveGuys(void);
 };

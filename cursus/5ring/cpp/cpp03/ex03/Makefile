@@ -6,14 +6,14 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/06/21 17:47:01 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/06/21 20:33:56 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = FragTrap
+NAME = DiamondTrap
 
 CC = clang++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g -Wshadow -Wno-shadow
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 AR = ar rcs
 
@@ -25,6 +25,7 @@ FILES = main \
 	ClapTrap \
 	ScavTrap \
 	FragTrap \
+	DiamondTrap \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(FILES)))
