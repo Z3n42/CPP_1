@@ -28,3 +28,6 @@ https://selenium-python.readthedocs.io/page-objects.html
 
 Assertions in selenium python:
 https://www.softwaretestingmaterial.com/assertions-in-selenium-python/
+
+Firefox chromedriver:
+https://github.com/mozilla/geckodriver/releases
