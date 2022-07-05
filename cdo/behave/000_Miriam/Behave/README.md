@@ -31,3 +31,6 @@ https://www.softwaretestingmaterial.com/assertions-in-selenium-python/
 
 Firefox webdriver:
 https://github.com/mozilla/geckodriver/releases
+
+Parse Json with response:
+https://pynative.com/parse-json-response-using-python-requests-library/
