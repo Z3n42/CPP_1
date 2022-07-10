@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 17:56:17 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/21 21:11:09 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/10 14:57:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ClapTrap.hpp"
@@ -39,7 +39,7 @@ ClapTrap::ClapTrap(ClapTrap const &src){
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs){
-	std::cout << this->_Class << this->_Name << " Equlized to " << rhs._Class << rhs._Name << std::endl;
+	std::cout << this->_Class << this->_Name << " Equalized to " << rhs._Class << rhs._Name << std::endl;
 	this->_Name = rhs._Name;	
 	this->_Hitpoints = rhs._Hitpoints;	
 	this->_EnergyPoints = rhs._EnergyPoints;	
