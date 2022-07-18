@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:50:15 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/04/23 15:24:07 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/17 21:03:42 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Zombie* zombieHorde(int N, std::string name)
 {
 	int i;
-	std::stringstream stream[N];
+	std::stringstream stream;
 	std::string c;
 
 	Zombie* Raise = new Zombie[N]; 
@@ -24,10 +24,11 @@ Zombie* zombieHorde(int N, std::string name)
 	i = 0;
 	while (i < N)
 	{
-		stream[i] << i + 1;
-		stream[i] >> c;
+		stream << i + 1;
+		stream >> c;
 		Raise[i].set_name(name + " Num: " + c);
 		Raise[i].announce();
+		stream.clear();
 		i++;
 	}
 

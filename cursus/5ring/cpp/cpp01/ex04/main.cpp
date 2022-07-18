@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:36:03 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/05/05 14:45:26 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:57:45 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int	main(int argc, char **argv)
 	}
 
 	std::string	name = argv[1];
-	std::string 	insrt = argv[2];
-	std::string 	erase = argv[3];
+	std::string 	erase = argv[2];
+	std::string 	insrt = argv[3];
 	size_t len = erase.length();
+	size_t inlen = insrt.length();
 
 	std::ifstream 	ifs;
 
@@ -57,7 +58,7 @@ int	main(int argc, char **argv)
 		{
 			line.erase(pos, len);
 			line.insert(pos, insrt);
-			pos = line.find(erase, pos + len);
+			pos = line.find(erase, pos + inlen);
 		}
 		ofs << line << std::endl;
 	}	

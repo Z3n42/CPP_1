@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:37:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/04/27 19:39:49 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:30:17 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 HumanB::HumanB(std::string name) : _name(name)
 {
+	this->_weapon = NULL;
 }
 /* Se podría inicializar this->_weapon = NULL en el constructor, pero se comporta igual; */
 

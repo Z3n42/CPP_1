@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 16:31:58 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/04/27 19:36:51 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:26:36 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class HumanB{
 
 	private:
 		std::string 	_name;
-		Weapon		*_weapon;
+	    Weapon		*_weapon;
 	
 	public:
 		HumanB(std::string name);
