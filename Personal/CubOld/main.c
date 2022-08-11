@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/08 19:29:30 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/10 20:47:05 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	main(int argc, char **argv)
 
 	tmp.y = 0;
 	tmp.x = 0;
+	tmp.max_x = 0;
 	tmp.pos = 0;
 	tmp.ln = " ";
 	tmp.fd = open(argv[1], O_RDONLY);

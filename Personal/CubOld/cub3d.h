@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 20:18:46 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/10 20:47:27 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct s_tmp{
 	int 	y;
 	size_t	x;
+	size_t	max_x;
 	int 	fd;
 	int		pos;
 	int 	spaces;
