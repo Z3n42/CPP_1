@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -10,27 +11,42 @@
 #                                                                              #
 # **************************************************************************** #
 
-#!/usr/local/bin/python3
 import requests
 import sys
 import argparse
 import pprint
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
+def pretty_print(param_funct):
+    def mod(url, args, flag, argflag):
+        print("******* " + flag + " flag *******")
+        param_funct(url, args, flag, argflag)
+        print(" _______END_______ ")
+    return (mod)
+
+@pretty_print
 def simple_get(url, args, flag, argflag):
+    ret = []
     for value in url.values():
         if value[flag] in argflag:
-            print("******* " + value[flag] + " *******")
-            pprint.pprint(value)
-            print('\n')
+            if flag == "Name":
+                ret = value
+            else:
+                ret.append(value["Name"])
+    pprint.pprint(ret)
+    return (ret)
 
+@pretty_print
 def list_get(url, args, flag, argflag):
+    ret = []
     for value in url.values():
         lang = value[flag]
         for i in lang: 
             if i in argflag:
-                print("******* " + i + " *******")
-                pprint.pprint(value)
-                print('\n')
+                ret.append(value["Name"])
+    pprint.pprint(ret)
+    return (ret)
 
 def select_flag(url, args):
     if args.name:
@@ -52,7 +68,7 @@ def select_flag(url, args):
     if args.website:
         argflag = args.website
         flag = "Website"
-        simple_get(url, args, flag, argflag)
+        web_test(url, args, flag, argflag)
     if args.country:
         argflag = args.country
         flag = "Country"
@@ -61,10 +77,12 @@ def select_flag(url, args):
 def connect():
     url = 'https://z3n42.github.io'
     try: 
+        ret = requests.get(url)
         json = requests.get(url).json()
         return (json)
     except:
-        print(url + " has a connection problem")
+        print(url + " has a connection problem" + ret)
+        return (ret)
 
 def parser():
     parser = argparse.ArgumentParser(description='Filter Newsletter')
