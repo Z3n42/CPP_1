@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 17:46:47 by ingonzal          #+#    #+#              #
-#    Updated: 2022/08/13 13:18:49 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/13 17:00:47 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ from selenium.webdriver.common.by import By
 
 
 def test_eight_components():
-    driver = webdriver.Chrome("/Users/ingonzal/42/cdo/requests/chromedriver")
+    driver = webdriver.Chrome("./chromedriver")
 
     driver.get("https://google.es")
 
