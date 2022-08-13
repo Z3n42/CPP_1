@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 17:46:47 by ingonzal          #+#    #+#              #
-#    Updated: 2022/07/01 18:47:19 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/13 13:18:49 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,14 @@ from selenium.webdriver.common.by import By
 
 
 def test_eight_components():
-    driver = webdriver.Safari()
+    driver = webdriver.Chrome("/Users/ingonzal/42/cdo/requests/chromedriver")
 
     driver.get("https://google.es")
 
     title = driver.title
     assert title == "Google"
 
-    driver.implicitly_wait(20)
+    driver.implicitly_wait()
 
     search_box = driver.find_element(by=By.NAME, value="q")
     search_button = driver.find_element(by=By.NAME, value="btnK")
