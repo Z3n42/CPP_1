@@ -1,4 +1,0 @@
-behave
-requests
-selenium
-webdriver-manager
