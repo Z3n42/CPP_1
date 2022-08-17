@@ -48,6 +48,7 @@ def pretty_print(param_funct):
 
 @pretty_print
 def web_test(url, args, flag, argflag):
+    print("Making conection, be patient please...\n")
     ret = []
     for value in url.values():
         if value[flag] in argflag:
