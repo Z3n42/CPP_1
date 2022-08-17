@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/08/17 15:24:22 by ingonzal          #+#    #+#              #
+#    Updated: 2022/08/17 15:26:41 by ingonzal         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 # original by matt-bertoncello/Dockerfile adaptation by ingonzal
 
@@ -32,8 +43,8 @@ RUN pip install --upgrade --no-cache-dir -r /requirements.txt
 RUN rm /requirements.txt # remove requirements file from container.
 
 # copy the source code into /app and move into that directory.
-COPY ./CDO /CDO/QA
-WORKDIR /CDO/QA
+COPY ./CDO /CDO/QA/ingonzal
+WORKDIR /CDO/QA/ingonzal
 
 ## end builder stage.
 

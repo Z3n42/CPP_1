@@ -16,14 +16,48 @@ import sys
 import argparse
 import pprint
 from selenium import webdriver
-from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from pyvirtualdisplay import Display
+
+# This Script only runs inside the attached Docker enviroment
+
+def selena(url):
+    # set xvfb display since there is no GUI in docker container.
+    display = Display(visible=0, size=(800, 600))
+    display.start()
+    
+    chrome_options = Options()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.get(url)
+
+    title = driver.title
+
+    driver.quit()
+    display.stop()
+    return(title)
 
 def pretty_print(param_funct):
     def mod(url, args, flag, argflag):
-        print("******* " + flag + " flag *******")
+        print("\n******* " + flag + " flag *******\n")
         param_funct(url, args, flag, argflag)
-        print(" _______END_______ ")
+        print("\n _______END_______ \n")
     return (mod)
+
+@pretty_print
+def web_test(url, args, flag, argflag):
+    ret = []
+    for value in url.values():
+        if value[flag] in argflag:
+            title = selena(value["Website"])   
+            ret.append(value["Name"] + " : " + title)
+    if ret != []:
+        pprint.pprint(ret)
+    else:
+        print("    Don´t exist")
+    return (ret)
 
 @pretty_print
 def simple_get(url, args, flag, argflag):
@@ -34,7 +68,10 @@ def simple_get(url, args, flag, argflag):
                 ret = value
             else:
                 ret.append(value["Name"])
-    pprint.pprint(ret)
+    if ret != []:
+        pprint.pprint(ret)
+    else:
+        print("    Don´t exist")
     return (ret)
 
 @pretty_print
@@ -44,8 +81,12 @@ def list_get(url, args, flag, argflag):
         lang = value[flag]
         for i in lang: 
             if i in argflag:
-                ret.append(value["Name"])
-    pprint.pprint(ret)
+                if value["Name"] not in ret:
+                    ret.append(value["Name"])
+    if ret != []:
+        pprint.pprint(ret)
+    else:
+        print("    Don´t exist")
     return (ret)
 
 def select_flag(url, args):
