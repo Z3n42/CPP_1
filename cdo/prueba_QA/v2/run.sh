@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" = "start" ]; then
-	docker build -t qa . &&
+	docker build --platform=linux/amd64 -t qa . &&
 	printf "\ec" &&
 	printf "\n" &&
 	echo "Run \"./script.py -[flag] [Argument]\" or Run \"behave\"" &&

@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 15:24:22 by ingonzal          #+#    #+#              #
-#    Updated: 2022/08/18 12:25:40 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/18 13:12:48 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ RUN apt-get update && \
 	# CHROMEVER=$(google-chrome --product-version | grep -o "[^\.]*\.[^\.]*\.[^\.]*") && \
     # DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROMEVER") && \
 # Specific chrome version better with manual chromedriver handler
-	apt-get install -y google-chrome-stable=104.0.5112.101-1 && \
+    apt-get install -y google-chrome-stable=104.0.5112.101-1 && \
 # Manual chromedriver version better at unknown arquitecture
     DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_104.0.5112") && \
     wget -q --continue -P /chromedriver "http://chromedriver.storage.googleapis.com/$DRIVERVER/chromedriver_linux64.zip" && \
