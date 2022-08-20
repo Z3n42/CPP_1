@@ -6,11 +6,13 @@
 #    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 15:24:22 by ingonzal          #+#    #+#              #
-#    Updated: 2022/08/18 13:12:48 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/19 16:16:06 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # original by matt-bertoncello/Dockerfile adaptation by ingonzal
+
+### Selenium don't work at arm arrquitecture ###
 
 # define base image as python slim-buster.
 FROM python:3.7-slim-buster as base
@@ -34,7 +36,7 @@ RUN apt-get update && \
     # DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROMEVER") && \
 # Specific chrome version better with manual chromedriver handler
     apt-get install -y google-chrome-stable=104.0.5112.101-1 && \
-# Manual chromedriver version better at unknown arquitecture
+# Manual chromedriver version better at unknown os
     DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_104.0.5112") && \
     wget -q --continue -P /chromedriver "http://chromedriver.storage.googleapis.com/$DRIVERVER/chromedriver_linux64.zip" && \
     unzip /chromedriver/chromedriver* -d /chromedriver
@@ -68,4 +70,5 @@ FROM builder
 # default entry point.
 # CMD ["python3", "script.py"]
 CMD ["python3", "script.py"]
+ENTRYPOINT "bash"
 ## end base stage.

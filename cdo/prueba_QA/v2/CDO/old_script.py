@@ -20,7 +20,6 @@ from pyvirtualdisplay import Display
 
 # This Script only runs inside the attached Docker enviroment
 
-
 def selena(url):
     # set xvfb display since there is no GUI in docker container.
     display = Display(visible=0, size=(800, 600))
@@ -40,92 +39,91 @@ def selena(url):
     return(title)
 
 def pretty_print(param_funct):
-    def mod(data, args, flag, argflag):
-        print("\n****** " + flag + " flag ******\n")
-        pprint.pprint(param_funct(data, args, flag, argflag))
+    def mod(url, args, flag, argflag):
+        print("\n******* " + flag + " flag *******\n")
+        param_funct(url, args, flag, argflag)
         print("\n _______END_______ \n")
     return (mod)
 
 @pretty_print
-def web_test(data, args, flag, argflag):
+def web_test(url, args, flag, argflag):
     print("Making conection, be patient please...\n")
     ret = []
-    for value in data.values():
+    for value in url.values():
         if value[flag] in argflag:
             title = selena(value["Website"])   
             ret.append(value["Name"] + " : " + title)
-    if ret == []:
-        ret = "    Don´t exist!!!  "
+    if ret != []:
+        pprint.pprint(ret)
+    else:
+        print("    Don´t exist")
     return (ret)
 
 @pretty_print
-def simple_get(data, args, flag, argflag):
+def simple_get(url, args, flag, argflag):
     ret = []
-    for value in data.values():
+    for value in url.values():
         if value[flag] in argflag:
             if flag == "Name":
                 ret = value
             else:
                 ret.append(value["Name"])
-    if ret == []:
-        ret = "    Don´t exist!!!  "
+    if ret != []:
+        pprint.pprint(ret)
+    else:
+        print("    Don´t exist")
     return (ret)
 
 @pretty_print
-def list_get(data, args, flag, argflag):
+def list_get(url, args, flag, argflag):
     ret = []
-    for value in data.values():
+    for value in url.values():
         lang = value[flag]
         for i in lang: 
             if i in argflag:
                 if value["Name"] not in ret:
                     ret.append(value["Name"])
-    if ret == []:
-        ret = "    Don´t exist!!!  "
+    if ret != []:
+        pprint.pprint(ret)
+    else:
+        print("    Don´t exist")
     return (ret)
 
-class Qa:
-    def __init__(self, data, args):
-        self.data = data
-        self.args = args
-
-    def select_flag(self):
-        if self.args.name:
-            argflag = self.args.name
-            flag = "Name"
-            ret = simple_get(self.data, self.args, flag, argflag)
-        if self.args.type:
-            argflag = self.args.type
-            flag = "Type"
-            ret = simple_get(self.data, self.args, flag, argflag)
-        if self.args.language:
-            argflag = self.args.language
-            flag = "Language"
-            ret = list_get(self.data, self.args, flag, argflag)
-        if self.args.owner:
-            argflag = self.args.owner
-            flag = "Owner"
-            ret = simple_get(self.data, self.args, flag, argflag)
-        if self.args.website:
-            argflag = self.args.website
-            flag = "Website"
-            ret = web_test(self.data, self.args, flag, argflag)
-        if self.args.country:
-            argflag = self.args.country
-            flag = "Country"
-            ret = simple_get(self.data, self.args, flag, argflag)
-        return (ret)
+def select_flag(url, args):
+    if args.name:
+        argflag = args.name
+        flag = "Name"
+        simple_get(url, args, flag, argflag)
+    if args.type:
+        argflag = args.type
+        flag = "Type"
+        simple_get(url, args, flag, argflag)
+    if args.language:
+        argflag = args.language
+        flag = "Language"
+        list_get(url, args, flag, argflag)
+    if args.owner:
+        argflag = args.owner
+        flag = "Owner"
+        simple_get(url, args, flag, argflag)
+    if args.website:
+        argflag = args.website
+        flag = "Website"
+        web_test(url, args, flag, argflag)
+    if args.country:
+        argflag = args.country
+        flag = "Country"
+        simple_get(url, args, flag, argflag)
 
 def connect():
     url = 'https://z3n42.github.io'
     try: 
-       requests.get(url)
-    except:
-        print("\n" + url + " has a connection problem\n")
-        exit()
-    else:
+        ret = requests.get(url)
         json = requests.get(url).json()
         return (json)
+    except:
+        print(url + " has a connection problem" + ret)
+        return (ret)
 
 def parser():
     parser = argparse.ArgumentParser(description='Filter Newsletter')
@@ -140,7 +138,6 @@ def parser():
     return (args)
 
 if __name__ == "__main__":
-    data = connect()
+    url = connect()
     args = parser()
-    init = Qa(data, args)
-    init.select_flag()
+    select_flag(url, args)
