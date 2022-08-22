@@ -18,7 +18,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from pyvirtualdisplay import Display
 
-# This Script only runs inside the attached Docker enviroment
+# selenium part is made to works inside the attached Docker enviroment because xvfb dependence
 
 
 def selena(url):
@@ -84,48 +84,48 @@ def list_get(data, args, flag, argflag):
         ret = "    Don´t exist!!!  "
     return (ret)
 
-class Qa:
-    def __init__(self, data, args):
+class Qa(object):
+    def __init__(self, data, args, ret):
         self.data = data
         self.args = args
+        self.ret = ret
 
     def select_flag(self):
         if self.args.name:
             argflag = self.args.name
             flag = "Name"
-            ret = simple_get(self.data, self.args, flag, argflag)
+            self.ret = simple_get(self.data, self.args, flag, argflag)
         if self.args.type:
             argflag = self.args.type
             flag = "Type"
-            ret = simple_get(self.data, self.args, flag, argflag)
+            self.ret = simple_get(self.data, self.args, flag, argflag)
         if self.args.language:
             argflag = self.args.language
             flag = "Language"
-            ret = list_get(self.data, self.args, flag, argflag)
+            self.ret = list_get(self.data, self.args, flag, argflag)
         if self.args.owner:
             argflag = self.args.owner
             flag = "Owner"
-            ret = simple_get(self.data, self.args, flag, argflag)
+            self.ret = simple_get(self.data, self.args, flag, argflag)
         if self.args.website:
             argflag = self.args.website
             flag = "Website"
-            ret = web_test(self.data, self.args, flag, argflag)
+            self.ret = web_test(self.data, self.args, flag, argflag)
         if self.args.country:
             argflag = self.args.country
             flag = "Country"
-            ret = simple_get(self.data, self.args, flag, argflag)
-        return (ret)
+            self.ret = simple_get(self.data, self.args, flag, argflag)
+        return (self.ret)
 
 def connect():
     url = 'https://z3n42.github.io'
     try: 
-       requests.get(url)
+       ret = requests.get(url)
     except:
         print("\n" + url + " has a connection problem\n")
         exit()
     else:
-        json = requests.get(url).json()
-        return (json)
+        return (ret)
 
 def parser():
     parser = argparse.ArgumentParser(description='Filter Newsletter')
@@ -140,7 +140,9 @@ def parser():
     return (args)
 
 if __name__ == "__main__":
-    data = connect()
+    data = connect().json()
+    print("HOLA")
     args = parser()
-    init = Qa(data, args)
-    init.select_flag()
+    print(args)
+    init = Qa(data, args, None)
+    ret = init.select_flag()
