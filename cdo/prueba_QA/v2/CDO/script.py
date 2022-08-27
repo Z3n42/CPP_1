@@ -57,8 +57,11 @@ def web_test(data, args, flag, argflag):
     ret = []
     for value in data.values():
         if value[flag] in argflag:
-            title = selena(value["Website"])   
-            ret.append(value["Name"] + " : " + title)
+            try :
+                title = selena(value["Website"])   
+                ret.append(value["Name"] + " : " + title)
+            except FileNotFoundError:
+                ret.append("Selenium part is made to works inside the attached Docker enviroment because the xvfb dependence")
     if ret == []:
         ret = "Don´t exist!!!"
     return (ret)
