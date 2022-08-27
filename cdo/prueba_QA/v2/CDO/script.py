@@ -12,6 +12,7 @@
 # **************************************************************************** #
 
 import requests
+import re
 import argparse
 import pprint
 from selenium import webdriver
@@ -39,13 +40,17 @@ def selena(url):
     display.stop()
     return(title)
 
+# Decoration function 
 def pretty_print(param_funct):
     def mod(data, args, flag, argflag):
+        ret = param_funct(data, args, flag, argflag)
         print("\n****** " + flag + " flag ******\n")
-        pprint.pprint(param_funct(data, args, flag, argflag))
+        pprint.pprint(ret)
         print("\n _______END_______ \n")
+        return (ret)
     return (mod)
 
+# This function uses Selenium to get website title
 @pretty_print
 def web_test(data, args, flag, argflag):
     print("Making conection, be patient please...\n")
@@ -55,9 +60,10 @@ def web_test(data, args, flag, argflag):
             title = selena(value["Website"])   
             ret.append(value["Name"] + " : " + title)
     if ret == []:
-        ret = "    Don´t exist!!!  "
+        ret = "Don´t exist!!!"
     return (ret)
 
+# This function gets almost all cases
 @pretty_print
 def simple_get(data, args, flag, argflag):
     ret = []
@@ -68,9 +74,10 @@ def simple_get(data, args, flag, argflag):
             else:
                 ret.append(value["Name"])
     if ret == []:
-        ret = "    Don´t exist!!!  "
+        ret.append("Don´t exist!!!")
     return (ret)
 
+# This function get list values
 @pretty_print
 def list_get(data, args, flag, argflag):
     ret = []
@@ -81,9 +88,10 @@ def list_get(data, args, flag, argflag):
                 if value["Name"] not in ret:
                     ret.append(value["Name"])
     if ret == []:
-        ret = "    Don´t exist!!!  "
+        ret.append("Don´t exist!!!")
     return (ret)
 
+# Main object where recieve the parsed arguments and call to the proper function
 class Qa(object):
     def __init__(self, data, args, ret):
         self.data = data
@@ -117,6 +125,7 @@ class Qa(object):
             self.ret = simple_get(self.data, self.args, flag, argflag)
         return (self.ret)
 
+# Connnect with the api
 def connect():
     url = 'https://z3n42.github.io'
     try: 
@@ -127,6 +136,7 @@ def connect():
     else:
         return (ret)
 
+# Argument parsing
 def parser():
     parser = argparse.ArgumentParser(description='Filter Newsletter')
     group = parser.add_mutually_exclusive_group(required=True)
@@ -139,10 +149,9 @@ def parser():
     args=parser.parse_args()
     return (args)
 
+# Main
 if __name__ == "__main__":
     data = connect().json()
-    print("HOLA")
     args = parser()
-    print(args)
     init = Qa(data, args, None)
     ret = init.select_flag()

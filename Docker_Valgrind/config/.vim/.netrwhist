@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/Users/lugonzal/My_vimrc'
+let g:netrw_dirhist_0='/Users/lugonzal/Cursus_42/CPP/mod_04/ex00'
+let g:netrw_dirhist_9='/Users/lugonzal/Cursus_42/CPP/mod_03/ex03'
+let g:netrw_dirhist_8='/Users/lugonzal/Cursus_42/CPP/mod_02/ex00'
+let g:netrw_dirhist_7='/Users/lugonzal/Cursus_42/CPP/mod_02/ex03'
+let g:netrw_dirhist_6='/Users/lugonzal/Cursus_42/CPP/mod_02'
+let g:netrw_dirhist_5='/Users/lugonzal/Cursus_42/CPP'
+let g:netrw_dirhist_4='/Users/lugonzal/Cursus_42/CPP/mod_03'
+let g:netrw_dirhist_3='/Users/lugonzal/Cursus_42/CPP/mod_03/ex00'
+let g:netrw_dirhist_2='/Users/lugonzal/Cursus_42/CPP/mod_02/ex03'
