@@ -59,3 +59,4 @@ a.out
 *.a
 *.o
 __pycache__
+*cpython-39.pyc
