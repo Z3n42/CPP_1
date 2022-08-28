@@ -11,984 +11,2437 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~Msle0~/\<iostream\>
+~MSle0~/url
 
 # Last Substitute Search Pattern:
-~MSle0&A
+~MSle0&url
 
 # Last Substitute String:
-$C
+$data
 
 # Command Line History (newest to oldest):
 :wq
-|2,0,1660232035,,"wq"
-:Termdebug ./Lukas
-|2,0,1660231758,,"Termdebug ./Lukas"
-:colorscheme gruvbox
-|2,0,1660230774,,"colorscheme gruvbox"
-:colorscheme seoul256
-|2,0,1660230768,,"colorscheme seoul256"
-:Termdebug ./main.cpp
-|2,0,1660230709,,"Termdebug ./main.cpp"
-:make re
-|2,0,1660230703,,"make re"
-:Termdebu
-|2,0,1660230700,,"Termdebu"
-:q!
-|2,0,1660151125,,"q!"
+|2,0,1661627132,,"wq"
 :w
-|2,0,1660149415,,"w"
-:w!
-|2,0,1660149368,,"w!"
-:colorscheme se
-|2,0,1660148131,,"colorscheme se"
-:%s/A/C/gc
-|2,0,1660147524,,"%s/A/C/gc"
-:%s/A/B/gc
-|2,0,1660147506,,"%s/A/B/gc"
-:wq!
-|2,0,1660147487,,"wq!"
-:Termdebug ./Serialize
-|2,0,1660144565,,"Termdebug ./Serialize"
-:Termdebug Serialize
-|2,0,1660144491,,"Termdebug Serialize"
-:Termdebug Data.cpp
-|2,0,1660144474,,"Termdebug Data.cpp"
-:make
-|2,0,1660144386,,"make"
-:Termdebug ./Form
-|2,0,1659281347,,"Termdebug ./Form"
-:packadd termdebug
-|2,0,1659281339,,"packadd termdebug"
-::wq
-|2,0,1659267286,,":wq"
-:t
-|2,0,1659267196,,"t"
-:ter zsh
-|2,0,1659266890,,"ter zsh"
-:ter
-|2,0,1659266879,,"ter"
-:vert ter zsh
-|2,0,1659266343,,"vert ter zsh"
-:vert ter
-|2,0,1659266332,,"vert ter"
+|2,0,1661627129,,"w"
+:q!
+|2,0,1661625999,,"q!"
 :Termdebug
-|2,0,1658343224,,"Termdebug"
+|2,0,1661625915,,"Termdebug"
+:q
+|2,0,1661625878,,"q"
+:packadd termdebug
+|2,0,1661616918,,"packadd termdebug"
+:q1
+|2,0,1661614311,,"q1"
+:Q
+|2,0,1661603987,,"Q"
+:W
+|2,0,1661537247,,"W"
+:wqa
+|2,0,1661537755,,"wqa"
+:%s/3
+|2,0,1661537365,,"%s/3"
 ::w
-|2,0,1658343221,,":w"
-:tabe Bureaucrat.cpp
-|2,0,1658342795,,"tabe Bureaucrat.cpp"
-:tabe ../ex01/main.cpp
-|2,0,1658342746,,"tabe ../ex01/main.cpp"
-:colorscheme seoul256-light
-|2,0,1658342148,,"colorscheme seoul256-light"
-:tabe ShrubberyCreationForm.hpp
-|2,0,1658339207,,"tabe ShrubberyCreationForm.hpp"
-:tabe ShrubberyCreationForm.cpp
-|2,0,1658339205,,"tabe ShrubberyCreationForm.cpp"
-:tabe PresidentialPardonForm.hpp
-|2,0,1658338030,,"tabe PresidentialPardonForm.hpp"
-:tabe PresidentialPardonForm.cpp
-|2,0,1658338025,,"tabe PresidentialPardonForm.cpp"
-:tabe Form.cpp
-|2,0,1658333690,,"tabe Form.cpp"
-:tabe
-|2,0,1658333683,,"tabe"
-:tabe Form.hpp
-|2,0,1658333574,,"tabe Form.hpp"
-:Termdebug 
-|2,0,1658333496,,"Termdebug "
-:colorscheme darkblue
-|2,0,1658331762,,"colorscheme darkblue"
-:colorscheme default
-|2,0,1658331757,,"colorscheme default"
-:colorscheme zellner
-|2,0,1658331738,,"colorscheme zellner"
-:termd
-|2,0,1658331463,,"termd"
-:termdeb
-|2,0,1658331325,,"termdeb"
-:PlugInstall
-|2,0,1658331115,,"PlugInstall"
-:source /root/.vimrc
-|2,0,1658330804,,"source /root/.vimrc"
-:source /root/
-|2,0,1658330796,,"source /root/"
-:PlugS
-|2,0,1658330733,,"PlugS"
+|2,0,1661530860,,":w"
+:tabe cub3d.h
+|2,0,1661530806,,"tabe cub3d.h"
+:s
+|2,0,1661426895,,"s"
+:wÃ§Ã§
+|2,0,1661426582,,"wÃ§Ã§"
+:nohl
+|2,0,1661339432,,"nohl"
+:wÃ§
+|2,0,1661187512,,"wÃ§"
+:qa
+|2,0,1661176756,,"qa"
+::q!
+|2,0,1661110424,,":q!"
+:5
+|2,0,1661106111,,"5"
+:%s/8/9/gc
+|2,0,1661103045,,"%s/8/9/gc"
+:Q!
+|2,0,1661104316,,"Q!"
+:1
+|2,0,1661104314,,"1"
+:e
+|2,0,1661096399,,"e"
+:Stdheader
+|2,0,1661084567,,"Stdheader"
+:qz
+|2,0,1661023566,,"qz"
+::nohl
+|2,0,1661009788,,":nohl"
+:%s/url/data/gc
+|2,0,1661006468,,"%s/url/data/gc"
+:%s/url/data/qa
+|2,0,1661006455,,"%s/url/data/qa"
+:bd 1
+|2,0,1660927112,,"bd 1"
+:bd Makefile
+|2,0,1660927106,,"bd Makefile"
+:qa!
+|2,0,1660926588,,"qa!"
+:w!
+|2,0,1660841028,,"w!"
+:Wq
+|2,0,1660756908,,"Wq"
+:wc
+|2,0,1660665145,,"wc"
+:_wq
+|2,0,1660656826,,"_wq"
+:/s/sand
+|2,0,1660572835,,"/s/sand"
+:s/5
+|2,0,1660503029,,"s/5"
+:nohll
+|2,0,1660237910,,"nohll"
+:2
+|2,0,1660214796,,"2"
+:WQ
+|2,0,1660158220,,"WQ"
+:NOHL
+|2,0,1660158202,,"NOHL"
+:!q
+|2,0,1659980274,,"!q"
+:ew
+|2,0,1659897888,,"ew"
+:%s/line/ln/gc
+|2,0,1659892714,,"%s/line/ln/gc"
+:%s/data/tmp/gc
+|2,0,1659892425,,"%s/data/tmp/gc"
+:%s/order/pos/gc
+|2,0,1659892241,,"%s/order/pos/gc"
+:tabe main.c
+|2,0,1659889529,,"tabe main.c"
+::W
+|2,0,1659888791,,":W"
+:w\
+|2,0,1659888825,,"w\\"
 
 # Search String History (newest to oldest):
-? \<iostream\>
-|2,1,1660147557,,"\\<iostream\\>"
-? A
-|2,1,1660147524,,"A"
-?/Form
-|2,1,1658340970,47,"Form"
-?/Fo
-|2,1,1658340967,47,"Fo"
-?/operator
-|2,1,1658337689,47,"operator"
-?/21G
-|2,1,1658333506,47,"21G"
+? 3
+|2,1,1661537365,,"3"
+? 8
+|2,1,1661103045,,"8"
+? url
+|2,1,1661006468,,"url"
+??5
+|2,1,1660564439,63,"5"
+? 5
+|2,1,1660503029,,"5"
+? \*\*\*\*\*\*")
+|2,1,1660316201,,"\\*\\*\\*\\*\\*\\*\")"
+? line
+|2,1,1659892714,,"line"
+? data
+|2,1,1659892425,,"data"
+? order
+|2,1,1659892241,,"order"
+? mat
+|2,1,1658940604,,"mat"
+? Animal
+|2,1,1657473918,,"Animal"
+? Cat
+|2,1,1657467244,,"Cat"
+? Dog
+|2,1,1657464087,,"Dog"
+? DOG
+|2,1,1657463625,,"DOG"
+? \<Zombie\>
+|2,1,1650717132,,"\\<Zombie\\>"
+? enter
+|2,1,1650533733,,"enter"
+? \<ft_add\>
+|2,1,1650294100,,"\\<ft_add\\>"
+? \<c\>
+|2,1,1649587655,,"\\<c\\>"
+? \<AR\>
+|2,1,1649587579,,"\\<AR\\>"
+? \<g3\>
+|2,1,1649438637,,"\\<g3\\>"
+? \<6\>
+|2,1,1648382461,,"\\<6\\>"
+?  test
+|2,1,1648377660,," test"
+? \<addContact\>
+|2,1,1648236126,,"\\<addContact\\>"
+? \<contacts\>
+|2,1,1648235962,,"\\<contacts\\>"
+? \<fillContact\>
+|2,1,1648235840,,"\\<fillContact\\>"
+? \<ADD\>
+|2,1,1648235764,,"\\<ADD\\>"
+? \<printContactTable\>
+|2,1,1648235654,,"\\<printContactTable\\>"
+? \<inputIndex\>
+|2,1,1648235536,,"\\<inputIndex\\>"
+? \<3\>
+|2,1,1647532774,,"\\<3\\>"
+?/*
+|2,1,1646939304,47,"*"
+? \<CFLAGSSAN\>
+|2,1,1644336213,,"\\<CFLAGSSAN\\>"
+? \<S\>
+|2,1,1643741536,,"\\<S\\>"
+? \<RM\>
+|2,1,1642527077,,"\\<RM\\>"
+? ')
+|2,1,1641298637,,"')"
+? count
+|2,1,1641294675,,"count"
+? \*\*));
+|2,1,1640866555,,"\\*\\*));"
+?/radius
+|2,1,1640698596,47,"radius"
+? \<int\>
+|2,1,1640695159,,"\\<int\\>"
+? s[i]
+|2,1,1640178728,,"s[i]"
+? counter
+|2,1,1640114539,,"counter"
+? radius
+|2,1,1639228833,,"radius"
+? circle
+|2,1,1639228754,,"circle"
+? \<include\>
+|2,1,1639059658,,"\\<include\\>"
+? \<res\>
+|2,1,1639049540,,"\\<res\\>"
+? \<ft_brasenham\>
+|2,1,1638988214,,"\\<ft_brasenham\\>"
+? \<argv\>
+|2,1,1638436627,,"\\<argv\\>"
+? \<addprefix\>
+|2,1,1638302578,,"\\<addprefix\\>"
+? ph->stat 
+|2,1,1638023227,,"ph->stat "
+? ph->stat
+|2,1,1638023145,,"ph->stat"
+? \<eaten\>
+|2,1,1637956642,,"\\<eaten\\>"
 
 # Expression History (newest to oldest):
 
 # Input Line History (newest to oldest):
+@/Users/ingonzal/42/cursus/push_swap/iqq
+|2,3,1629478177,,"/Users/ingonzal/42/cursus/push_swap/iqq"
+@/Users/ingonzal/42/cursus/push_swap/
+|2,3,1629472237,,"/Users/ingonzal/42/cursus/push_swap/"
 
 # Debug Line History (newest to oldest):
 
 # Registers:
-"0	LINE	0
-		identify(holder);
-|3,0,0,1,1,0,1660149392,"	identify(holder);"
+""0	LINE	0
+	COPY /Users/ingonzal/.oh-my* /root
+|3,1,0,1,1,0,1661612799,"COPY /Users/ingonzal/.oh-my* /root"
 "1	LINE	0
-	
-|3,0,1,1,1,0,1660149380,""
+	    run
+|3,0,1,1,1,0,1661604214,"    run"
 "2	LINE	0
-		identify(new C);
-|3,0,2,1,1,0,1660149338,"	identify(new C);"
+	            try:
+|3,0,2,1,1,0,1661600746,"            try:"
 "3	LINE	0
-		}	
-|3,0,3,1,1,0,1660148168,"	}	"
+	            except FileNotFoundError:
+	                self.ret = "Selenium part is made to works inside the attached Docker enviroment because xvfb dependence"
+|3,0,3,1,2,0,1661600678,"            except FileNotFoundError:","                self.ret = \"Selenium part is made to works inside the attached Docker enviroment because xvfb dependence\""
 "4	LINE	0
-		catch (std::bad_cast& e) {
-|3,0,4,1,1,0,1660148168,"	catch (std::bad_cast& e) {"
-"5	LINE	0
-		srand(time(NULL));
-|3,0,5,1,1,0,1660147811,"	srand(time(NULL));"
+	                print("selenium part is made to works inside the attached Docker enviroment because xvfb dependence")
+|3,0,4,1,1,0,1661600477,"                print(\"selenium part is made to works inside the attached Docker enviroment because xvfb dependence\")"
+"5	CHAR	0
+	 
+|3,0,5,0,1,0,1661536832," "
 "6	LINE	0
-		std::cout << base << std::endl;
-|3,0,6,1,1,0,1660147807,"	std::cout << base << std::endl;"
+	
+|3,0,6,1,1,0,1661512975,""
 "7	LINE	0
-		base = rand() % 2;
-|3,0,7,1,1,0,1660147799,"	base = rand() % 2;"
+	#Country Flag
+	@given ('The user is searching a list of newapapers by country')
+	def step_impl(context):
+	    data = connect().json()
+	    args = Namespace(name=None, type=None, language=None, owner=None, website=None, country=[" "])
+	    context.parser = Qa(data, args, None)
+	    assert (context.parser.args.owner)
+	
+	@when ('The user searches for the newspapers published at "{arg}"')
+	def step_impl(context, arg):
+	    data = connect().json()
+	    context.parser.args.country = arg
+	    ret = context.parser.select_flag()
+	    assert_that(context.parser.args.country, equal_to(arg))
+	
+	@then ('the newspaper lis is "{answer}"')
+	def step_impl(context, answer):
+	    ret = answer.split(",")
+	    assert_that(context.parser.ret[0], equal_to(ret[0]))
+	
+|3,0,7,1,20,0,1661512963,"#Country Flag","@given ('The user is searching a list of newapapers by country')","def step_impl(context):","    data = connect().json()","    args = Namespace(name=None, type=None, language=None, owner=None, website=None, country=[\" \"])","    context.parser = Qa(data, args, None)","    assert (context.parser.args.owner)","","@when ('The user searches for the newspapers published at \"{arg}\"')","def step_impl(context, arg):",>29
+|<"    data = connect().json()","    context.parser.args.country = arg","    ret = context.parser.select_flag()","    assert_that(context.parser.args.country, equal_to(arg))","","@then ('the newspaper lis is \"{answer}\"')","def step_impl(context, answer):","    ret = answer.split(\",\")","    assert_that(context.parser.ret[0], equal_to(ret[0]))",""
 "8	LINE	0
-			  C
-|3,0,8,1,1,0,1660147387,"		  C"
+	
+|3,0,8,1,1,0,1661512821,""
 "9	LINE	0
-			  B \
-|3,0,9,1,1,0,1660147386,"		  B \\"
-""-	CHAR	0
-	~
-|3,1,36,0,1,0,1660230744,"~"
-
-# global variables:
+			Given User input a country
+|3,0,9,1,1,0,1661511960,"		Given User input a country"
+"a	CHAR	0
+	aa€kb€kb€ýa€ýa€ýa€ýa€ýawwwaÂº€ýa€ý,€ý.€ý,€ý.€ý,€ý.€ü €ý,€ü €ý.€ü@€ý,€ü@€ý.€ý,€ý.
+|3,0,10,0,1,0,1618245806,"aa€kb€kb€ýa€ýa€ýa€ýa€ýawwwaÂº€ýa€ý,€ý.€ý,€ý.€ý,€ý.€ü €ý,€ü €ý.€ü@€ý,€ü@€ý.€ý,€ý."
+"q	CHAR	0
+	5436
+<€ý,€ý. nt€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kl€kl€kd€kd€kd€kd€ku€ku€ku€kl€kl€kl€kl€kl€kli€kb_€kb->€kd€kl€kb->€kd€kl€kl€kr€kb->€kd€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kb=>€kb€kb->€kd€kd€kd€ku€kl€ku€kl€kd€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kb->€kd€kd€kr€kb->€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kb->€kd€kd€kl€kl€kl€kl€kl€kl€kl€kl€kl€kb=€kb->€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€kl€kl€kr€kb->€kd€kd€kd€kd€kd€kd:w nt€ku€ku€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kri€kr;:w nt€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kri€kb€kd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kb->€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€kl€kl€kl€kl€kb-€kb:w€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kugxxyugcc:w59gg€kr€kr€kr€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý.€ý,€ý.yyp€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kri€kb€kb€kb€kbtime:w nrt:nohl nt€ku€ku€kd€ku€kugg€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kli*€ku€ku€ku€ku€ku€ku€ku€kuyyp€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kri€kb€kb€kb€kbtime:w€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kl€kl€klpuiph->€kd€kl€kl€kl€kl€kbuphuiph->€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€kl€kl€kl€kl€kbu->€kd€kduu€kd€kd€kd€kd€kd€kd€kd€ku€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kui-€kbph->€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kl€kl€kd€kl€klph->€ý,€ý.€ý,€ý.i€kb€kb€kb€kb€kbpopst€kl€kl€kb€kr€kr€kd€kb€kb€kb€kbpost:w€ý,€ý.i€kl€kbu€kd€ku€ku€ku€kl€kl€kl€kl€kbi€kr€kb€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kr€kb€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kr€kb€kd€kr€kb:w€ýL€ýL€ýL€ýL€ýK€ýK€ýK€ýK€ýK€ýK€ýKxituu€ýK€ýK€ýK€ýK€ýK€ýK€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý.€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý.0i€kr€kr€kr€kr€kr€kr€kr0:w€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ý,€ý. nt€kd€kd€kd€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ý,€ý.gcc:w25gg€kr€kd€ku€kr€kr€kr€kr€kr€kr€kri€kbi:w€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kugcc:w€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kugc€kd€kd€kd€kdgc€kd€kr€kr€kr€kuo€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kdgcciugcc:w51gg€ku€kr€ýa€kd€kugcc€ku:w€ku€ku€kd€kd€ku€ku€ku€kugc€kd€kd€kd€kd€kdgg€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kuuuuuuuuuuu:w€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ku€ku€ku€ku€kudd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kru€kr€kri€kb€kb€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kb€kb€kb€ku€ku€kb€kbi€kbtid€kd€kd€kd€kd€kd€ýagcc€kd:w€kd€kd€kd€kd€kd€ku€ku€kr€kr€kr€kr€kri€kl€kb€kb.€kd€kr€kb€kb.€kd€kr€kb€kb.€kr€kr€kr€kr€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kb€kb.€kd€kl€kl€kl€kl€kl€kb€kb.€kd€kl€kl€kb€kb.€kd€kd€kr€kr€kr€kb€kb.€kN€kr€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kb€kb.€kd€kd€kl€kl€kl€kl€kl€kl€kl€kl€kl€kl€kl€kl€kr€kr€kr€kb€kb.€kd€kd€kd:w€kd€kr€krou€kb€kri€kb€kb.€kui&€kl€kb:w€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL nt€ýL€ýL€ýL€ýL€ýL€ýK€ýK€ýK€ýK€ýK€ý,€ý.€ýL€ýL€ýL€ýL€ýL€ýL€kl€ý,€ý.q€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ý,€ý. nt€ku€ku€ku€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€ý,€ý.€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý.i€kb1:w€ku€ku€ku€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý. nt€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kl€kl€kl€kli€kb€kb€kb€kbvoid * ntq:w m nt€ku€ku€kd€ku€kd€kr€kr€kruuuuuuuu:w nt€kd
+|3,0,26,0,1,0,1643908642,>5435
+|<"€ý,€ý. nt€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kl€kl€kd€kd€kd€kd€ku€ku€ku€kl€kl€kl€kl€kl€kli€kb_€kb->€kd€kl€kb->€kd€kl€kl€kr€kb->€kd€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kb=>€kb€kb->€kd€kd€kd€ku€kl€ku€kl€kd€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kb->€kd€kd€kr€kb->€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kb->€kd€kd€kl€kl€kl€kl€kl€kl€kl€kl€kl€kb=€kb->€kd€kd€kd€kd€kd€kd€kd€kd€k
+|<u€ku€ku€ku€kl€kl€kr€kb->€kd€kd€kd€kd€kd€kd:w nt€ku€ku€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kri€kr;:w nt€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kri€kb€kd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kb->€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€kl€kl€kl€kl€kb-€
+|<kb:w€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kugxxyugcc:w59gg€kr€kr€kr€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý.€ý,€ý.yyp€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kri€kb€kb€kb€kbtime:w nrt:nohl nt€ku€ku€kd€ku€kugg€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kli*€ku€ku€ku€ku€ku€ku€ku€kuyyp€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kri€kb€kb€kb€kbtime:w€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd
+|<€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kl€kl€klpuiph->€kd€kl€kl€kl€kl€kbuphuiph->€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€k
+|<d€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€kl€kl€kl€kl€kbu->€kd€kduu€kd€kd€kd€kd€kd€kd€kd€ku€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kui-€kbph->€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kl€kl€kd€kl€klph->€ý,€ý.€ý,€ý.i€kb€kb€kb€kb€kbpopst€kl€kl€kb€kr€kr€kd€kb€kb€kb€kbpost:w€ý,€ý.i€kl€kbu€kd€ku€ku€ku€kl€kl€kl€kl€kbi€kr€kb€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kr€kb€ku€ku€ku€ku€ku€ku€ku€ku€ku€k
+|<u€ku€ku€kr€kb€kd€kr€kb:w€ýL€ýL€ýL€ýL€ýK€ýK€ýK€ýK€ýK€ýK€ýKxituu€ýK€ýK€ýK€ýK€ýK€ýK€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý.€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý.0i€kr€kr€kr€kr€kr€kr€kr0:w€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ý,€ý. nt€kd€kd€kd€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ý,€ý.gcc:w25gg€kr€kd€ku€kr€kr€kr€kr€kr€kr€kri€kbi:w€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd
+|<€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kugcc:w€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kugc€kd€kd€kd€kdgc€kd€kr€kr€kr€kuo€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€kd€kd€ku
+|<€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kdgcciugcc:w51gg€ku€kr€ýa€kd€kugcc€ku:w€ku€ku€kd€kd€ku€ku€ku€kugc€kd€kd€kd€kd€kdgg€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kuuuuuuuuuuu:w€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ku€ku€ku
+|<€ku€kudd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kru€kr€kri€kb€kb€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kb€kb€kb€ku€ku€kb€kbi€kbtid€kd€kd€kd€kd€kd€ýagcc€kd:w€kd€kd€kd€kd€kd€ku€ku€kr€kr€kr€kr€kri€kl€kb€kb.€kd€kr€kb€kb.€kd€kr€kb€kb.€kr€kr€kr€kr€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kl€kb€kb.€kd€kl€kl€kl€kl€kl€kb€kb.€kd€kl€kl€kb€kb.€kd€kd€kr
+|<€kr€kr€kb€kb.€kN€kr€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€kd€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kb€kb.€kd€kd€kl€kl€kl€kl€kl€kl€kl€kl€kl€kl€kl€kl€kr€kr€kr€kb€kb.€kd€kd€kd:w€kd€kr€krou€kb€kri€kb€kb.€kui&€kl€kb:w€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL nt€ýL€ýL€ýL€ýL€ýL€ýK€ýK€ýK€ýK€ýK€ý,€ý.€ýL€ýL€ýL€ýL€ýL€ýL€kl€ý,€ý.q€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýL€ýL€ý
+|<L€ýL€ýL€ýL€ýL€ýL€ýL€ý,€ý. nt€ku€ku€ku€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€kd€kd€kd€kd€kd€ý,€ý.€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý.i€kb1:w€ku€ku€ku€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýL€ýK€ýK€ýK€ýK€ýK€ýK€ýK€ý,€ý. nt€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€kl€kl€kl€kli€kb€kb€kb€kbvoid * ntq:w m nt€ku
+|<€ku€kd€ku€kd€kr€kr€kruuuuuuuu:w nt€kd"
+"-	CHAR	0
+	&& line[i] != '\n'
+|3,0,36,0,1,0,1661537271,"&& line[i] != '\\n'"
 
 # File marks:
-'0  35  8  /tmp/mod_07/ex02/main.cpp
-|4,48,35,8,1660232035,"/tmp/mod_07/ex02/main.cpp"
-'1  34  12  /tmp/mod_07/ex02/Array.hpp
-|4,49,34,12,1660231584,"/tmp/mod_07/ex02/Array.hpp"
-'2  2  0  /tmp/mod_07/ex02/main.cpp
-|4,50,2,0,1660230746,"/tmp/mod_07/ex02/main.cpp"
-'3  2  0  /tmp/mod_07/ex02/main.cpp
-|4,51,2,0,1660230746,"/tmp/mod_07/ex02/main.cpp"
-'4  2  0  /tmp/mod_07/ex02/main.cpp
-|4,52,2,0,1660230746,"/tmp/mod_07/ex02/main.cpp"
-'5  2  0  /tmp/mod_07/ex02/main.cpp
-|4,53,2,0,1660230746,"/tmp/mod_07/ex02/main.cpp"
-'6  12  4  /tmp/mod_07/ex02/main.cpp
-|4,54,12,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
-'7  9  4  /tmp/mod_07/ex02/main.cpp
-|4,55,9,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
-'8  12  4  /tmp/mod_07/ex02/main.cpp
-|4,56,12,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
-'9  9  4  /tmp/mod_07/ex02/main.cpp
-|4,57,9,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
+'B  53  7  ~/.vimrc
+|4,66,53,7,1626365549,"~/.vimrc"
+'0  16  0  /valgrind/Makefile
+|4,48,16,0,1661627132,"/valgrind/Makefile"
+'1  15  0  /valgrind/Makefile
+|4,49,15,0,1661627079,"/valgrind/Makefile"
+'2  15  0  /valgrind/Makefile
+|4,50,15,0,1661627079,"/valgrind/Makefile"
+'3  37  10  /valgrind/Makefile
+|4,51,37,10,1661627040,"/valgrind/Makefile"
+'4  37  10  /valgrind/Makefile
+|4,52,37,10,1661627040,"/valgrind/Makefile"
+'5  37  10  /valgrind/Makefile
+|4,53,37,10,1661627040,"/valgrind/Makefile"
+'6  37  10  /valgrind/Makefile
+|4,54,37,10,1661627040,"/valgrind/Makefile"
+'7  17  7  /valgrind/Makefile
+|4,55,17,7,1661626997,"/valgrind/Makefile"
+'8  17  7  /valgrind/Makefile
+|4,56,17,7,1661626997,"/valgrind/Makefile"
+'9  17  7  /valgrind/Makefile
+|4,57,17,7,1661626997,"/valgrind/Makefile"
 
 # Jumplist (newest first):
--'  35  8  /tmp/mod_07/ex02/main.cpp
-|4,39,35,8,1660232035,"/tmp/mod_07/ex02/main.cpp"
--'  1  0  /tmp/mod_07/ex02/main.cpp
-|4,39,1,0,1660231699,"/tmp/mod_07/ex02/main.cpp"
--'  34  12  /tmp/mod_07/ex02/Array.hpp
-|4,39,34,12,1660231584,"/tmp/mod_07/ex02/Array.hpp"
--'  34  12  /tmp/mod_07/ex02/Array.hpp
-|4,39,34,12,1660231584,"/tmp/mod_07/ex02/Array.hpp"
--'  21  8  /tmp/mod_07/ex02/main.cpp
-|4,39,21,8,1660231485,"/tmp/mod_07/ex02/main.cpp"
--'  21  8  /tmp/mod_07/ex02/main.cpp
-|4,39,21,8,1660231485,"/tmp/mod_07/ex02/main.cpp"
--'  1  0  /tmp/mod_07/ex02/main.cpp
-|4,39,1,0,1660230753,"/tmp/mod_07/ex02/main.cpp"
--'  2  0  /tmp/mod_07/ex02/main.cpp
-|4,39,2,0,1660230746,"/tmp/mod_07/ex02/main.cpp"
--'  2  0  /tmp/mod_07/ex02/main.cpp
-|4,39,2,0,1660230746,"/tmp/mod_07/ex02/main.cpp"
--'  2  0  /tmp/mod_07/ex02/main.cpp
-|4,39,2,0,1660230746,"/tmp/mod_07/ex02/main.cpp"
--'  1  0  /tmp/mod_07/ex02/main.cpp
-|4,39,1,0,1660230737,"/tmp/mod_07/ex02/main.cpp"
--'  12  4  /tmp/mod_07/ex02/main.cpp
-|4,39,12,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
--'  9  4  /tmp/mod_07/ex02/main.cpp
-|4,39,9,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
--'  12  4  /tmp/mod_07/ex02/main.cpp
-|4,39,12,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
--'  9  4  /tmp/mod_07/ex02/main.cpp
-|4,39,9,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
--'  12  4  /tmp/mod_07/ex02/main.cpp
-|4,39,12,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
--'  9  4  /tmp/mod_07/ex02/main.cpp
-|4,39,9,4,1660230711,"/tmp/mod_07/ex02/main.cpp"
--'  1  0  /tmp/mod_07/ex02/main.cpp
-|4,39,1,0,1660230704,"/tmp/mod_07/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  60  22  /tmp/mod_06/ex02/main.cpp
-|4,39,60,22,1660151125,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  52  10  /tmp/mod_06/ex02/main.cpp
-|4,39,52,10,1660149273,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  36  6  /tmp/mod_06/ex02/main.cpp
-|4,39,36,6,1660149242,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  32  7  /tmp/mod_06/ex02/main.cpp
-|4,39,32,7,1660149230,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  47  28  /tmp/mod_06/ex02/main.cpp
-|4,39,47,28,1660148984,"/tmp/mod_06/ex02/main.cpp"
--'  39  32  /tmp/mod_06/ex02/main.cpp
-|4,39,39,32,1660148975,"/tmp/mod_06/ex02/main.cpp"
--'  39  32  /tmp/mod_06/ex02/main.cpp
-|4,39,39,32,1660148975,"/tmp/mod_06/ex02/main.cpp"
+-'  16  0  /valgrind/Makefile
+|4,39,16,0,1661627132,"/valgrind/Makefile"
+-'  1  0  /valgrind/Makefile
+|4,39,1,0,1661627108,"/valgrind/Makefile"
+-'  15  0  /valgrind/Makefile
+|4,39,15,0,1661627079,"/valgrind/Makefile"
+-'  15  0  /valgrind/Makefile
+|4,39,15,0,1661627079,"/valgrind/Makefile"
+-'  1  0  /valgrind/Makefile
+|4,39,1,0,1661627053,"/valgrind/Makefile"
+-'  37  10  /valgrind/Makefile
+|4,39,37,10,1661627040,"/valgrind/Makefile"
+-'  37  10  /valgrind/Makefile
+|4,39,37,10,1661627040,"/valgrind/Makefile"
+-'  37  10  /valgrind/Makefile
+|4,39,37,10,1661627040,"/valgrind/Makefile"
+-'  1  0  /valgrind/Makefile
+|4,39,1,0,1661627019,"/valgrind/Makefile"
+-'  17  7  /valgrind/Makefile
+|4,39,17,7,1661626997,"/valgrind/Makefile"
+-'  17  7  /valgrind/Makefile
+|4,39,17,7,1661626997,"/valgrind/Makefile"
+-'  17  7  /valgrind/Makefile
+|4,39,17,7,1661626997,"/valgrind/Makefile"
+-'  17  7  /valgrind/Makefile
+|4,39,17,7,1661626997,"/valgrind/Makefile"
+-'  1  0  /valgrind/Makefile
+|4,39,1,0,1661626984,"/valgrind/Makefile"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  65  1  /valgrind/ft_philosopher.c
+|4,39,65,1,1661625999,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625911,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625878,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661625819,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  1  0  /valgrind/ft_philosopher.c
+|4,39,1,0,1661617107,"/valgrind/ft_philosopher.c"
+-'  55  0  /valgrind/ft_philosopher.c
+|4,39,55,0,1661616921,"/valgrind/ft_philosopher.c"
+-'  55  0  /valgrind/ft_philosopher.c
+|4,39,55,0,1661616921,"/valgrind/ft_philosopher.c"
+-'  55  0  /valgrind/ft_philosopher.c
+|4,39,55,0,1661616921,"/valgrind/ft_philosopher.c"
+-'  55  0  /valgrind/ft_philosopher.c
+|4,39,55,0,1661616921,"/valgrind/ft_philosopher.c"
+-'  55  0  /valgrind/ft_philosopher.c
+|4,39,55,0,1661616921,"/valgrind/ft_philosopher.c"
+-'  55  0  /valgrind/ft_philosopher.c
+|4,39,55,0,1661616921,"/valgrind/ft_philosopher.c"
 
 # History of marks within files (newest to oldest):
 
-> /tmp/mod_07/ex02/main.cpp
-	*	1660232035	0
-	"	35	8
-	^	2	17
-	.	2	0
-	+	4	17
-	+	2	0
+> /valgrind/Makefile
+	*	1661627131	0
+	"	16	0
+	^	17	8
+	.	15	0
+	+	17	8
+	+	34	0
+	+	15	0
 
-> /tmp/mod_07/ex02/Array.hpp
-	*	1660231583	0
-	"	34	12
+> /valgrind/ft_philosopher.c
+	*	1661625998	0
+	"	65	1
 
-> /tmp/mod_06/ex02/main.cpp
-	*	1660151124	0
-	"	60	22
-	^	60	23
-	.	60	22
+> /valgrind/Dockerfile
+	*	1661614310	0
+	"	8	0
+	.	8	0
+	+	8	0
+
+> ~/42/Docker_Valgrind/Dockerfile
+	*	1661613919	0
+	"	18	117
+	^	18	118
+	.	18	117
+	+	27	16
+	+	6	6
 	+	24	0
+	+	26	0
+	+	24	31
+	+	25	24
+	+	20	12
+	+	21	12
+	+	22	26
+	+	23	25
+	+	20	19
+	+	21	19
+	+	20	5
+	+	21	5
 	+	21	0
-	+	24	0
-	+	22	0
-	+	24	0
-	+	20	0
+	+	11	6
+	+	19	0
+	+	17	50
+	+	18	104
 	+	23	0
-	+	27	0
-	+	4	17
-	+	21	17
-	+	30	0
-	+	31	34
-	+	88	0
-	+	34	4
-	+	35	2
-	+	58	7
-	+	36	22
-	+	37	31
-	+	58	0
-	+	42	0
-	+	50	0
-	+	44	15
-	+	45	16
-	+	52	15
-	+	53	16
-	+	36	17
-	+	44	17
-	+	52	17
-	+	39	27
-	+	47	0
-	+	55	0
-	+	37	0
-	+	35	0
-	+	33	0
-	+	32	13
-	+	36	10
-	+	44	10
-	+	52	10
-	+	93	17
-	+	39	30
-	+	47	30
-	+	55	30
-	+	39	22
-	+	47	22
-	+	55	22
-	+	96	14
-	+	39	27
-	+	47	27
-	+	55	27
-	+	39	30
-	+	40	35
-	+	48	0
-	+	56	0
-	+	47	29
-	+	55	29
-	+	36	29
-	+	32	0
-	+	36	11
-	+	44	11
-	+	52	11
-	+	44	26
-	+	36	26
-	+	52	29
-	+	44	29
-	+	48	20
-	+	56	20
-	+	96	0
-	+	59	0
-	+	60	24
-	+	61	0
-	+	87	1
-	+	61	0
-	+	65	29
-	+	73	29
-	+	81	29
-	+	94	10
-	+	95	14
-	+	60	22
+	+	25	0
+	+	18	117
 
-> /tmp/mod_06/ex02/main.
-	*	1660147858	0
+> ~/42/cdo/prueba_QA/v2/run.sh
+	*	1661613118	0
+	"	1	0
+	^	9	37
+	.	9	0
+	+	9	0
+
+> ~/NERD_tree_1
+	*	1661612355	0
+	"	7	0
+	.	1	0
+	+	1	0
+
+> ~/.zsh_history
+	*	1661611867	0
 	"	1	0
 
-> /tmp/mod_06/ex02/Makefile
-	*	1660147844	0
-	"	22	0
-	^	9	10
-	.	9	9
-	+	4	40
-	+	5	25
-	+	4	44
-	+	14	31
-	+	15	20
+> ~/42/Docker_Valgrind/config/.bash_history
+	*	1661611861	0
+	"	1	0
+
+> ~/42/Docker_Valgrind/config/.viminfo
+	*	1661611789	0
+	"	207	0
+
+> ~/42/Docker_Valgrind/config/.zsh_history
+	*	1661611658	0
+	"	60	0
+
+> ~/42/Docker_Valgrind/config/.zshrc
+	*	1661611611	0
+	"	85	0
+
+> ~/.zshrc
+	*	1661611609	0
+	"	107	48
+	^	127	18
+	.	127	17
+	+	126	0
+	+	127	0
+	+	127	17
+
+> ~/42/Docker_Valgrind/config/.shell.pre-oh-my-zsh
+	*	1661611512	0
+	"	1	0
+
+> ~/42/Docker_Valgrind/run.sh
+	*	1661611245	0
+	"	5	53
+	^	5	17
+	.	5	17
+	+	11	34
 	+	16	0
-	+	18	36
-	+	19	0
-	+	21	42
-	+	27	0
-	+	29	12
-	+	30	0
-	+	31	12
-	+	32	13
-	+	33	0
+	+	11	0
+	+	12	0
+	+	11	69
+	+	5	17
+
+> ~/42/cdo/prueba_QA/v2/CDO/script.py
+	*	1661602897	0
+	"	28	0
+	^	64	109
+	.	64	108
+	+	118	0
+	+	74	33
+	+	71	0
+	+	75	0
+	+	74	70
+	+	46	13
+	+	48	20
+	+	46	54
+	+	47	8
+	+	47	0
+	+	46	51
+	+	48	24
+	+	47	8
+	+	51	18
+	+	71	0
+	+	47	0
+	+	74	0
+	+	74	28
+	+	74	33
+	+	71	0
+	+	74	72
+	+	74	35
+	+	74	0
+	+	75	11
+	+	74	34
+	+	75	0
+	+	74	36
+	+	74	8
+	+	74	16
+	+	74	8
+	+	74	23
+	+	74	0
+	+	74	37
+	+	74	72
+	+	74	36
+	+	74	33
+	+	74	0
+	+	50	18
+	+	74	45
+	+	74	22
+	+	74	44
+	+	74	0
+	+	106	22
+	+	107	0
+	+	119	0
+	+	106	22
+	+	119	0
+	+	118	0
+	+	74	34
+	+	119	0
+	+	75	0
+	+	74	0
+	+	75	0
+	+	74	8
+	+	74	0
+	+	70	0
+	+	77	24
+	+	74	0
+	+	74	33
+	+	77	0
+	+	129	18
+	+	70	0
+	+	74	0
+	+	129	0
+	+	129	17
+	+	134	0
+	+	129	0
+	+	66	30
+	+	94	36
+	+	43	21
+	+	53	49
+	+	69	36
+	+	83	24
+	+	97	60
+	+	97	51
+	+	131	22
+	+	142	17
+	+	155	6
+	+	122	15
+	+	123	15
+	+	124	15
+	+	125	36
+	+	125	23
+	+	125	116
+	+	125	32
+	+	125	33
+	+	125	28
+	+	125	123
+	+	125	0
+	+	60	16
+	+	61	15
+	+	62	15
+	+	63	0
+	+	64	27
+	+	64	121
+	+	122	12
+	+	123	12
+	+	124	12
+	+	64	108
+
+> ~/42/.git/MERGE_MSG
+	*	1661601335	0
+	"	6	12
+
+> ~/42/.git/COMMIT_EDITMSG
+	*	1661600065	0
+	"	37	0
+
+> ~/42/.gitignore
+	*	1661599162	0
+	"	62	0
+	^	62	1
+	.	62	0
+	+	61	0
+	+	62	0
+
+> ~/PairProject/cub3d/.git/COMMIT_EDITMSG
+	*	1661598912	0
+	"	2	0
+
+> ~/PairProject/cub3d/checkutils.c
+	*	1661537756	0
+	"	41	6
+	^	65	21
+	.	9	0
+	+	9	0
+	+	78	2
+	+	80	25
+	+	81	0
+	+	82	0
+	+	81	0
+	+	79	12
+	+	9	0
+	+	74	3
+	+	75	0
+	+	76	0
+	+	74	8
+	+	76	22
+	+	77	36
+	+	9	0
+	+	77	31
+	+	9	0
+	+	77	12
+	+	9	0
+	+	77	11
+	+	9	0
+	+	77	39
+	+	9	0
+	+	77	42
+	+	9	0
+	+	77	43
+	+	9	0
+	+	77	15
+	+	9	0
+	+	77	0
+	+	79	1
+	+	9	0
+	+	77	10
+	+	9	0
+	+	77	0
+	+	84	0
+	+	79	0
+	+	83	0
+	+	9	0
+	+	77	5
+	+	9	0
+	+	82	0
+	+	9	0
+	+	112	0
+	+	9	0
+	+	45	2
+	+	46	0
+	+	45	15
+	+	45	0
+	+	46	14
+	+	46	0
+	+	9	0
+	+	112	0
+	+	114	0
+	+	9	0
+	+	16	0
+	+	9	0
+	+	110	10
+	+	9	0
+	+	110	9
+	+	9	0
+	+	110	25
+	+	110	0
+	+	9	0
+	+	111	2
+	+	112	0
+	+	111	10
+	+	111	29
+	+	111	0
+	+	111	31
+	+	9	0
+	+	15	16
+	+	9	0
+	+	110	10
+	+	9	0
+	+	110	24
+	+	9	0
+	+	111	0
+	+	9	0
+	+	111	0
+	+	9	0
+	+	111	0
+	+	116	0
+	+	118	0
+	+	9	0
+	+	112	0
+	+	111	0
+	+	9	0
+	+	65	38
+	+	9	0
+	+	65	33
+	+	65	0
+	+	64	6
+	+	65	21
+	+	65	22
+	+	60	32
+	+	64	6
+	+	65	21
+	+	65	0
+	+	9	0
+
+> ~/PairProject/cub3d/main.c
+	*	1661537751	0
+	"	49	33
+	^	89	21
+	.	9	0
+	+	9	0
+	+	70	15
+	+	9	0
+	+	93	0
+	+	9	0
+	+	93	0
+	+	90	22
+	+	91	1
+	+	92	0
+	+	93	1
+	+	92	9
+	+	9	0
+	+	89	20
+	+	9	0
+	+	89	18
+	+	9	0
+	+	39	0
+	+	40	21
+	+	9	0
+	+	39	0
+	+	40	0
+	+	9	0
+	+	89	20
+	+	9	0
+	+	39	21
+	+	39	0
+	+	9	0
+	+	56	0
+	+	40	0
+	+	9	0
+	+	39	21
+	+	9	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	9	0
+	+	39	19
+	+	39	0
+	+	37	41
+	+	29	0
+	+	39	19
+	+	9	0
+	+	82	2
+	+	82	0
+	+	9	0
+	+	89	20
+	+	9	0
+	+	87	9
+	+	9	0
+	+	87	5
+	+	87	0
+	+	9	0
+	+	87	10
+	+	9	0
+	+	87	0
+	+	88	0
+	+	9	0
+	+	88	0
+	+	89	0
+	+	87	0
+	+	9	0
+	+	54	18
+	+	9	0
+	+	22	31
+	+	22	0
+	+	9	0
+	+	89	18
+	+	9	0
+	+	91	14
+	+	9	0
+	+	91	16
+	+	89	18
+	+	9	0
+	+	29	0
+	+	9	0
+	+	53	0
+	+	29	0
+	+	22	36
+	+	9	0
+	+	22	8
+	+	22	0
+	+	9	0
+	+	22	8
+	+	9	0
+	+	22	27
+	+	9	0
+	+	22	28
+	+	9	0
+	+	22	28
+	+	9	0
+	+	22	17
+	+	9	0
+	+	89	20
+	+	9	0
+	+	27	31
+	+	9	0
+	+	89	18
+	+	9	0
+	+	89	20
+	+	9	0
+
+> ~/PairProject/cub3d/gets.c
+	*	1661537747	0
+	"	44	30
+	^	44	30
+	.	9	0
+	+	4	17
+	+	9	0
+	+	49	24
+	+	9	0
+	+	55	0
+	+	49	4
+	+	51	0
+	+	49	3
+	+	9	0
+	+	49	0
+	+	51	0
+	+	9	0
+	+	43	4
+	+	44	0
+	+	43	3
+	+	43	0
+	+	9	0
+	+	49	0
+	+	49	3
+	+	49	4
+	+	51	0
+	+	49	0
+	+	9	0
+	+	23	0
+	+	9	0
+	+	23	10
+	+	23	0
+	+	9	0
+	+	23	0
+	+	9	0
+	+	21	0
+	+	21	1
+	+	9	0
+	+	21	0
+	+	41	31
+	+	9	0
+	+	41	0
+	+	43	4
+	+	44	0
+	+	43	3
+	+	43	0
+	+	49	4
+	+	50	0
+	+	49	3
+	+	9	0
+	+	50	0
+	+	49	3
+	+	49	0
+	+	9	0
+	+	23	0
+	+	25	0
+	+	26	0
+	+	25	0
+	+	28	0
+	+	29	0
+	+	9	0
+	+	15	0
+	+	9	0
+	+	44	70
+	+	44	0
+	+	9	0
+	+	52	29
+	+	9	0
+	+	43	0
+	+	44	29
+	+	9	0
+	+	49	0
+	+	48	0
+	+	9	0
+
+> ~/PairProject/cub3d/map_utils.c
+	*	1661537377	0
+	"	24	0
+	^	62	39
+	.	8	0
+	+	9	0
+	+	14	0
+	+	14	3
+	+	9	0
+	+	14	0
+	+	14	26
+	+	14	1
+	+	14	0
+	+	14	7
+	+	14	0
+	+	14	44
+	+	9	0
+	+	14	2
+	+	9	0
+	+	14	0
+	+	14	16
+	+	14	19
+	+	14	28
+	+	9	0
+	+	14	0
+	+	9	0
+	+	14	32
+	+	14	34
+	+	9	0
+	+	14	31
+	+	9	0
+	+	14	30
+	+	9	0
+	+	14	30
+	+	9	0
+	+	14	31
+	+	9	0
+	+	14	71
+	+	9	0
+	+	14	6
+	+	9	0
+	+	14	32
+	+	14	1
+	+	14	0
+	+	9	0
+	+	14	17
+	+	9	0
+	+	44	0
+	+	42	0
+	+	14	0
+	+	9	0
+	+	14	0
+	+	9	0
+	+	42	0
+	+	9	0
+	+	14	0
+	+	44	0
+	+	9	0
+	+	74	0
+	+	9	0
+	+	65	45
+	+	74	0
+	+	9	0
+	+	14	0
+	+	9	0
+	+	14	0
+	+	9	0
+	+	79	15
+	+	9	0
+	+	79	18
+	+	9	0
+	+	66	7
+	+	72	0
+	+	67	10
+	+	9	0
+	+	23	11
+	+	9	0
+	+	60	5
+	+	60	0
+	+	9	0
+	+	60	5
+	+	9	0
+	+	62	39
+	+	62	0
+	+	60	0
+	+	9	0
+	+	74	0
+	+	9	0
+	+	73	0
+	+	9	0
+	+	60	5
+	+	9	0
+	+	62	38
+	+	60	0
+	+	9	0
+	+	60	5
+	+	9	0
+	+	60	5
+	+	9	0
+	+	60	5
+	+	60	0
+	+	9	0
+	+	62	39
+	+	9	0
+	+	8	0
+	a	62	38
+
+> ~/PairProject/cub3d/error.c
+	*	1661537337	0
+	"	51	38
+	^	46	2
+	.	9	0
+	+	38	0
+	+	39	0
+	+	9	0
+	+	15	0
+	+	9	0
+	+	19	4
+	+	20	4
+	+	21	10
+	+	20	5
+	+	19	5
+	+	30	4
+	+	31	19
+	+	9	0
+	+	30	24
+	+	9	0
+	+	36	7
+	+	9	0
+	+	37	0
+	+	9	0
+	+	14	0
+	+	9	0
+	+	14	10
+	+	9	0
+	+	52	14
+	+	53	34
+	+	9	0
+	+	53	30
+	+	51	35
+	+	9	0
+	+	55	33
+	+	9	0
+	+	56	14
+	+	57	33
+	+	9	0
+	+	63	0
+	+	41	39
+	+	9	0
+	+	63	13
+	+	65	13
+	+	9	0
+	+	62	27
+	+	63	2
+	+	63	1
+	+	65	1
+	+	66	0
+	+	9	0
+	+	63	0
+	+	66	0
+	+	64	5
+	+	62	16
+	+	9	0
+	+	57	32
+	+	9	0
+	+	62	0
+	+	62	11
+	+	62	13
+	+	62	0
+	+	9	0
+	+	62	1
+	+	62	0
+	+	9	0
+	+	65	0
+	+	9	0
+	+	62	0
+	+	64	0
+	+	63	23
+	+	65	18
+	+	9	0
+	+	63	2
+	+	63	0
+	+	64	0
+	+	65	0
+	+	65	2
+	+	66	0
+	+	9	0
+	+	63	13
+	+	65	13
+	+	9	0
+	+	63	0
+	+	68	0
+	+	65	0
+	+	69	0
+	+	63	0
+	+	64	0
+	+	65	0
+	+	66	0
+	+	9	0
+	+	60	11
+	+	61	13
+	+	9	0
+	+	61	0
+	+	60	0
+	+	9	0
+	+	58	14
+	+	59	37
+	+	9	0
+	+	44	2
+	+	47	0
+	+	46	1
+	+	9	0
+
+> ~/PairProject/cub3d/cub3d.h
+	*	1661537332	0
+	"	145	0
+	^	28	0
+	.	9	0
+	+	29	5
+	+	31	6
+	+	32	5
+	+	9	0
+	+	44	5
+	+	45	5
+	+	46	5
+	+	47	5
+	+	48	5
+	+	49	5
+	+	50	5
+	+	51	5
+	+	52	6
+	+	9	0
+	+	33	8
+	+	9	0
+	+	26	11
+	+	9	0
+	+	61	29
+	+	9	0
+	+	61	31
+	+	9	0
+	+	60	0
+	+	61	0
+	+	60	27
+	+	9	0
+	+	60	0
+	+	9	0
+	+	40	12
+	+	9	0
+	+	65	40
+	+	9	0
+	+	66	27
+	+	9	0
+	+	67	34
+	+	68	0
+	+	69	45
+	+	9	0
+	+	70	32
+	+	9	0
+	+	60	0
+	+	61	0
+	+	9	0
+	+	71	27
+	+	9	0
+	+	71	22
+	+	9	0
+	+	71	21
+	+	9	0
+	+	71	22
+	+	9	0
+	+	32	0
+	+	32	12
+	+	9	0
+	+	32	0
 	+	34	13
 	+	35	0
-	+	36	30
-	+	22	0
-	+	26	9
-	+	13	4
-	+	23	4
-	+	13	0
-	+	12	4
-	+	9	9
-
-> /tmp/mod_06/ex02/Base.cpp
-	*	1660147719	0
-	"	5	60
-	^	5	61
-	.	5	60
-	+	1	17
-	+	2	0
-	+	3	17
-	+	4	0
-	+	5	60
-
-> /tmp/mod_06/ex02/A.cpp
-	*	1660147660	0
-	"	5	0
-	^	5	53
-	.	5	52
-	+	5	51
-	+	4	0
-	+	1	14
-	+	2	0
-	+	3	9
-	+	5	52
-
-> /tmp/mod_06/ex02/C.cpp
-	*	1660147628	0
-	"	5	52
-	^	5	53
-	.	5	52
-	+	1	0
-	+	2	0
-	+	3	17
-	+	5	52
-
-> /tmp/mod_06/ex02/B.cpp
-	*	1660147619	0
-	"	5	52
-	^	5	53
-	.	5	52
-	+	1	0
-	+	5	0
-	+	4	0
-	+	3	17
-	+	5	52
-
-> /tmp/mod_06/ex01/main.cpp
-	*	1660145057	0
-	"	17	40
-	^	17	41
-	.	17	40
-	+	1	0
-	+	9	6
-	+	16	13
-	+	17	40
-
-> /tmp/mod_06/ex01/main.
-	*	1660144459	0
-	"	1	0
-
-> /tmp/mod_05/ex01/Bureaucrat.hpp
-	*	1659289879	0
-	"	1	0
-
-> /tmp/mod_05/ex01/newBureaucrat.cpp
-	*	1659289868	0
-	"	1	0
-
-> /tmp/mod_05/ex01/Bureaucrat.cpp
-	*	1659288941	0
-	"	156	0
-	.	150	0
-	+	16	13
-	+	15	13
-	+	17	13
-	+	104	88
-	+	25	0
-	+	9	0
-	+	10	0
-	+	18	0
-	+	25	0
-	+	35	0
-	+	55	0
-	+	76	0
-	+	100	0
-	+	147	0
-	+	150	0
-
-> /tmp/mod_05/ex00/Bureaucrat.cpp
-	*	1659288879	0
-	"	1	0
-	.	67	0
-	+	67	0
-
-> /tmp/mod_05/ex01/main.cpp
-	*	1659281761	0
-	"	17	0
-	^	33	9
-	.	33	8
-	+	31	0
-	+	32	16
-	+	35	15
-	+	23	0
-	+	24	0
-	+	15	11
-	+	21	25
-	+	19	19
-	+	21	13
-	+	28	0
-	+	27	14
-	+	20	22
-	+	34	0
-	+	33	8
-	a	15	11
-
-> /tmp/mod_05/ex01/Form.cpp
-	*	1659281405	0
-	"	78	2
-	^	60	54
-	.	60	54
-	+	81	30
-	+	64	53
-	+	60	54
-
-> /tmp/mod_05/ex01/Form.hpp
-	*	1659281276	0
-	"	58	1
-
-> /tmp/mod_06/ex00/Cast.cpp
-	*	1659267883	0
-	"	167	22
-	^	165	26
-	.	165	25
-	+	82	14
-	+	166	14
-	+	161	0
-	+	165	24
-	+	166	25
-	+	165	25
-
-> /tmp/mod_06/ex00/Cast.
-	*	1659267133	0
-	"	1	0
-
-> /tmp/mod_06/ex00/Makefile
-	*	1659266959	0
-	"	22	0
-	.	22	0
-	+	22	0
-	+	22	4
-	+	21	0
-	+	22	9
-	+	22	4
-	+	22	18
-	+	22	1
-	+	22	9
-	+	22	1
-	+	22	11
-	+	22	1
-	+	22	0
-	+	22	9
-	+	22	11
-	+	22	4
-	+	22	11
-	+	22	0
-
-> /tmp/mod_06/ex00/main.cpp
-	*	1659266413	0
-	"	7	0
-	.	7	0
-	+	7	0
-
-> /tmp/mod_06/ex00/main.
-	*	1659266288	0
-	"	1	0
-
-> /tmp/mod_05/ex02/main.cpp
-	*	1658343248	0
-	"	81	28
-	^	81	29
-	.	81	28
-	+	39	39
-	+	24	0
-	+	32	14
-	+	28	0
-	+	29	16
-	+	30	15
-	+	34	0
-	+	55	37
-	+	70	40
-	+	40	32
-	+	56	30
-	+	71	33
-	+	72	0
-	+	73	19
-	+	57	0
-	+	58	13
-	+	41	0
-	+	42	13
-	+	51	0
-	+	45	0
-	+	46	0
-	+	48	0
-	+	49	0
-	+	46	2
-	+	47	2
-	+	49	2
-	+	50	2
-	+	46	19
-	+	47	22
-	+	49	20
-	+	50	23
-	+	61	0
-	+	64	0
-	+	65	0
-	+	62	19
-	+	63	22
-	+	65	20
-	+	66	23
-	+	49	6
-	+	50	6
-	+	65	6
-	+	66	6
-	+	76	0
-	+	79	0
-	+	80	0
-	+	81	6
-	+	80	24
-	+	81	27
-	+	77	19
-	+	78	22
-	+	16	19
-	+	24	0
-	+	25	0
-	+	40	31
-	+	56	29
-	+	71	32
-	+	80	25
-	+	81	28
-
-> /tmp/mod_05/ex02/Bureaucrat.cpp
-	*	1658342804	0
-	"	135	88
-	^	135	89
-	.	135	88
-	+	135	88
-
-> /tmp/mod_05/ex01/main.
-	*	1658342110	0
-	"	1	0
-
-> /tmp/mod_05/ex03/main.cpp
-	*	1658341214	0
-	"	23	23
-	^	29	39
-	.	23	23
-	+	23	29
-	+	26	38
-	+	29	38
-	+	26	23
-	+	29	23
-	+	26	23
-	+	23	23
-
-> /tmp/mod_05/ex03/Bureaucrat.cpp
-	*	1658341133	0
-	"	140	0
-
-> /tmp/mod_05/ex00/Bureaucrat.hpp
-	*	1658340951	0
-	"	37	0
-	.	35	0
-	+	17	0
-	+	35	0
-
-> /tmp/mod_05/ex02/RobotomyRequestForm.hpp
-	*	1658340388	0
-	"	25	61
-	^	25	62
-	.	25	61
-	+	21	0
-	+	20	23
-	+	21	49
-	+	24	0
-	+	25	61
-
-> /tmp/mod_05/ex02/RobotomyRequestForm.cpp
-	*	1658340386	0
-	"	21	24
-	^	21	25
-	.	21	24
-	+	24	0
-	+	25	0
-	+	19	0
-	+	20	41
-	+	25	73
-	+	27	0
-	+	26	12
-	+	49	0
-	+	50	12
-	+	51	0
-	+	52	0
-	+	53	0
-	+	51	9
-	+	53	0
-	+	57	0
-	+	56	13
-	+	55	7
-	+	21	24
-
-> /tmp/mod_05/ex02/RobotomyRequestForm.o
-	*	1658340178	0
-	"	1	0
-
-> /tmp/mod_05/ex02/RobotomyRequestForm.
-	*	1658340138	0
-	"	1	0
-
-> /tmp/mod_05/ex02/Form.cpp
-	*	1658340134	0
-	"	9	0
-	^	114	14
-	.	114	13
-	+	24	0
-	+	27	0
-	+	129	0
-	+	26	12
-	+	107	0
-	+	108	0
-	+	109	9
-	+	108	9
-	+	110	9
-	+	111	0
-	+	115	0
-	+	113	26
-	+	114	13
-
-> /tmp/mod_05/ex02/PresidentialPardonForm.cpp
-	*	1658340132	0
-	"	32	13
-	^	55	14
-	.	55	13
-	+	20	74
-	+	25	79
-	+	21	17
-	+	27	17
-	+	31	17
-	+	25	82
-	+	27	28
-	+	26	12
-	+	27	0
-	+	17	14
-	+	34	0
+	+	36	0
+	+	37	0
 	+	38	0
-	+	35	14
-	+	37	14
-	+	35	14
-	+	31	17
-	+	48	0
-	+	49	0
-	+	50	9
-	+	49	11
-	+	51	11
-	+	52	0
-	+	56	0
-	+	54	28
-	+	57	0
-	+	55	13
-
-> /tmp/mod_05/ex02/Form.hpp
-	*	1658340131	0
-	"	1	0
-	.	49	0
-	+	36	17
 	+	39	0
-	+	40	31
-	+	18	1
-	+	17	0
-	+	18	0
+	+	38	12
+	+	39	7
+	+	38	7
+	+	35	7
+	+	36	8
+	+	37	8
+	+	9	0
+	+	34	14
+	+	35	14
+	+	36	14
+	+	37	14
+	+	38	12
+	+	39	12
+	+	9	0
+	+	30	11
+	+	9	0
+	+	21	15
+	+	9	0
+	+	26	22
+	+	27	22
+	+	9	0
+	+	26	22
+	+	27	22
+	+	9	0
+	+	26	22
+	+	27	23
+	+	9	0
+	+	26	22
+	+	27	22
+	+	9	0
+	+	26	22
+	+	27	22
+	+	9	0
+	+	26	22
+	+	27	22
+	+	9	0
+	+	26	22
+	+	27	20
+	+	9	0
+
+> ~/PairProject/cub3d/check_map.c
+	*	1661537329	0
+	"	70	1
+	^	88	12
+	.	9	0
+	+	39	0
+	+	42	0
+	+	9	0
+	+	15	0
+	+	9	0
+	+	49	18
+	+	9	0
+	+	54	0
+	+	54	2
+	+	54	3
+	+	54	19
+	+	9	0
+	+	54	0
+	+	51	0
+	+	51	2
+	+	52	2
+	+	53	2
+	+	54	4
+	+	55	3
+	+	56	2
+	+	57	2
+	+	51	3
+	+	58	1
+	+	59	0
+	+	60	0
 	+	49	0
-
-> /tmp/mod_05/ex02/PresidentialPardonForm.hpp
-	*	1658340130	0
-	"	22	44
-	^	25	68
-	.	25	67
-	+	24	0
-	+	25	67
-
-> /tmp/mod_05/ex02/ShrubberyCreationForm.hpp
-	*	1658340130	0
-	"	31	7
-	^	31	8
-	.	31	7
-	+	24	0
-	+	25	0
-	+	23	25
-	+	25	53
-	+	31	17
-	+	27	0
-	+	28	65
-	+	31	7
-
-> /tmp/mod_05/ex02/ShrubberyCreationForm.cpp
-	*	1658340129	0
-	"	72	13
-	^	72	14
-	.	72	13
-	+	20	0
-	+	24	0
-	+	25	0
-	+	20	23
-	+	25	76
-	+	27	0
+	+	9	0
+	+	90	0
+	+	9	0
+	+	88	0
+	+	90	21
+	+	9	0
+	+	13	18
+	+	14	16
+	+	9	0
+	+	88	11
+	+	9	0
+	+	90	0
+	+	88	0
+	+	9	0
+	+	88	11
+	+	9	0
+	+	22	0
+	+	26	0
+	+	9	0
+	+	26	0
+	+	30	0
+	+	9	0
+	+	30	0
+	+	34	0
+	+	9	0
+	+	34	0
+	+	9	0
+	+	37	0
+	+	9	0
+	+	36	0
+	+	9	0
+	+	36	0
+	+	37	0
+	+	36	68
+	+	9	0
+	+	90	0
+	+	96	0
+	+	97	0
+	+	90	0
+	+	9	0
+	+	97	0
+	+	89	0
+	+	90	0
+	+	9	0
+	+	88	11
+	+	9	0
+	+	89	0
+	+	90	0
+	+	9	0
+	+	22	0
+	+	9	0
+	+	22	0
+	+	9	0
 	+	23	0
-	+	19	0
-	+	20	0
-	+	17	0
+	+	26	0
+	+	23	0
+	+	9	0
+	+	35	0
+	+	37	0
+	+	9	0
+	+	35	0
 	+	33	0
 	+	34	0
-	+	35	2
-	+	34	2
-	+	36	2
-	+	17	13
-	+	16	13
-	+	18	13
-	+	53	0
-	+	64	0
+	+	31	0
+	+	29	0
 	+	30	0
-	+	32	0
-	+	55	0
-	+	31	6
-	+	54	5
-	+	22	17
+	+	27	0
+	+	25	0
+	+	26	0
 	+	23	0
-	+	21	24
-	+	26	12
-	+	65	0
-	+	66	17
-	+	67	0
-	+	68	0
-	+	67	11
-	+	66	11
-	+	68	0
-	+	69	0
-	+	73	0
-	+	71	28
-	+	31	6
-	+	54	27
-	+	22	6
-	+	72	13
+	+	94	0
+	+	9	0
+	+	94	0
+	+	9	0
 
-> /tmp/mod_05/ex02/Form.o
-	*	1658337366	0
+> ~/PairProject/cub3d/maps/valid/map1.cub
+	*	1661536491	0
+	"	24	0
+	^	24	14
+	.	24	0
+	+	19	23
+	+	19	0
+	+	6	0
+	+	7	0
+	+	21	0
+	+	7	0
+	+	5	0
+	+	21	0
+	+	11	0
+	+	7	0
+	+	17	0
+	+	7	0
+	+	14	0
+	+	15	0
+	+	21	0
+	+	7	0
+	+	20	29
+	+	21	0
+	+	22	0
+	+	23	0
+	+	24	0
+	+	25	0
+	+	24	0
+
+> ~/42/cdo/prueba_QA/v2/CDO/features/steps/steps.py
+	*	1661535422	0
+	"	85	11
+	^	141	48
+	.	9	0
+	+	60	16
+	+	9	0
+	+	83	0
+	+	44	0
+	+	58	39
+	+	56	27
+	+	9	0
+	+	51	35
+	+	9	0
+	+	58	44
+	+	58	0
+	+	62	38
+	+	9	0
+	+	62	0
+	+	62	55
+	+	62	0
+	+	9	0
+	+	62	12
+	+	9	0
+	+	62	0
+	+	62	11
+	+	62	22
+	+	9	0
+	+	62	34
+	+	9	0
+	+	62	0
+	+	9	0
+	+	43	58
+	+	9	0
+	+	62	38
+	+	9	0
+	+	62	55
+	+	9	0
+	+	44	0
+	+	44	7
+	+	44	62
+	+	44	54
+	+	44	45
+	+	44	0
+	+	44	33
+	+	44	54
+	+	44	30
+	+	44	43
+	+	9	0
+	+	44	0
+	+	9	0
+	+	44	52
+	+	9	0
+	+	62	0
+	+	44	34
+	+	9	0
+	+	44	0
+	+	64	0
+	+	44	0
+	+	9	0
+	+	104	0
+	+	104	4
+	+	108	80
+	+	110	34
+	+	115	30
+	+	117	42
+	+	121	38
+	+	105	23
+	+	112	44
+	+	119	28
+	+	9	0
+	+	112	33
+	+	9	0
+	+	112	33
+	+	9	0
+	+	104	0
+	+	103	0
+	+	104	0
+	+	104	62
+	+	104	8
+	+	104	39
+	+	104	0
+	+	104	94
+	+	104	30
+	+	104	42
+	+	9	0
+	+	104	34
+	+	9	0
+	+	104	0
+	+	9	0
+	+	104	0
+	+	122	0
+	+	123	0
+	+	142	0
+	+	9	0
+	+	138	26
+	+	9	0
+	+	129	38
+	+	9	0
+	+	140	0
+	+	141	50
+	+	140	0
+	+	141	48
+	+	9	0
+
+> ~/42/cdo/prueba_QA/v2/CDO/features/script.feature
+	*	1661535419	0
+	"	64	0
+	^	113	38
+	.	9	0
+	+	108	11
+	+	109	33
+	+	111	18
+	+	112	56
+	+	111	49
+	+	110	45
+	+	109	32
+	+	108	25
+	+	9	0
+	+	104	50
+	+	105	23
+	+	9	0
+	+	105	25
+	+	9	0
+	+	89	61
+	+	90	126
+	+	91	113
+	+	92	0
+	+	92	90
+	+	93	109
+	+	92	93
+	+	91	116
+	+	90	128
+	+	89	64
+	+	94	113
+	+	93	110
+	+	92	94
+	+	91	117
+	+	90	129
+	+	89	65
+	+	95	105
+	+	96	139
+	+	97	126
+	+	98	121
+	+	35	0
+	+	47	0
+	+	62	0
+	+	99	0
+	+	113	0
+	+	9	0
+	+	35	40
+	+	9	0
+	+	47	40
+	+	62	13
+	+	61	11
+	+	60	11
+	+	59	11
+	+	58	14
+	+	57	11
+	+	56	38
+	+	9	0
+	+	62	50
+	+	9	0
+	+	47	17
+	+	46	26
+	+	45	20
+	+	44	11
+	+	47	63
+	+	46	68
+	+	45	0
+	+	45	139
+	+	35	17
+	+	34	18
+	+	33	22
+	+	32	22
+	+	31	23
+	+	30	14
+	+	29	10
+	+	28	13
+	+	27	15
+	+	26	14
+	+	25	11
+	+	25	70
+	+	26	205
+	+	27	191
+	+	28	196
+	+	29	169
+	+	30	197
+	+	31	219
+	+	32	234
+	+	35	85
+	+	9	0
+	+	99	18
+	+	98	28
+	+	97	28
+	+	96	31
+	+	95	29
+	+	94	22
+	+	93	26
+	+	92	27
+	+	91	27
+	+	90	28
+	+	89	47
+	+	90	126
+	+	91	113
+	+	92	90
+	+	99	58
+	+	9	0
+	+	113	37
+	+	9	0
+
+> ~/42/cdo/prueba_QA/v2/Dockerfile
+	*	1661535293	0
+	"	23	34
+	^	39	50
+	.	9	0
+	+	54	11
+	+	54	0
+	+	9	0
+	+	33	54
+	+	39	141
+	+	39	13
+	+	39	0
+	+	9	0
+	+	39	0
+	+	9	0
+	+	33	40
+	+	9	0
+	+	39	24
+	+	33	50
+	+	39	0
+	+	9	0
+	+	33	40
+	+	9	0
+	+	40	0
+	+	39	0
+	+	40	87
+	+	39	0
+	+	9	0
+	+	39	0
+	+	39	48
+	+	9	0
+	+	33	0
+	+	39	43
+	+	33	0
+	+	9	0
+	+	38	40
+	+	39	0
+	+	38	41
+	+	9	0
+	+	33	0
+	+	9	0
+	+	32	66
+	+	37	43
+	+	39	0
+	+	34	0
+	+	9	0
+	+	14	0
+	+	15	48
+	+	9	0
+	+	73	15
+	+	9	0
+	+	39	49
+	+	9	0
+
+> ~/42/cdo/prueba_QA/v2/NERD_tree_1
+	*	1661534446	0
+	"	11	0
+	.	1	0
+	+	1	0
+
+> ~/42/cdo/prueba_QA/v2/requirements.txt
+	*	1661534444	0
+	"	1	1
+	^	6	17
+	.	4	9
+	+	4	9
+
+> ~/PairProject/cub3d/NERD_tree_1
+	*	1661532153	0
+	"	12	0
+	.	1	0
+	+	1	0
+
+> ~/PairProject/cub3d/maps/valid/map.cub
+	*	1661532152	0
 	"	1	0
 
-> /tmp/mod_05/ex02/Form.
-	*	1658336637	0
+> ~/PairProject/cub3d/maps/valid/map2.cub
+	*	1661532148	0
+	"	1	7
+	^	15	4
+	.	15	3
+	+	19	0
+	+	17	0
+	+	32	0
+	+	1	0
+	+	7	0
+	+	15	3
+
+> ~/PairProject/cub3d/config.c
+	*	1661531611	0
+	"	15	23
+	.	9	0
+	+	132	0
+	+	9	0
+	+	132	0
+	+	9	0
+	+	32	0
+	+	15	0
+	+	9	0
+
+> ~/PairProject/cub3d/ft_hook.c
+	*	1661531605	0
 	"	1	0
 
-> ~/.vimrc
-	*	1658331499	0
-	"	34	0
+> ~/PairProject/cub3d/ikermain.c
+	*	1661531586	0
+	"	1	0
+	^	15	8
+	.	15	7
+	+	15	7
+
+> ~/PairProject/cub3d/map_header.c
+	*	1661531574	0
+	"	58	0
+	^	94	6
+	.	9	0
+	+	9	0
+	+	36	20
+	+	36	2
+	+	9	0
+	+	36	0
+	+	36	6
+	+	9	0
+	+	36	6
+	+	9	0
+	+	36	0
+	+	45	0
+	+	21	6
+	+	24	8
+	+	24	0
+	+	25	0
+	+	29	1
+	+	30	17
+	+	34	6
+	+	32	0
+	+	36	0
+	+	28	0
+	+	30	11
+	+	32	6
+	+	41	0
+	+	34	3
+	+	45	0
+	+	33	3
+	+	34	0
+	+	9	0
+	+	30	12
+	+	32	16
+	+	9	0
+	+	32	6
+	+	9	0
+	+	32	6
+	+	9	0
+	+	32	29
+	+	9	0
+	+	32	6
+	+	9	0
+	+	33	19
+	+	32	0
+	+	9	0
+	+	32	39
+	+	9	0
+	+	30	19
+	+	32	0
+	+	32	38
+	+	9	0
+	+	30	26
+	+	9	0
+	+	30	25
+	+	9	0
+	+	30	31
+	+	9	0
+	+	32	6
+	+	9	0
+	+	32	0
+	+	46	0
+	+	9	0
+	+	43	0
+	+	9	0
+	+	24	6
+	+	26	14
+	+	36	0
+	+	9	0
+	+	19	5
+	+	20	5
+	+	21	5
+	+	22	5
+	+	9	0
+	+	32	5
+	+	9	0
+	+	38	6
+	+	9	0
+	+	37	62
+	+	9	0
+	+	37	59
+	+	38	0
+	+	38	2
+	+	9	0
+	+	52	0
+	+	52	2
+	+	9	0
+	+	58	29
+	+	60	29
+	+	58	24
+	+	60	24
+	+	62	30
+	+	64	24
+	+	66	29
+	+	9	0
+	+	71	29
+	+	9	0
+	+	92	5
+	+	93	5
+	+	94	5
+	+	9	0
+
+> ~/PairProject/cub3d/Makefile
+	*	1661530506	0
+	"	23	6
+	^	23	7
+	.	9	0
+	+	9	0
+	+	22	16
+	+	26	0
+	+	23	12
+	+	26	0
+	+	9	0
+	+	13	7
+	+	9	0
+	+	26	10
+	+	9	0
+	+	26	0
+	+	21	0
+	+	9	0
+	+	19	7
+	+	20	9
+	+	21	2
+	+	23	0
+	+	22	2
+	+	23	2
+	+	28	0
+	+	26	2
+	+	28	2
+	+	9	0
+	+	28	0
+	+	9	0
+	+	28	3
+	+	26	3
+	+	9	0
+	+	43	14
+	+	44	14
+	+	46	19
+	+	52	14
+	+	53	14
+	+	55	19
+	+	63	12
+	+	64	12
+	+	65	12
+	+	66	12
+	+	9	0
+	+	44	0
+	+	46	0
+	+	46	11
+	+	44	0
+	+	52	13
+	+	53	13
+	+	55	18
+	+	63	10
+	+	64	10
+	+	65	10
+	+	66	10
+	+	46	18
+	+	44	13
+	+	43	13
+	+	26	3
+	+	28	2
+	+	26	2
+	+	23	2
+	+	22	2
+	+	21	2
+	+	20	2
+	+	19	7
+	+	9	0
+	+	45	17
+	+	9	0
+	+	45	0
+	+	9	0
+	+	35	0
+	+	9	0
+	+	35	0
+	+	9	0
+	+	17	22
+	+	9	0
+	+	37	3
+	+	35	0
+	+	37	0
+	+	9	0
+	+	21	2
+	+	22	2
+	+	23	2
+	+	9	0
+	+	24	4
+	+	9	0
+	+	25	7
+	+	9	0
+	+	36	7
+	+	36	0
+	+	17	0
+	+	16	0
+	+	33	0
+	+	9	0
+	+	29	0
+	+	17	0
+	+	40	11
+	+	9	0
+	+	27	11
+	+	9	0
+	+	23	7
+	+	9	0
+	+	23	7
+	+	9	0
+
+> ~/PairProject/cub3d/mlx_functions.c
+	*	1661273165	0
+	"	30	21
+	^	30	22
+	.	9	0
+	+	38	0
+	+	30	1
+	+	29	2
+	+	32	0
+	+	30	0
+	+	37	1
+	+	30	21
+	+	9	0
+
+> ~/PairProject/cub3d/NERD_tree_2
+	*	1661272894	0
+	"	43	0
+	.	1	0
+	+	1	0
+
+> ~/PairProject/cub3d/raycasting/draw.c
+	*	1661272889	0
+	"	61	0
+
+> ~/PairProject/cub3d/.gitignore
+	*	1661271529	0
+	"	16	0
+
+> ~/PairProject/cub3d/maps/valid/map_no.cub
+	*	1661187740	0
+	"	20	0
+	.	7	0
+	+	1	0
+	+	19	31
+	+	12	0
+	+	9	0
+	+	13	0
+	+	12	0
+	+	9	0
+	+	8	0
+	+	21	0
+	+	12	0
+	+	13	0
+	+	8	0
+	+	13	31
+	+	13	0
+	+	12	0
+	+	15	0
+	+	16	0
+	+	15	0
+	+	16	12
+	+	17	0
+	+	13	0
+	+	10	4
+	+	17	5
+	+	17	0
+	+	19	0
+	+	17	41
+	+	19	8
+	+	10	4
+	+	8	39
+	+	9	39
+	+	10	38
+	+	11	0
+	+	10	4
+	+	19	0
+	+	10	0
+	+	15	0
+	+	16	0
+	+	19	0
+	+	8	0
+	+	9	0
+	+	19	0
+	+	13	0
+	+	9	0
+	+	10	0
+	+	11	0
+	+	8	51
+	+	9	0
+	+	10	51
+	+	9	0
+	+	10	42
+	+	8	0
+	+	19	0
+	+	17	0
+	+	19	0
+	+	13	0
+	+	15	0
+	+	16	0
+	+	15	0
+	+	16	0
+	+	9	0
+	+	10	0
+	+	13	0
+	+	12	0
+	+	13	0
+	+	16	0
+	+	13	0
+	+	21	0
+	+	17	0
+	+	16	28
+	+	16	0
+	+	17	0
+	+	8	0
+	+	6	0
+	+	8	0
+	+	5	0
+	+	6	0
+	+	5	0
+	+	8	0
+	+	6	7
+	+	6	0
+	+	7	0
+	+	6	0
+	+	7	0
+	+	21	0
+	+	7	0
+	+	21	0
+	+	7	0
+	+	15	0
+	+	7	0
+	+	5	0
+	+	7	0
+	+	5	0
+	+	7	0
+
+> ~/42/cdo/prueba_QA/v2/CDO/NERD_tree_1
+	*	1661180069	0
+	"	7	0
+	.	1	0
+	+	1	0
+
+> ~/PairProject/cub3d/print_utils.c
+	*	1661109994	0
+	"	1	0
+	^	27	16
+	.	9	0
+	+	4	25
+	+	9	0
+	+	33	15
+	+	9	0
+	+	33	0
+	+	9	0
+	+	33	0
+	+	9	0
+	+	16	0
+	+	33	0
+	+	16	27
+	+	22	8
+	+	25	9
+	+	27	16
+	+	9	0
+	+	33	0
+	+	9	0
+	+	33	0
+	+	9	0
+
+> ~/PairProject/cub3d/prueba
+	*	1661106723	0
+	"	14	0
+
+> ~/PairProject/cub3d/maps/invalid/map_FC2.cub
+	*	1661104647	0
+	"	8	5
+
+> ~/42/cdo/behave/09_Background/features/steps/step_tutorial02.py
+	*	1661100643	0
+	"	39	0
+
+> ~/42/cdo/behave/09_Background/features/tutorial09_background.feature
+	*	1661099344	0
+	"	10	0
+
+> ~/42/cdo/behave/09_Background/ninja.py
+	*	1661099333	0
+	"	13	0
+
+> ~/42/cdo/behave/03_juice/blender.py
+	*	1661099253	0
+	"	7	0
+
+> ~/42/cdo/behave/04_Outline/features/tutorial04_scenario_outline.feature
+	*	1661099249	0
+	"	17	8
+
+> ~/42/cdo/behave/04_Outline/features/steps/step_tutorial03.py
+	*	1661099233	0
+	"	6	0
+
+> ~/42/cdo/behave/04_Outline/NERD_tree_1
+	*	1661097236	0
+	"	13	0
+	.	1	0
+	+	1	0
+
+> ~/42/cdo/behave/01_features/tutorial.feature
+	*	1661097231	0
+	"	2	0
+
+> ~/42/cdo/behave/04_Outline/features/NERD_tree_1
+	*	1661097222	0
+	"	19	0
+	.	1	0
+	+	1	0
+
+> ~/42/cdo/behave/01_features/steps/tutorial.py
+	*	1661097214	0
+	"	14	22
+
+> ~/42/Pruebas/exam/rank04/final.c
+	*	1661095500	0
+	"	132	4
+
+> ~/42/cdo/behave/04_Outline/features/steps/NERD_tree_1
+	*	1661092597	0
+	"	7	0
+	.	1	0
+	+	1	0
+
+> ~/42/cdo/behave/04_Outline/blender.py
+	*	1661092483	0
+	"	10	0
+
+> ~/42/cdo/behave/02_ninja/features/steps/steps.py
+	*	1661086100	0
+	"	25	0
+
+> ~/42/cdo/prueba_QA/v2/CDO/steps.py
+	*	1661086040	0
+	"	1	0
+
+> ~/42/cdo/behave/02_ninja/NERD_tree_1
+	*	1661085623	0
+	"	9	0
+	.	1	0
+	+	1	0
+
+> ~/42/cdo/behave/02_ninja/features/ninja.feature
+	*	1661085516	0
+	"	1	0
+
+> ~/42/cdo/behave/02_ninja/ninja.py
+	*	1661085503	0
+	"	11	8
+
+> ~/42/cdo/prueba_QA/v2/CDO/features/tests.feature
+	*	1661084811	0
+	"	28	26
+	^	20	28
+	.	9	0
+	+	1	0
+	+	28	60
+	+	21	23
+	+	20	13
+	+	21	15
+	+	22	23
+	+	23	27
+	+	24	25
+	+	25	27
+	+	26	31
+	+	27	27
+	+	28	38
+	+	27	48
+	+	26	52
+	+	25	49
+	+	24	38
+	+	23	41
+	+	22	35
+	+	21	30
+	+	20	27
+	+	9	0
+
+> ~/PairProject/cub3d/libft/ft_split.c
+	*	1661013659	0
+	"	63	25
+
+> ~/42/cdo/prueba_QA/v2/CDO/script
+	*	1660999023	0
+	"	1	0
+
+> ~/42/cdo/behave/20_MultiMethods/domain.py
+	*	1660997662	0
+	"	26	24
+
+> ~/42/evaluaciones/fsilva/cpp01/ex06/Karen.cpp
+	*	1660928595	0
+	"	32	14
+
+> ~/42/evaluaciones/fsilva/cpp01/ex06/main.cpp
+	*	1660928471	0
+	"	9	35
+
+> ~/42/evaluaciones/fsilva/cpp01/ex06/Karen.hpp
+	*	1660928411	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex06/Makefile
+	*	1660928411	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex06/valgrind.supp
+	*	1660928411	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex05/Karen.cpp
+	*	1660928377	0
+	"	35	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex05/Karen.hpp
+	*	1660928267	0
+	"	10	15
+
+> ~/42/evaluaciones/fsilva/cpp01/ex05/main.cpp
+	*	1660928265	0
+	"	6	13
+
+> ~/42/evaluaciones/fsilva/cpp01/ex05/Makefile
+	*	1660928159	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex05/valgrind.supp
+	*	1660928016	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex04/main.cpp
+	*	1660927877	0
+	"	30	18
+
+> ~/42/evaluaciones/fsilva/cpp01/ex04/example_empty.txt
+	*	1660927072	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex04/example.txt
+	*	1660927068	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex04/Makefile
+	*	1660927061	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex04/valgrind.supp
+	*	1660927061	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex03/main.cpp
+	*	1660927024	0
+	"	19	2
+	.	19	0
+	+	19	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex03/HumanA.cpp
+	*	1660926949	0
+	"	7	24
+
+> ~/42/evaluaciones/fsilva/cpp01/ex03/HumanA.hpp
+	*	1660926947	0
+	"	8	51
+
+> ~/42/evaluaciones/fsilva/cpp01/ex03/HumanB.cpp
+	*	1660926941	0
+	"	6	48
+
+> ~/42/evaluaciones/fsilva/cpp01/ex03/Weapon.cpp
+	*	1660926935	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex03/HumanB.hpp
+	*	1660926907	0
+	"	12	25
+
+> ~/42/evaluaciones/fsilva/cpp01/ex03/Weapon.hpp
+	*	1660926818	0
+	"	11	9
+
+> ~/42/evaluaciones/fsilva/cpp01/ex03/valgrind.supp
+	*	1660926757	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex03/Makefile
+	*	1660926757	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex02/main.cpp
+	*	1660926718	0
+	"	17	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex02/Makefile
+	*	1660926677	0
+	"	1	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex01/main.cpp
+	*	1660926587	0
+	"	16	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex01/ZombieHorde.cpp
+	*	1660926370	0
+	"	2	0
+	.	2	0
+	+	2	0
+
+> ~/42/evaluaciones/fsilva/cpp01/ex01/Zombie.hpp
+	*	1660926366	0
+	"	4	0
+	.	3	0
+	+	3	0

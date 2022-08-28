@@ -1,35 +1,61 @@
-syntax on
-set number
-set relativenumber
-set autoindent
-" set tabs to have 4 spaces
-set ts=4
+"Basics
+	set number
+	set mouse=a
+	set numberwidth=1
+	set clipboard=unnamed
+	syntax enable
+	set showcmd
+	set ruler
+	set cursorline
+	set encoding=utf-8
+	set showmatch
+	set relativenumber
+	set laststatus=2
+	set visualbell
 
-" indent when moving to the next line while writing code
-set autoindent
+	" Plug
+	call plug#begin('~/.vim/plugged')
 
-" expand tabs into spaces
+	Plug 'joshdick/onedark.vim'
+ 	Plug 'itchyny/lightline.vim'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	Plug 'easymotion/vim-easymotion'
+	Plug 'scrooloose/nerdtree'
+	Plug 'christoomey/vim-tmux-navigator'
+	Plug 'tpope/vim-commentary'
 
-" when using the >> or << commands, shift lines by 4 spaces
-set shiftwidth=4
+	call plug#end()
+	
+	"Themes
+	set t_Co=256
+	let NERDTreeQuitOnOpen=1
+	let g:onedark_hide_endofbuffer=1
+	let g:onedark_contrast_dark="hard"
+	let	g:onedark_termcolor=256
+	let	g:onedark_terminal_italics=0
 
-" show the matching part of the pair for [] {} and ()
-set showmatch
+	colorscheme onedark
+	if (empty($TMUX))
+  		if (has("nvim"))
+    		let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  		endif
+  		if (has("termguicolors"))
+    		set termguicolors
+  		endif
+	endif
 
-" Plugins will be downloaded under the specified directory.
-call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-" Declare the list of plugins.
-Plug 'tpope/vim-sensible'
-Plug 'junegunn/seoul256.vim'
+	"ligthline
+	let g:lightline = {
+ 	\ 'colorscheme': 'onedark',
+  	\ }
 
-Plug 'gruvbox-community/gruvbox'
-Plug 'sheerun/vim-polyglot'
-" List ends here. Plugins become visible to Vim after this call.
-Plug 'preservim/nerdtree'
+ 	"Mapeo  
+	let mapleader=" "
+	packadd termdebug
+	let g:termdebug_wide=1
 
-call plug#end()
-
-colorscheme gruvbox
-packadd termdebug
-let g:termdebug_wide=1
+	nmap <Leader>s <Plug>(easymotion-s2)
+	nmap <Leader>nt :NERDTreeFind<CR>
