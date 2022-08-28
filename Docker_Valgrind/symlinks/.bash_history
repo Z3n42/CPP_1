@@ -1,1 +1,0 @@
-/Users/ingonzal/.bash_history
