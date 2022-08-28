@@ -17,12 +17,15 @@ RUN apt-get update && apt-get install -y \
 # Default powerline10k theme, no plugins installed
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" --unattended
 
-# COPY ~/.bash_history /root
-# COPY ~/.shell* /root
-# COPY /Users/ingonzal/.oh-my* /root
-# COPY /Users/ingonzal/.p10k* /root
-# COPY /Users/ingonzal/.vim* /root
-# COPY /Users/ingonzal/.zsh* /root
+# COPY ~/.cache /root
+# COPY ~/.oh-my-zsh /root
+# COPY ~/.p10k.zsh /root
+# COPY ~/Docker_Valgrind/config/.shell.pre-oh-my-zsh /root
+# COPY ~/.vim /root
+# COPY ~/.viminfo /root
+# COPY ~/.vimrc /root
+# COPY ~/.zsh_history /root
+# COPY ~/.zshrc /root
 
 WORKDIR /valgrind
 
