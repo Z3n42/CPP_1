@@ -60,3 +60,4 @@ a.out
 *.o
 __pycache__
 *cpython-39.pyc
+.zcompdump*

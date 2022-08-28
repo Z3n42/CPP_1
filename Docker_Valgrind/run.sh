@@ -2,13 +2,13 @@
 
 function build
 {
-    docker build /Users/ingonzal/42/Docker_Valgrind -t cpp:latest
+    docker build /Users/${USER}/42/Docker_Valgrind -t cpp:latest
 }
 
 function run
 {
     #docker run -it --rm --name cpp_env -v ${PWD}:/tmp/ cpp /bin/bash
-    docker run -it --rm --name valgrind -p 2022:22 -v ${PWD}:/valgrind -v /Users/ingonzal/42/Docker_Valgrind/config:/root cpp
+    docker run -it --rm --name valgrind -p 2022:22 -v ${PWD}:/valgrind -v /Users/${USER}/42/Docker_Valgrind/config:/root cpp
 }
 
 if [[ "$1" = "run" ]]; then
