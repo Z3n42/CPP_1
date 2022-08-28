@@ -26,7 +26,7 @@ function run
 	cp -rf ~/.cache ~/42/Docker_Valgrind/config 
 	cp -rf ~/.oh-my-zsh ~/42/Docker_Valgrind/config 
 	cp -rf ~/.vim ~/42/Docker_Valgrind/config 
-	cp  ~/.bash_history ~/42/Docker_Valgrind/config 
+	cp  ~/.bash_history ~/42/Docker_Valgrind/config 2>/dev/null
 	cp  ~/.viminfo ~/42/Docker_Valgrind/config 
 	cp  ~/.vimrc ~/42/Docker_Valgrind/config 
 	cp  ~/.zsh_history ~/42/Docker_Valgrind/config 
