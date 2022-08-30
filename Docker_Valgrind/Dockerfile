@@ -8,10 +8,14 @@ RUN apt-get update && apt-get install -y \
     vim \
     git \
     curl \
-	wget \
+    wget \
     zsh \
     valgrind \
-    gdb
+    gdb \
+    xorg \
+    libxext-dev \
+    zlib1g-dev \
+    libbsd-dev
 
 # RUN  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 # Default powerline10k theme, no plugins installed
