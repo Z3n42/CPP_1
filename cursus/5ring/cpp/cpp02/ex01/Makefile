@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/06/08 18:35:44 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/03 20:37:31 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = FixedPoint
@@ -19,7 +19,7 @@ AR = ar rcs
 
 RM = rm -f
 
-# S = -fsanitize=address -g3
+S = -fsanitize=address -g3
 
 FILES = main \
 	Fixed \
@@ -34,18 +34,22 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 	@$(CC) $(FLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
-		@$(CC) $(FLAGS) $(S) $^ -o $@ 
-		@echo "The customer is always right"
+		@$(CC) $(FLAGS) $^ -o $@ 
+		@echo "Fixin points ...."
+
+san: $(OBJS)
+		@$(CC) $(FLAGS) $(S) $^ -o $(NAME) 
+		@echo "Sanitizing points ...."
 
 all: $(NAME)
 
 clean:
 		@$(RM) $(OBJS)
-		@echo "Give me the claim sheet please"
+		@echo "Cleaning 1"
 
 fclean: clean
 		@$(RM) $(NAME)
-		@echo "I will never return to this place"
+		@echo "Cleaning 1.1"
 
 re: clean all
 

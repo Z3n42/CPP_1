@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 14:22:47 by ingonzal          #+#    #+#              #
-#    Updated: 2022/08/26 13:31:17 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/29 14:23:17 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ from hamcrest import *
 from argparse import Namespace
 from sys import *
 
+#Background
 @given ('The user tries to connect to the site')
 def step_conect(context):
     """
@@ -102,7 +103,7 @@ def step_impl(context, answer):
     assert_that(context.parser.ret[0], equal_to(ret[0]))
 
 #Website Flag
-@given ('The user want connect to Newspaper´s Website')
+@given ('The user wants connect to Newspaper´s Website')
 def step_impl(context):
     data = connect().json()
     args = Namespace(name=None, type=None, language=None, owner=None, website=[" "], country=None)

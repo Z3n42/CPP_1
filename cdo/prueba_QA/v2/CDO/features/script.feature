@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 14:18:24 by ingonzal          #+#    #+#              #
-#    Updated: 2022/08/26 13:50:50 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/29 14:24:14 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ Feature: Searching data at the site
 
 	#Website Flag
 	Scenario Outline: Searching website
-		Given The user want connect to Newspaper´s Website
+		Given The user wants connect to Newspaper´s Website
 		When The user searches "<arg>" website
 		Then the website title is "<answer>"
 

@@ -5,6 +5,10 @@ function build
     docker build ~/42/Docker_Valgrind -t cpp:latest
 }
 
+function BuildDisp
+{
+    docker build ~/42/Docker_Valgrind/Display -t cpp:latest
+}
 
 function clean
 {
@@ -19,7 +23,7 @@ function DeepClean
 }
 
 
-function Display
+function RunDisp
 {
 	rm -rf ~/42/Docker_Valgrind/config
 	mkdir ~/42/Docker_Valgrind/config
@@ -58,13 +62,17 @@ elif [[ "$1" = "clean" ]]; then
 	clean
 elif [[ "$1" = "DeepClean" ]]; then
 	DeepClean
-elif [[ "$1" = "Display" ]]; then
-	Display
+elif [[ "$1" = "BuildDisp" ]]; then
+	BuildDisp
+elif [[ "$1" = "RunDisp" ]]; then
+	RunDisp
 else
     echo "Error: Wrong parameter"
-    echo "  run"
     echo "  build"
+    echo "  run"
     echo "  clean"
     echo "  DeepClean"
+    echo "  BuildDisp"
+    echo "  RunDisp"
     echo "Your parameter is => "$1
 fi

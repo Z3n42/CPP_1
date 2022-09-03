@@ -11,11 +11,15 @@ RUN apt-get update && apt-get install -y \
     wget \
     zsh \
     valgrind \
-    gdb 
+    gdb \
+    xorg \
+    libxext-dev \
+    zlib1g-dev \
+    libbsd-dev
 
-RUN  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+# RUN  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 # Default powerline10k theme, no plugins installed
-# RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" --unattended
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" --unattended
 
 # COPY ~/.cache /root
 # COPY ~/.oh-my-zsh /root

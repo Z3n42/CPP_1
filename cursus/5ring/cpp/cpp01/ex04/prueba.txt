@@ -1,4 +1,0 @@
-Esto es una prueba para comprobar si se abre el texto.
-Esto es una prueba para comprobar si se lee mas de una linea.
-es para buscar ocurrencias de es.
-es es es es es eses es es es eess.
