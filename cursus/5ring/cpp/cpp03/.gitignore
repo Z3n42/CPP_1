@@ -59,4 +59,7 @@ a.out
 *.a
 *.o
 *.replace
-
+ClapTrap
+ScavTrap
+FragTrap
+DiamondTrap

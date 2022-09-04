@@ -62,3 +62,10 @@ __pycache__
 *cpython-39.pyc
 .zcompdump*
 cub3D
+
+# Propias CPP
+*.replace
+ClapTrap
+ScavTrap
+FragTrap
+DiamondTrap
