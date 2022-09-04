@@ -6,14 +6,14 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 19:51:50 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/19 19:01:46 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 18:00:11 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 int main(void){
-	/* ClapTrap unnamed; */
+	ClapTrap unnamed;
 	ClapTrap Bip("Bip");
 	ClapTrap Bop("Bop");
 	

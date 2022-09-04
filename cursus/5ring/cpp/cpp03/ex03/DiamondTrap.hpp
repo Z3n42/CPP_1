@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 20:34:39 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/23 18:32:09 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 18:07:18 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ public:
 	DiamondTrap(DiamondTrap const &src);
 
 	DiamondTrap & operator=(DiamondTrap const & rhs);
-	std::string getClass(void);
+	std::string getClass(void) const;
 	using ScavTrap::attack;
 	void whoAmI(void);
 };

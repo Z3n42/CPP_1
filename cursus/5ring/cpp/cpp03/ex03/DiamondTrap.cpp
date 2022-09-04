@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 20:44:04 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/23 18:31:41 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 18:08:25 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ void DiamondTrap::whoAmI(void){
 	std::cout << "DiamondTrap's name is " << this->_Name << std::endl;
 	std::cout << "ClapTrap's name is " << this->getname() << std::endl;
 	std::cout << std::endl;
-
-	/* std::cout << this->_Class << this->_Name << std::endl; */
 }
+	/* std::cout << this->_Class << this->_Name << std::endl; */

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 17:32:34 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/19 19:08:52 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:59:53 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ private:
 	unsigned int _AttackDamage;
 
 public:
-	/* ClapTrap(void); */
+	ClapTrap(void);
 	ClapTrap(std::string name);
 	~ClapTrap(void);
 	ClapTrap(ClapTrap const &src);

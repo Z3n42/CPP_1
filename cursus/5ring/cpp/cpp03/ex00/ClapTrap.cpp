@@ -6,14 +6,14 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 17:56:17 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/21 21:11:28 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 18:10:36 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ClapTrap.hpp"
 
-/* ClapTrap::ClapTrap(void){ */
-/* 	std::cout << "Unnamed ClapTrap has been summoned." << std::endl; */
-/* } */
+ClapTrap::ClapTrap(void){
+	std::cout << "Unnamed ClapTrap has been summoned." << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string name) : _Name(name), _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0){
 	std::cout << "ClapTrap => " << this->_Name << " has been summoned." << std::endl;
@@ -29,7 +29,6 @@ ClapTrap::ClapTrap(ClapTrap const &src){
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs){
-	std::cout << this->_Class << this->_Name << " Equalized to " << rhs._Class << rhs._Name << std::endl;
 	this->_Name = rhs.getname();	
 	this->_Hitpoints = rhs.getHit();	
 	this->_EnergyPoints = rhs.getEnergy();	
@@ -37,6 +36,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & rhs){
 
 	return(*this);
 }
+	/* std::cout << this->_Class << this->_Name << " Equalized to " << rhs._Class << rhs._Name << std::endl; */
 
 std::string ClapTrap::getname(void) const{
 	return(this->_Name);
