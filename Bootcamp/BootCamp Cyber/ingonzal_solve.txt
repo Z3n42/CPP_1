@@ -1,0 +1,45 @@
+ingonzal_solve.txt
+
+- Level00
+Estaba en un archivo oculto .pass 
+Ejecutar cat .pass 
+
+Level01 Pass = marvin
+
+- Level01
+En un archivo oculto ./pass estaba el hash de la contraseña.
+En una web de decrypt reconocemos que esta en MD5 y lo traducimos.
+
+Level02 Pass = 4242 
+
+- Level02
+Al ejecutar el archivo tryme la primera vez, se crea un archivo be_patient, donde te indica que hay que usar John the ripper, ejecutas tryme una vez más y se crea el archivo .pass. Usando el comando john  --incremental .pass descodifica el hash de la contraseña y con john --show te lo muestra.
+
+Level03 pass = memaide
+
+- level03
+Usando el comando git reset --hard HEAD~1 un par de veces retrocedemos a la versión del archivo passwd donde es visible la contraseña.
+
+Level04 pass = Gh2WBIr0s0b82ou9y34T
+
+- level04
+Retrocedemos al directorio raiz y vemos que en la capeta lib32 el usuario level04 es el propietario. Dentro etc/level04/.pass
+
+Level05 pass = i~rYRGrD$Wi~rYRGrD$Wi~rYRGrD$W
+
+- level 05
+Haciendo pruebas con el programa level05 pasándole argumentos vemos que requiere al menos uno.. Mirándooslas dentro vemos un argumento de broma 1234 y otro VBKpyeUxchn5OIyRVvFX y dándoselo a level05 como argumento da el pass.
+
+Level06 pass = IOV8U3E32YRbcn2021
+
+- level06
+Despues de bastantes pruebas y siguiendo la lógica visible al hacerle cat al programa level06.. Se descubre q es un programa q ejecuta cualquier script en /tmp como si lo hiciera el usuario level07.. En el script definimos los comandos para que entre en la carpeta level07 y hacemos cat al archivo pass y conseguimos la contraseña.
+
+Level07 pass = b7df78e9401068b623d47b
+
+- level 07
+Hacemos cat del RADME y hay un mensaje en binario.
+
+01100101 01101110 01101000 01101111 01110010 01100001 01100010 01110101 01100101 01101110 01100001 0001010
+
+Traducido : Enhorabuena
