@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 17:43:52 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/09 17:49:07 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/17 20:41:53 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 
 private:
 	int _in;
-	static const int bit = 8;
+	static const int _bit = 8;
 };
 
 #endif

@@ -6,10 +6,12 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/09/03 20:38:13 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/17 21:11:04 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = FixedPoint
+
+NAME_S = FixedPoint_Sanitized
 
 CC = clang++
 
@@ -33,13 +35,14 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 .cpp.o: $(SRCS)
 	@$(CC) $(FLAGS) -c -o $@ $<
 
-
 $(NAME): $(OBJS)
 		@$(CC) $(FLAGS) $^ -o $@ 
 		@echo "Fixin points ...."
 
-san: $(OBJS)
-		@$(CC) $(FLAGS) $(S) $^ -o $(NAME) 
+san:$(NAME_S) 
+
+$(NAME_S):$(OBJS)
+		@$(CC) $(FLAGS) $(S) $^ -o $(NAME_S) 
 		@echo "Sanitizing points ...."
 
 all: $(NAME)
@@ -50,6 +53,7 @@ clean:
 
 fclean: clean
 		@$(RM) $(NAME)
+		@$(RM) $(NAME_S)
 		@echo "Cleaning 1.1"
 
 re: clean all

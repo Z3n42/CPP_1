@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 18:17:17 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/05 20:09:25 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/17 20:45:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,17 @@ float Fixed::toFloat(void) const{
 int Fixed::toInt(void) const{
 
 	return (this->getRawBits() >> this->_fracbit);
+}
 	/* Otra posibilidad */
 	/* return (this->_in >> this->_fracbit); */
 	/* return (this->_in / 256); */
-}
 
 int Fixed::getRawBits(void) const{
-	/* std::cout << "getRawBits member function called" << std::endl; */
 	return this->_in;
 }
+	/* std::cout << "getRawBits member function called" << std::endl; */
 
 void Fixed::setRawBits(int const raw){
-	/* std::cout << "setRawBits member function called" << std::endl; */
 	this->_in = raw;
 }
+	/* std::cout << "setRawBits member function called" << std::endl; */
