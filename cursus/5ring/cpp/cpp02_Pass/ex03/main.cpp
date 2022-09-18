@@ -6,13 +6,16 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 17:35:53 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/18 16:31:38 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/18 17:19:33 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include "Point.hpp"
 #include <iostream>
+
+/* Fuente: */
+/* https://huse360.home.blog/2019/12/14/como-saber-si-un-punto-esta-dentro-de-un-triangulo/ */
 
 int	main(void) {
 

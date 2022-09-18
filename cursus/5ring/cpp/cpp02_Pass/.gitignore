@@ -59,4 +59,5 @@ a.out
 *.a
 *.o
 *.replace
-
+FixedPoint
+FixedPoint_Sanitized

@@ -6,10 +6,12 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/06/21 20:33:56 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/18 14:38:43 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = DiamondTrap
+
+NAME_S = Diamondtrap_Sanitized
 
 CC = clang++
 
@@ -37,8 +39,14 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 	@$(CC) $(FLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
-		@$(CC) $(FLAGS) $(S) $^ -o $@ 
+		@$(CC) $(FLAGS) $^ -o $@ 
 		@echo "It's a Trap"
+
+san : $(NAME_S)
+
+$(NAME_S): $(OBJS)
+		@$(CC) $(FLAGS) $(S) $^ -o $@ 
+		@echo "It's a Sanitized Trap"
 
 all: $(NAME)
 
@@ -48,6 +56,7 @@ clean:
 
 fclean: clean
 		@$(RM) $(NAME)
+		@$(RM) $(NAME_S)
 		@echo "Collecting spare parts"
 
 re: clean all

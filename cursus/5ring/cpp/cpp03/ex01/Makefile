@@ -6,10 +6,12 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/06/21 17:43:09 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/18 14:31:54 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = ScavTrap
+
+NAME_S = Scavtrap_Sanitized
 
 CC = clang++
 
@@ -19,11 +21,11 @@ AR = ar rcs
 
 RM = rm -f
 
-# S = -fsanitize=address -g3
+S = -fsanitize=address -g3
 
 FILES = main \
-	ClapTrap \
-	ScavTrap \
+		ClapTrap \
+		ScavTrap \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(FILES)))
@@ -35,8 +37,14 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 	@$(CC) $(FLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
-		@$(CC) $(FLAGS) $(S) $^ -o $@ 
+		@$(CC) $(FLAGS) $^ -o $@ 
 		@echo "It's a Trap"
+
+san : $(NAME_S)
+
+$(NAME_S): $(OBJS)
+		@$(CC) $(FLAGS) $(S) $^ -o $@ 
+		@echo "It's a Sanitized Trap"
 
 all: $(NAME)
 
