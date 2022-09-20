@@ -6,12 +6,12 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/09/18 14:31:54 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/19 18:10:29 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = ScavTrap
+NAME = DiamondTrap
 
-NAME_S = Scavtrap_Sanitized
+NAME_S = Diamondtrap_Sanitized
 
 CC = clang++
 
@@ -24,8 +24,10 @@ RM = rm -f
 S = -fsanitize=address -g3
 
 FILES = main \
-		ClapTrap \
-		ScavTrap \
+	ClapTrap \
+	ScavTrap \
+	FragTrap \
+	DiamondTrap \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(FILES)))
@@ -54,6 +56,7 @@ clean:
 
 fclean: clean
 		@$(RM) $(NAME)
+		@$(RM) $(NAME_S)
 		@echo "Collecting spare parts"
 
 re: clean all

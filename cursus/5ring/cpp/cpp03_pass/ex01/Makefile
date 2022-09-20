@@ -6,12 +6,12 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/09/18 14:38:43 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/19 18:09:33 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = DiamondTrap
+NAME = ScavTrap
 
-NAME_S = Diamondtrap_Sanitized
+NAME_S = Scavtrap_Sanitized
 
 CC = clang++
 
@@ -24,10 +24,8 @@ RM = rm -f
 S = -fsanitize=address -g3
 
 FILES = main \
-	ClapTrap \
-	ScavTrap \
-	FragTrap \
-	DiamondTrap \
+		ClapTrap \
+		ScavTrap \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(FILES)))

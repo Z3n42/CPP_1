@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/09/18 14:31:06 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/19 18:09:00 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = ClapTrap
@@ -53,6 +53,7 @@ clean:
 
 fclean: clean
 		@$(RM) $(NAME)
+		@$(RM) $(NAME_S)
 		@echo "Collecting spare parts"
 
 re: clean all
