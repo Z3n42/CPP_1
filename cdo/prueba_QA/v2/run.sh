@@ -1,13 +1,32 @@
 #!/bin/bash
 
-if [ "$1" = "start" ]; then
-	docker build --platform=linux/amd64 -t qa . &&
+function init
+{
+	docker build --platform=linux/amd64 -t prueba_qa . &&
 	printf "\ec" &&
 	printf "\n" &&
 	echo "Run \"./script.py -[flag] [Argument]\" or Run \"behave\"" &&
 	printf "\n" &&
-	docker run --rm -it -p 4444:4444 qa /bin/bash
+	docker run --name ingonzal_qa --rm -it -p 4444:4444 prueba_qa /bin/bash
+}
+
+function clean
+{
+	docker rmi prueba_qa python:3.7-slim-buster
+	printf "\ec" &&
+	printf "\n" &&
+	echo "ingonzal_qa Docker container and prueba_qa Docker image cleaned" &&
+	printf "\n"
+}
+
+if [ "$1" = "start" ]; then
+	init
+elif [ "$1" = "clean" ]; then
+	clean
 else
-	echo "Error: Wrong argument"
-	 echo "	Try ./run.sh start"
+	echo "Error: Wrong argument :"
+	echo "	Try => ./run.sh start"
+	printf "\n" &&
+	echo "	Or When finished :"
+	echo "	Try => ./run.sh clean"
 fi
