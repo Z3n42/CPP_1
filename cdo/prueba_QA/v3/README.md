@@ -68,6 +68,10 @@ behave
 
 **-c, --country** => Get the list of newspapers of the specified country.
 
+## Special thanks and recognition
+
+	Original Dockerfile by [matt-bertoncello/Dockerfile](https://gist.github.com/matt-bertoncello) adaptation by ingonzal
+
 ## License
 [MIT](https://opensource.org/licenses/MIT)
 **Free Software, Hell Yeah!**
