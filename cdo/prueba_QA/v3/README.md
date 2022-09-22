@@ -56,12 +56,17 @@ or
 behave
 ```
 ## Script arguments
-> **-n, --name** => Get the information from the newspaper with the specified name.
-> **-t, --type** => Get the list of newspapers of the specified type.
-> **-l, --language** => Get the list of newspapers of the specified languages.
-> **-o, --owner** => Get the list of newspapers of the specified owner.
-> **-w, --website** => Get the list of newspapers from the specified owner Retrieve the name of the newspaper (Name field) from the specified url and return the name of the newspaper and the title of the web page (specified url) (we get the value of the title using selenium).
-> **-c, --country** => Get the list of newspapers of the specified country.
+**-n, --name** => Get the information from the newspaper with the specified name.
+
+**-t, --type** => Get the list of newspapers of the specified type.
+
+**-l, --language** => Get the list of newspapers of the specified languages.
+
+**-o, --owner** => Get the list of newspapers of the specified owner.
+
+**-w, --website** => Get the list of newspapers from the specified owner Retrieve the name of the newspaper (Name field) from the specified url and return the name of the newspaper and the title of the web page (specified url) (we get the value of the title using selenium).
+
+**-c, --country** => Get the list of newspapers of the specified country.
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)
