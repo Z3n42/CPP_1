@@ -70,7 +70,7 @@ behave
 
 ## Special thanks and recognition
 
-	Original Dockerfile by [matt-bertoncello/Dockerfile](https://gist.github.com/matt-bertoncello) adaptation by ingonzal
+> Original Dockerfile by **[matt-bertoncello/Dockerfile](https://gist.github.com/matt-bertoncello)** adaptation by ingonzal
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)
