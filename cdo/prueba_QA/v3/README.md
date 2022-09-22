@@ -51,7 +51,6 @@ Inside the container, you can execute script directly or invoke Behave.
 ```sh
 ./script.py -[flag] [Argument]
 ```
-or
 ```sh
 behave
 ```
