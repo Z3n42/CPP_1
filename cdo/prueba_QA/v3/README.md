@@ -14,7 +14,7 @@ _ingonzal@student.42urduliz.com_
 > 3 . Extract and parse JSON to locate specific information that is defined by the arguments.
 >
 > 4 . Use **selenium** to connect to the websites and get the title. **_(Only works at the attached Docker enviroment for the [Xvfb](https://es.wikipedia.org/wiki/Xvfb) dependency)_**
-
+>
 > 5 . Print the info.
 
 #### 2 . Build as many tests as possible with BEHAVE to check how it works.
