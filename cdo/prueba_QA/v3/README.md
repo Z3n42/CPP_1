@@ -8,14 +8,19 @@ _ingonzal@student.42urduliz.com_
 #### 1 . Create a python script that finds the information requested by parameter in a JSON
 
 > 1 . Parse arguments.
+
 > 2 . Connect to API using **request** module.
+
 > 3 . Extract and parse JSON to locate specific information that is defined by the arguments.
-> 4 . Use **selenium** to connect to the websites and get the title. **_(Only works at the attached Docker enviroment for the [xvfb](https://es.wikipedia.org/wiki/Xvfb) dependency)_**
+
+> 4 . Use **selenium** to connect to the websites and get the title. **_(Only works at the attached Docker enviroment for the [Xvfb](https://es.wikipedia.org/wiki/Xvfb) dependency)_**
+
 > 5 . Print the info.
 
 #### 2 . Build as many tests as possible with BEHAVE to check how it works.
 
 > 1 . In this part I have put a common background to all the scenarios and then through "Scenario Outlines" I have tried to verify all the expected results.
+
 > 2 . However, for this test, having also made the script, I think that I was building the tests looking for green, and I get the feeling that this is not the idea.
 
 #### 3 . With the logging module create a log file system.
