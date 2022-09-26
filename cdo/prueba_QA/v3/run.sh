@@ -7,7 +7,7 @@ function init
 	printf "\n" &&
 	echo "Run \"./script.py -[flag] [Argument]\" or Run \"behave\"" &&
 	printf "\n" &&
-	docker run --name ingonzal_qa --rm -it -p 4444:4444 prueba_qa /bin/bash
+	docker run --name ingonzal_qa --rm -it prueba_qa /bin/bash
 }
 
 function clean
