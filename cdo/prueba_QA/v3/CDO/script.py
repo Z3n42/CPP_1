@@ -68,8 +68,8 @@ def web_test(data, args, flag, argflag):
             try :
                 title = selena(value["Website"])   
                 ret.append(value["Name"] + " : " + title)
-            except FileNotFoundError:
-                ret.append("Selenium part is made to works inside the attached Docker enviroment because the Xvfb dependence")
+            except :
+                ret.append("Selenium part is made to works inside the attached Docker enviroment because the Xvfb dependence and by now only works at x86 arquitecture")
     if ret == []:
         ret = "Don´t exist!!!"
     return (ret)

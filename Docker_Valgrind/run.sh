@@ -2,12 +2,12 @@
 
 function build
 {
-    docker build ~/42/Docker_Valgrind -t cpp:latest
+    docker build ~/42/Docker_Valgrind -t dvalg:latest
 }
 
 function BuildDisp
 {
-    docker build ~/42/Docker_Valgrind/Display -t cpp:latest
+    docker build ~/42/Docker_Valgrind/Display -t dvalg:latest
 }
 
 function clean
@@ -36,7 +36,7 @@ function RunDisp
 	cp  ~/.vimrc ~/42/Docker_Valgrind/config 
 	cp  ~/.zsh_history ~/42/Docker_Valgrind/config 
 	xhost + 127.0.0.1
-    docker run -it --rm --name valgrind -e DISPLAY=host.docker.internal:0 -p 2022:22 -v ${PWD}:/valgrind -v ~/42/Docker_Valgrind/config:/root cpp
+    docker run -it --rm --name valgrind -e DISPLAY=host.docker.internal:0 -p 2022:22 -v ${PWD}:/valgrind -v ~/42/Docker_Valgrind/config:/root dvalg
 }
 
 function run
@@ -51,7 +51,7 @@ function run
 	cp  ~/.viminfo ~/42/Docker_Valgrind/config 
 	cp  ~/.vimrc ~/42/Docker_Valgrind/config 
 	cp  ~/.zsh_history ~/42/Docker_Valgrind/config 
-    docker run -it --rm --name valgrind -p 2022:22 -v ${PWD}:/valgrind -v ~/42/Docker_Valgrind/config:/root cpp
+    docker run -it --rm --name valgrind -p 2022:22 -v ${PWD}:/valgrind -v ~/42/Docker_Valgrind/config:/root dvalg
 }
 
 if [[ "$1" = "run" ]]; then

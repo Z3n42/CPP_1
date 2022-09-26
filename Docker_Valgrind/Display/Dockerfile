@@ -21,6 +21,10 @@ RUN apt-get update && apt-get install -y \
 # Default powerline10k theme, no plugins installed
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" --unattended
 
+RUN git clone https://github.com/42Paris/minilibx-linux.git /valgrind/mlx_linux 
+
+# RUN sh /valgrind/mlx_linux/configure
+
 # COPY ~/.cache /root
 # COPY ~/.oh-my-zsh /root
 # COPY ~/.p10k.zsh /root
