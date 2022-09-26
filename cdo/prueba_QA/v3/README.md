@@ -4,7 +4,9 @@ _Iñigo Gonzalez Portela_
 _ingonzal@student.42urduliz.com_
 
 ## Subject
+
 #### 1 . Create a python script that finds the information requested by parameter in a JSON
+
 > 1 . Parse arguments.
 > 2 . Connect to API using **request** module.
 > 3 . Extract and parse JSON to locate specific information that is defined by the arguments.
@@ -12,10 +14,12 @@ _ingonzal@student.42urduliz.com_
 > 5 . Print the info.
 
 #### 2 . Build as many tests as possible with BEHAVE to check how it works.
+
 > 1 . In this part I have put a common background to all the scenarios and then through "Scenario Outlines" I have tried to verify all the expected results.
 > 2 . However, for this test, having also made the script, I think that I was building the tests looking for green, and I get the feeling that this is not the idea.
 
 #### 3 . With the logging module create a log file system.
+
 > 1 . I have set the level to info and I check all the accesses to the main class by registering the time, the file and as a message I contrast the flag entered with the return it gives.
 
 ## Tech
