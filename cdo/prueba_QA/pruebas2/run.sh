@@ -2,11 +2,7 @@
 
 function init
 {
-	# if chrome version changes and chromedriver manual handler and build fails, 
-	#jumps to automatic handler 
-	if ! docker build --platform=linux/amd64 -t prueba_qa . ;
-		then  docker build -f ./automatic/Dockerfile --platform=linux/amd64 -t prueba_qa .
-	fi &&
+	docker build --platform=linux/amd64 -t prueba_qa . &&
 	printf "\ec" &&
 	printf "\n" &&
 	echo "Run \"./script.py -[flag] [Argument]\" or Run \"behave\"" &&

@@ -1,0 +1,6 @@
+behave
+selenium
+requests
+PyHamcrest
+pyvirtualdisplay
+webdriver-manager

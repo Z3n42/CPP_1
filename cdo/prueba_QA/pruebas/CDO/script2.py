@@ -1,0 +1,179 @@
+#!/usr/local/bin/python3
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    test.py                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/08/11 17:18:56 by ingonzal          #+#    #+#              #
+#    Updated: 2022/08/11 17:26:01 by ingonzal         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+import requests
+import re
+import argparse
+import pprint
+import logging
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from pyvirtualdisplay import Display
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s') 
+handler = logging.FileHandler('prueba_qa.log')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+
+# !!! selenium part is made to works inside the attached Docker enviroment because xvfb dependence !!!
+
+def selena(url):
+    # set xvfb display since there is no GUI in docker container.
+    display = Display(visible=0, size=(800, 600))
+    display.start()
+    
+    chrome_options = Options()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.get(url)
+
+    title = driver.title
+
+    driver.quit()
+    display.stop()
+    return(title)
+
+# Decoration function 
+def pretty_print(param_funct):
+    def mod(data, args, flag, argflag):
+        ret = param_funct(data, args, flag, argflag)
+        print("\n****** " + flag + " flag ******\n")
+        pprint.pprint(ret)
+        print("\n _______END_______ \n")
+        return (ret)
+    return (mod)
+
+# This function uses Selenium to get website title
+@pretty_print
+def web_test(data, args, flag, argflag):
+    print("Making conection, be patient please...\n")
+    ret = []
+    for value in data.values():
+        if value[flag] in argflag:
+            try :
+                title = selena(value["Website"])   
+                ret.append(value["Name"] + " : " + title)
+            except :
+                ret.append("Selenium part is made to works inside the attached Docker enviroment because its Xvfb dependence and currently only works at x86 arquitecture")
+    if ret == []:
+        ret = "Don´t exist!!!"
+    return (ret)
+
+# This function gets almost all cases
+@pretty_print
+def simple_get(data, args, flag, argflag):
+    ret = []
+    for value in data:
+        for x in value.values():
+            if flag == "id" and value[flag] == int(argflag[0]):
+                if value["name"] not in ret:
+                    ret.append(value["name"])
+            elif value[flag] in argflag:
+                if flag == "name":
+                    ret = value
+                else:
+                    if value["name"] not in ret:
+                        ret.append(value["name"])
+    if ret == []:
+        ret.append("Don´t exist!!!")
+    return (ret)
+
+# This function get list values
+@pretty_print
+def list_get(data, args, flag, argflag):
+    ret = []
+    for value in data.values():
+        lang = value[flag]
+        for i in lang: 
+            if i in argflag:
+                if value["Name"] not in ret:
+                    ret.append(value["Name"])
+    if ret == []:
+        ret.append("Don´t exist!!!")
+    return (ret)
+
+# Main object where recieve the parsed arguments and call to the proper function
+class Qa(object):
+    def __init__(self, data, args, ret):
+        self.data = data
+        self.args = args
+        self.ret = ret
+
+    def select_flag(self):
+        if self.args.name:
+            argflag = self.args.name
+            flag = "name"
+            self.ret = simple_get(self.data, self.args, flag, argflag)
+        if self.args.id:
+            argflag = self.args.id
+            flag = "id"
+            self.ret = simple_get(self.data, self.args, flag, argflag)
+        if self.args.email:
+            argflag = self.args.email
+            flag = "email"
+            self.ret = simple_get(self.data, self.args, flag, argflag)
+        if self.args.gender:
+            argflag = self.args.gender
+            flag = "gender"
+            self.ret = simple_get(self.data, self.args, flag, argflag)
+        #if self.args.website:
+         #   argflag = self.args.website
+          #  flag = "Website"
+           # self.ret = web_test(self.data, self.args, flag, argflag)
+        if self.args.status:
+            argflag = self.args.status
+            flag = "status"
+            self.ret = simple_get(self.data, self.args, flag, argflag)
+        try:
+            logger.info("Flag : " + flag + " => " + argflag)
+            logger.info(self.ret)
+        except:
+            exit()
+        return (self.ret)
+
+# Connnect with the api
+def connect():
+    url = 'https://gorest.co.in/public/v2/users'
+    try: 
+       ret = requests.get(url)
+    except:
+        print("\n" + url + " has a connection problem\n")
+        exit()
+    else:
+        logger.info(ret)
+        return (ret)
+
+# Argument parsing
+def parser():
+    parser = argparse.ArgumentParser(description='Filter Users')
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('-n', '--name', nargs='+', help='Insert a "name" of a User')
+    group.add_argument('-i', '--id', nargs='+', help='Insert "id" of a User')
+    group.add_argument('-e', '--email', nargs='+', help='Insert email of a user')
+    group.add_argument('-g', '--gender', nargs='+', help='Insert the gender of a User')
+   # group.add_argument('-w', '--website', nargs='+', help='Insert the url of the "website" of a Newsletter')
+    group.add_argument('-s', '--status', nargs='+', help='Insert the status of a User')
+    args=parser.parse_args()
+    return (args)
+
+# Main
+if __name__ == "__main__":
+    data = connect().json()
+    args = parser()
+    init = Qa(data, args, None)
+    ret = init.select_flag()

@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 15:24:22 by ingonzal          #+#    #+#              #
-#    Updated: 2022/09/27 22:02:30 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/27 21:47:23 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,14 +30,14 @@ RUN apt-get update && \
     echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list && \
     apt-get update -y && \
 # Latest chrome version better with automatic chromedriver handler
-	# apt-get install -y google-chrome-stable && \
+	apt-get install -y google-chrome-stable && \
 # Automatic chromedriver version handler only works on mac x86 arquitecture
-	# CHROMEVER=$(google-chrome --product-version | grep -o "[^\.]*\.[^\.]*\.[^\.]*") && \
-    # DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROMEVER") && \
+	CHROMEVER=$(google-chrome --product-version | grep -o "[^\.]*\.[^\.]*\.[^\.]*") && \
+    DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROMEVER") && \
 # Specific chrome version better with manual chromedriver handler
-    apt-get install -y google-chrome-stable=106.0.5249.61-1 && \
+    # apt-get install -y google-chrome-stable=106.0.5249.61-1 && \
 # Manual chromedriver version better at unknown os
-    DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_106.0.5249") && \
+    # DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_106.0.5249") && \
     wget -q --continue -P /chromedriver "http://chromedriver.storage.googleapis.com/$DRIVERVER/chromedriver_linux64.zip" && \
     unzip /chromedriver/chromedriver* -d /chromedriver
 
@@ -46,12 +46,12 @@ RUN chmod +x /chromedriver/chromedriver
 RUN mv /chromedriver/chromedriver /usr/bin/chromedriver
 
 # copy any python requirements file into the install directory and install all python requirements.
-COPY requirements.txt /requirements.txt
+COPY ../requirements.txt /requirements.txt
 RUN pip install --upgrade --no-cache-dir -r /requirements.txt
 RUN rm /requirements.txt # remove requirements file from container.
 
 # copy the source code into /app and move into that directory.
-COPY ./CDO /CDO/QA/ingonzal
+COPY ../CDO /CDO/QA/ingonzal
 WORKDIR /CDO/QA/ingonzal
 
 ## end builder stage.
