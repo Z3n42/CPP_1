@@ -3,9 +3,11 @@
 function init
 {
 	# if chrome version changes and chromedriver manual handler and build fails, 
-	#jumps to automatic handler 
+	#jumps to automatic handler build 
 	if ! docker build --platform=linux/amd64 -t prueba_qa . ;
-		then  docker build -f ./automatic/Dockerfile --platform=linux/amd64 -t prueba_qa .
+		then printf "\ec" &&
+			echo "Manual chromedriver build failed, Jump to Automatic chromedriver build" && 
+			docker build -f ./automatic/Dockerfile --platform=linux/amd64 -t prueba_qa . 
 	fi &&
 	printf "\ec" &&
 	printf "\n" &&
