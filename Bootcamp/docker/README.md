@@ -1,1 +1,0 @@
-# cybersec-bootcamp-workshops

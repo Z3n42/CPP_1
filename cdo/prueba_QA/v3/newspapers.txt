@@ -1,0 +1,76 @@
+
+{
+	"newspaper1": {
+		"Name": "El Mundo",
+		"Type": "Daily newspaper",
+		"Language": ["Spanish"],
+		"Owner": "Unidad Editorial S.A.",
+		"Website": "http://www.elmundo.es",
+		"Country": "Spain"
+
+	},
+	"newspaper2": {
+		"Name": "El Pais",
+		"Type": "Daily newspaper",
+		"Language": ["Spanish","Portuguese", "Catalan", "English"],
+		"Owner": "PRISA",
+		"Website": "http://www.elpais.com",
+		"Country": "Spain"
+	},
+	"newspaper3": {
+		"Name": "Marca",
+		"Type": "Daily sports newspaper",
+		"Language": ["Spanish", "English"],
+		"Owner": "Unidad Editorial",
+		"Website": "http://www.marca.com",
+		"Country": "Spain"
+	},
+	"newspaper4": {
+		"Name": "AS",
+		"Type": "Daily sports newspaper",
+		"Language": ["Spanish"],
+		"Owner": "PRISA",
+		"Website": "http://as.com",
+		"Country": "Spain"
+	},
+	"newspaper5": {
+		"Name": "The Sun",
+		"Type": "Daily newspaper",
+		"Language": ["English"],
+		"Owner": "News UK Independent",
+		"Website": "https://www.thesun.co.uk",
+		"Country": "United Kingdom"
+	},
+	"newspaper6": {
+		"Name": "The Daily Telegraph",
+		"Type": "Daily newspaper",
+		"Language": ["English"],
+		"Owner": "Telegraph Media Group",
+		"Website": "https://www.telegraph.co.uk",
+		"Country": "United Kingdom"
+	},
+	"newspaper7": {
+		"Name": "The New York Times",
+		"Type": "Daily newspaper",
+		"Language": ["English", "Spanish", "Chinese"],
+		"Owner": "The New York Times Company",
+		"Website": "https://www.nytimes.com",
+		"Country": "United States"
+	},
+	"newspaper8": {
+		"Name": "CNN International",
+		"Type": "Daily newspaper",
+		"Language": ["English"],
+		"Owner": "Warner Bros. Discovery",
+		"Website": "https://edition.cnn.com",
+		"Country": "United States"
+	},
+	"newspaper9": {
+		"Name": "Global Times",
+		"Type": "Daily newspaper",
+		"Language": ["English", "Chinese"],
+		"Owner": "People's Daily",
+		"Website": "https://www.huanqiu.com",
+		"Country": "China"
+	}
+}
