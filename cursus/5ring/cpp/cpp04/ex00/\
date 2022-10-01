@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:53:11 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/10/01 21:12:21 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:05:59 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 int main()
 {
-	std::cout << " _________ Subject Main __________" << std::endl;
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -33,18 +32,11 @@ int main()
 	delete(j);
 	delete(i);
 	std::cout << std::endl;
-	std::cout << " _________Copy Constructors__________" << std::endl;
-	const Dog d = Dog();
-	const Cat c = Cat();
-	const Animal* h = new Dog(d);
-	const Animal* k = new Cat(c);
-	std::cout << "h->getType => " << h->getType() << " " << std::endl;
-	std::cout << "k->getType => " << k->getType() << " " << std::endl;
-	h->makeSound();
-	k->makeSound();
+	std::cout << " _________Other Constructors__________" << std::endl;
+	const Animal* h = new Dog("Dog");
+	const Animal* k = new Cat("Cat");
 	delete(h);
 	delete(k);
-	std::cout << std::endl;
 	std::cout << " _________Wrong Animals__________" << std::endl;
 	const WrongAnimal* WrongMeta = new WrongAnimal();
 	const WrongAnimal* w = new WrongCat();

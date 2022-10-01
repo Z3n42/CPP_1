@@ -51,7 +51,9 @@ function run
 	cp  ~/.viminfo ~/42/Docker_Valgrind/config 
 	cp  ~/.vimrc ~/42/Docker_Valgrind/config 
 	cp  ~/.zsh_history ~/42/Docker_Valgrind/config 
-    docker run -it --rm --name valgrind -p 2022:22 -v ${PWD}:/valgrind -v ~/42/Docker_Valgrind/config:/root dvalg
+    if ! docker run -it --rm --name valgrind -p 2022:22 -v ${PWD}:/valgrind -v ~/42/Docker_Valgrind/config:/root dvalg ;
+	then build && run
+	fi
 }
 
 if [[ "$1" = "run" ]]; then

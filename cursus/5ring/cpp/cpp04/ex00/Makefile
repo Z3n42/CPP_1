@@ -6,10 +6,12 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/07/10 18:18:47 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/10/01 20:09:03 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = Animals_00
+
+NAME_S = Animals_00_Sanitized
 
 CC = clang++
 
@@ -38,8 +40,14 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 	@$(CC) $(FLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
-		@$(CC) $(FLAGS) $(S) $^ -o $@ 
+		@$(CC) $(FLAGS) $^ -o $@ 
 		@echo "The animals have been released"
+
+san : $(NAME_S)
+
+$(NAME_S): $(OBJS)
+		@$(CC) $(FLAGS) $(S) $^ -o $@ 
+		@echo "The animals have been sanitized"
 
 all: $(NAME)
 
@@ -49,8 +57,9 @@ clean:
 
 fclean: clean
 		@$(RM) $(NAME)
+		@$(RM) $(NAME_S)
 		@echo "Putting on the leash and muzzle"
 
-re: clean all
+re: fclean all
 
-.PHONY: clean fclean %.o
+.PHONY: clean fclean san  %.o
