@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2022/10/02 18:12:57 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/10/02 20:21:32 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = Animals_01
@@ -58,6 +58,7 @@ clean:
 
 fclean: clean
 		@$(RM) $(NAME)
+		@$(RM) $(NAME_S)
 		@echo "Putting on the leash and muzzle"
 
 re: clean all
