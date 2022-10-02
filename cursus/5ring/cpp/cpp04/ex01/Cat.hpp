@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:32:34 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/07/10 16:38:07 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/10/02 18:47:39 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 # define CAT_HPP
 #include <iostream>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal{
+
+	private:
+		Brain* _Brain;
 
 	public:
 		Cat(void);

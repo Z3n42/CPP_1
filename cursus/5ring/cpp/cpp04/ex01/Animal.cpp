@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 14:33:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/07/10 18:18:04 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/10/02 18:26:16 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Animal::~Animal(void){
 }
 
 Animal::Animal(Animal const &src){
-	this->type = src.type;
+	*this = src;
 	std::cout << this->type << " has been copied." << std::endl;
 }
 

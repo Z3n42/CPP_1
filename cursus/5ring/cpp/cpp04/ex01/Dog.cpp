@@ -6,14 +6,16 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:16:20 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/07/10 18:17:52 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:23:36 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 Dog::Dog(void){
 	this->type = "Dog";
+	this->_Brain = new Brain();
 	std::cout << this->type << " has been born" << std::endl;
 }
 
@@ -22,11 +24,12 @@ Dog::Dog(std::string Type) : Animal(Type){
 } 
 
 Dog::~Dog(void){
+	delete this->_Brain;
 	std::cout << this->type << " has been captured" << std::endl;
 }
 
 Dog::Dog(Dog const &src){
-	this->type = src.type;
+	*this = src;
 	std::cout << this->type << " has been copied." << std::endl;
 }
 
@@ -34,6 +37,9 @@ Dog & Dog::operator=(Dog const & rhs){
 	if (this != &rhs){
 		std::cout << this->type << " Equalized to " << rhs.type << std::endl;
 		this->type = rhs.getType();
+		if (this->_Brain)
+			delete (this->_Brain);
+		this->_Brain = new Brain(*rhs._Brain);
 	}
 	return(*this);
 }

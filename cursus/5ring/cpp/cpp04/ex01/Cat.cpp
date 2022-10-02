@@ -6,16 +6,18 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:34:16 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/07/10 18:18:13 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:25:05 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Cat.hpp"
+#include "Brain.hpp"
 
 Cat::Cat(void){
 	this->type = "Cat";
-	std::cout << this->type << " has been born" << std::endl;
+	this->_Brain = new Brain();
+	std::cout << this->type << " has been born with his brain full of ideas" << std::endl;
 }
 
 Cat::Cat(std::string Type) : Animal(Type){
@@ -23,11 +25,12 @@ Cat::Cat(std::string Type) : Animal(Type){
 } 
 
 Cat::~Cat(void){
+	delete this->_Brain;
 	std::cout << this->type << " has been captured" << std::endl;
 }
 
 Cat::Cat(Cat const &src){
-	this->type = src.type;
+	*this = src;
 	std::cout << this->type << " has been copied." << std::endl;
 }
 
@@ -35,6 +38,9 @@ Cat & Cat::operator=(Cat const & rhs){
 	if (this != &rhs){
 		std::cout << this->type << " Equalized to " << rhs.type << std::endl;
 		this->type = rhs.getType();
+		if (this->_Brain)
+			delete (this->_Brain);
+		this->_Brain = new Brain(*rhs._Brain);
 	}
 	return(*this);
 }
