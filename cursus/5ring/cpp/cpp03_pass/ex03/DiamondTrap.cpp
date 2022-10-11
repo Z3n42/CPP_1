@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 20:44:04 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/04 18:08:25 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:29:19 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ DiamondTrap::DiamondTrap(DiamondTrap const &src){
 DiamondTrap & DiamondTrap::operator=(DiamondTrap const & rhs){
 	std::cout << this->_Class << this->_Name << " Equlized to " << rhs._Class << rhs._Name << std::endl;
 	this->_Name = rhs._Name;	
+	this->ClapTrap::_Name = rhs.ClapTrap::_Name;
 	this->_Hitpoints = rhs._Hitpoints;	
 	this->_EnergyPoints = rhs._EnergyPoints;	
 	this->_AttackDamage = rhs._AttackDamage;	

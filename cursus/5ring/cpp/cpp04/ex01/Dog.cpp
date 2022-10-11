@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:16:20 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/10/02 19:23:36 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/10/02 20:30:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Dog::Dog(void){
 	this->type = "Dog";
 	this->_Brain = new Brain();
-	std::cout << this->type << " has been born" << std::endl;
+	std::cout << this->type << " has been born with his brain full of ideas" << std::endl;
 }
 
 Dog::Dog(std::string Type) : Animal(Type){

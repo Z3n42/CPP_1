@@ -6,22 +6,28 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 19:05:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/10/02 19:16:16 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/10/03 14:26:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include <stdlib.h>
 
 int	main(void)
 {
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
 
 	std::cout << std::endl;
 
-	delete dog;
-	delete cat;
+	delete j;
+	delete i;
 	std::cout << std::endl;
+	std::cout << "__________ Leaks Summary _________" << std::endl;
+	std::cout << std::endl;
+	system("leaks Animals_01");
+	std::cout << std::endl;
+	std::cout << "__________________________________" << std::endl;
 }

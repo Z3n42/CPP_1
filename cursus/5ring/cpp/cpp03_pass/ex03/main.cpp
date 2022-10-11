@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 19:51:50 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/06/23 18:31:06 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:25:51 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int main(void){
 
 	DiamondTrap Ding("Ding");
 	DiamondTrap Dong("Dong");
+	DiamondTrap Dung(Ding);
+	
 
 	std::cout << std::endl;
 	std::cout << "Class =>" << Ding.getClass() << std::endl;
@@ -114,11 +116,13 @@ int main(void){
 	std::cout << std::endl;
 
 	Ding.whoAmI();
+	Dung.whoAmI();
 	Ding.attack("fing");
 	Ding.guardGate();
 	/* Ding.highFiveGuys(); */
 	Ding.takeDamage(0);
 	Ding.beRepaired(0);
+	
 
 	std::cout << std::endl;
 	std::cout << "-- End Turn --" << std::endl;
