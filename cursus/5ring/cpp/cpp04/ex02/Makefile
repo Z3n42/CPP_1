@@ -6,14 +6,14 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/02/26 16:47:35 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/02/26 16:47:15 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = Animals_01
+NAME = Animals_02
 
-NAME_S = Animals_01_Sanitized
+NAME_S = Animals_02_Sanitized
 
-NAME_L = Animals_01_Leaks
+NAME_L = Animals_02_Leaks
 
 CC = c++
 
