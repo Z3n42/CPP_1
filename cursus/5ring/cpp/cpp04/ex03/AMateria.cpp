@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:14:14 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/02/26 20:06:18 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/05 20:04:36 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ AMateria & AMateria::operator=(AMateria const & rhs){
 	return(*this);
 }
 
-std::string AMateria::getType(void) const{
+std::string const & AMateria::getType(void) const{
 	return(this->type);
 }
 
-virtual void AMateria::use(ICharacter& target){
+void AMateria::use(ICharacter& target){
 	std::cout << "AMateria used against" << target.getName() << std::endl;
 }

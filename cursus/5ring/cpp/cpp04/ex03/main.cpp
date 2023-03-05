@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:24:49 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/02/26 18:26:02 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/02/28 19:50:06 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int main(void)
 	delete bob;
 	delete me;
 	delete src;
+
 	return 0;
 }

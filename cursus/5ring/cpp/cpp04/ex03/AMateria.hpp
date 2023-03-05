@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:03:03 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/02/26 20:25:08 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/05 20:00:44 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iostream>
 #include "ICharacter.hpp"
 
-/* class ICharacter; */
+class ICharacter;
 
 class AMateria{
 

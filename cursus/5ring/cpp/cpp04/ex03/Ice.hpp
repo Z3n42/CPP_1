@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:14:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/02/26 20:25:48 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/05 19:08:18 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "AMateria.hpp"
 
-class Ice : public AMateria
-{
+class Ice : public AMateria{
+
 	private:
 		std::string _type;
 
