@@ -6,9 +6,17 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:24:49 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/02/28 19:50:06 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/11 20:28:43 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
+#include "ICharacter.hpp"
+#include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "AMateria.hpp"
 
 int main(void)
 {

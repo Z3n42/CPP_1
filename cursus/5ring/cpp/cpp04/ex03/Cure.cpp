@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:00:01 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/05 16:58:43 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/11 20:25:31 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ICharacter.hpp"
 #include "IMateriaSource.hpp"
 
-Cure::Cure() : _type("cure"){
+Cure::Cure(void) : _type("cure"){
 	std::cout << this->_type << " crafted\n";
 }
 
@@ -28,7 +28,7 @@ Cure & Cure::operator=(Cure const & ref){
 	return (*this);
 }
 
-Cure::~Cure(){
+Cure::~Cure(void){
 	std::cout << this->_type << " uncrafted\n";
 }
 

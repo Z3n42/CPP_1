@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:14:14 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/05 20:04:36 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/11 20:18:55 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "AMateria.hpp"
 
 AMateria::AMateria(void){
-	this->type = "Dark";
+	this->type = "Dark Materia";
 	std::cout << this->type << " has been looted" << std::endl;
 }
 
