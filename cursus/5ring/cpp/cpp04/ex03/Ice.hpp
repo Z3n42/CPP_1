@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:14:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/05 19:08:18 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/18 19:36:56 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 class Ice : public AMateria{
 
-	private:
-		std::string _type;
+	/* private: */
+	/* 	std::string _type; */
 
 	public:
 		Ice(void);
@@ -28,7 +28,7 @@ class Ice : public AMateria{
 
 		Ice & operator=(Ice const & rhs);
 
-		std::string const & getType() const;
+		/* std::string const & getType() const; */
 		Ice *clone() const;
 		void use(ICharacter& target);
 };

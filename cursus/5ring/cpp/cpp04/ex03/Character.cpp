@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:43:26 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/11 19:30:54 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/18 18:24:12 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,6 @@ void Character::use(int idx, ICharacter& target){
 	}
 }
 
-AMateria	*Character::getMateria(int idx){
-		return (this->_inventory)[idx];
-}
+/* AMateria	*Character::getMateria(int idx){ */
+/* 		return (this->_inventory)[idx]; */
+/* } */

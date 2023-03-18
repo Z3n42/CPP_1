@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:00:01 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/11 20:25:31 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/18 20:14:49 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "ICharacter.hpp"
 #include "IMateriaSource.hpp"
 
-Cure::Cure(void) : _type("cure"){
+Cure::Cure(void) : AMateria("cure"){
+	/* this->_type = "cure"; */
 	std::cout << this->_type << " crafted\n";
 }
 
@@ -32,9 +33,9 @@ Cure::~Cure(void){
 	std::cout << this->_type << " uncrafted\n";
 }
 
-std::string const & Cure::getType( void ) const{
-	return (this->_type);
-}
+/* std::string const & Cure::getType( void ) const{ */
+/* 	return (this->_type); */
+/* } */
 
 Cure *Cure::clone() const{
 	Cure *cure = new Cure;

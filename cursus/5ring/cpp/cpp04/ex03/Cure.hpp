@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:21:01 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/05 19:06:42 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/18 19:36:36 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 class Cure : public AMateria{
 
-	private:
-		std::string _type;
+	/* private: */
+	/* 	std::string _type; */
 
 	public:
 		Cure(void);
@@ -28,7 +28,7 @@ class Cure : public AMateria{
 
 		Cure & operator=(Cure const & rhs);
 
-		std::string const & getType() const;
+		/* std::string const & getType() const; */
 		Cure *clone() const;
 		void use(ICharacter& target);
 };

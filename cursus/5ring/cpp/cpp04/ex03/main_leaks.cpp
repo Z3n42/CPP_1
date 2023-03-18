@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main_leaks.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:24:49 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/18 19:28:03 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/18 19:28:48 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ int main(void)
 	delete bob;
 	delete me;
 	delete src;
+
+	std::cout << std::endl;
+	std::cout << "__________ Leaks Summary _________" << std::endl;
+	std::cout << std::endl;
+	system("leaks FFVII");
+	std::cout << std::endl;
+	std::cout << "__________________________________" << std::endl;
 
 	return 0;
 }

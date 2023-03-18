@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:13:11 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/11 20:25:11 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/18 19:37:11 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "ICharacter.hpp"
 #include "IMateriaSource.hpp"
 
-Ice::Ice(void) : _type("ice"){
+Ice::Ice(void) : AMateria("ice"){
+	/* this->_type = "ice"; */
 	std::cout << this->_type << " crafted\n";
 }
 
@@ -31,9 +32,9 @@ Ice::~Ice(void){
 	std::cout << this->_type << " uncrafted\n";
 }
 
-std::string const & Ice::getType( void ) const{
-	return (this->_type);
-}
+/* std::string const & Ice::getType( void ) const{ */
+/* 	return (this->_type); */
+/* } */
 
 Ice *Ice::clone() const{
 	Ice *ice = new Ice;
