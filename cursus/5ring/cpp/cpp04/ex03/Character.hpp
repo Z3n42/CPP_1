@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:56:49 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/05 19:36:47 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/18 13:47:32 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Character : public ICharacter{
 		
 	public:
 		Character(void);
-		Character(std::string const name)
-		Character(Character const & src)
+		Character(std::string const name);
+		Character(Character const & src);
 		~Character(void);
 
 		Character & operator=(Character const & rhs);
