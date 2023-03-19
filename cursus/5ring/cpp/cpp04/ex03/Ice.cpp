@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:13:11 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/18 19:37:11 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/19 18:25:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 #include "IMateriaSource.hpp"
 
 Ice::Ice(void) : AMateria("ice"){
-	/* this->_type = "ice"; */
+	this->_type = "ice";
 	std::cout << this->_type << " crafted\n";
 }
 
-Ice::Ice(Ice const & ref) : _type(ref.getType()){
+Ice::Ice(Ice const & src) : _type(src.getType()){
 	std::cout << this->_type << " copied\n";
 }
 
-Ice & Ice::operator=(Ice const & ref){
-	std::cout << "Equalized from " << ref.getType() << std::endl;
+Ice & Ice::operator=(Ice const & rhs){
+	std::cout << "Equalized from " << rhs.getType() << std::endl;
 	return (*this);
 }
 
@@ -32,9 +32,9 @@ Ice::~Ice(void){
 	std::cout << this->_type << " uncrafted\n";
 }
 
-/* std::string const & Ice::getType( void ) const{ */
-/* 	return (this->_type); */
-/* } */
+std::string const & Ice::getType( void ) const{
+	return (this->_type);
+}
 
 Ice *Ice::clone() const{
 	Ice *ice = new Ice;
