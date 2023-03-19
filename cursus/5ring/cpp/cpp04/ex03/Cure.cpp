@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:00:01 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/19 18:25:13 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/19 18:36:49 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 #include "IMateriaSource.hpp"
 
 Cure::Cure(void) : AMateria("cure"){
-	this->_type = "cure";
-	std::cout << this->_type << " crafted\n";
+	/* this->_type = "cure"; */
+	std::cout << getType() << " crafted\n";
 }
 
-Cure::Cure(Cure const & src) : _type(src.getType()){
-	std::cout << this->_type << " copied\n";
+Cure::Cure(Cure const & src) : AMateria(src.getType()){
+	std::cout << getType() << " copied\n";
 }
 
 Cure & Cure::operator=(Cure const & rhs){
@@ -30,12 +30,12 @@ Cure & Cure::operator=(Cure const & rhs){
 }
 
 Cure::~Cure(void){
-	std::cout << this->_type << " uncrafted\n";
+	std::cout << getType() << " uncrafted\n";
 }
 
-std::string const & Cure::getType( void ) const{
-	return (this->_type);
-}
+/* std::string const & Cure::getType( void ) const{ */
+/* 	return (this->_type); */
+/* } */
 
 Cure *Cure::clone() const{
 	Cure *cure = new Cure;

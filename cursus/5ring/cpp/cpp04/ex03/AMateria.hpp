@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:03:03 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/19 18:23:30 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/19 18:27:46 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class AMateria{
 		
 		AMateria & operator=(AMateria const & rhs);
 
-		/* std::string const & getType() const; //Returns the materia type */
-		virtual std::string const & getType() const; //Returns the materia type
+		std::string const & getType() const; //Returns the materia type
+		/* virtual std::string const & getType() const; //Returns the materia type */
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);
 };
