@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:00:01 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/19 19:36:30 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/19 21:15:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@
 
 Cure::Cure(void) : AMateria("cure"){
 	/* this->_type = "cure"; */
-	std::cout << getType() << " crafted\n";
+	/* std::cout << getType() << " crafted\n"; */
 }
 
 Cure::Cure(Cure const & src) : AMateria(src.getType()){
-	std::cout << getType() << " copied\n";
+	/* std::cout << getType() << " copied\n"; */
 }
 
 Cure & Cure::operator=(Cure const & rhs){
-	std::cout << "Equalized from " << rhs.getType() << std::endl;
+	/* std::cout << "Equalized from " << rhs.getType() << std::endl; */
 	return (*this);
 }
 
 Cure::~Cure(void){
-	std::cout << getType() << " uncrafted\n";
+	/* std::cout << getType() << " uncrafted\n"; */
 }
 
 /* std::string const & Cure::getType( void ) const{ */
@@ -45,7 +45,6 @@ Cure *Cure::clone() const{
 }
 
 void Cure::use(ICharacter& target){
-	std::string target_name = target.getName();
 
-	std::cout << " heals " << target_name << "\'s wounds" << std::endl;
+	std::cout << "* heals " << target.getName() << "\'s wounds *" << std::endl;
 }

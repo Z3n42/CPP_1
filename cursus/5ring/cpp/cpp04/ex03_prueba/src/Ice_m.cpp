@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:13:11 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/19 19:36:41 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/19 21:15:47 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@
 
 Ice::Ice(void) : AMateria("ice"){
 	/* this->_type = "ice"; */
-	std::cout << getType() << " crafted\n";
+	/* std::cout << getType() << " crafted\n"; */
 }
 
 Ice::Ice(Ice const & src) : AMateria(src.getType()){
-	std::cout << getType() << " copied\n";
+	/* std::cout << getType() << " copied\n"; */
 }
 
 Ice & Ice::operator=(Ice const & rhs){
-	std::cout << "Equalized from " << rhs.getType() << std::endl;
+	/* std::cout << "Equalized from " << rhs.getType() << std::endl; */
 	return (*this);
 }
 
 Ice::~Ice(void){
-	std::cout << getType() << " uncrafted\n";
+	/* std::cout << getType() << " uncrafted\n"; */
 }
 
 /* std::string const & Ice::getType( void ) const{ */
@@ -44,7 +44,6 @@ Ice *Ice::clone() const{
 }
 
 void Ice::use(ICharacter& target){
-	std::string target_name = target.getName();
 
-	std::cout << " shoots an ice bolt at " << target_name << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
