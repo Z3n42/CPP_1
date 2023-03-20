@@ -6,12 +6,13 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/03/19 21:40:58 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/03/20 13:07:54 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = FFVII
 NAME_V = FFVII_Sanitized
 NAME_L = FFVII_Leaks
+NAME_T = FFVII_Test
 
 CC = c++
 
@@ -32,14 +33,16 @@ INCLUDES = $(addprefix -I, $(HEADERS))
 SRCS = $(wildcard $(SRCS_MAIN)main.cpp) $(wildcard $(SRCS_DIR)*_m.cpp)
 SRCS_V = $(wildcard $(SRCS_MAIN)main.cpp) $(wildcard $(SRCS_DIR)*_v.cpp)
 SRCS_L = $(wildcard $(SRCS_MAIN)main_leaks.cpp) $(wildcard $(SRCS_DIR)*_v.cpp)
+SRCS_T = $(wildcard $(SRCS_MAIN)main_test.cpp) $(wildcard $(SRCS_DIR)*_v.cpp)
 
 OBJS = $(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
 OBJS_V = $(addprefix $(OBJS_DIR), $(notdir $(SRCS_V:.cpp=.o)))
 OBJS_L = $(addprefix $(OBJS_DIR), $(notdir $(SRCS_L:.cpp=.o)))
+OBJS_T = $(addprefix $(OBJS_DIR), $(notdir $(SRCS_T:.cpp=.o)))
 
 $(NAME): $(OBJS)
 		@$(CC) $(FLAGS) $^ -o $@ 
-		@echo "The animals have been released"
+		@echo "Cloud: Muy bien, allévoy."
 
 $(OBJS_DIR)%.o: $(SRCS_MAIN)%.cpp 
 	@mkdir -p $(OBJS_DIR)
@@ -53,25 +56,32 @@ san : $(NAME_V)
 
 $(NAME_V): $(OBJS_V)
 		@$(CC) $(FLAGS) $(S) $^ -o $@ 
-		@echo "The animals have been sanitized"
+		@echo "Cloud: Swords never run from bullets."
 
 leaks : $(NAME_L)
 
 $(NAME_L): $(OBJS_L)
 		@$(CC) $(FLAGS) $^ -o $@ 
-		@echo "The animals have been their leaks watched"
+		@echo "Cid: No, I guess if I had to choose, I'd put my money on the power of science."
+
+ifrit : $(NAME_T)
+
+$(NAME_T): $(OBJS_T)
+		@$(CC) $(FLAGS) $^ -o $@ 
+		@echo "Invocation: IFRIT"
 
 all: $(NAME)
 
 clean:
 		@$(RM) $(OBJS_DIR)
-		@echo "Cleaning the animals"
+		@echo "Sephiroth: the time......is now."
 
 fclean: clean
 		@$(RM) $(NAME)
 		@$(RM) $(NAME_V)
 		@$(RM) $(NAME_L)
-		@echo "Putting on the leash and muzzle"
+		@$(RM) $(NAME_T)
+		@echo "Sephiroth: What I have taught you is reality. What you remember is an illusion."
 
 re: clean all
 
