@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 19:17:29 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/10/03 14:10:12 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/20 21:10:33 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 class Brain{
 
 	private:
-		std::string *_ideas;
+		std::string _ideas[100];
 
 	public:
 		Brain(void);
@@ -26,7 +26,7 @@ class Brain{
 
 		Brain & operator=(Brain const & rhs);
 
-		std::string *getIdeas(void) const;
+		void getIdeas(void) const;
 		void setIdeas(std::string new_ideas);
 
 };

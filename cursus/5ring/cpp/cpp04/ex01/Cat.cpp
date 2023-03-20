@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:34:16 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/10/02 19:25:05 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/20 21:19:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Cat::~Cat(void){
 }
 
 Cat::Cat(Cat const &src){
+	_Brain = NULL;
 	*this = src;
 	std::cout << this->type << " has been copied." << std::endl;
 }
@@ -55,4 +56,9 @@ void Cat::setType(std::string new_type){
 
 void Cat::makeSound(void) const{
 	std::cout << this->type << " says: \"MEOOOOW\"" << std::endl;
+}
+
+void Cat::getIdeasFromBrain(void) const{
+	std::cout << "From " << this->type << std::endl;
+	(this->_Brain->getIdeas());
 }

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:16:20 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/10/02 20:30:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/20 21:18:47 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Dog::Dog(void){
 }
 
 Dog::Dog(std::string Type) : Animal(Type){
+	this->_Brain = new Brain();
 	std::cout << this->type << " has been released" << std::endl;
 } 
 
@@ -29,6 +30,7 @@ Dog::~Dog(void){
 }
 
 Dog::Dog(Dog const &src){
+	_Brain = NULL;
 	*this = src;
 	std::cout << this->type << " has been copied." << std::endl;
 }
@@ -54,4 +56,9 @@ void Dog::setType(std::string new_type){
 
 void Dog::makeSound(void) const{
 	std::cout << this->type << " says: \"WOOOOF\"" << std::endl;
+}
+
+void Dog::getIdeasFromBrain(void) const{
+	std::cout << "From " << this->type << std::endl;
+	(this->_Brain->getIdeas());
 }

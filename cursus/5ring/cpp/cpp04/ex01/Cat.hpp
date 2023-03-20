@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:32:34 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/10/02 18:47:39 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/20 21:14:03 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class Cat : public Animal{
 		void setType(std::string new_type);
 
 		void makeSound() const;
+		void getIdeasFromBrain() const;
 };
 
 #endif

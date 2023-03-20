@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:10:45 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/10/02 18:47:52 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/20 21:06:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Dog : public Animal{
 		void setType(std::string new_type);
 
 		void makeSound() const;
+		void getIdeasFromBrain() const;
 };
 
 #endif

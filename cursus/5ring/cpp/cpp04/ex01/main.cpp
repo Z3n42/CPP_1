@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:53:11 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/07/10 18:28:39 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/20 21:22:47 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,16 @@ int main()
 	w->makeSound();
 	delete(WrongMeta);
 	delete(w);
+
+	/* Dog basic; */
+	/* { */
+	/* 	Dog tmp = basic; */
+	/* } */
+	/* basic.getIdeasFromBrain(); */
+
+	/* std::cout << std::endl; */
+	/* std::cout << "__________ Leaks Summary _________" << std::endl; */
+	/* std::cout << std::endl; */
+	/* system("leaks Animals_01"); */
+	/* std::cout << std::endl; */
 }

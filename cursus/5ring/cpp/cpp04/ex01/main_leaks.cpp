@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 19:05:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/10/03 14:26:14 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/20 21:20:59 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ int	main(void)
 
 	delete j;
 	delete i;
+
+	/* Cat basic; */
+	/* { */
+	/* 	Cat tmp = basic; */
+	/* } */
+	/* basic.getIdeasFromBrain(); */
+
 	std::cout << std::endl;
 	std::cout << "__________ Leaks Summary _________" << std::endl;
 	std::cout << std::endl;
