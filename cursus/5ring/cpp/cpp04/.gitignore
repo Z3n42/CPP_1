@@ -58,5 +58,17 @@ a.out
 .DS_Store
 *.a
 *.o
+__pycache__
+*cpython-39.pyc
+.zcompdump*
+cub3D
+
+# Propias CPP
 *.replace
-Animals_*
+ClapTrap
+ScavTrap
+FragTrap
+DiamondTrap
+config/
+FFVII*/
+FFVII*
