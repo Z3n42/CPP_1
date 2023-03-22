@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:16:20 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/21 20:12:06 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:06:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,23 @@ void Dog::makeSound(void) const{
 void Dog::getIdeasFromBrain(void) const{
 	std::cout << "From " << this->type << std::endl;
 	(this->_Brain->getIdeas());
+}
+
+/* ####### TEST METHODS ######## */
+
+Brain *Dog::getBrain( void ) const{
+	return (this->_Brain);
+}
+
+void Dog::compareTo(Dog const & other_dog) const{
+	std::cout << std::endl;
+	std::cout << "Now comparing two dogs\n";
+	std::cout << "My brain's heap address: " << static_cast<void*>(this->_Brain) << std::endl;
+	std::cout << "Other's heap address: " << static_cast<void*>(other_dog.getBrain()) << std::endl;
+	std::cout << std::endl;
+	std::cout << "######### My brain's ideas ##########" << std::endl;
+	this->getIdeasFromBrain();
+	std::cout << "###### Other brain's ideas ##########" << std::endl;
+	other_dog.getIdeasFromBrain();
+	std::cout << std::endl;
 }

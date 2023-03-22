@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:34:16 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/21 20:12:30 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:13:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,24 @@ void Cat::makeSound(void) const{
 void Cat::getIdeasFromBrain(void) const{
 	std::cout << "From " << this->type << std::endl;
 	(this->_Brain->getIdeas());
+}
+
+
+/* ####### TEST METHODS ######## */
+
+Brain *Cat::getBrain( void ) const{
+	return (this->_Brain);
+}
+
+void Cat::compareTo(Cat const & other_cat) const{
+	std::cout << std::endl;
+	std::cout << "Now comparing two cats\n";
+	std::cout << "My brain's heap address: " << static_cast<void*>(this->_Brain) << std::endl;
+	std::cout << "Other's heap address: " << static_cast<void*>(other_cat.getBrain()) << std::endl;
+	std::cout << std::endl;
+	std::cout << "######### My brain's ideas ##########" << std::endl;
+	this->getIdeasFromBrain();
+	std::cout << "###### Other brain's ideas ##########" << std::endl;
+	other_cat.getIdeasFromBrain();
+	std::cout << std::endl;
 }

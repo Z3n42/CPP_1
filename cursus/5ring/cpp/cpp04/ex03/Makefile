@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/03/20 13:07:54 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/03/21 21:08:05 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = FFVII
@@ -45,12 +45,12 @@ $(NAME): $(OBJS)
 		@echo "Cloud: Muy bien, allévoy."
 
 $(OBJS_DIR)%.o: $(SRCS_MAIN)%.cpp 
-	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+		@mkdir -p $(OBJS_DIR)
+		@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp 
-	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+		@mkdir -p $(OBJS_DIR)
+		@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 san : $(NAME_V)
 

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:32:34 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/21 20:11:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:14:15 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,10 @@ class Cat : public AAnimal{
 
 		void makeSound() const;
 		void getIdeasFromBrain() const;
+
+
+	/* ####### TEST METHODS ######## */
+		Brain *getBrain( void ) const;
+		void compareTo(Cat const & other_cat) const;
 };
 #endif
