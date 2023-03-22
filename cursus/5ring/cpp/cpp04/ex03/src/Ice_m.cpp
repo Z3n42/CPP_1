@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:13:11 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/19 21:15:47 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:39:13 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Ice::Ice(void) : AMateria("ice"){
 }
 
 Ice::Ice(Ice const & src) : AMateria(src.getType()){
+	/* src.clone() */
 	/* std::cout << getType() << " copied\n"; */
 }
 

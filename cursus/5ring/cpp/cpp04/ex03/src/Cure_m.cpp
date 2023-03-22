@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:00:01 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/19 21:15:01 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:37:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Cure::Cure(void) : AMateria("cure"){
 }
 
 Cure::Cure(Cure const & src) : AMateria(src.getType()){
+	/* src.clone() */
 	/* std::cout << getType() << " copied\n"; */
 }
 
