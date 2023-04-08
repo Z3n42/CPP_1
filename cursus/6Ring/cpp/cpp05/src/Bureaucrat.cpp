@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/04 21:23:04 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:06:33 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@ Bureaucrat::Bureaucrat(void) : _name("NoName"), _grade(0){
 		std::cout << *this << " Instantiated" << std::endl;
 	}
 	catch (std::exception & e){
-		std::cout << e << std::endl;
+		/* std::cout << e << std::endl; */
 	}
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade){
-	std::cout << *this << " Instantiated" << std::endl;
+	if(grade < 0)
+		throw Bureaucrat::GradeTooHigException(" too high");
+	else if(grade > 150)
+		throw Bureaucrat::GradeTooLowException(" too low");
+	else
+		std::cout << *this << " Instantiated" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const & src){
@@ -38,9 +43,9 @@ Bureaucrat::~Bureaucrat(void){
 
 Bureaucrat & Bureaucrat::operator=(Bureaucrat const & rhs){
 	if (this != &rhs){
-		std::cout << *this << " Equalized to " << rh/s << std::endl;
 		this->_name = rhs._name;
 		this->_grade = rhs._grade;
+		std::cout << *this << " Equalized to " << rhs << std::endl;
 	}
 	return(*this);
 }
@@ -50,3 +55,42 @@ std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs){
 	return (o);
 }
 
+std::string Bureaucrat::getName(void) const{
+	return (this->_name);
+}
+
+int Bureaucrat::getGrade(void) const{
+	return (this->_grade);
+}
+
+void Bureaucrat::setGradeUp(void){
+	this->_grade += 1;
+}
+
+void Bureaucrat::setGradeDown(void){
+	this->_grade -= 1;
+}
+
+Bureaucrat::GradeTooHighException::GradeTooHighException(std::string Error) : _HighError(Error){
+
+}
+
+Bureaucrat::GradeTooHighException::~GradeTooHighException(void) throw(){
+
+}
+
+Bureaucrat::GradeTooHighException::what() const throw(){
+	std::cout << *this << this->_HighError << std::endl;
+}	
+
+Bureaucrat::GradeTooLowException::GradeTooLowException(std::string Error) : _LowError(Error){
+
+}
+
+Bureaucrat::GradeTooLowException::~GradeTooLowException(void) throw(){
+
+}
+
+Bureaucrat::GradeTooLowException::what() const throw(){
+	std::cout << *this << this->_LowError << std::endl;
+}	
