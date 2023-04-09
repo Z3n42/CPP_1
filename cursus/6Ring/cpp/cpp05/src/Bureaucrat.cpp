@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/08 20:06:33 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/09 19:15:00 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ Bureaucrat::Bureaucrat(void) : _name("NoName"), _grade(0){
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade){
 	if(grade < 0)
-		throw Bureaucrat::GradeTooHigException(" too high");
+		throw Bureaucrat::GradeTooHigException::GradeTooHigException(" too high");
 	else if(grade > 150)
-		throw Bureaucrat::GradeTooLowException(" too low");
+		throw Bureaucrat::GradeTooLowException::GradeTooLowException(" too low");
 	else
 		std::cout << *this << " Instantiated" << std::endl;
 }
@@ -55,19 +55,19 @@ std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs){
 	return (o);
 }
 
-std::string Bureaucrat::getName(void) const{
+std::string const & Bureaucrat::getName(void) const{
 	return (this->_name);
 }
 
-int Bureaucrat::getGrade(void) const{
+int const & Bureaucrat::getGrade(void) const{
 	return (this->_grade);
 }
 
-void Bureaucrat::setGradeUp(void){
+void Bureaucrat::GradeUp(void){
 	this->_grade += 1;
 }
 
-void Bureaucrat::setGradeDown(void){
+void Bureaucrat::GradeDown(void){
 	this->_grade -= 1;
 }
 
@@ -75,7 +75,7 @@ Bureaucrat::GradeTooHighException::GradeTooHighException(std::string Error) : _H
 
 }
 
-Bureaucrat::GradeTooHighException::~GradeTooHighException(void) throw(){
+Bureaucrat::~GradeTooHighException(void) throw(){
 
 }
 
@@ -87,7 +87,7 @@ Bureaucrat::GradeTooLowException::GradeTooLowException(std::string Error) : _Low
 
 }
 
-Bureaucrat::GradeTooLowException::~GradeTooLowException(void) throw(){
+Bureaucrat::~GradeTooLowException(void) throw(){
 
 }
 
