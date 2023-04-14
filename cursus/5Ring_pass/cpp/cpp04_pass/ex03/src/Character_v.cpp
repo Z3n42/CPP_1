@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:43:26 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/20 12:18:19 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:59:43 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ Character::Character(Character const & src) : _name(src.getName() + "_doppelgang
 	{
 		if ((src._inventory)[i])
 			(this->_inventory)[i] = (src._inventory[i])->clone();
+	else:
+		this->_inventory[i] = 0;
 		i++;
 	}
 	std::cout << _name << " joined to the party" << std::endl;

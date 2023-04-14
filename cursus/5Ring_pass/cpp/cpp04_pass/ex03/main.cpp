@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:24:49 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/03/18 19:28:03 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:58:10 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ int main(void)
 	delete bob;
 	delete me;
 	delete src;
+
+    /* non protected copy constructor segfault */
+	Character bob("bob"); 
+	Character old(bob);
 
 	return 0;
 }
