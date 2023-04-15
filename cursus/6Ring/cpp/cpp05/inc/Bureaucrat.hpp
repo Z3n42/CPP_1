@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:14:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/09 19:01:51 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/15 19:49:48 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Bureaucrat{
 
 	private:
-		std::string const 	_name;
+		std::string  const 	_name;
 		int 				_grade;
 
 	public:
@@ -33,15 +33,17 @@ class Bureaucrat{
 		std::string const & getName(void) const;
 		int const & getGrade(void) const;
 
-		void GradeUp();
-			void GradeDown();
+		void setName(std::string const &name);
+		void setGrade(int const &lvl);
+		void GradeUp(void);
+		void GradeDown(void);
 
 		class GradeTooHighException : public std::exception {
 			private:
-				std::string _HighError;
+				const char *  _HighError;
 
 			public:
-				GradeTooHighException(std::string error);
+				GradeTooHighException(const char * error);
 				virtual ~GradeTooHighException(void) throw();
 				
 				virtual const char* what(void) const throw();	
@@ -49,10 +51,10 @@ class Bureaucrat{
 
 		class GradeTooLowException : public std ::exception {
 			private:
-				std::string _LowError;
+				const char *  _LowError;
 
 			public:
-				GradeTooLowException(std::string error);
+				GradeTooLowException(const char * error);
 				virtual ~GradeTooLowException(void) throw();
 				
 				virtual const char* what(void) const throw();	
