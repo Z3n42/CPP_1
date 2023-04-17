@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:14:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/15 19:49:48 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:46:42 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class Bureaucrat{
 				const char *  _HighError;
 
 			public:
+				GradeTooHighException(void);
 				GradeTooHighException(const char * error);
 				virtual ~GradeTooHighException(void) throw();
 				
@@ -54,6 +55,7 @@ class Bureaucrat{
 				const char *  _LowError;
 
 			public:
+				GradeTooLowException(void);
 				GradeTooLowException(const char * error);
 				virtual ~GradeTooLowException(void) throw();
 				

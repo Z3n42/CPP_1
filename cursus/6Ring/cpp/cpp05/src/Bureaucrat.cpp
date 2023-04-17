@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/15 19:49:46 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:53:27 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ void Bureaucrat::GradeDown(void){
 	setGrade(this->_grade -= 1);
 }
 
+Bureaucrat::GradeTooHighException::GradeTooHighException(void){
+   this->_HighError = " Grade is Higher than expected";
+}
+
 Bureaucrat::GradeTooHighException::GradeTooHighException(const char *error) : _HighError(error){
 
 }
@@ -91,6 +95,10 @@ Bureaucrat::GradeTooHighException::~GradeTooHighException(void) throw(){
 const char *Bureaucrat::GradeTooHighException::what(void) const throw(){
 	return (this->_HighError);
 }	
+
+Bureaucrat::GradeTooLowException::GradeTooLowException(void){
+	this->_LowError = " Grade is Lower than expected";
+}
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(const char *error) : _LowError(error){
 
