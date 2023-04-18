@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/04/08 20:07:14 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/04/18 20:12:01 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = Bureaucracy
@@ -54,7 +54,7 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 
 san : $(NAME_V)
 
-$(NAME_V): $(OBJS_V)
+$(NAME_V): $(OBJS)
 		@$(CC) $(FLAGS) $(S) $^ -o $@ 
 		@echo "Cloud: Swords never run from bullets."
 

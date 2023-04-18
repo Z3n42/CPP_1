@@ -6,11 +6,12 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/17 20:53:27 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/18 21:20:38 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include <sstream>
 
 Bureaucrat::Bureaucrat(void) : _name("scholar"){
 	setGrade(150);
@@ -59,17 +60,28 @@ int const & Bureaucrat::getGrade(void) const{
 /* } */
 
 void Bureaucrat::setGrade(int const &lvl){
-	try{
-		if(lvl < 1)
-			throw GradeTooHighException(" Grade is Too High");
-		else if(lvl > 150)
-			throw GradeTooLowException(" Grade is Too Low");
-		else
-			this->_grade = lvl;
-		}
-	catch (std::exception & e){
-		std::cout << lvl << e.what() << std::endl;
+	/* try{ */
+	std::stringstream stream;
+	std::string msg;
+	int i;
+	std::string c;
+	stream << i;
+	stream >> c;
+	//std::cout << lvl << std::endl;
+	if(lvl < 1){
+		msg = c + " Grade is too High";
+		throw GradeTooHighException(static_cast<char *>(msg));
 	}
+	else if(lvl > 150){
+		msg = c + " Grade is too low";
+		throw GradeTooLowException(static_cast<char *>(msg));
+	}
+	else
+		this->_grade = lvl;
+		/* } */
+	/* catch (std::exception & e){ */
+		/* std::cout << lvl << e.what() << std::endl; */
+	/* } */
 }
 
 void Bureaucrat::GradeUp(void){
@@ -81,7 +93,7 @@ void Bureaucrat::GradeDown(void){
 }
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(void){
-   this->_HighError = " Grade is Higher than expected";
+   this->_HighError = "Grade is Higher than expected";
 }
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const char *error) : _HighError(error){
@@ -97,7 +109,7 @@ const char *Bureaucrat::GradeTooHighException::what(void) const throw(){
 }	
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(void){
-	this->_LowError = " Grade is Lower than expected";
+	this->_LowError = "Grade is Lower than expected";
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(const char *error) : _LowError(error){
