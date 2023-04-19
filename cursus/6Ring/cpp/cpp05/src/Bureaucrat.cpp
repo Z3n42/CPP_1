@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/18 21:20:38 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/19 21:36:18 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,25 @@ int const & Bureaucrat::getGrade(void) const{
 
 void Bureaucrat::setGrade(int const &lvl){
 	/* try{ */
+	/* std::cout << c << std::endl; */
 	std::stringstream stream;
 	std::string msg;
-	int i;
 	std::string c;
-	stream << i;
+	stream << lvl;
 	stream >> c;
-	//std::cout << lvl << std::endl;
+	msg = c + " Grade is too High";
 	if(lvl < 1){
-		msg = c + " Grade is too High";
-		throw GradeTooHighException(static_cast<char *>(msg));
+		/* std::cout << typeid(c).name() << std::endl; */
+		throw GradeTooHighException(static_cast<char*>(&msg[0]));
 	}
 	else if(lvl > 150){
-		msg = c + " Grade is too low";
-		throw GradeTooLowException(static_cast<char *>(msg));
+		/* std::stringstream stream; */
+		/* std::string msg; */
+		/* std::string c; */
+		/* stream << lvl; */
+		/* stream >> c; */
+		/* msg = c + " Grade is too low"; */
+		throw GradeTooLowException(static_cast<char*>(&msg[0]));
 	}
 	else
 		this->_grade = lvl;
