@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:39:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/23 19:09:41 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/23 19:44:59 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,9 @@ int main(void) {
 		std::cout << std::endl;
 		std::cout << "++++++++++++++++ Common Exceptions +++++++++++++++" << std::endl;
 		std::cout << "--------------------------------------------------" << std::endl;
-		std::cout << std::endl;
-		Bureaucrat b("paco", 1);
-		std::cout << "+++++++++++++++++++++ DownGrade ++++++++++++++++++" << std::endl;
-		b.GradeUp();
-		std::cout << b << "<<<<<<<<<<<<<<<<" << std::endl;
-		std::cout << "==================================================" << std::endl;
+		Bureaucrat b("paco", 150);
+		std::cout << "+++++++++++++++ DownGrade Exception +++++++++++++++" << std::endl;
+		b.GradeDown();
 		alloc = new Bureaucrat ("pupu", 222);
 		Bureaucrat e("pipo", 19);
 	}
@@ -62,7 +59,9 @@ int main(void) {
 		std::cout << e.getGrade() << e.what() << e.getName() << std::endl;
 		std::cout << "==================================================" << std::endl;
 	}
+
 	std::cout << std::endl;
+
 	try{
 		Bureaucrat b("patxi", 0);
 	}
@@ -89,7 +88,9 @@ int main(void) {
 		std::cout << e.what() << std::endl;
 		std::cout << "==================================================" << std::endl;
 	}
+
 	std::cout << std::endl;
+
 	try{
 		Bureaucrat b("pintxo", 151);
 	}
@@ -98,18 +99,53 @@ int main(void) {
 		std::cout << e.what() << std::endl;
 		std::cout << "==================================================" << std::endl;
 	}
-	/* /1* try{ *1/ */
-	/* 	std::cout << "Allocated Exceptions" << std::endl; */
-	/* 	std::cout << "=============================" << std::endl; */
-	/* catch (std::exception & e){ */
-	/* 	std::cout << e.what() << std::endl; */
-	/* } */
-	/* try{ */
-	/* 	std::cout << "Allocated Exceptions" << std::endl; */
-	/* 	std::cout << "=============================" << std::endl; */
-	/* catch (std::exception & e){ */
-	/* 	std::cout << e.what() << std::endl; */
-	/* } */
+
+	std::cout << std::endl;
+
+	try{ 
+		std::cout << "+++++++++++++++++++ Allocated ++++++++++++++++++++" << std::endl;
+		alloc = new Bureaucrat ("Alloc", 150);
+		std::cout << "==================================================" << std::endl;
+	}
+	catch (std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	try{ 
+		UnderAlloc = new Bureaucrat ("UnderAlloc", 155);
+	}
+	catch (Bureaucrat::GradeTooLowException & e){
+		std::cout << "++++++++++++ Allocated Low Exceptions ++++++++++++" << std::endl;
+		std::cout << e.getGrade() <<  e.what() << e.getName() << std::endl;
+		std::cout << "==================================================" << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	try{ 
+		OverAlloc = new Bureaucrat ("OverAlloc", 0);
+	}
+	catch (Bureaucrat::GradeTooHighException & e){
+		std::cout << "+++++++++++ Allocated High Exceptions ++++++++++++" << std::endl;
+		std::cout << e.getGrade() <<  e.what() << e.getName() << std::endl;
+		std::cout << "==================================================" << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	try{ 
+		alloc->GradeDown();
+	}
+	catch (Bureaucrat::GradeTooLowException & e){
+		std::cout << "++++++++++++ Allocated Low Exceptions ++++++++++++" << std::endl;
+		std::cout << e.getGrade() <<  e.what() << e.getName() << std::endl;
+		std::cout << "==================================================" << std::endl;
+	}
+
+	std::cout << std::endl;
+
 	delete alloc;
 	delete UnderAlloc;
 	delete OverAlloc;
