@@ -6,11 +6,11 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/04/23 21:02:06 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/04/25 19:38:30 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = Bureaucracy
-NAME_V   = Bureaucracy_S
+NAME_V = Bureaucracy_Sanitized
 
 CC = c++
 
@@ -28,8 +28,8 @@ INCS_DIR  = inc/
 HEADERS	 = ./$(INCS_DIR)
 INCLUDES = $(addprefix -I, $(HEADERS))
 
-SRCS = $(wildcard $(SRCS_MAIN)main.cpp) $(wildcard $(SRCS_DIR)*_m.cpp)
-SRCS_V = $(wildcard $(SRCS_MAIN)main.cpp) $(wildcard $(SRCS_DIR)*_v.cpp)
+SRCS = $(wildcard $(SRCS_MAIN)main.cpp) $(wildcard $(SRCS_DIR)*.cpp)
+SRCS_V = $(wildcard $(SRCS_MAIN)main_v.cpp) $(wildcard $(SRCS_DIR)*_v.cpp)
 
 OBJS = $(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
 OBJS_V = $(addprefix $(OBJS_DIR), $(notdir $(SRCS_V:.cpp=.o)))
@@ -48,7 +48,7 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 
 san : $(NAME_V)
 
-$(NAME_V): $(OBJS_V)
+$(NAME_V): $(OBJS)
 		@$(CC) $(FLAGS) $(S) $^ -o $@ 
 		@echo "Cloud: Swords never run from bullets."
 
