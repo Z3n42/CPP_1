@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:33:21 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/26 19:58:22 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/30 20:20:17 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,36 @@
 
 #include <iostream>
 #include <stdexcept>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form{
 
 	private:
 		std::string  const 	_name;
-		bool				_signed;
 		int const 			_Wgrade;
 		int const 			_Xgrade;
+		bool				_sign;
 
 	public:
 		Form(void);
-		Form(std::string const name, int grade);
+		Form(std::string const name, int const Wgrade, int const Xgrade, bool sign);
 		Form(Form const & src);
 		~Form(void);
 
 		Form & operator=(Form const & rhs);
 
 		std::string const & getName(void) const;
-		int const & getGrade(void) const;
+		int const & getXgrade(void) const;
+		int const & getWgrade(void) const;
+		int const  getSign(void) const;
 
-		void setgrade(int const &lvl, std::string const &who);
-		void beSigned(Bureaucrat bureucrat);
+		void setWgrade(int const &Wlvl, std::string const &who);
+		void setXgrade(int const &Xlvl, std::string const &who);
 
-		void GradeUp(void);
-		void GradeDown(void);
+		void beSigned(Bureaucrat bureaucrat);
+
 
 		class GradeTooHighException : public std::exception {
 			private:

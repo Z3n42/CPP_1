@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/23 21:07:27 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/04/30 20:24:59 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,14 @@ void Bureaucrat::GradeDown(void){
 	if ((this->_grade + 1) > 150)
 		throw GradeTooLowException(" Grade too Low", 151, this->_name);
 	setGrade(++this->_grade);
+}
+
+
+void Bureaucrat::signForm(Form &form){
+	if (form.getSign() == false)
+		form.beSigned(*this);
+	else	
+		std::cout << this->getName() << " couldn’t sign " << *this << " because is already signed";
 }
 
 
