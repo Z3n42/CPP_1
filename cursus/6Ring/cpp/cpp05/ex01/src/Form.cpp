@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:55:14 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/01 17:41:39 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:32:28 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,25 +92,36 @@ void Form::setXgrade(int const &Xlvl, std::string const &who = ""){
 }
 
 void Form::beSigned(Bureaucrat bureaucrat){
-	if (bureaucrat && (this->_Wgrade >= bureaucrat.getGrade())){
-		this->_sign = true;
-		std::cout << bureaucrat.getName() << " signed " << *this;
+	if (bureaucrat){
+		if (this->_sign == true){
+			if (this->_Wgrade >= bureaucrat.getGrade()){
+				this->_sign = true;
+				std::cout << bureaucrat.getName() << " signed " << *this;
+			}
+			else
+				std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because grade is too low";
+		}
+		else
+			std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because form already signed";
 	}
-	else{
-		std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because";
+	else
 		throw GradeTooLowException();
-	}
 }
 
 void Form::beSigned(Bureaucrat *bureaucrat){
-		if (bureaucrat && (this->_Wgrade >= bureaucrat->getGrade())){
+	if (bureaucrat){
+		if (this->_Wgrade >= bureaucrat->getGrade()){
 			this->_sign = true;
 			std::cout << bureaucrat->getName() << " signed " << *this;
 		}
 		else{
-			std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because";
-			throw GradeTooLowException();
+			std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because grade is too low";
+			/* std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because"; */
+			/* throw GradeTooLowException(); */
 		}
+	}
+	else
+		throw GradeTooLowException();
 }
 
 Form::GradeTooHighException::GradeTooHighException(void){

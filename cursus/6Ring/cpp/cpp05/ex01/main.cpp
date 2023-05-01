@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:39:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/01 17:40:45 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:10:39 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int main(void) {
 
 	try{ 
 		std::cout << "+++++++++++++++++++ Allocated ++++++++++++++++++++" << std::endl;
-		Bureaucrat alloc("Alloc", 150);
+		alloc = new Bureaucrat ("Alloc", 150);
 		std::cout << "==================================================" << std::endl;
 	}
 	catch (std::exception & e){
