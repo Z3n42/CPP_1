@@ -6,18 +6,17 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:55:14 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/30 20:24:41 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/01 17:41:39 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 Form::Form(void) : _name("Basic Form"), _Wgrade(150), _Xgrade(150), _sign(false){
-	/* setGrade(150, this->getName()); */
 	std::cout << *this << " Applied" << std::endl;
 }
 
-Form::Form(std::string name, int const Wgrade, int const Xgrade, bool sign = false) : _name(name), _Wgrade(Wgrade), _Xgrade(Xgrade), _sign(sign){
+Form::Form(std::string name, int const Wgrade, int const Xgrade, bool sign) : _name(name), _Wgrade(Wgrade), _Xgrade(Xgrade), _sign(sign){
 		setWgrade(Wgrade, this->getName());
 		setXgrade(Xgrade, this->getName());
 		std::cout << *this << " Applied" << std::endl;
@@ -39,9 +38,9 @@ Form & Form::operator=(Form const & rhs){
 	if (this != &rhs){
 		/* this->setName(rhs.getName()); */ // Const Name
 		/* this->setGrade(rhs.getGrade(), rhs.getName()); */
-		/* this->_name = rhs.getName(); */
-		/* this->_Wgrade = rhs.getWgrade(); */
-		/* this->_Xgrade = rhs.getXgrade(); */
+		/* this->_name = rhs.getName(); */ // Const
+		/* this->_Wgrade = rhs.getWgrade(); */ // Const
+		/* this->_Xgrade = rhs.getXgrade(); */ // Const
 		this->_sign = rhs.getSign();
 		std::cout << *this << " Equalized to " << rhs << std::endl;
 	}
@@ -50,11 +49,10 @@ Form & Form::operator=(Form const & rhs){
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs){
 	std::string sign;
-	if (rhs.getSign() == false)
-		sign = " unsigned";
-	else
+	sign = " unsigned";
+	if (rhs.getSign() == true)
 		sign = " signed";
-	o << rhs.getName() << "Form with Wgrade " << rhs.getWgrade() << " and Xgrade " << rhs.getWgrade() << sign;
+	o << rhs.getName() << " Form with " << rhs.getWgrade() << " Wgrade and " << rhs.getXgrade() << " Xgrade" << sign;
 	return (o);
 }
 
@@ -94,7 +92,7 @@ void Form::setXgrade(int const &Xlvl, std::string const &who = ""){
 }
 
 void Form::beSigned(Bureaucrat bureaucrat){
-	if (this->_Wgrade <= bureaucrat.getGrade()){
+	if (bureaucrat && (this->_Wgrade >= bureaucrat.getGrade())){
 		this->_sign = true;
 		std::cout << bureaucrat.getName() << " signed " << *this;
 	}
@@ -102,6 +100,17 @@ void Form::beSigned(Bureaucrat bureaucrat){
 		std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because";
 		throw GradeTooLowException();
 	}
+}
+
+void Form::beSigned(Bureaucrat *bureaucrat){
+		if (bureaucrat && (this->_Wgrade >= bureaucrat->getGrade())){
+			this->_sign = true;
+			std::cout << bureaucrat->getName() << " signed " << *this;
+		}
+		else{
+			std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because";
+			throw GradeTooLowException();
+		}
 }
 
 Form::GradeTooHighException::GradeTooHighException(void){

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:33:21 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/04/30 20:20:17 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/01 17:13:43 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Form{
 
 	public:
 		Form(void);
-		Form(std::string const name, int const Wgrade, int const Xgrade, bool sign);
+		Form(std::string const name, int const Wgrade, int const Xgrade, bool sign = false);
 		Form(Form const & src);
 		~Form(void);
 
@@ -44,6 +44,7 @@ class Form{
 		void setXgrade(int const &Xlvl, std::string const &who);
 
 		void beSigned(Bureaucrat bureaucrat);
+		void beSigned(Bureaucrat *bureaucrat);
 
 
 		class GradeTooHighException : public std::exception {
