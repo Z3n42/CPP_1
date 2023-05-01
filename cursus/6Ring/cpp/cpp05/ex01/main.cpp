@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:39:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/01 18:10:39 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:30:03 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int main(void) {
 		std::cout << std::endl; 
 		std::cout << "+++++++++++++++++ Constructor ++++++++++++++++++" << std::endl;
 		std::cout << "+++++++++++++++++++ Default ++++++++++++++++++++" << std::endl;
-		Form a("A42-Default", 10, 15);
+		Form a("A42-Default", 150, 150);
 		std::cout << "+++++++++++++++++++ Unsigned +++++++++++++++++++" << std::endl;
 		Form b("A42-Unsigned", 10, 15, false);
 		std::cout << "++++++++++++++++++++ Signed ++++++++++++++++++++" << std::endl;
@@ -166,9 +166,22 @@ int main(void) {
 		std::cout << "==================================================" << std::endl;
 		std::cout << std::endl;
 		std::cout << "++++++++++++++++++++++ BeSigned +++++++++++++++++++" << std::endl;
-		c.beSigned(alloc);
+		std::cout << "+++++++++++++++++++++ Happy Path ++++++++++++++++++" << std::endl;
+		std::cout << a << std::endl;
+		a.beSigned(alloc);
+		std::cout << a << std::endl;
+		std::cout << "==================================================" << std::endl;
 		std::cout << std::endl;
+		std::cout << "+++++++++++++++++++ Already Signed +++++++++++++++" << std::endl;
 		std::cout << c << std::endl;
+		c.beSigned(alloc);
+		std::cout << c << std::endl;
+		std::cout << "==================================================" << std::endl;
+		std::cout << std::endl;
+		std::cout << "++++++++++++++++++++ Grade TooLow ++++++++++++++++" << std::endl;
+		std::cout << b << std::endl;
+		b.beSigned(alloc);
+		std::cout << b << std::endl;
 		std::cout << "==================================================" << std::endl;
 		std::cout << std::endl;
 		/* std::cout << "+++++++++++++++++++++ DownGrade ++++++++++++++++++" << std::endl; */

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:55:14 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/01 18:32:28 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:43:24 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,36 +92,36 @@ void Form::setXgrade(int const &Xlvl, std::string const &who = ""){
 }
 
 void Form::beSigned(Bureaucrat bureaucrat){
-	if (bureaucrat){
-		if (this->_sign == true){
-			if (this->_Wgrade >= bureaucrat.getGrade()){
-				this->_sign = true;
-				std::cout << bureaucrat.getName() << " signed " << *this;
-			}
-			else
-				std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because grade is too low";
+	if (this->_sign == false){
+		if (this->_Wgrade >= bureaucrat.getGrade()){
+			this->_sign = true;
+			std::cout << bureaucrat.getName() << " signed " << *this << std::endl;
 		}
 		else
-			std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because form already signed";
+			std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because grade is too low" << std::endl;
+			throw GradeTooLowException();
 	}
 	else
-		throw GradeTooLowException();
+		std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because form already signed" << std::endl;
 }
 
 void Form::beSigned(Bureaucrat *bureaucrat){
 	if (bureaucrat){
-		if (this->_Wgrade >= bureaucrat->getGrade()){
-			this->_sign = true;
-			std::cout << bureaucrat->getName() << " signed " << *this;
+		if (this->_sign == false){
+			if (this->_Wgrade >= bureaucrat->getGrade()){
+				this->_sign = true;
+				std::cout << bureaucrat->getName() << " signed " << *this << std::endl;
+			}
+			else{
+				std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because grade is too low" << std::endl;
+				throw GradeTooLowException();
+			}
 		}
-		else{
-			std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because grade is too low";
-			/* std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because"; */
-			/* throw GradeTooLowException(); */
-		}
+		else
+			std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because form already signed" << std::endl;
 	}
 	else
-		throw GradeTooLowException();
+		std::cout << "This bureucrat couldn’t sign " << *this << " because was already fired" << std::endl;
 }
 
 Form::GradeTooHighException::GradeTooHighException(void){

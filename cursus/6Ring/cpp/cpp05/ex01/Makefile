@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/04/25 19:38:30 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/05/01 19:52:54 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = Bureaucracy
@@ -14,7 +14,7 @@ NAME_V = Bureaucracy_Sanitized
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -MD
 
 AR = ar rcs
 RM = rm -rf
@@ -62,6 +62,8 @@ fclean: clean
 		@$(RM) $(NAME)
 		@$(RM) $(NAME_V)
 		@echo "Sephiroth: What I have taught you is reality. What you remember is an illusion."
+
+-include $(OBJS_DIR)/*.d
 
 re: clean all
 
