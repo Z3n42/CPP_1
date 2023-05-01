@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/04/25 19:38:30 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/05/01 20:04:06 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = Bureaucracy
@@ -36,7 +36,7 @@ OBJS_V = $(addprefix $(OBJS_DIR), $(notdir $(SRCS_V:.cpp=.o)))
 
 $(NAME): $(OBJS)
 		@$(CC) $(FLAGS) $^ -o $@ 
-		@echo "Cloud: Muy bien, allévoy."
+		@echo "Burocracy Madness"
 
 $(OBJS_DIR)%.o: $(SRCS_MAIN)%.cpp 
 		@mkdir -p $(OBJS_DIR)
@@ -50,18 +50,18 @@ san : $(NAME_V)
 
 $(NAME_V): $(OBJS)
 		@$(CC) $(FLAGS) $(S) $^ -o $@ 
-		@echo "Cloud: Swords never run from bullets."
+		@echo "Surprise Inspection"
 
 all: $(NAME)
 
 clean:
 		@$(RM) $(OBJS_DIR)
-		@echo "Sephiroth: the time......is now."
+		@echo "Deleting clues"
 
 fclean: clean
 		@$(RM) $(NAME)
 		@$(RM) $(NAME_V)
-		@echo "Sephiroth: What I have taught you is reality. What you remember is an illusion."
+		@echo "Destroying HDD's"
 
 re: clean all
 
