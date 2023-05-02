@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:39:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/01 20:37:47 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:13:02 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ int main(void) {
 		std::cout << std::endl;
 		std::cout << "++++++++++++++++++++++ BeSigned +++++++++++++++++++" << std::endl;
 		std::cout << "+++++++++++++++++++++ Happy Path ++++++++++++++++++" << std::endl;
-		std::cout << a << std::endl;
-		a.beSigned(alloc);
-		std::cout << a << std::endl;
+		std::cout << *form << std::endl;
+		form->beSigned(alloc);
+		std::cout << *form << std::endl;
 		std::cout << "==================================================" << std::endl;
 		std::cout << std::endl;
 		std::cout << "+++++++++++++++++++ Already Signed +++++++++++++++" << std::endl;
@@ -121,6 +121,42 @@ int main(void) {
 		std::cout << b << std::endl;
 		b.beSigned(alloc);
 		std::cout << b << std::endl;
+		std::cout << "==================================================" << std::endl;
+		std::cout << std::endl;
+	}
+	catch (std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	try{ 
+		std::cout << "+++++++++++++++++++ signForm +++++++++++++++++++++" << std::endl;
+		std::cout << "+++++++++++++++++ Constructor ++++++++++++++++++" << std::endl;
+		std::cout << "+++++++++++++++++++ Default ++++++++++++++++++++" << std::endl;
+		Form d("C42-Default", 150, 150);
+		std::cout << "+++++++++++++++++++ Unsigned +++++++++++++++++++" << std::endl;
+		Form e("C42-Unsigned", 10, 15, false);
+		std::cout << "++++++++++++++++++++ Signed ++++++++++++++++++++" << std::endl;
+		Form f("C42-Signed", 10, 15, true);
+		std::cout << "================================================" << std::endl;
+		std::cout << std::endl;
+		std::cout << "+++++++++++++++++++++ Happy Path ++++++++++++++++++" << std::endl;
+		std::cout << d << std::endl;
+		alloc->signForm(d);
+		std::cout << d << std::endl;
+		std::cout << "==================================================" << std::endl;
+		std::cout << std::endl;
+		std::cout << "+++++++++++++++++++ Already Signed +++++++++++++++" << std::endl;
+		std::cout << f << std::endl;
+		alloc->signForm(f);
+		std::cout << f << std::endl;
+		std::cout << "==================================================" << std::endl;
+		std::cout << std::endl;
+		std::cout << "++++++++++++++++++++ Grade TooLow ++++++++++++++++" << std::endl;
+		std::cout << e << std::endl;
+		alloc->signForm(e);
+		std::cout << e << std::endl;
 		std::cout << "==================================================" << std::endl;
 		std::cout << std::endl;
 	}
