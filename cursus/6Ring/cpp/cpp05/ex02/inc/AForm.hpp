@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*  AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:33:21 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/02 15:12:57 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:08:32 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include <iostream>
 #include <stdexcept>
@@ -19,7 +19,7 @@
 
 class Bureaucrat;
 
-class Form{
+class AForm{
 
 	private:
 		std::string  const 	_name;
@@ -28,12 +28,12 @@ class Form{
 		bool				_sign;
 
 	public:
-		Form(void);
-		Form(std::string const name, int const Wgrade, int const Xgrade, bool sign = false);
-		Form(Form const & src);
-		~Form(void);
+		AForm(void);
+		AForm(std::string const name, int const Wgrade, int const Xgrade, bool sign = false);
+		AForm(AForm const & src);
+		~AForm(void);
 
-		Form & operator=(Form const & rhs);
+		AForm & operator=(AForm const & rhs);
 
 		std::string const & getName(void) const;
 		int const & getXgrade(void) const;
@@ -80,6 +80,6 @@ class Form{
 		};
 };
 
-std::ostream & operator<<(std::ostream & o, Form const & rhs);
+std::ostream & operator<<(std::ostream & o, AForm const & rhs);
 
 #endif

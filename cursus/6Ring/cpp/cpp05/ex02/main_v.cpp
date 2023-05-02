@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main_v.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:39:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/02 16:31:56 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:10:53 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int main(void) {
 	Bureaucrat *alloc = NULL;
-	Form *form = NULL;
+	AForm *form = NULL;
 
 	try{ 
 		std::cout << "+++++++++++++++++++ Allocated ++++++++++++++++++++" << std::endl;
 		alloc = new Bureaucrat ("Alloc", 150);
-		form = new Form ("FormAlloc", 150, 150);
+		form = new AForm ("FormAlloc", 150, 150);
 		std::cout << "==================================================" << std::endl;
 	}
 	catch (std::exception & e){
@@ -32,7 +32,7 @@ int main(void) {
 	try{
 		std::cout << std::endl; 
 		std::cout << "++++++++++++ Constructor Excepts +++++++++++++++" << std::endl;
-		Form a("B42-WgradeHigh", 0, 150);
+		AForm a("B42-WgradeHigh", 0, 150);
 		std::cout << std::endl;
 	}
 	catch (std::exception & e){
@@ -46,7 +46,7 @@ int main(void) {
 	try{
 		std::cout << std::endl; 
 		std::cout << "++++++++++++ Constructor Excepts +++++++++++++++" << std::endl;
-		Form a("B42-WgradeLow", 151, 150);
+		AForm a("B42-WgradeLow", 151, 150);
 		std::cout << std::endl;
 	}
 	catch (std::exception & e){
@@ -60,7 +60,7 @@ int main(void) {
 	try{
 		std::cout << std::endl; 
 		std::cout << "++++++++++++ Construction Exceptions +++++++++++++" << std::endl;
-		Form a("B42-XgradeHigh", 150, 0);
+		AForm a("B42-XgradeHigh", 150, 0);
 		std::cout << std::endl;
 	}
 	catch (std::exception & e){
@@ -74,7 +74,7 @@ int main(void) {
 	try{
 		std::cout << std::endl; 
 		std::cout << "++++++++++++ Constructor Excepts +++++++++++++++" << std::endl;
-		Form a("B42-XgradeLow", 150, 151);
+		AForm a("B42-XgradeLow", 150, 151);
 		std::cout << std::endl;
 	}
 	catch (std::exception & e){
@@ -89,15 +89,15 @@ int main(void) {
 		std::cout << std::endl; 
 		std::cout << "+++++++++++++++++ Constructor ++++++++++++++++++" << std::endl;
 		std::cout << "+++++++++++++++++++ Default ++++++++++++++++++++" << std::endl;
-		Form a("A42-Default", 150, 150);
+		AForm a("A42-Default", 150, 150);
 		std::cout << "+++++++++++++++++++ Unsigned +++++++++++++++++++" << std::endl;
-		Form b("A42-Unsigned", 10, 15, false);
+		AForm b("A42-Unsigned", 10, 15, false);
 		std::cout << "++++++++++++++++++++ Signed ++++++++++++++++++++" << std::endl;
-		Form c("A42-Signed", 10, 15, true);
+		AForm c("A42-Signed", 10, 15, true);
 		std::cout << "================================================" << std::endl;
 		std::cout << std::endl;
 		std::cout << "+++ 24Copy Constructor And Assignation Overload +++" << std::endl;
-		Form d(a);
+		AForm d(a);
 		std::cout << "=================================================" << std::endl;
 		std::cout << std::endl;
 		std::cout << "+++++++++++++++++ Operator Overload ++++++++++++++" << std::endl;
@@ -134,11 +134,11 @@ int main(void) {
 		std::cout << "+++++++++++++++++++ signForm +++++++++++++++++++++" << std::endl;
 		std::cout << "+++++++++++++++++ Constructor ++++++++++++++++++" << std::endl;
 		std::cout << "+++++++++++++++++++ Default ++++++++++++++++++++" << std::endl;
-		Form d("C42-Default", 150, 150);
+		AForm d("C42-Default", 150, 150);
 		std::cout << "+++++++++++++++++++ Unsigned +++++++++++++++++++" << std::endl;
-		Form e("C42-Unsigned", 10, 15, false);
+		AForm e("C42-Unsigned", 10, 15, false);
 		std::cout << "++++++++++++++++++++ Signed ++++++++++++++++++++" << std::endl;
-		Form f("C42-Signed", 10, 15, true);
+		AForm f("C42-Signed", 10, 15, true);
 		std::cout << "================================================" << std::endl;
 		std::cout << std::endl;
 		std::cout << "+++++++++++++++++++++ Happy Path ++++++++++++++++++" << std::endl;
