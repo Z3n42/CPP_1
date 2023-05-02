@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:39:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/02 16:31:56 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:13:02 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,4 +168,9 @@ int main(void) {
 
 	delete alloc;
 	delete form;
+
+	std::cout << "++++++++++++++++++ Leaks Summary +++++++++++++++++" << std::endl;
+	std::cout << std::endl;
+	system("leaks Bureaucracy");
+	std::cout << "==================================================" << std::endl;
 }
