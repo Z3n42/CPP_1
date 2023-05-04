@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*  AForm.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 19:33:21 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/02 18:08:32 by ingonzal         ###   ########.fr       */
+/*   Created: 2023/05/02 19:41:49 by ingonzal          #+#    #+#             */
+/*   Updated: 2023/05/02 19:41:56 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class AForm{
 		AForm(void);
 		AForm(std::string const name, int const Wgrade, int const Xgrade, bool sign = false);
 		AForm(AForm const & src);
-		~AForm(void);
+		virtual ~AForm(void);
 
 		AForm & operator=(AForm const & rhs);
 
@@ -45,6 +45,8 @@ class AForm{
 
 		void beSigned(Bureaucrat bureaucrat);
 		void beSigned(Bureaucrat *bureaucrat);
+
+		virtual void execute(Bureaucrat const & executor) const = 0;
 
 
 		class GradeTooHighException : public std::exception {
