@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:41:34 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/02 19:51:30 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/04 11:58:25 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ class ShrubberyCreationForm : public AForm{
 
 	public:
 		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(std::string const name, int const Wgrade, int const Xgrade, bool sign = false);
+		ShrubberyCreationForm(std::string const name, int const Wgrade = 147, int const Xgrade = 135, bool sign = false);
 		ShrubberyCreationForm(ShrubberyCreationForm const & src);
-		~ShrubberyCreationForm(void);
+		virtual ~ShrubberyCreationForm(void);
 
 		ShrubberyCreationForm & operator=(ShrubberyCreationForm const & rhs);
 
-		void execute(Bureaucrat const & executor) const;
+		virtual void execute(Bureaucrat const & executor) const;
 }
 
 #endif
