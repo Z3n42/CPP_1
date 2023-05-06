@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/05/02 16:45:48 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/05/06 19:26:11 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = Bureaucracy
@@ -56,6 +56,7 @@ all: $(NAME)
 
 clean:
 		@$(RM) $(OBJS_DIR)
+		@$(RM) $(SRCS_MAIN)*_shrubbery
 		@echo "Deleting clues"
 
 fclean: clean

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:14:23 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/02 18:09:29 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/06 18:12:32 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ class Bureaucrat{
 		void GradeDown(void);
 
 		void signForm(AForm &form);
+		void executeForm(AForm const & form); 
 
 		class GradeTooHighException : public std::exception {
 			private:

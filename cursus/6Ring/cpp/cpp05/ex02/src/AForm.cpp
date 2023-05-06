@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:42:17 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/02 19:42:23 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/06 18:16:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,14 @@ void AForm::setXgrade(int const &Xlvl, std::string const &who = ""){
 		throw GradeTooLowException(" Xgrade too Low", Xlvl, who);
 }
 
+int AForm::checkSign() const{
+	if (this->_sign == true)
+		return (1);
+	return (0);
+}
+
 void AForm::beSigned(Bureaucrat bureaucrat){
-	if (this->_sign == false){
+	if (!checkSign()){
 		if (this->_Wgrade >= bureaucrat.getGrade()){
 			this->_sign = true;
 			std::cout << bureaucrat.getName() << " signed " << *this << std::endl;

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:41:49 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/02 19:41:56 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/06 18:16:10 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ class AForm{
 
 		void setWgrade(int const &Wlvl, std::string const &who);
 		void setXgrade(int const &Xlvl, std::string const &who);
+		
+		int checkSign() const;
 
 		void beSigned(Bureaucrat bureaucrat);
 		void beSigned(Bureaucrat *bureaucrat);

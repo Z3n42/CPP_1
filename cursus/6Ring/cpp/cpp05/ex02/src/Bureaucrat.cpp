@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/02 18:09:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/06 18:18:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,12 @@ void Bureaucrat::signForm(AForm &form){
 		std::cout << this->getName() << " couldn’t sign " << *this << " because is already signed";
 }
 
-
+void Bureaucrat::executeForm(AForm const & form){
+	if (form.checkSign())
+		form.execute(*this);	
+	else
+	std::cout << this->getName() << " couldn’t execute " << form << " because form not signed" << std::endl;
+}
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(void){
    this->_HighError = " Grade is Higher than expected";
