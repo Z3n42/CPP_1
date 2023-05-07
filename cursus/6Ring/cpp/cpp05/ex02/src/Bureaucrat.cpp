@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/06 18:18:14 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/07 19:12:33 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void Bureaucrat::signForm(AForm &form){
 	if (form.getSign() == false)
 		form.beSigned(this);
 	else	
-		std::cout << this->getName() << " couldn’t sign " << *this << " because is already signed";
+		std::cout << this->getName() << " couldn’t sign " << *this << " because is already signed" << std::endl;
 }
 
 void Bureaucrat::executeForm(AForm const & form){

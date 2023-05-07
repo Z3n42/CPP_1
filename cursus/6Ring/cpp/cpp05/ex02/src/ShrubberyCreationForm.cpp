@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:55:42 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/06 19:40:53 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:49:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string name, std::string targe
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src) : AForm(src.getName() + " Photocopy", src.getWgrade(), src.getXgrade(), src.getSign()), _target(src.getTarget()){
+	/* if you are going to use const members workarround comment assignation: */
 	*this = src;
 	std::cout << *this << " photocopied" << std::endl;
 }
@@ -35,13 +36,19 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void){
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs){
 	if (this != &rhs){
-		/* this->setName(rhs.getName()); */ // Const Name
+		/* this->setName(rhs.getName()); // Const Name */
 		/* this->setGrade(rhs.getGrade(), rhs.getName()); */
-		/* this->_name = rhs.getName(); */ // Const
-		/* this->_Wgrade = rhs.getWgrade(); */ // Const
-		/* this->_Xgrade = rhs.getXgrade(); */ // Const
+		/* this->_name = rhs.getName(); // Const */
+		/* this->_Wgrade = rhs.getWgrade(); // Const */
+		/* this->_Xgrade = rhs.getXgrade(); // Const */
 		/* this->_sign = rhs.getSign(); */
-		std::cout << *this << " Equalized to " << rhs << std::endl;
+		this->_target = rhs.getTarget();
+		std::cout << *this << " Equalized to:\n" << rhs << std::endl;
+/* =============================================================================================== */
+		//Workarround to avoid natural behaviour about const members and assignation:
+		//Problem: Original pointer substitution
+		/* this->~ShrubberyCreationForm(); */
+		/* new (this) ShrubberyCreationForm(rhs); */
 	}
 	return(*this);
 }
@@ -77,7 +84,7 @@ std::ostream & operator<<(std::ostream & o, ShrubberyCreationForm const & rhs){
 	sign = " unsigned";
 	if (rhs.getSign() == true)
 		sign = " signed";
-	o << rhs.getName() << " Form with " << rhs.getWgrade() << " Wgrade and " << rhs.getXgrade() << " Xgrade" << sign;
+	o << rhs.getName() << " Form with " << rhs.getWgrade() << " Wgrade and " << rhs.getXgrade() << " Xgrade" << sign << " targeted to " << rhs.getTarget();
 	return (o);
 }
 
