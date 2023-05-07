@@ -6,13 +6,15 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:39:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/07 20:04:40 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/07 21:04:41 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void) {
 	Bureaucrat *SH_alloc = NULL;
@@ -33,7 +35,7 @@ int main(void) {
 		SH_alloc = new Bureaucrat("SH_Alloc", 137);
 		SH_signer = new Bureaucrat("SH_Signer", 145);
 		SH_unsigner = new Bureaucrat("SH_UnSigner", 150);
-		SH_form = new ShrubberyCreationForm ("SH_FormAlloc", "SH_Scrooge");
+		SH_form = new ShrubberyCreationForm ("SH_Scrooge");
 		std::cout << "==================================================" << std::endl;
 	}
 	catch (std::exception & e){
@@ -90,7 +92,7 @@ int main(void) {
 	try{
 		std::cout << std::endl; 
 		std::cout << "++++++++++++ ShrubberyCreationForm HappyPath +++++++++++++++" << std::endl;
-		ShrubberyCreationForm SH_A42("SH_A42", "42");
+		ShrubberyCreationForm SH_A42("42");
 		SH_signer->signForm(SH_A42);
 		SH_A42.execute(*SH_alloc);
 		std::cout << std::endl;
@@ -105,8 +107,8 @@ int main(void) {
 	try{
 		std::cout << std::endl; 
 		std::cout << "++++++++++++ ShrubberyCreationForm Constructors +++++++++++++++" << std::endl;
-		ShrubberyCreationForm a("A42", "people");
-		ShrubberyCreationForm b("B42", "42");
+		ShrubberyCreationForm a("people");
+		ShrubberyCreationForm b("42");
 		ShrubberyCreationForm c(a);
 		std::cout << "+++ SH_Copy Constructor And Assignation Overload +++" << std::endl;
 		c = b;
@@ -128,8 +130,9 @@ int main(void) {
 		std::cout << "+++++++++++++++++++ RobotomyRequestForm Allocated ++++++++++++++++++++" << std::endl;
 		RO_alloc = new Bureaucrat("RO_Alloc", 45);
 		RO_signer = new Bureaucrat("RO_Signer", 72);
+
 		RO_unsigner = new Bureaucrat("RO_UnSigner", 150);
-		RO_form = new RobotomyRequestForm ("RO_FormAlloc", "RO_Scrooge");
+		RO_form = new RobotomyRequestForm ("RO_Scrooge");
 		std::cout << "==================================================" << std::endl;
 	}
 	catch (std::exception & e){
@@ -186,7 +189,7 @@ int main(void) {
 	try{
 		std::cout << std::endl; 
 		std::cout << "++++++++++++ RobotomyRequestForm HappyPath +++++++++++++++" << std::endl;
-		RobotomyRequestForm RO_A42("RO_A42", "42");
+		RobotomyRequestForm RO_A42("42");
 		RO_signer->signForm(RO_A42);
 		RO_A42.execute(*RO_alloc);
 		std::cout << std::endl;
@@ -199,10 +202,11 @@ int main(void) {
 
 	std::cout << std::endl;
 	try{
-		std::cout << std::endl; 
+		
+std::cout << std::endl; 
 		std::cout << "++++++++++++ RobotomyRequestForm Constructors +++++++++++++++" << std::endl;
-		RobotomyRequestForm a("RO_A42", "RO_people");
-		RobotomyRequestForm b("RO_B42", "RO_42");
+		RobotomyRequestForm a("RO_people");
+		RobotomyRequestForm b("RO_42");
 		RobotomyRequestForm c(a);
 		std::cout << "+++ RO_Copy Constructor And Assignation Overload +++" << std::endl;
 		c = b;
@@ -225,7 +229,7 @@ int main(void) {
 		PR_alloc = new Bureaucrat("PR_Alloc", 5);
 		PR_signer = new Bureaucrat("PR_Signer", 25);
 		PR_unsigner = new Bureaucrat("PR_UnSigner", 150);
-		PR_form = new PresidentialPardonForm ("PR_FormAlloc", "PR_Scrooge");
+		PR_form = new PresidentialPardonForm ("PR_Scrooge");
 		std::cout << "==================================================" << std::endl;
 	}
 	catch (std::exception & e){
@@ -282,7 +286,7 @@ int main(void) {
 	try{
 		std::cout << std::endl; 
 		std::cout << "++++++++++++ PresidentialPardonForm HappyPath +++++++++++++++" << std::endl;
-		PresidentialPardonForm PR_A42("PR_A42", "42");
+		PresidentialPardonForm PR_A42("42");
 		PR_signer->signForm(PR_A42);
 		PR_A42.execute(*PR_alloc);
 		std::cout << std::endl;
@@ -297,8 +301,8 @@ int main(void) {
 	try{
 		std::cout << std::endl; 
 		std::cout << "++++++++++++ PresidentialPardonForm Constructors +++++++++++++++" << std::endl;
-		PresidentialPardonForm a("PR_A42", "PR_people");
-		PresidentialPardonForm b("PR_B42", "PR_42");
+		PresidentialPardonForm a("PR_people");
+		PresidentialPardonForm b("PR_42");
 		PresidentialPardonForm c(a);
 		std::cout << "+++ PR_Copy Constructor And Assignation Overload +++" << std::endl;
 		c = b;
@@ -314,7 +318,6 @@ int main(void) {
 
 	std::cout << std::endl;
 
-	delete PR_alloc;
 	delete SH_alloc;
 	delete SH_signer;
 	delete SH_unsigner;

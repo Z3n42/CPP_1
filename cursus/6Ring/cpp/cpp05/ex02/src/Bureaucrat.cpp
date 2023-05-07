@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/07 19:12:33 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:24:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,10 @@ void Bureaucrat::signForm(AForm &form){
 }
 
 void Bureaucrat::executeForm(AForm const & form){
-	if (form.checkSign())
+	if (form.checkSign()){
+		std::cout << this->getName() << " execute " << form << std::endl;
 		form.execute(*this);	
+	}
 	else
 	std::cout << this->getName() << " couldn’t execute " << form << " because form not signed" << std::endl;
 }

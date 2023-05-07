@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:42:17 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/07 17:08:12 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/07 21:18:19 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ void AForm::beSigned(Bureaucrat bureaucrat){
 			std::cout << bureaucrat.getName() << " signed " << *this << std::endl;
 		}
 		else
-			std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because grade is too low" << std::endl;
-			throw GradeTooLowException();
+			std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because signing grade is too low" << std::endl;
+			throw AForm::GradeTooLowException("Signing Grade is lower than expected", bureaucrat.getGrade(), bureaucrat.getName());
 	}
 	else
 		std::cout << bureaucrat.getName() << " couldn’t sign " << *this << " because form already signed" << std::endl;
@@ -119,8 +119,8 @@ void AForm::beSigned(Bureaucrat *bureaucrat){
 				std::cout << bureaucrat->getName() << " signed " << *this << std::endl;
 			}
 			else{
-				std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because grade is too low" << std::endl;
-				throw GradeTooLowException();
+				std::cout << bureaucrat->getName() << " couldn’t sign " << *this << " because signing grade is too low" << std::endl;
+				throw AForm::GradeTooLowException("Signing Grade is lower than expected", bureaucrat->getGrade(), bureaucrat->getName());
 			}
 		}
 		else
