@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:51:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/07 20:24:14 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:07:03 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,38 +150,3 @@ Bureaucrat::GradeTooLowException::~GradeTooLowException(void) throw(){
 const char *Bureaucrat::GradeTooLowException::what(void) const throw(){
 	return (this->_LowError);
 }
-
-/* All no-way tryouts */
-
-/* void Bureaucrat::setGrade(int const &lvl, std::string const &who = ""){ */
-/* 	std::cout << "SET IN LVL =>" << lvl << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl; */
-/* 	try{ */
-/* 	std::stringstream stream; */
-/* 	std::string msg; */
-/* 	std::string c; */
-/* 	stream << lvl; */
-/* 	stream >> c; */
-/* 	msg = c + " Grade is too High"; */
-/* 	if(lvl < 1){ */
-		/* std::cout << typeid(c).name() << std::endl; */
-/* 		throw GradeTooHighException(" Grade too High", lvl, who); */
-/* 		throw GradeTooHighException(static_cast<char*>(&msg[0])); */
-/* 	} */
-/* 	else if(lvl > 150){ */
-/* 		std::stringstream stream; */
-/* 		std::string msg; */
-/* 		std::string c; */
-/* 		stream << lvl; */
-/* 		stream >> c; */
-/* 		msg = c + " Grade is too low"; */
-/* 		throw GradeTooLowException(" Grade too Low", lvl, who); */
-/* 		throw GradeTooLowException(static_cast<char*>(&msg[0])); */
-/* 	} */
-/* 	else{ */
-/* 		this->_grade = lvl; */
-/* 	} */
-/* 		} */
-/* 	catch (std::exception & e){ */
-/* 		std::cout << lvl << e.what() << std::endl; */
-/* 	} */
-/* } */
