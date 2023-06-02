@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/27 14:47:55 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/02 19:37:47 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,19 @@ void ScalarConverter::setInput(std::string const &input){
 
 void ScalarConverter::convert(std::string toConvert){
 	std::cout << toConvert << std::endl;
+}
+
+void ScalarConverter::checkInput(int i, int j, int k, int f, int m, int len){
+		if (i == len)
+			std::cout << "ALL CHAR" << std::endl;
+		else if (j == len and k < 2 and f < 2 and m < 2){
+			if (f != 0)
+				std::cout << "ALL FLOAT" << std::endl;
+			else if (k != 0 and f == 0)
+				std::cout << "ALL DOUBLE" << std::endl;
+			else
+				std::cout << "ALL NUM" << std::endl;
+		}
+		else
+			std::cout << "Bad Arguments" << std::endl;
 }

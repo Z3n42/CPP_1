@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:36 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/05/27 14:47:59 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/02 19:37:44 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class ScalarConverter{
 
 	public:
 		static void convert(std::string toConvert);
+		static void checkInput(int i, int j, int k, int f, int m, int len);
 };
 
 #endif
