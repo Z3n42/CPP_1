@@ -1,0 +1,15 @@
+./Bureaucracy -4.f
+./Bureaucracy adfs
+./Bureaucracy 12334
+./Bureaucracy adfs1234
+./Bureaucracy 2.2
+./Bureaucracy -2.2
+./Bureaucracy 2.2ff
+./Bureaucracy 2.2.2f
+./Bureaucracy 2..2.2f
+./Bureaucracy .2f
+./Bureaucracy -4-3
+./Bureaucracy -43
+./Bureaucracy -4f-3
+./Bureaucracy -4f3
+./Bureaucracy -4.f

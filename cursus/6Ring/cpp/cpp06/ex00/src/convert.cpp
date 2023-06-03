@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/02 19:37:47 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/03 18:29:46 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,47 @@ void ScalarConverter::convert(std::string toConvert){
 	std::cout << toConvert << std::endl;
 }
 
-void ScalarConverter::checkInput(int i, int j, int k, int f, int m, int len){
-		if (i == len)
+void ScalarConverter::initData(int argc, char** argv){
+	if (argc == 2){
+		ScalarConverter::Data check = {};
+		check.str = static_cast<std::string>(argv[1]);
+		check.len = check.str.length(); 
+
+		while(check.count <= check.len){
+		   	if (std::isalpha(check.str[check.count]))
+				check.chars++;
+			else if (std::isdigit(check.str[check.count]))
+				check.num++;
+			else if (check.str[check.count] == '.' and std::isdigit(check.str[check.count - 1]) and std::isdigit(check.str[check.count + 1])){
+				check.num++;
+				check.point++;
+			}
+			else if (check.str[check.count] == '-' and std::isdigit(check.str[check.count + 1])){
+				check.num++;
+				check.signus++;
+			}
+			else if (check.str[check.count] == 'f' and check.str[check.count + 1] == '\0' and check.str[check.count + 1] != '.'){
+				check.num++;
+				check.floa++;
+			}
+			else 
+				break;
+			check.count++;
+		}
+		ScalarConverter::checkInput(check);
+		ScalarConverter::convert(check.str);
+	}
+	else
+		std::cout << "Bad Arguments amount" << std::endl;
+}
+
+void ScalarConverter::checkInput(Data &check){
+		if (check.chars == check.len)
 			std::cout << "ALL CHAR" << std::endl;
-		else if (j == len and k < 2 and f < 2 and m < 2){
-			if (f != 0)
+		else if (check.num == check.len and check.point < 2 and check.floa < 2 and check.signus < 2){
+			if (check.floa != 0)
 				std::cout << "ALL FLOAT" << std::endl;
-			else if (k != 0 and f == 0)
+			else if (check.point != 0 and check.floa == 0)
 				std::cout << "ALL DOUBLE" << std::endl;
 			else
 				std::cout << "ALL NUM" << std::endl;
