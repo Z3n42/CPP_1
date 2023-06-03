@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/03 18:29:46 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/03 20:18:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,22 @@ void ScalarConverter::initData(int argc, char** argv){
 		check.len = check.str.length(); 
 
 		while(check.count <= check.len){
-		   	if (std::isalpha(check.str[check.count]))
-				check.chars++;
+			if (check.str[check.count] == 'f' and check.str[check.count + 1] == '\0' and std::isdigit(check.str[check.count - 1])){
+				check.num++;
+				check.floa++;
+			}
 			else if (std::isdigit(check.str[check.count]))
 				check.num++;
 			else if (check.str[check.count] == '.' and std::isdigit(check.str[check.count - 1]) and std::isdigit(check.str[check.count + 1])){
 				check.num++;
 				check.point++;
 			}
-			else if (check.str[check.count] == '-' and std::isdigit(check.str[check.count + 1])){
+			else if ((check.str[check.count] == '-' or check.str[check.count] == '+')  and std::isdigit(check.str[check.count + 1])){
 				check.num++;
 				check.signus++;
 			}
-			else if (check.str[check.count] == 'f' and check.str[check.count + 1] == '\0' and check.str[check.count + 1] != '.'){
-				check.num++;
-				check.floa++;
-			}
+			else if (std::isalpha(check.str[check.count]))
+				check.chars++;
 			else 
 				break;
 			check.count++;
@@ -93,6 +93,12 @@ void ScalarConverter::checkInput(Data &check){
 			else
 				std::cout << "ALL NUM" << std::endl;
 		}
-		else
+		else{
+			std::cout << "Num:" << check.num << std::endl;
+			std::cout << "Point:" << check.point << std::endl;
+			std::cout << "Signus:" << check.signus << std::endl;
+			std::cout << "Float:" << check.floa << std::endl;
+			std::cout << "Len:" << check.len << std::endl;
 			std::cout << "Bad Arguments" << std::endl;
+		}
 }
