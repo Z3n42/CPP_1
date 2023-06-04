@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/03 20:18:29 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:21:34 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,60 +45,69 @@ void ScalarConverter::setInput(std::string const &input){
 }
 
 void ScalarConverter::convert(std::string toConvert){
-	std::cout << toConvert << std::endl;
+	ScalarConverter::Data check = {};
+		if (toConvert.compare("T35T") == 0)
+			ScalarConverter::test();
+		else{
+			check.str = toConvert;
+			ScalarConverter::initData(check);
+		}
 }
 
-void ScalarConverter::initData(int argc, char** argv){
-	if (argc == 2){
-		ScalarConverter::Data check = {};
-		check.str = static_cast<std::string>(argv[1]);
-		check.len = check.str.length(); 
-
-		while(check.count <= check.len){
-			if (check.str[check.count] == 'f' and check.str[check.count + 1] == '\0' and std::isdigit(check.str[check.count - 1])){
-				check.num++;
-				check.floa++;
-			}
-			else if (std::isdigit(check.str[check.count]))
-				check.num++;
-			else if (check.str[check.count] == '.' and std::isdigit(check.str[check.count - 1]) and std::isdigit(check.str[check.count + 1])){
-				check.num++;
-				check.point++;
-			}
-			else if ((check.str[check.count] == '-' or check.str[check.count] == '+')  and std::isdigit(check.str[check.count + 1])){
-				check.num++;
-				check.signus++;
-			}
-			else if (std::isalpha(check.str[check.count]))
-				check.chars++;
-			else 
-				break;
-			check.count++;
+void ScalarConverter::initData(Data &check){
+	check.len = check.str.length(); 
+	while(check.count <= check.len){
+		if (check.str[check.count] == 'f' and check.str[check.count + 1] == '\0' and std::isdigit(check.str[check.count - 1])){
+			check.num++;
+			check.floa++;
 		}
-		ScalarConverter::checkInput(check);
-		ScalarConverter::convert(check.str);
+		else if (std::isdigit(check.str[check.count]))
+			check.num++;
+		else if (check.str[check.count] == '.' and std::isdigit(check.str[check.count - 1]) and std::isdigit(check.str[check.count + 1])){
+			check.num++;
+			check.point++;
+		}
+		else if ((check.str[check.count] == '-' or check.str[check.count] == '+')  and std::isdigit(check.str[check.count + 1])){
+			check.num++;
+			check.signus++;
+		}
+		else if (std::isalpha(check.str[check.count]))
+			check.chars++;
+		else 
+			break;
+		check.count++;
 	}
-	else
-		std::cout << "Bad Arguments amount" << std::endl;
+	ScalarConverter::checkInput(check);
 }
 
 void ScalarConverter::checkInput(Data &check){
 		if (check.chars == check.len)
-			std::cout << "ALL CHAR" << std::endl;
+			std::cout << "ALL CHAR >> " << check.str  << std::endl;
 		else if (check.num == check.len and check.point < 2 and check.floa < 2 and check.signus < 2){
 			if (check.floa != 0)
-				std::cout << "ALL FLOAT" << std::endl;
+				std::cout << "ALL FLOAT >> " << check.str  << std::endl;
 			else if (check.point != 0 and check.floa == 0)
-				std::cout << "ALL DOUBLE" << std::endl;
+				std::cout << "ALL DOUBLE >> " << check.str  << std::endl;
 			else
-				std::cout << "ALL NUM" << std::endl;
+				std::cout << "ALL NUM >> " << check.str  << std::endl;
 		}
 		else{
+			std::cout << std::endl;
+			std::cout << "##################################"<< std::endl;
+			std::cout << "Bad Arguments format >> " << check.str << ":" << std::endl;
+			std::cout << std::endl;
 			std::cout << "Num:" << check.num << std::endl;
 			std::cout << "Point:" << check.point << std::endl;
 			std::cout << "Signus:" << check.signus << std::endl;
 			std::cout << "Float:" << check.floa << std::endl;
 			std::cout << "Len:" << check.len << std::endl;
-			std::cout << "Bad Arguments" << std::endl;
 		}
+}
+
+void ScalarConverter::test(){
+	std::string input[20]
+		= {"adfs", "f", "12345", "2.2", "4.0f", "-12345", "-2.2", "-4.0f", "-adfs", "adfs1234", "-4,f", "2.2ff", "2.2.2f", "2..2.2f", ".2f", "-4-3", "-4f-3", "-4f3", "-4.f", ".f"};
+
+	for (int i = 0; i < sizeof(input)/sizeof(input[0]); i++)
+		ScalarConverter::convert(input[i]);
 }

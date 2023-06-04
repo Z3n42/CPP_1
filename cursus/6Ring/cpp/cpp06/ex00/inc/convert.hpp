@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:36 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/03 18:29:49 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/04 14:36:11 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ class ScalarConverter{
 		  int  floa;
 		  int  len;
 		};
-		static void initData(int argc, char** argv);
+		static void initData(Data &check);
 		static void checkInput(Data &check);
 		static void convert(std::string toConvert);
+		static void test();
 };
 
 

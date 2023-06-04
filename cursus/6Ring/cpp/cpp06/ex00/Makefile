@@ -6,11 +6,11 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/05/01 20:04:06 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/06/04 13:17:24 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME   = Bureaucracy
-NAME_V = Bureaucracy_Sanitized
+NAME   = convert
+NAME_V = convert_sanitized
 
 CC = c++
 
@@ -36,7 +36,7 @@ OBJS_V = $(addprefix $(OBJS_DIR), $(notdir $(SRCS_V:.cpp=.o)))
 
 $(NAME): $(OBJS)
 		@$(CC) $(FLAGS) $^ -o $@ 
-		@echo "Burocracy Madness"
+		@echo "Setting metrics"
 
 $(OBJS_DIR)%.o: $(SRCS_MAIN)%.cpp 
 		@mkdir -p $(OBJS_DIR)
@@ -50,18 +50,18 @@ san : $(NAME_V)
 
 $(NAME_V): $(OBJS)
 		@$(CC) $(FLAGS) $(S) $^ -o $@ 
-		@echo "Surprise Inspection"
+		@echo "Re-evaluating"
 
 all: $(NAME)
 
 clean:
 		@$(RM) $(OBJS_DIR)
-		@echo "Deleting clues"
+		@echo "Clean balance"
 
 fclean: clean
 		@$(RM) $(NAME)
 		@$(RM) $(NAME_V)
-		@echo "Destroying HDD's"
+		@echo "I don't know Rick, it looks fake"
 
 re: clean all
 
