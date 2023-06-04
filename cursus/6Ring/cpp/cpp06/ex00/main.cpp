@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 19:06:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/04 15:02:18 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:18:39 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int main(int argc, char** argv){
 		ScalarConverter::convert(toConvert);
 	}
 	else
-		std::cout << "Bad Arguments amount" << std::endl;
+		std::cerr << "Bad Arguments amount" << std::endl;
 }

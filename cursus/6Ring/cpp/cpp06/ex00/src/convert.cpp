@@ -6,11 +6,12 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/04 16:21:34 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:18:41 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "convert.hpp"
+#include <cstdio>
 
 ScalarConverter::ScalarConverter(void) : _input("0"){
 
@@ -48,6 +49,9 @@ void ScalarConverter::convert(std::string toConvert){
 	ScalarConverter::Data check = {};
 		if (toConvert.compare("T35T") == 0)
 			ScalarConverter::test();
+		else if(toConvert.compare("+inf") == 0 or toConvert.compare("-inf") == 0 or toConvert.compare("nan") == 0
+				or toConvert.compare("+inff") == 0 or toConvert.compare("-inff") == 0 or toConvert.compare("nanf") == 0)
+			ScalarConverter::pseudoLiterals(toConvert);
 		else{
 			check.str = toConvert;
 			ScalarConverter::initData(check);
@@ -81,6 +85,7 @@ void ScalarConverter::initData(Data &check){
 }
 
 void ScalarConverter::checkInput(Data &check){
+		ScalarConverter::conversions result = {};
 		if (check.chars == check.len)
 			std::cout << "ALL CHAR >> " << check.str  << std::endl;
 		else if (check.num == check.len and check.point < 2 and check.floa < 2 and check.signus < 2){
@@ -94,7 +99,7 @@ void ScalarConverter::checkInput(Data &check){
 		else{
 			std::cout << std::endl;
 			std::cout << "##################################"<< std::endl;
-			std::cout << "Bad Arguments format >> " << check.str << ":" << std::endl;
+			std::cerr << "Bad Arguments format >> " << check.str << ":" << std::endl;
 			std::cout << std::endl;
 			std::cout << "Num:" << check.num << std::endl;
 			std::cout << "Point:" << check.point << std::endl;
@@ -104,9 +109,31 @@ void ScalarConverter::checkInput(Data &check){
 		}
 }
 
+void ScalarConverter::pseudoLiterals(std::string toConvert){
+		std::string imp = "imposible";
+		std::cout << "##################################"<< std::endl;
+		std::cout << "Pseudo Literal :" << toConvert << std::endl;
+		std::cout << std::endl;
+		if (toConvert.compare("nan") == 0 or toConvert.compare("nanf") == 0){
+			std::cout << "char: " << imp << std::endl;
+			std::cout << "int: " << imp << std::endl;
+		}
+		if (toConvert.compare("nan") == 0 )
+			std::cout << "float: " << "nanf" << std::endl;
+		else
+			std::cout << "float: " << "nan" << std::endl;
+		if (toConvert.compare("nan") == 0 )
+			std::cout << "double: " << toConvert << std::endl;
+		else
+			std::cout << "double: " << "nanf" << std::endl;
+		std::cout << std::endl;
+}
+
 void ScalarConverter::test(){
-	std::string input[20]
-		= {"adfs", "f", "12345", "2.2", "4.0f", "-12345", "-2.2", "-4.0f", "-adfs", "adfs1234", "-4,f", "2.2ff", "2.2.2f", "2..2.2f", ".2f", "-4-3", "-4f-3", "-4f3", "-4.f", ".f"};
+	std::string input[ ]
+		= {"adfs", "f", "12345", "2.2", "4.0f", "-12345", "-2.2", "-4.0f", "+3", "-adfs",
+			"adfs1234", "-4,f", "2.2ff", "2.2.2f", "2..2.2f", ".2f", "-4-3", "-4f-3", "-4f3",
+			"-4.f", ".f", "nan", "nanf"};
 
 	for (int i = 0; i < sizeof(input)/sizeof(input[0]); i++)
 		ScalarConverter::convert(input[i]);
