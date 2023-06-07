@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/06/04 13:17:24 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/06/07 19:17:43 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = convert
@@ -14,7 +14,7 @@ NAME_V = convert_sanitized
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g
+FLAGS = -Wall -Wextra -Werror -std=c++98 --pedantic -g
 
 AR = ar rcs
 RM = rm -rf
