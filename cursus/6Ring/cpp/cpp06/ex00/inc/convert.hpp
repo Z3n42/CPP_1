@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:36 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/04 17:27:27 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/10 19:15:25 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,19 @@ class ScalarConverter{
 		  float  f;
 		  double lf;
 		};
-		struct conversions {
+		struct Conversions {
 		  std::string chars;
-		  int    d;
-		  float  f;
-		  double lf;
+		  long int d;
+		  float   f;
+		  double	lf;
 		};
 		static void initData(Data &check);
 		static void checkInput(Data &check);
 		static void convert(std::string toConvert);
+		static void printConversions(std::string chars);
+		static void printConversions(long long int d);
+		static void printConversions(float f);
+		static void printConversions(double lf);
 		static void test();
 		static void pseudoLiterals(std::string toConvert);
 };
