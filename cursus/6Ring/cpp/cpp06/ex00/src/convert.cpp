@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/10 19:15:16 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:01:53 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,13 @@ void ScalarConverter::checkInput(Data &check){
 		else if (check.num == check.len and check.point < 2 and check.floa < 2 and check.signus < 2){
 			if (check.floa != 0){
 				std::cout << "ALL FLOAT >> " << check.str  << std::endl;
-				sscanf(check.str.data(), "%Lf", &result.f);
+				sscanf(check.str.data(), "%f", &result.f);
 				std::cout << result.f << std::endl;
 				std::cout << typeid(result.f).name() << std::endl;
 			}
 			else if (check.point != 0 and check.floa == 0){
 				std::cout << "ALL DOUBLE >> " << check.str  << std::endl;
-				sscanf(check.str.data(), "%Lf", &result.lf);
+				sscanf(check.str.data(), "%lf", &result.lf);
 				std::cout << result.lf << std::endl;
 				std::cout << typeid(result.lf).name() << std::endl;
 			}
@@ -161,14 +161,14 @@ void ScalarConverter::printConversions(long long int d){
 			std::cout << "int: " << "impossible" << std::endl;
 		else
 			std::cout << "int: " << static_cast<int>(d) << std::endl;
-		if (d != 0 and (d == LLONG_MAX or d == LLONG_MIN)){
-			std::cout << "float: " << "impossible" << std::endl;
-			std::cout << "double: " << "impossible" << std::endl;
-			}
-		else{
+		/* if (d != 0 and (d == LLONG_MAX or d == LLONG_MIN)){ */
+		/* 	std::cout << "float: " << "impossible" << std::endl; */
+		/* 	std::cout << "double: " << "impossible" << std::endl; */
+		/* 	} */
+		/* else{ */
 			std::cout << "float: " << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
 			std::cout << "double: "<< std::setprecision(1) << static_cast<double>(d) << std::endl;
-			}
+			/* } */
 }
 
 void ScalarConverter::test(){
