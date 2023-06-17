@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/15 18:01:53 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/17 19:53:22 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,34 +91,42 @@ void ScalarConverter::checkInput(Data &check){
 		ScalarConverter::Conversions result = {};
 		if (check.chars == check.len){
 			std::cout << "ALL CHAR >> " << check.str  << std::endl;
-			result.chars = check.str;
-			std::cout << result.chars << std::endl;
-			std::cout << typeid(result.chars).name() << std::endl;
+			/* result.chars = check.str.data(); */
+			/* std::cout << "int: " << static_cast<int>('a') << std::endl; */
+			/* std::cout << result.chars << std::endl; */
+			sscanf(check.str.data(), "%s", &result.chars);
+			ScalarConverter::printConversions(result.chars);
+			/* std::cout << typeid(result.chars).name() << std::endl; */
+			/* ScalarConverter::printConversions(result.chars.data()); */
 			}
 		else if (check.num == check.len and check.point < 2 and check.floa < 2 and check.signus < 2){
 			if (check.floa != 0){
 				std::cout << "ALL FLOAT >> " << check.str  << std::endl;
-				sscanf(check.str.data(), "%f", &result.f);
+				/* sscanf(check.str.data(), "%lf", &result.lf); */
+				/* sscanf(check.str.data(), "%f", &result.f); */
 				std::cout << result.f << std::endl;
 				std::cout << typeid(result.f).name() << std::endl;
+				/* ScalarConverter::printConversions(result.lf); */
 			}
 			else if (check.point != 0 and check.floa == 0){
 				std::cout << "ALL DOUBLE >> " << check.str  << std::endl;
-				sscanf(check.str.data(), "%lf", &result.lf);
+				/* sscanf(check.str.data(), "%lf", &result.lf); */
 				std::cout << result.lf << std::endl;
 				std::cout << typeid(result.lf).name() << std::endl;
+				/* ScalarConverter::printConversions(result.lf); */
 			}
 			else{
 				std::cout << "ALL NUM >> " << check.str  << std::endl;
-				sscanf(check.str.data(), "%lld", &result.d);
-				std::cout << result.d << std::endl;
-				std::cout << typeid(result.d).name() << std::endl;
-				ScalarConverter::printConversions(result.d);
+				/* sscanf(check.str.data(), "%lf", &result.lf); */
+				/* sscanf(check.str.data(), "%lld", &result.d); */
+				std::cout << result.lf << std::endl;
+				std::cout << typeid(result.lf).name() << std::endl;
+				/* ScalarConverter::printConversions(result.lf); */
 			}
+			sscanf(check.str.data(), "%lf", &result.lf);
+			ScalarConverter::printConversions(result.lf);
 		}
 		else{
-			std::cout << std::endl;
-			std::cout << "##################################"<< std::endl;
 			std::cerr << "Bad Arguments format >> " << check.str << ":" << std::endl;
 			std::cout << std::endl;
 			std::cout << "Num:" << check.num << std::endl;
@@ -127,11 +135,13 @@ void ScalarConverter::checkInput(Data &check){
 			std::cout << "Float:" << check.floa << std::endl;
 			std::cout << "Len:" << check.len << std::endl;
 		}
+		std::cout << std::endl;
 }
 
 void ScalarConverter::pseudoLiterals(std::string toConvert){
 		std::string imp = "imposible";
-		std::cout << "##################################"<< std::endl;
+		/* std::cout << "##################################"<< std::endl; */
+		/* std::cout << std::endl; */
 		std::cout << "Pseudo Literal :" << toConvert << std::endl;
 		std::cout << std::endl;
 		if (toConvert.compare("nan") == 0 or toConvert.compare("nanf") == 0){
@@ -149,25 +159,25 @@ void ScalarConverter::pseudoLiterals(std::string toConvert){
 		std::cout << std::endl;
 }
 
-void ScalarConverter::printConversions(long long int d){
-		std::cout << std::endl;
-		std::cout << "##################################" << std::endl;
-		std::cout << std::fixed;
-		if (std::isalpha(d))
-			std::cout << "char: " << static_cast<char>(d) << std::endl;
+void ScalarConverter::printConversions(double lf){
+		/* std::cout << "##################################" << std::endl; */
+		if (std::isalpha(lf))
+			std::cout << "char: " << static_cast<char>(lf) << std::endl;
 		else
 			std::cout << "char: " << "Non displayable" << std::endl;
-		if (d > INT_MAX or d < INT_MIN)
+		if (lf > INT_MAX or lf < INT_MIN)
 			std::cout << "int: " << "impossible" << std::endl;
-		else
-			std::cout << "int: " << static_cast<int>(d) << std::endl;
+		else{
+			std::cout << std::fixed;
+			std::cout << "int: " << static_cast<int>(lf) << std::endl;
+		}
 		/* if (d != 0 and (d == LLONG_MAX or d == LLONG_MIN)){ */
 		/* 	std::cout << "float: " << "impossible" << std::endl; */
 		/* 	std::cout << "double: " << "impossible" << std::endl; */
 		/* 	} */
 		/* else{ */
-			std::cout << "float: " << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
-			std::cout << "double: "<< std::setprecision(1) << static_cast<double>(d) << std::endl;
+			std::cout << "float: " << std::setprecision(1) << static_cast<float>(lf) << "f" << std::endl;
+			std::cout << "double: "<< std::setprecision(1) << static_cast<double>(lf) << std::endl;
 			/* } */
 }
 
@@ -177,7 +187,9 @@ void ScalarConverter::test(){
 			"adfs1234", "-4,f", "2.2ff", "2.2.2f", "2..2.2f", ".2f", "-4-3", "-4f-3", "-4f3",
 			"-4.f", ".f","2147483648", "-2147483649" , "nan", "nanf"};
 
-	for (int i = 0; i < sizeof(input)/sizeof(input[0]); i++)
+	for (int i = 0; i < sizeof(input)/sizeof(input[0]); i++){
 		ScalarConverter::convert(input[i]);
+		std::cout << "##################################"<< std::endl;
+		std::cout << std::endl;
+	}
 }
-
