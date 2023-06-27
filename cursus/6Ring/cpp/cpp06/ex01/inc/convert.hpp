@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:36 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/25 17:32:24 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:36:06 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 # define CONVERT_HPP
 #include <iostream>
 
-class ScalarConverter{
+class Serializer{
 	
 	private:
 		std::string _input;
 		
-		ScalarConverter(void);
-		ScalarConverter(std::string input);
-		ScalarConverter(ScalarConverter const & src);
-		~ScalarConverter(void);
+		Serializer(void);
+		Serializer(std::string input);
+		Serializer(Serializer const & src);
+		~Serializer(void);
 
-		ScalarConverter & operator=(ScalarConverter const & rhs);
+		Serializer & operator=(Serializer const & rhs);
 
 		std::string const & getInput(void) const;
 		void setInput(std::string const &input);

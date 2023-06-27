@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/27 17:57:36 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:40:17 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 
 /* orthodox canonical class form requirement */
 
-ScalarConverter::ScalarConverter(void) : _input("0"){
+Serializer::Serializer(void) : _input("0"){
 
 }
 
-ScalarConverter::ScalarConverter(std::string input) : _input(input){
+Serializer::Serializer(std::string input) : _input(input){
 
 }
 
 
-ScalarConverter::ScalarConverter(ScalarConverter const & src){
+Serializer::Serializer(Serializer const & src){
 	*this = src;
 }
 
-ScalarConverter::~ScalarConverter(void){
+Serializer::~Serializer(void){
 
 }
 
-ScalarConverter & ScalarConverter::operator=(ScalarConverter const & rhs){
+Serializer & Serializer::operator=(Serializer const & rhs){
 	if (this != &rhs){
 		this->setInput(rhs.getInput());
 	}
@@ -41,28 +41,28 @@ ScalarConverter & ScalarConverter::operator=(ScalarConverter const & rhs){
 
 /* Methods */
 
-std::string const & ScalarConverter::getInput(void) const{
+std::string const & Serializer::getInput(void) const{
 	return (this->_input);
 }
 
-void ScalarConverter::setInput(std::string const &input){
+void Serializer::setInput(std::string const &input){
 	this->_input = input;
 }
 
-void ScalarConverter::convert(std::string toConvert){
-	ScalarConverter::Data check = {};
+void Serializer::convert(std::string toConvert){
+	Serializer::Data check = {};
 		if (toConvert.compare("T35T") == 0)
-			ScalarConverter::test();
+			Serializer::test();
 		else if(toConvert.compare("+inf") == 0 or toConvert.compare("-inf") == 0 or toConvert.compare("nan") == 0
 				or toConvert.compare("+inff") == 0 or toConvert.compare("-inff") == 0 or toConvert.compare("nanf") == 0)
-			ScalarConverter::pseudoLiterals(toConvert);
+			Serializer::pseudoLiterals(toConvert);
 		else{
 			check.str = toConvert;
-			ScalarConverter::initData(check);
+			Serializer::initData(check);
 		}
 }
 
-void ScalarConverter::initData(Data &check){
+void Serializer::initData(Data &check){
 	check.len = check.str.length(); 
 	while(check.count <= check.len){
 		if (check.str[check.count] == 'f' and check.str[check.count + 1] == '\0' and std::isdigit(check.str[check.count - 1])){
@@ -85,18 +85,18 @@ void ScalarConverter::initData(Data &check){
 			break;
 		check.count++;
 	}
-	ScalarConverter::checkInput(check);
+	Serializer::checkInput(check);
 }
 
-void ScalarConverter::checkInput(Data &check){
-		ScalarConverter::Conversions result = {};
+void Serializer::checkInput(Data &check){
+		Serializer::Conversions result = {};
 		if (check.chars == check.len){
 			/* std::cout << "ALL CHAR >> " << check.str  << std::endl; */
 			sscanf(check.str.data(), "%s", &result.chars);
 			if (check.str.length() != 1)
 				std::cerr << "Bad Arguments format >> " << check.str << std::endl;
 			else
-				ScalarConverter::printConversions(result.chars);
+				Serializer::printConversions(result.chars);
 		}
 		else if (check.num == check.len and check.point < 2 and check.floa < 2 and check.signus < 2){
 			/* if (check.floa != 0) */
@@ -107,14 +107,14 @@ void ScalarConverter::checkInput(Data &check){
 			/* 	std::cout << "ALL NUM >> " << check.str  << std::endl; */
 			/* std::cout << std::endl; */
 			sscanf(check.str.data(), "%lf", &result.lf);
-			ScalarConverter::printConversions(result.lf);
+			Serializer::printConversions(result.lf);
 		}
 		else
 			std::cerr << "Bad Arguments format >> " << check.str << std::endl;
 		/* std::cout << std::endl; */
 }
 
-void ScalarConverter::pseudoLiterals(std::string toConvert){
+void Serializer::pseudoLiterals(std::string toConvert){
 		std::cout << "char: imposible" << std::endl;
 		std::cout << "int: imposible" << std::endl;
 		if (toConvert[toConvert.length() - 1] == 'f' and (toConvert[toConvert.length() - 2] == 'f' or toConvert[0] == 'n'))
@@ -131,7 +131,7 @@ void ScalarConverter::pseudoLiterals(std::string toConvert){
 			std::cout << "double: " << toConvert << std::endl;
 }
 
-void ScalarConverter::printConversions(double lf){
+void Serializer::printConversions(double lf){
 		std::cout << std::scientific;
 		if (std::isprint(lf))
 			std::cout << "char: '" << static_cast<char>(lf) << "'" << std::endl;
@@ -149,7 +149,7 @@ void ScalarConverter::printConversions(double lf){
 		std::cout << "double: "<< std::setprecision(1) << static_cast<double>(lf) << std::endl;
 }
 
-void ScalarConverter::test(){
+void Serializer::test(){
 	std::string input[ ]
 		= { "0", "nan", "nanf", "+inf", "+inff", "-inf", "-inff", "42.0f", "f", "102.3", 
 			"2.2", "4.1f", "-12345", "-2.2", "-4.1f", "+3", "+4.1f",  "2147483647", "-2147483648", "2147483648",
@@ -162,7 +162,7 @@ void ScalarConverter::test(){
 	for (int i = 0; i < sizeof(input)/sizeof(input[0]); i++){
 		std::cout  << "\33[39m" << "Test Input -> " << input[i] << std::endl;
 		std::cout << std::endl;
-		ScalarConverter::convert(input[i]);
+		Serializer::convert(input[i]);
 		if (i > 20)
 			std::cout << "\33[31m" << "############WRONG_INPUT############" << std::endl;
 		else
