@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.cpp                                        :+:      :+:    :+:   */
+/*   serialize.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/26 19:40:17 by ingonzal         ###   ########.fr       */
+/*   Created: 2023/06/27 18:13:30 by ingonzal          #+#    #+#             */
+/*   Updated: 2023/06/27 18:18:52 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "convert.hpp"
+#include "serialize.hpp"
 #include <iomanip>
 
 /* orthodox canonical class form requirement */
@@ -49,15 +49,15 @@ void Serializer::setInput(std::string const &input){
 	this->_input = input;
 }
 
-void Serializer::convert(std::string toConvert){
+void Serializer::serialize(std::string toserialize){
 	Serializer::Data check = {};
-		if (toConvert.compare("T35T") == 0)
+		if (toserialize.compare("T35T") == 0)
 			Serializer::test();
-		else if(toConvert.compare("+inf") == 0 or toConvert.compare("-inf") == 0 or toConvert.compare("nan") == 0
-				or toConvert.compare("+inff") == 0 or toConvert.compare("-inff") == 0 or toConvert.compare("nanf") == 0)
-			Serializer::pseudoLiterals(toConvert);
+		else if(toserialize.compare("+inf") == 0 or toserialize.compare("-inf") == 0 or toserialize.compare("nan") == 0
+				or toserialize.compare("+inff") == 0 or toserialize.compare("-inff") == 0 or toserialize.compare("nanf") == 0)
+			Serializer::pseudoLiterals(toserialize);
 		else{
-			check.str = toConvert;
+			check.str = toserialize;
 			Serializer::initData(check);
 		}
 }
@@ -114,21 +114,21 @@ void Serializer::checkInput(Data &check){
 		/* std::cout << std::endl; */
 }
 
-void Serializer::pseudoLiterals(std::string toConvert){
+void Serializer::pseudoLiterals(std::string toserialize){
 		std::cout << "char: imposible" << std::endl;
 		std::cout << "int: imposible" << std::endl;
-		if (toConvert[toConvert.length() - 1] == 'f' and (toConvert[toConvert.length() - 2] == 'f' or toConvert[0] == 'n'))
-			std::cout << "float: " << toConvert << std::endl;
+		if (toserialize[toserialize.length() - 1] == 'f' and (toserialize[toserialize.length() - 2] == 'f' or toserialize[0] == 'n'))
+			std::cout << "float: " << toserialize << std::endl;
 		else
-			std::cout << "float: " << toConvert << "f" << std::endl;
-		if (toConvert[toConvert.length() - 1] == 'f'){
-			if (toConvert[toConvert.length() - 2] == 'f' or toConvert[0] == 'n')
-				std::cout << "double: " << toConvert.erase(toConvert.length() - 1) << std::endl;
+			std::cout << "float: " << toserialize << "f" << std::endl;
+		if (toserialize[toserialize.length() - 1] == 'f'){
+			if (toserialize[toserialize.length() - 2] == 'f' or toserialize[0] == 'n')
+				std::cout << "double: " << toserialize.erase(toserialize.length() - 1) << std::endl;
 			else
-				std::cout << "double: " << toConvert << std::endl;
+				std::cout << "double: " << toserialize << std::endl;
 		}
 		else
-			std::cout << "double: " << toConvert << std::endl;
+			std::cout << "double: " << toserialize << std::endl;
 }
 
 void Serializer::printConversions(double lf){
@@ -162,7 +162,7 @@ void Serializer::test(){
 	for (int i = 0; i < sizeof(input)/sizeof(input[0]); i++){
 		std::cout  << "\33[39m" << "Test Input -> " << input[i] << std::endl;
 		std::cout << std::endl;
-		Serializer::convert(input[i]);
+		Serializer::serialize(input[i]);
 		if (i > 20)
 			std::cout << "\33[31m" << "############WRONG_INPUT############" << std::endl;
 		else
