@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:16:33 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/27 18:17:29 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:32:53 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <ctype.h>
 #include <string.h>
 
-int main(int argc, char** argv){
+int main(void){
 	if (argc == 2){
 		std::string toSerialize = static_cast<std::string>(argv[1]);
 		Serializer::convert(toSerialize);

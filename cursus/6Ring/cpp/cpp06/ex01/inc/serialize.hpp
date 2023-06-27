@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:10:53 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/27 18:11:07 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:32:51 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,12 @@ class Serializer{
 
 	public:
 		struct Data {
-		  std::string str;
-		  int    count;
-		  int    chars;
-		  int    num;
-		  int    point;
-		  int    signus;
-		  int    floa;
-		  int    len;
+		  uintptr_t	ptr;
+		  int    	count;
 		};
-		struct Conversions {
-		  char    chars;
-		  double	lf;
-		};
-		static void initData(Data &check);
-		static void checkInput(Data &check);
-		static void convert(std::string toConvert);
-		static void printConversions(double lf);
-		static void test();
-		static void pseudoLiterals(std::string toConvert);
-};
 
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
+};
 
 #endif
