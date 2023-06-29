@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:10:53 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/27 19:32:51 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:40:31 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ class Serializer{
 
 	public:
 		struct Data {
-		  uintptr_t	ptr;
 		  int    	count;
+		  char		chars;
 		};
 
 		static uintptr_t serialize(Data* ptr);

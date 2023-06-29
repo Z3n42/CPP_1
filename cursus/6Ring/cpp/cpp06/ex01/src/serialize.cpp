@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:13:30 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/27 19:32:49 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/29 17:24:36 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ void Serializer::setInput(std::string const &input){
 }
 
 uintptr_t Serializer::serialize(Data* ptr){
-	uintptr_t	result;
 
-	re
+	return (*reinterpret_cast<uintptr_t *>(ptr));
 }
 
-Data* Serializer::sdeserialize(uintptr_t raw){
+Serializer::Data* Serializer::deserialize(uintptr_t raw){
+	Data *result = new Data();
 
-}
+	result = reinterpret_cast<Data *>(&raw);
+	return (result);
 }
