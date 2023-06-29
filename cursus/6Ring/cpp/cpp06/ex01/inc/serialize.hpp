@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:10:53 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/29 16:40:31 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:45:50 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ class Serializer{
 
 	public:
 		struct Data {
-		  int    	count;
+		  int    	num;
 		  char		chars;
 		};
 
 		static uintptr_t serialize(Data* ptr);
 		static Data* deserialize(uintptr_t raw);
 };
+
+std::ostream & operator<<(std::ostream & o, Serializer::Data const & rhs);
 
 #endif

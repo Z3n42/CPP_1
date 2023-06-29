@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:13:30 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/29 17:24:36 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:45:52 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,14 @@ uintptr_t Serializer::serialize(Data* ptr){
 }
 
 Serializer::Data* Serializer::deserialize(uintptr_t raw){
-	Data *result = new Data();
+	Data *result;
 
 	result = reinterpret_cast<Data *>(&raw);
 	return (result);
 }
+
+std::ostream & operator<<(std::ostream & o, Serializer::Data const & rhs){
+    o << "Num: " << rhs.num << std::endl << "Chars: " << rhs.chars << std::endl;
+	return (o);
+}
+
