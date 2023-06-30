@@ -6,12 +6,12 @@
 #    By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/29 19:54:17 by ingonzal          #+#    #+#              #
-#    Updated: 2023/06/29 20:15:26 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/06/30 16:50:20 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME   = serialize
-NAME_V = serialize_sanitized
+NAME   = serialization
+NAME_V = serialization_sanitized
 
 CC = c++
 
