@@ -6,12 +6,13 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/27 17:57:36 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/02 20:51:18 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "convert.hpp"
 #include <iomanip>
+#include <float.h>
 
 /* orthodox canonical class form requirement */
 
@@ -34,20 +35,12 @@ ScalarConverter::~ScalarConverter(void){
 
 ScalarConverter & ScalarConverter::operator=(ScalarConverter const & rhs){
 	if (this != &rhs){
-		this->setInput(rhs.getInput());
+		this->_input = rhs._input;
 	}
 	return(*this);
 }
 
 /* Methods */
-
-std::string const & ScalarConverter::getInput(void) const{
-	return (this->_input);
-}
-
-void ScalarConverter::setInput(std::string const &input){
-	this->_input = input;
-}
 
 void ScalarConverter::convert(std::string toConvert){
 	ScalarConverter::Data check = {};
@@ -99,19 +92,33 @@ void ScalarConverter::checkInput(Data &check){
 				ScalarConverter::printConversions(result.chars);
 		}
 		else if (check.num == check.len and check.point < 2 and check.floa < 2 and check.signus < 2){
-			/* if (check.floa != 0) */
-			/* 	std::cout << "ALL FLOAT >> " << check.str  << std::endl; */
-			/* else if (check.point != 0 and check.floa == 0) */
-			/* 	std::cout << "ALL DOUBLE >> " << check.str  << std::endl; */
-			/* else */
-			/* 	std::cout << "ALL NUM >> " << check.str  << std::endl; */
-			/* std::cout << std::endl; */
-			sscanf(check.str.data(), "%lf", &result.lf);
-			ScalarConverter::printConversions(result.lf);
+			if (check.floa != 0){
+				sscanf(check.str.data(), "%f", &result.f);
+				ScalarConverter::printConversions(result.f);
+				std::cout << "ALL FLOAT >> " << check.str  << std::endl;
+			}
+			else if (check.point != 0 and check.floa == 0){
+				sscanf(check.str.data(), "%lf", &result.lf);
+				ScalarConverter::printConversions(result.lf);
+				std::cout << "ALL DOUBLE >> " << check.str  << std::endl;
+			}
+			else{
+				sscanf(check.str.data(), "%lf", &result.lf);
+				sscanf(check.str.data(), "%d", &result.d);
+				sscanf(check.str.data(), "%f", &result.f);
+				if (result.lf > INT_MAX or result.lf < INT_MIN){
+					if (result.lf < FLT_MAX)
+					ScalarConverter::printConversions(result.f);
+					else
+						ScalarConverter::printConversions(result.lf);
+				}
+				else
+					ScalarConverter::printConversions(result.d);
+				std::cout << "ALL NUM >> " << check.str  << std::endl;
+			}
 		}
 		else
 			std::cerr << "Bad Arguments format >> " << check.str << std::endl;
-		/* std::cout << std::endl; */
 }
 
 void ScalarConverter::pseudoLiterals(std::string toConvert){
@@ -131,7 +138,46 @@ void ScalarConverter::pseudoLiterals(std::string toConvert){
 			std::cout << "double: " << toConvert << std::endl;
 }
 
+void ScalarConverter::printConversions(int d){
+		std::cout << "INT" << std::endl;
+		std::cout << std::scientific;
+		if (std::isprint(d))
+			std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
+		else if (d < 0 or d > 127)
+			std::cout << "char: " << "impossible" << std::endl;
+		else
+			std::cout << "char: " << "Non displayable" << std::endl;
+		if (d > INT_MAX or d < INT_MIN)
+			std::cout << "int: " << "impossible" << std::endl;
+		else{
+			std::cout << std::fixed;
+			std::cout << "int: " << static_cast<int>(d) << std::endl;
+		}
+		std::cout << "float: " << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
+		std::cout << "double: "<< std::setprecision(1) << static_cast<double>(d) << std::endl;
+}
+
+void ScalarConverter::printConversions(float f){
+		std::cout << "FLOAT" << std::endl;
+		std::cout << std::scientific;
+		if (std::isprint(f))
+			std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
+		else if (f < 0 or f > 127)
+			std::cout << "char: " << "impossible" << std::endl;
+		else
+			std::cout << "char: " << "Non displayable" << std::endl;
+		if (f > INT_MAX or f < INT_MIN)
+			std::cout << "int: " << "impossible" << std::endl;
+		else{
+			std::cout << std::fixed;
+			std::cout << "int: " << static_cast<int>(f) << std::endl;
+		}
+		std::cout << "float: " << std::setprecision(1) << static_cast<float>(f) << "f" << std::endl;
+		std::cout << "double: "<< std::setprecision(1) << static_cast<double>(f) << std::endl;
+}
+
 void ScalarConverter::printConversions(double lf){
+		std::cout << "DOUBLE" << std::endl;
 		std::cout << std::scientific;
 		if (std::isprint(lf))
 			std::cout << "char: '" << static_cast<char>(lf) << "'" << std::endl;

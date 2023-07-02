@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:36 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/06/25 17:32:24 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/02 20:51:16 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ class ScalarConverter{
 
 		ScalarConverter & operator=(ScalarConverter const & rhs);
 
-		std::string const & getInput(void) const;
-		void setInput(std::string const &input);
-
-	public:
 		struct Data {
 		  std::string str;
 		  int    count;
@@ -42,14 +38,20 @@ class ScalarConverter{
 		};
 		struct Conversions {
 		  char    chars;
+		  int		d;
+		  float		f;
 		  double	lf;
 		};
 		static void initData(Data &check);
 		static void checkInput(Data &check);
-		static void convert(std::string toConvert);
+		static void printConversions(int d);
+		static void printConversions(float f);
 		static void printConversions(double lf);
 		static void test();
 		static void pseudoLiterals(std::string toConvert);
+
+	public:
+		static void convert(std::string toConvert);
 };
 
 
