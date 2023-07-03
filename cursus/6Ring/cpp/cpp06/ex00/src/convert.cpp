@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/02 20:51:18 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/03 18:40:55 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,26 +95,27 @@ void ScalarConverter::checkInput(Data &check){
 			if (check.floa != 0){
 				sscanf(check.str.data(), "%f", &result.f);
 				ScalarConverter::printConversions(result.f);
-				std::cout << "ALL FLOAT >> " << check.str  << std::endl;
+				/* std::cout << "ALL FLOAT >> " << check.str  << std::endl; */
 			}
 			else if (check.point != 0 and check.floa == 0){
 				sscanf(check.str.data(), "%lf", &result.lf);
 				ScalarConverter::printConversions(result.lf);
-				std::cout << "ALL DOUBLE >> " << check.str  << std::endl;
+				/* std::cout << "ALL DOUBLE >> " << check.str  << std::endl; */
 			}
 			else{
 				sscanf(check.str.data(), "%lf", &result.lf);
 				sscanf(check.str.data(), "%d", &result.d);
-				sscanf(check.str.data(), "%f", &result.f);
+				/* sscanf(check.str.data(), "%f", &result.f); */
 				if (result.lf > INT_MAX or result.lf < INT_MIN){
-					if (result.lf < FLT_MAX)
-					ScalarConverter::printConversions(result.f);
-					else
-						ScalarConverter::printConversions(result.lf);
+					std::cerr << "Bad Arguments format >> " << check.str << std::endl;
+					/* if (result.lf < FLT_MAX) */
+					/* ScalarConverter::printConversions(result.f); */
+					/* else */
+					/* 	ScalarConverter::printConversions(result.lf); */
 				}
 				else
 					ScalarConverter::printConversions(result.d);
-				std::cout << "ALL NUM >> " << check.str  << std::endl;
+				/* std::cout << "ALL NUM >> " << check.str  << std::endl; */
 			}
 		}
 		else
@@ -139,7 +140,7 @@ void ScalarConverter::pseudoLiterals(std::string toConvert){
 }
 
 void ScalarConverter::printConversions(int d){
-		std::cout << "INT" << std::endl;
+		/* std::cout << "INT" << std::endl; */
 		std::cout << std::scientific;
 		if (std::isprint(d))
 			std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
@@ -158,7 +159,7 @@ void ScalarConverter::printConversions(int d){
 }
 
 void ScalarConverter::printConversions(float f){
-		std::cout << "FLOAT" << std::endl;
+		/* std::cout << "FLOAT" << std::endl; */
 		std::cout << std::scientific;
 		if (std::isprint(f))
 			std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
@@ -177,7 +178,7 @@ void ScalarConverter::printConversions(float f){
 }
 
 void ScalarConverter::printConversions(double lf){
-		std::cout << "DOUBLE" << std::endl;
+		/* std::cout << "DOUBLE" << std::endl; */
 		std::cout << std::scientific;
 		if (std::isprint(lf))
 			std::cout << "char: '" << static_cast<char>(lf) << "'" << std::endl;
@@ -198,10 +199,10 @@ void ScalarConverter::printConversions(double lf){
 void ScalarConverter::test(){
 	std::string input[ ]
 		= { "0", "nan", "nanf", "+inf", "+inff", "-inf", "-inff", "42.0f", "f", "102.3", 
-			"2.2", "4.1f", "-12345", "-2.2", "-4.1f", "+3", "+4.1f",  "2147483647", "-2147483648", "2147483648",
-			"-2147483649", "33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333",
+			"2.2", "4.1f", "-12345", "-2.2", "-4.1f", "+3", "+4.1f",  "2147483647", "-2147483648",
+			"33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333.0",
 			"adfs", "adfs1234", "-4,f", "2.2ff", "2.2.2f", "2..2.2f", ".2f", "-4-3", "-4f-3", "-4f3",
-			"-4.f", ".f"};
+			"-4.f", ".f", "2147483648", "-2147483649"};
 
 	std::cout << std::endl;
 	std::cout << "\33[32m" << "############RIGHT_INPUT############" << std::endl;
@@ -209,7 +210,7 @@ void ScalarConverter::test(){
 		std::cout  << "\33[39m" << "Test Input -> " << input[i] << std::endl;
 		std::cout << std::endl;
 		ScalarConverter::convert(input[i]);
-		if (i > 20)
+		if (i > 18)
 			std::cout << "\33[31m" << "############WRONG_INPUT############" << std::endl;
 		else
 			std::cout << "\33[32m" << "############RIGHT_INPUT############" << std::endl;
