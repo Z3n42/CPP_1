@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 18:24:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/03 18:40:55 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:33:55 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,8 @@ void ScalarConverter::checkInput(Data &check){
 			else{
 				sscanf(check.str.data(), "%lf", &result.lf);
 				sscanf(check.str.data(), "%d", &result.d);
-				/* sscanf(check.str.data(), "%f", &result.f); */
-				if (result.lf > INT_MAX or result.lf < INT_MIN){
-					std::cerr << "Bad Arguments format >> " << check.str << std::endl;
-					/* if (result.lf < FLT_MAX) */
-					/* ScalarConverter::printConversions(result.f); */
-					/* else */
-					/* 	ScalarConverter::printConversions(result.lf); */
-				}
+				if (result.lf > INT_MAX or result.lf < INT_MIN)
+					std::cerr << "INT LIMIT OVERLOAD >> " << check.str << std::endl;
 				else
 					ScalarConverter::printConversions(result.d);
 				/* std::cout << "ALL NUM >> " << check.str  << std::endl; */
