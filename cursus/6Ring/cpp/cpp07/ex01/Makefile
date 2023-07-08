@@ -6,15 +6,15 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/07/08 16:30:49 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/07/08 19:02:43 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME   = whatever_ex00
-NAME_V = whatever_ex00_sanitized
+NAME   = iter_ex01
+NAME_V = iter_ex01_sanitized
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 --pedantic -g
+FLAGS = -Wall -Wextra -Werror -std=c++98 --pedantic -g -MMD -MP
 
 AR = ar rcs
 RM = rm -rf
@@ -66,3 +66,5 @@ fclean: clean
 re: clean all
 
 .PHONY: clean fclean san  %.o
+
+-include $(INCS_SRC:*.hpp=d)
