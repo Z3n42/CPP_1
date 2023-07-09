@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/07/09 18:00:13 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/07/09 19:15:52 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = whatever_ex00
@@ -14,7 +14,7 @@ NAME_V = whatever_ex00_sanitized
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 --pedantic -g
+FLAGS = -Wall -Wextra -Werror -g3 -std=c++98 --pedantic -MD
 
 AR = ar rcs
 RM = rm -rf
@@ -28,23 +28,23 @@ INCS_DIR  = inc/
 HEADERS	 = ./$(INCS_DIR)
 INCLUDES = $(addprefix -I, $(HEADERS))
 
-SRCS = $(wildcard $(SRCS_MAIN)main.cpp) $(wildcard $(SRCS_DIR)*.cpp)
-SRCS_V = $(wildcard $(SRCS_MAIN)main_v.cpp) $(wildcard $(SRCS_DIR)*_v.cpp)
+SRCS := $(wildcard $(SRCS_MAIN)main.cpp) $(wildcard $(SRCS_DIR)*.cpp)
+SRCS_V := $(wildcard $(SRCS_MAIN)main_v.cpp) $(wildcard $(SRCS_DIR)*_v.cpp)
 
-OBJS = $(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
-OBJS_V = $(addprefix $(OBJS_DIR), $(notdir $(SRCS_V:.cpp=.o)))
+OBJS := $(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
+OBJS_V := $(addprefix $(OBJS_DIR), $(notdir $(SRCS_V:.cpp=.o)))
 
 $(NAME): $(OBJS)
 		@$(CC) $(FLAGS) $^ -o $@ 
-		@echo "Setting metrics"
+		@echo "Setting templates"
 
 $(OBJS_DIR)%.o: $(SRCS_MAIN)%.cpp 
 		@mkdir -p $(OBJS_DIR)
-		@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+		@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp 
 		@mkdir -p $(OBJS_DIR)
-		@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+		@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 san : $(NAME_V)
 
@@ -57,7 +57,7 @@ all: $(NAME)
 clean:
 		@$(RM) $(OBJS_DIR)
 		@$(RM) *.dSYM
-		@echo "Clean balance"
+		@echo "Clean Templates"
 
 fclean: clean
 		@$(RM) $(NAME)
@@ -66,4 +66,7 @@ fclean: clean
 
 re: clean all
 
+-include $(OBJS_DIR)/*.d
+
 .PHONY: clean fclean san  %.o
+

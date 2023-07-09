@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 16:37:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/09 13:17:42 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:24:28 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 template<typename T>
 void iter(T *array, size_t size, void function(T const &ref))
 {
-	for(int i = 0; i < size; i++)
+	for(size_t i = 0; i < size; i++)
 		function(array[i]);
 }
 
