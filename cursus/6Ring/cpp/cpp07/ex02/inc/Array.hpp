@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:27:48 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/09 17:47:35 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:04:05 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ class Array{
 
 		Array(Array const & src) : _n(src.size()){
 
-			this->_t = new T[src.size()];
-			for (unsigned int i = 0; i < src.size(); i++)
+			this->_t = new T[this->_n];
+			for (unsigned int i = 0; i < this->_n; i++)
 				this->_t[i] = src[i];
 
 		}

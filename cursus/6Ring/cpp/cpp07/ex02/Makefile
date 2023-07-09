@@ -6,7 +6,7 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/07/09 16:45:59 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/07/09 17:59:20 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME   = Array_ex02
@@ -56,6 +56,7 @@ all: $(NAME)
 
 clean:
 		@$(RM) $(OBJS_DIR)
+		@$(RM) *.dSYM
 		@echo "Clean balance"
 
 fclean: clean
