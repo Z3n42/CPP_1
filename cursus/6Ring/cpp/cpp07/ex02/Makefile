@@ -6,11 +6,11 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/07/09 13:23:21 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/07/09 16:45:59 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME   = iter_ex01
-NAME_V = iter_ex01_sanitized
+NAME   = Array_ex02
+NAME_V = Array_ex02_sanitized
 
 CC = c++
 
@@ -65,7 +65,7 @@ fclean: clean
 
 re: clean all
 
--include $(OBJS_DIR)/*.d
+# -include $(OBJS_DIR)/*.d
 
 .PHONY: clean fclean san  %.o
 
