@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                      :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 14:16:26 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/09 19:18:14 by ingonzal         ###   ########.fr       */
+/*   Created: 2023/07/12 18:45:56 by ingonzal          #+#    #+#             */
+/*   Updated: 2023/07/12 20:05:13 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef whatever_HPP
-# define whatever_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
+
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
-template<typename T> 
-void swap(T &x, T &y) {
-	T t;	
-	t = x;
-	x = y;
-	y = t;
+template<typename T>
+int easyfind(T *array, T x){
+	
+	std::vector<T> vec = array;
+	std::vector<int>::iterator it;
+
+	it = std::find(vec.begin(), vec.end(), x);
+	if (it != vec.end()){
+		std::cout << "Element " << x <<
+					 " found at position : ";
+		std::cout << it - vec.begin() << std::endl;
+	  }
+   	else
+		throw ("kkkkk");
 }
 
-template<typename T> 
-T const & max(T const & x, T const & y) {
-	return (y >= x? y : x);
-}
-
-template<typename T> 
-T const & min(T const & x, T const & y) {
-	return (y <= x? y : x);
-}
 
 #endif
