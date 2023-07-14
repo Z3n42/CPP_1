@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 18:45:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/14 18:05:38 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/14 18:11:27 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <exception>
 
 template<typename T>
-void easyfind(std::vector<T>vec, int x){
+int easyfind(std::vector<T>vec, int x){
 	
 	typename std::vector<T>::iterator it;
 
@@ -32,9 +32,11 @@ void easyfind(std::vector<T>vec, int x){
 		std::cout << GREEN << "Element " << x <<
 					 " found at position : ";
 		std::cout << it - vec.begin() + 1 << RESET << std::endl;
+		return (1);
 	  }
    	else
 		throw std::runtime_error("Value not found in container");
+	return (0);
 }
 
 
