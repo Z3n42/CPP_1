@@ -6,11 +6,11 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/07/09 19:12:11 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/07/16 14:52:31 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME   = Array_ex02
-NAME_V = Array_ex02_sanitized
+NAME   = Span
+NAME_V = Span_sanitized
 
 CC = c++
 

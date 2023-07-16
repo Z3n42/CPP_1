@@ -6,12 +6,12 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:16:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/14 19:15:12 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/16 17:27:15 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 # define RESET		"\033[0m"
 # define RED		"\033[31m"
@@ -25,7 +25,9 @@
 class Span{
 
 	private:
-		unsigned int _N;
+		const unsigned int _N;
+		unsigned int _times;
+		std::vector<int> *_vec;
 		Span(void);
 
 	public:
@@ -35,10 +37,15 @@ class Span{
 
 		Span & operator=(Span const & rhs);
 
-		addNumber(int n);
+		const unsigned int & getN(void) const;
+		const std::vector<int> & getVec(void) const;
 
-		shortestSpan();
-		longestSpan();
-}	
+		void addNumber(int n);
+
+		/* shortestSpan(); */
+		/* longestSpan(); */
+};	
+
+std::ostream & operator<<(std::ostream & o, Span const & ref);
 
 #endif
