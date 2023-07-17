@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:16:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/16 17:27:15 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/16 19:59:53 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 class Span{
 
 	private:
-		const unsigned int _N;
+		unsigned int _N;
 		unsigned int _times;
 		std::vector<int> *_vec;
 		Span(void);
@@ -38,7 +38,7 @@ class Span{
 		Span & operator=(Span const & rhs);
 
 		const unsigned int & getN(void) const;
-		const std::vector<int> & getVec(void) const;
+		std::vector<int> & getVec(void) const;
 
 		void addNumber(int n);
 
