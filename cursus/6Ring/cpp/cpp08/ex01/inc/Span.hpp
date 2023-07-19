@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:16:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/16 19:59:53 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/19 20:38:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class Span{
 
 	private:
 		unsigned int _N;
-		unsigned int _times;
 		std::vector<int> *_vec;
 		Span(void);
 
@@ -42,8 +41,8 @@ class Span{
 
 		void addNumber(int n);
 
-		/* shortestSpan(); */
-		/* longestSpan(); */
+		int shortestSpan();
+		int longestSpan();
 };	
 
 std::ostream & operator<<(std::ostream & o, Span const & ref);

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 14:24:30 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/17 19:00:02 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:57:30 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int main(void){
 	Span b(a);
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
+	std::cout << a.longestSpan() << std::endl;
+	std::cout << a.shortestSpan() << std::endl;
 
 	return (0);
 }

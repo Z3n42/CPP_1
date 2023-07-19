@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:56:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/17 19:00:00 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/19 20:37:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Span & Span::operator=(Span const & rhs){
 		delete this->_vec;
 		this->_vec = new std::vector<int>();
 	  	for (unsigned i=0; i < rhs.getVec().size(); i++){
-			std::cout << rhs.getVec().at(i) << std::endl;
+			/* std::cout << rhs.getVec().at(i) << std::endl; */
 			this->_vec->push_back(rhs.getVec().at(i));
 		}
 	}
@@ -49,11 +49,43 @@ std::vector<int> & Span::getVec(void) const{
 }
 
 void Span::addNumber(int N){
-	std::cout << this->_times << std::endl;
+	std::cout << this->getVec().size() << std::endl;
 	if (this->getN() > this->getVec().size())
 		this->_vec->push_back(N);
 	else 
 		throw std::runtime_error("Vector Limit Reached");
+}
+
+int Span::longestSpan(){
+	int max;
+	int min;
+	max = this->_vec->at(0); 
+	min = this->_vec->at(0); 
+	for (unsigned i=0; i < this->_vec->size(); i++){
+		if (this->_vec->at(i) > max)	
+			max = this->_vec->at(i);
+		if (this->_vec->at(i) < min)	
+			min = this->_vec->at(i);
+	}
+	return (max - min);
+}
+
+int Span::shortestSpan(){
+	int min;
+	min = this->longestSpan(); 
+	sort(this->_vec->begin(), this->_vec->end());
+	for (unsigned i=0; i < this->_vec->size(); i++){
+		for (unsigned j=i+1; j < this->_vec->size(); j++){
+			std::cout << "{" << i << "}" << "{" << j << "}" << this->_vec->at(i) << "-" << this->_vec->at(j) << "=" << min << std::endl;
+			if (this->_vec->at(i) - this->_vec->at(j) < min){ 
+				std::cout << min << std::endl;
+				if (this->_vec->at(i) - this->_vec->at(j) > 0){
+					min = this->_vec->at(i) - this->_vec->at(j);
+				}
+			}
+		}
+	}
+	return min;
 }
 
 std::ostream & operator<<(std::ostream & o, Span const & ref){
