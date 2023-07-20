@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:56:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/19 20:37:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/20 19:02:22 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Span::Span(void) : _N(0){
 }
 
 Span::Span(unsigned int N) : _N(N), _vec(new std::vector<int>()){
-		/* this->_vec->reserve(_N); */
+		this->_vec->reserve(_N);
 }
 
 Span::Span(Span const & src){
@@ -49,7 +49,7 @@ std::vector<int> & Span::getVec(void) const{
 }
 
 void Span::addNumber(int N){
-	std::cout << this->getVec().size() << std::endl;
+	/* std::cout << this->getVec().size() << std::endl; */
 	if (this->getN() > this->getVec().size())
 		this->_vec->push_back(N);
 	else 
@@ -57,6 +57,8 @@ void Span::addNumber(int N){
 }
 
 int Span::longestSpan(){
+	if(this->_vec->size() < 2) 
+		throw std::runtime_error("Not enough vector size");
 	int max;
 	int min;
 	max = this->_vec->at(0); 
@@ -71,28 +73,31 @@ int Span::longestSpan(){
 }
 
 int Span::shortestSpan(){
+	if(this->_vec->size() < 2) 
+		throw std::runtime_error("Not enough vector size");
+	int tmp;
 	int min;
+	tmp = 0;
 	min = this->longestSpan(); 
-	sort(this->_vec->begin(), this->_vec->end());
 	for (unsigned i=0; i < this->_vec->size(); i++){
 		for (unsigned j=i+1; j < this->_vec->size(); j++){
-			std::cout << "{" << i << "}" << "{" << j << "}" << this->_vec->at(i) << "-" << this->_vec->at(j) << "=" << min << std::endl;
-			if (this->_vec->at(i) - this->_vec->at(j) < min){ 
-				std::cout << min << std::endl;
-				if (this->_vec->at(i) - this->_vec->at(j) > 0){
-					min = this->_vec->at(i) - this->_vec->at(j);
-				}
-			}
+			tmp = this->_vec->at(i) - this->_vec->at(j);
+			if (tmp < 0)
+				tmp = tmp * -1;
+			if (tmp < min)
+				min = tmp;
 		}
 	}
 	return min;
 }
 
 std::ostream & operator<<(std::ostream & o, Span const & ref){
-	std::cout << "Vector contains " << ref.getN() << " elementes max" << std::endl;
+	std::cout << "Vector capacity " << ref.getN() << " elementes max" << std::endl;
 	std::cout << GREEN << "####################" << RESET << std::endl;
 	  for (unsigned i=0; i < ref.getVec().size(); i++)
 		std::cout << "[" << i << "]" << ref.getVec().at(i) << std::endl;
 	std::cout << RED << "####################" << RESET << std::endl;
 	return (o);
 }
+
+			/* std::cout << "{" << i << "}" << "{" << j << "}" << this->_vec->at(i) << "-" << this->_vec->at(j) << "=" << min << std::endl; */
