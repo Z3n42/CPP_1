@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:56:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/21 13:02:07 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:48:59 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,18 @@ void Span::addNumber(int N){
 int Span::longestSpan(){
 	if(this->_vec->size() < 2) 
 		throw std::runtime_error("Not enough vector size");
-	int max;
-	int min;
-	max = this->_vec->at(0); 
-	min = this->_vec->at(0); 
-	for (unsigned i=0; i < this->_vec->size(); i++){
-		if (this->_vec->at(i) > max)	
-			max = this->_vec->at(i);
-		if (this->_vec->at(i) < min)	
-			min = this->_vec->at(i);
-	}
-	return (max - min);
+	return (*std::max_element(this->_vec->begin(), this->_vec->end()) - *std::min_element(this->_vec->begin(), this->_vec->end()));
+	/* int max; */
+	/* int min; */
+	/* max = this->_vec->at(0); */ 
+	/* min = this->_vec->at(0); */ 
+	/* for (unsigned i=0; i < this->_vec->size(); i++){ */
+	/* 	if (this->_vec->at(i) > max) */	
+	/* 		max = this->_vec->at(i); */
+	/* 	if (this->_vec->at(i) < min) */	
+	/* 		min = this->_vec->at(i); */
+	/* } */
+	/* return(min - max); */
 }
 
 int Span::shortestSpan(){
@@ -82,10 +83,10 @@ int Span::shortestSpan(){
 	for (unsigned i=0; i < this->_vec->size(); i++){
 		for (unsigned j=i+1; j < this->_vec->size(); j++){
 			tmp = this->_vec->at(i) - this->_vec->at(j);
-			if (tmp < 0)
-				tmp = tmp * -1;
-			if (tmp < min)
-				min = tmp;
+			/* if (tmp < 0) */
+			/* 	tmp = tmp * -1; */
+			if (abs(tmp) < min)
+				min = abs(tmp);
 		}
 	}
 	return min;
