@@ -6,11 +6,13 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:56:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/21 18:48:59 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:01:30 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <ctime>
+#include <cstdlib>
 
 Span::Span(void) : _N(0){
 }
@@ -76,20 +78,24 @@ int Span::longestSpan(){
 int Span::shortestSpan(){
 	if(this->_vec->size() < 2) 
 		throw std::runtime_error("Not enough vector size");
-	int tmp;
 	int min;
-	tmp = 0;
 	min = this->longestSpan(); 
 	for (unsigned i=0; i < this->_vec->size(); i++){
 		for (unsigned j=i+1; j < this->_vec->size(); j++){
-			tmp = this->_vec->at(i) - this->_vec->at(j);
-			/* if (tmp < 0) */
-			/* 	tmp = tmp * -1; */
-			if (abs(tmp) < min)
-				min = abs(tmp);
+			if (abs(this->_vec->at(i) - this->_vec->at(j)) < min)
+				min = abs(this->_vec->at(i) - this->_vec->at(j));
 		}
 	}
 	return min;
+}
+
+int RandomNumber(){ 
+	return (std::rand()%100);
+}
+
+void Span::generator(){
+	std::srand ( unsigned ( std::time(0) ) );
+	 std::generate(this->_vec->begin(), this->_vec->end(), RandomNumber);
 }
 
 std::ostream & operator<<(std::ostream & o, Span const & ref){

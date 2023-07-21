@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:16:24 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/21 18:46:49 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:01:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ class Span{
 
 		int shortestSpan();
 		int longestSpan();
-};	
+		void generator();	
+};
 
+int RandomNumber();
 std::ostream & operator<<(std::ostream & o, Span const & ref);
 
 #endif
