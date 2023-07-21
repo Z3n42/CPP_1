@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:56:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/20 19:02:22 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/21 13:02:07 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Span::Span(Span const & src){
 Span & Span::operator=(Span const & rhs){
 	if (this != &rhs){
 		this->_N = rhs.getN();
-		delete this->_vec;
+		/* delete this->_vec; */
 		this->_vec = new std::vector<int>();
 	  	for (unsigned i=0; i < rhs.getVec().size(); i++){
 			/* std::cout << rhs.getVec().at(i) << std::endl; */
