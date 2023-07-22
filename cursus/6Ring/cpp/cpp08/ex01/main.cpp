@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 14:24:30 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/22 16:55:01 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:57:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,35 +60,39 @@ int main(void){
 	}
 
 	Span b(a);
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << c << std::endl;
+	std::cout << "a: " << a << std::endl;
+	std::cout << "b: " << b << std::endl;
+	std::cout << "c: " << c << std::endl;
 	c.generator();
+	std::cout << "c.generator: " << std::endl; 
 	std::cout << c << std::endl;
 
 	try{
-		std::cout << a.shortestSpan() << std::endl;
+		std::cout << "a.short: " << a.shortestSpan() << std::endl;
 	}
 	catch(std::runtime_error &e){
 		std::cout << RED << e.what() << RESET << std::endl;
 	}
 	try{
-		std::cout << a.longestSpan() << std::endl;
-	}
-	catch(std::runtime_error &e){
-		std::cout << RED << e.what() << RESET << std::endl;
-	try{
-		std::cout << c.shortestSpan() << std::endl;
+		std::cout << "a.long: " <<  a.longestSpan() << std::endl;
 	}
 	catch(std::runtime_error &e){
 		std::cout << RED << e.what() << RESET << std::endl;
 	}
 	try{
-		std::cout << c.longestSpan() << std::endl;
+		std::cout << "c.short: " << c.shortestSpan() << std::endl;
 	}
 	catch(std::runtime_error &e){
 		std::cout << RED << e.what() << RESET << std::endl;
 	}
+	try{
+		std::cout << "c.long:" << c.longestSpan() << std::endl;
+	}
+	catch(std::runtime_error &e){
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << "Leaks Summary :" << std::endl;
 	system ("leaks Span");
 	return (0);
 }

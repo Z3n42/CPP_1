@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:56:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/22 14:06:27 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/22 19:15:37 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void Span::addNumber(int N){
 int Span::longestSpan(){
 	if(this->_vec->size() < 2) 
 		throw std::runtime_error("Not enough vector size");
-	return (*std::max_element(this->_vec->begin(), this->_vec->end()) - *std::min_element(this->_vec->begin(), this->_vec->end()));
+	return (*std::max_element(this->_vec->begin(), this->_vec->end()) - 
+			*std::min_element(this->_vec->begin(), this->_vec->end()));
 	/* int max; */
 	/* int min; */
 	/* max = this->_vec->at(0); */ 
