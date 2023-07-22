@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 14:24:30 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/21 20:01:21 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/22 16:55:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void){
 	Span a(5);
-	Span c(5);
+	Span c(10000);
 
 	try{
 		a.addNumber(6);
@@ -62,6 +62,7 @@ int main(void){
 	Span b(a);
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
+	std::cout << c << std::endl;
 	c.generator();
 	std::cout << c << std::endl;
 
@@ -76,6 +77,18 @@ int main(void){
 	}
 	catch(std::runtime_error &e){
 		std::cout << RED << e.what() << RESET << std::endl;
+	try{
+		std::cout << c.shortestSpan() << std::endl;
 	}
+	catch(std::runtime_error &e){
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+	try{
+		std::cout << c.longestSpan() << std::endl;
+	}
+	catch(std::runtime_error &e){
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+	system ("leaks Span");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:56:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/21 20:01:30 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/22 14:06:27 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int Span::shortestSpan(){
 	min = this->longestSpan(); 
 	for (unsigned i=0; i < this->_vec->size(); i++){
 		for (unsigned j=i+1; j < this->_vec->size(); j++){
-			if (abs(this->_vec->at(i) - this->_vec->at(j)) < min)
+			if (abs(this->_vec->at(i) - this->_vec->at(j)) < min and
+					abs(this->_vec->at(i) - this->_vec->at(j)) != 0)
 				min = abs(this->_vec->at(i) - this->_vec->at(j));
 		}
 	}
@@ -90,12 +91,14 @@ int Span::shortestSpan(){
 }
 
 int RandomNumber(){ 
-	return (std::rand()%100);
+	return (std::rand());
 }
 
 void Span::generator(){
-	std::srand ( unsigned ( std::time(0) ) );
-	 std::generate(this->_vec->begin(), this->_vec->end(), RandomNumber);
+		std::srand(unsigned( std::time(NULL)));
+		delete this->_vec;
+		this->_vec = new std::vector<int>(_N, 42);
+		std::generate(this->_vec->begin(), this->_vec->end(), RandomNumber);
 }
 
 std::ostream & operator<<(std::ostream & o, Span const & ref){
