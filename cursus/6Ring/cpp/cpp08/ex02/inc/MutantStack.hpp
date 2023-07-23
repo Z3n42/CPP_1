@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 17:01:42 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/22 19:15:41 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/23 18:08:04 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,76 +19,91 @@
 
 #include <iostream>
 #include <stack>
-#include <algorithm>
-#include <exception>
 
 template<typename T>
 class MutantStack : public std::stack<T>{
 
-/* 	private: */
-/* 		unsigned int _n; */
-/* 		T 	    	 *_t; */
+	 public:
+			MutantStack(void) {};
+			MutantStack(MutantStack const & src){
+				*this = src;
+			};
+			~MutantStack(void){};
 
-/* 	public: */
-/* 		Array(void){ */
+			MutantStack & operator=(MutantStack const & rhs){
+				if (rhs != *this){
+					this->c = rhs.c;
+				}
+				return *this;
+			};
 
-/* 			this->_t = new T[1]; */
-/* 			this->_t[0] = 0; */
-	
-/* 		} */
 
-/* 		Array(unsigned int n) : _n(n) { */ 
+			typedef typename std::stack<T>::container_type::iterator iterator;	
+			typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+			typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+			typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
-/* 			this->_t = new T[n]; */
-/* 		} */
+			iterator begin(){
+				return this->c.begin();
+			}
+			iterator end(){
+				return this->c.end();
+			}
+			reverse_iterator rbegin(){
+				return this->c.rbegin();
+			}
+			reverse_iterator rend(){
+				return this->c.rend();
+			}
+			const_iterator begin() const{
+				return this->c.begin();
+			}
+			const_iterator end() const{
+				return this->c.end();
+			}
+			const_reverse_iterator rbegin() const{
+				return this->c.rbegin();
+			}
+			const_reverse_iterator rend() const{
+				return this->c.rend();
+			}
 
-/* 		Array(Array const & src) : _n(src.size()){ */
-
-/* 			this->_t = new T[this->_n]; */
-/* 			for (unsigned int i = 0; i < this->_n; i++) */
-/* 				this->_t[i] = src[i]; */
-
-/* 		} */
-
-/* 		~Array(void){ */
-
-/* 			delete [] this->_t; */
-/* 		} */
-
-		
-/* 		Array & operator=(Array const & rhs){ */
-
-/* 			this->_n = rhs.size(); */
-/* 			delete [] this->_t; */
-
-/* 			this->_t = new T[_n]; */
-/* 			for (unsigned int i = 0; i < _n; i++) */
-/* 				this->_t[i] = rhs[i]; */
-
-/* 			return (*this); */
-/* 		} */
-
-/* 		T & operator[](unsigned int i){ */
-
-/* 			if (i > this->size()) */
-/* 				throw (NotAllowed()); */
-/* 			else */
-/* 				return (this->_t[i]); */
-/* 		} */
-
-		
-/* 		T *getData( void ) const { */ 
-
-/* 			return (this->_t); */ 
-/* 		} */
-
-/* 		unsigned int size() const{ */
-
-/* 			return (this->_n); */
-		
-/* 		} */
 };
 
-std::ostream & operator<<(std::ostream & o, MutantStack<int>const & ref);
+template<typename T>
+std::ostream & operator<<(std::ostream & o, MutantStack<T> & ref){
+	int i;
+	i = 0;
+	MutantStack<int>::iterator itstart = ref.begin();
+	MutantStack<int>::iterator itend = ref.end();
+	std::cout << std::endl;
+	std::cout << "MutantStack capacity " << ref.size() << " elementes max" << std::endl;
+	std::cout << GREEN << "####################" << RESET << std::endl;
+	  while (itstart != itend){
+		std::cout << "[" << i << "]" << *itstart << std::endl;
+		++itstart;
+		i++;
+	  }
+	std::cout << RED << "####################" << RESET << std::endl;
+	std::cout << std::endl;
+	return (o);
+}
+
+template<typename T>
+std::ostream & operator<<(std::ostream & o, std::stack<T> & ref){
+	unsigned int i;
+	i = ref.size() - 1;
+	std::cout << std::endl;
+	std::cout << "Stack capacity " << ref.size() << " elementes max" << std::endl;
+	std::cout << GREEN << "####################" << RESET << std::endl;
+	  while (ref.size()){
+		std::cout << "[" << i << "]" << ref.top() << std::endl;
+		ref.pop();
+		i--;
+	  }
+	std::cout << RED << "####################" << RESET << std::endl;
+	std::cout << std::endl;
+	return (o);
+}
 
 #endif

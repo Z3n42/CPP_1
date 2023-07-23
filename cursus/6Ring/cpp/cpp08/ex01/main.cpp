@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 14:24:30 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/22 18:57:26 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/23 17:43:44 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void){
 	Span a(5);
-	Span c(10000);
+	Span c(50000);
 
 	try{
 		a.addNumber(6);
@@ -86,7 +86,7 @@ int main(void){
 		std::cout << RED << e.what() << RESET << std::endl;
 	}
 	try{
-		std::cout << "c.long:" << c.longestSpan() << std::endl;
+		std::cout << "c.long: " << c.longestSpan() << std::endl;
 	}
 	catch(std::runtime_error &e){
 		std::cout << RED << e.what() << RESET << std::endl;

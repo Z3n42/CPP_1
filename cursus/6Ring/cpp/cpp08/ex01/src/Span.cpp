@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:56:09 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/07/22 19:15:37 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/07/23 17:45:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void Span::addNumber(int N){
 int Span::longestSpan(){
 	if(this->_vec->size() < 2) 
 		throw std::runtime_error("Not enough vector size");
+	/* std::cout << std::endl << "MAX => " << *std::max_element(this->_vec->begin(), this->_vec->end()) << std::endl; */
+	/* std::cout << std::endl << "MIN => " << *std::min_element(this->_vec->begin(), this->_vec->end()) << std::endl; */
 	return (*std::max_element(this->_vec->begin(), this->_vec->end()) - 
 			*std::min_element(this->_vec->begin(), this->_vec->end()));
 	/* int max; */
@@ -81,12 +83,16 @@ int Span::shortestSpan(){
 		throw std::runtime_error("Not enough vector size");
 	int min;
 	min = this->longestSpan(); 
+	std::sort(this->_vec->begin(), this->_vec->end());
 	for (unsigned i=0; i < this->_vec->size(); i++){
-		for (unsigned j=i+1; j < this->_vec->size(); j++){
-			if (abs(this->_vec->at(i) - this->_vec->at(j)) < min and
-					abs(this->_vec->at(i) - this->_vec->at(j)) != 0)
-				min = abs(this->_vec->at(i) - this->_vec->at(j));
-		}
+		if (i and abs(this->_vec->at(i) - this->_vec->at(i - 1)) < min and
+				abs(this->_vec->at(i) - this->_vec->at(i - 1)) != 0)
+			min = abs(this->_vec->at(i) - this->_vec->at(i - 1));
+		/* for (unsigned j=i+1; j < this->_vec->size(); j++){ */
+		/* 	if (abs(this->_vec->at(i) - this->_vec->at(j)) < min and */
+		/* 			abs(this->_vec->at(i) - this->_vec->at(j)) != 0) */
+		/* 		min = abs(this->_vec->at(i) - this->_vec->at(j)); */
+		/* } */
 	}
 	return min;
 }
