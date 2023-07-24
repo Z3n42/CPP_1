@@ -6,11 +6,11 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/07/23 18:16:49 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/07/24 19:02:10 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME   = easyfind
-NAME_V = easyfind_sanitized
+NAME   = btc
+NAME_V = btc_sanitized
 
 CC = c++
 
