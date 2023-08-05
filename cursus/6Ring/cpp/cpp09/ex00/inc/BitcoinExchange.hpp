@@ -6,16 +6,18 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/03 19:23:40 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/05 20:03:22 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+#include <exception>
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <ctime>
 #include <map>
 
 # define RESET		"\033[0m"
@@ -40,6 +42,7 @@ class BitcoinExchange{
 
 			void addData(std::string file);
 			void addInput(std::string file);
+			void checkDate(std::string date);
 			void printMap(std::map<std::string, std::string> map);
 
 
