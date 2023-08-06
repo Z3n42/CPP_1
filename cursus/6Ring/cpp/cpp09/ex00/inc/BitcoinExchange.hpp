@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/05 20:03:22 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/06 19:26:35 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class BitcoinExchange{
 
 			void addData(std::string file);
 			void addInput(std::string file);
-			void checkDate(std::string date);
+			std::string const checkDate(std::string date, bool isData);
 			void printMap(std::map<std::string, std::string> map);
 
 
