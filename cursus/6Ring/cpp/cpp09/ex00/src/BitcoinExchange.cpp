@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:10:37 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/06 19:26:36 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/07 19:28:15 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ BitcoinExchange::~BitcoinExchange(void){
 
 }
 
-const std::map<std::string, std::string> & BitcoinExchange::getData(void) const{
+const std::map<std::string, double> & BitcoinExchange::getData(void) const{
 	return(this->_data);
 }
 
@@ -71,15 +71,25 @@ std::string const BitcoinExchange::checkDate(std::string date, bool isData = fal
 			throw std::runtime_error("Invalid February days");
 		return ("Invalid February days");
 	}
-	return (" ");
+	return ("");
 }
 
+std::pair<std::string, double> BitcoinExchange::ClKeyVal(std::string &line){
+		std::string key;
+		double value;
+
+		if (count(line.begin(), line.end(), ',') > 1 or
+				count(line.begin(), line.end(), '.') > 1)
+			throw std::runtime_error("Invalid Data format");
+		key = trim(line.substr(0, line.find(',')));
+		value = atof(trim(line.substr(line.find(',')+1, line.find('\n'))).data());
+		checkDate(key, true);
+
+		return (std::make_pair(key, value));
+}
 
 void BitcoinExchange::addData(std::string file){
 	if (file.substr(file.find_last_of(".") + 1) == "csv"){
-		size_t pos;
-		size_t endpos;
-		std::string date;
 		std::string line;
 
 		std::ifstream myfile(file);
@@ -88,11 +98,7 @@ void BitcoinExchange::addData(std::string file){
 			while (std::getline(myfile,line)){
 				if (line == "date,exchange_rate")
 					continue;
-				pos = line.find(',');
-				endpos = line.find('\n');
-				date = line.substr(0, pos);
-				checkDate(date, true);
-				this->_data.insert(std::make_pair(date, line.substr(pos + 1, endpos)));
+				this->_data.insert(ClKeyVal(line));
 			}
 			myfile.close();
 		  }
@@ -113,12 +119,12 @@ void BitcoinExchange::addInput(std::string file){
 		std::ifstream myfile(file);
 		if (myfile.is_open()){
 			while (std::getline(myfile,line, ' ')){
-				if (line == "date" or line = "|" or line = "value")
-					continue;
+				/* if (line == "date" or line = "|" or line = "value") */
+				/* 	continue; */
 				/* pos = line.find('|'); */
 				/* endpos = line.find('\n'); */
 				/* this->_input.insert(std::make_pair(line.substr(0, pos), line.substr(pos + 1, endpos))); */
-				std::cout << line << std::endl;
+				/* std::cout << line << std::endl; */
 			}
 			myfile.close();
 		  }
@@ -128,11 +134,19 @@ void BitcoinExchange::addInput(std::string file){
 		throw std::runtime_error("Invalid Input extension");
 }
 
-void BitcoinExchange::printMap(std::map<std::string, std::string> map){;
-	for(std::map<std::string, std::string >::const_iterator it = map.begin();
-    it != map.end(); ++it){
-    /* std::cout << (*it) << "\n"; */
-		std::cout << (*it).first << ":" << (*it).second << std::endl;
-    /* std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n"; */
-	}
+
+std::string ltrim(const std::string &s){
+	const std::string WHITESPACE = " \n\r\t\f\v";
+	size_t start = s.find_first_not_of(WHITESPACE);
+	return (start == std::string::npos) ? "" : s.substr(start);
+}
+
+std::string rtrim(const std::string &s){
+	const std::string WHITESPACE = " \n\r\t\f\v";
+	size_t end = s.find_last_not_of(WHITESPACE);
+	return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+}
+
+std::string BitcoinExchange::trim(const std::string &s) {
+	return rtrim(ltrim(s));
 }
