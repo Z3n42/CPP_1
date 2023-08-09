@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/07 19:28:13 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/09 19:38:32 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ class BitcoinExchange{
 				for(typename std::map<T, U>::const_iterator it = map.begin();
 				it != map.end(); ++it){
 				/* std::cout << (*it) << "\n"; */
-					std::cout << (*it).first << ":" << std::setprecision(std::numeric_limits<U>::digits10 + 1)  << (*it).second << std::endl;
+					std::cout << (*it).first << ":" << std::setprecision(std::numeric_limits<U>::digits10) << (*it).second << std::endl;
+					/* std::cout << (*it).first << ":" << std::setprecision(std::numeric_limits<U>::digits10) << (*it).second << std::endl; */
 				/* std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n"; */
 				}
 			}

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:10:37 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/07 19:28:15 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/09 19:38:34 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ std::string const BitcoinExchange::checkDate(std::string date, bool isData = fal
 	struct tm tm = {};
 
 	if (!strptime(date.c_str(), "%Y-%m-%d", &tm))
-		throw std::runtime_error("Invalid Date format");
+		throw std::runtime_error("Invalid Data format");
 
 	int year;
 	int mon;
@@ -77,13 +77,17 @@ std::string const BitcoinExchange::checkDate(std::string date, bool isData = fal
 std::pair<std::string, double> BitcoinExchange::ClKeyVal(std::string &line){
 		std::string key;
 		double value;
+		char *endPtr;
 
-		if (count(line.begin(), line.end(), ',') > 1 or
-				count(line.begin(), line.end(), '.') > 1)
+		if (count(line.begin(), line.end(), ',') != 1 or
+				count(line.begin(), line.end(), '.') > 1 or
+				ispunct(*(--trim(line).end())))
 			throw std::runtime_error("Invalid Data format");
 		key = trim(line.substr(0, line.find(',')));
-		value = atof(trim(line.substr(line.find(',')+1, line.find('\n'))).data());
+		value = strtod(trim(line.substr(line.find(',')+1, line.find('\n'))).data(), &endPtr);
 		checkDate(key, true);
+		if (*endPtr)
+			throw std::runtime_error("Invalid Data Value");
 
 		return (std::make_pair(key, value));
 }
@@ -91,14 +95,17 @@ std::pair<std::string, double> BitcoinExchange::ClKeyVal(std::string &line){
 void BitcoinExchange::addData(std::string file){
 	if (file.substr(file.find_last_of(".") + 1) == "csv"){
 		std::string line;
+		int lnbr;
 
+		lnbr = 0;
 		std::ifstream myfile(file);
 
 		if (myfile.is_open()){
 			while (std::getline(myfile,line)){
-				if (line == "date,exchange_rate")
+				if (line == "date,exchange_rate" and lnbr == 0)
 					continue;
 				this->_data.insert(ClKeyVal(line));
+				lnbr++;
 			}
 			myfile.close();
 		  }
