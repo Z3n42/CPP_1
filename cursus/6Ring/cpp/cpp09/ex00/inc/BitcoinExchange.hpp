@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/09 19:38:32 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/12 20:29:54 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class BitcoinExchange{
 	private:
 			/* std::string _input; */
 			std::map<std::string, double> _data;
-			std::map<std::string, std::string> _input;
+			std::map<std::string, double> _input;
 
 	public:
 			BitcoinExchange(void);
@@ -39,13 +39,13 @@ class BitcoinExchange{
 			~BitcoinExchange(void);
 
 			const std::map<std::string, double> & getData(void) const;
-			const std::map<std::string, std::string> & getInput(void) const;
+			const std::map<std::string, double> & getInput(void) const;
 
 			void addData(std::string file);
 			void addInput(std::string file);
 			std::string const checkDate(std::string date, bool isData);
 			std::string trim(const std::string &s);
-			std::pair<std::string, double> ClKeyVal(std::string &line);
+			std::pair<std::string, double> ClKeyVal(std::string &line, bool isData);
 
 			template<typename T, typename U>
 			void printMap(std::map<T, U> map){

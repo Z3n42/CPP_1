@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:10:37 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/09 19:38:34 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/12 20:29:42 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ const std::map<std::string, double> & BitcoinExchange::getData(void) const{
 	return(this->_data);
 }
 
-const std::map<std::string, std::string> & BitcoinExchange::getInput(void) const{
+const std::map<std::string, double> & BitcoinExchange::getInput(void) const{
 	return(this->_input);
 }
 
@@ -41,8 +41,11 @@ std::string const BitcoinExchange::checkDate(std::string date, bool isData = fal
 
 	struct tm tm = {};
 
-	if (!strptime(date.c_str(), "%Y-%m-%d", &tm))
-		throw std::runtime_error("Invalid Data format");
+	if (!strptime(date.c_str(), "%Y-%m-%d", &tm)){
+		if (isData)
+			throw std::runtime_error("Error: bad data => " + trim(date));
+		throw std::runtime_error("Error: bad input => " + trim(date));
+	}
 
 	int year;
 	int mon;
@@ -58,87 +61,101 @@ std::string const BitcoinExchange::checkDate(std::string date, bool isData = fal
 		leap = true;
 	if (year < 2009 or year >= 2024){
 		if (isData)
-			throw std::runtime_error("Invalid year");
-		return ("Invalid year");
+			throw std::runtime_error("Error: bad data => " + trim(date));
+		throw std::runtime_error("Error: bad input => " + trim(date));
 	}
 	if (day == 31 and ((mon < 12 and mon%2 == 0) and (mon != 8 and mon != 10))){
 		if (isData)
-			throw std::runtime_error("Invalid month days");
-		return ("Invalid month days");
+			throw std::runtime_error("Error: bad data => " + trim(date));
+		throw std::runtime_error("Error: bad input => " + trim(date));
 	}
 	if (mon == 2 and (day > 29 or (day == 29 and leap == false))){
 		if (isData)
-			throw std::runtime_error("Invalid February days");
-		return ("Invalid February days");
+			throw std::runtime_error("Error: bad data => " + trim(date));
+		throw std::runtime_error("Error: bad input => " + trim(date));
 	}
 	return ("");
 }
 
-std::pair<std::string, double> BitcoinExchange::ClKeyVal(std::string &line){
+std::pair<std::string, double> BitcoinExchange::ClKeyVal(std::string &line, bool isData = false){
+
 		std::string key;
 		double value;
 		char *endPtr;
-
-		if (count(line.begin(), line.end(), ',') != 1 or
+		char sep;
+		
+		sep = '|';
+		if (isData)
+			sep = ',';
+		if (count(line.begin(), line.end(), sep) != 1 or
 				count(line.begin(), line.end(), '.') > 1 or
 				ispunct(*(--trim(line).end())))
-			throw std::runtime_error("Invalid Data format");
-		key = trim(line.substr(0, line.find(',')));
-		value = strtod(trim(line.substr(line.find(',')+1, line.find('\n'))).data(), &endPtr);
-		checkDate(key, true);
+			throw std::runtime_error("Error: bad input => " + trim(line));
+		key = trim(line.substr(0, line.find(sep)));
+		value = strtod(trim(line.substr(line.find(sep)+1, line.find('\n'))).data(), &endPtr);
+		checkDate(key, isData);
 		if (*endPtr)
-			throw std::runtime_error("Invalid Data Value");
+			throw std::runtime_error("Error: bad input => " + trim(line));
 
 		return (std::make_pair(key, value));
 }
 
 void BitcoinExchange::addData(std::string file){
-	if (file.substr(file.find_last_of(".") + 1) == "csv"){
-		std::string line;
-		int lnbr;
+	if (file.substr(file.find_last_of(".") + 1) != "csv")
+		throw std::runtime_error("Error: bad file => " + file);
+	std::string line;
+	int lnbr;
 
-		lnbr = 0;
-		std::ifstream myfile(file);
+	lnbr = 0;
+	std::ifstream myfile(file);
 
-		if (myfile.is_open()){
-			while (std::getline(myfile,line)){
-				if (line == "date,exchange_rate" and lnbr == 0)
-					continue;
-				this->_data.insert(ClKeyVal(line));
-				lnbr++;
-			}
-			myfile.close();
-		  }
-		  else std::cout << "Unable to open file" << std::endl; 
+	if (myfile.is_open()){
+		while (std::getline(myfile,line)){
+			if (line == "date,exchange_rate" and lnbr == 0)
+				continue;
+			this->_data.insert(ClKeyVal(line, true));
+			lnbr++;
 		}
-	  else 
-		throw std::runtime_error("Invalid Data extension");
+		myfile.close();
+		if (lnbr == 0)
+		  throw std::runtime_error("Error: bad file => " + file);
+	  }
+	  else throw std::runtime_error("Error: bad file => " + file);
 }
 
 void BitcoinExchange::addInput(std::string file){
 	std::string ext;
 
 	ext = file.substr(file.find_last_of(".") + 1);
-	if (ext == "txt" || ext == "csv" ){
-		/* size_t pos; */
-		/* size_t endpos; */
-		std::string line;
-		std::ifstream myfile(file);
-		if (myfile.is_open()){
-			while (std::getline(myfile,line, ' ')){
-				/* if (line == "date" or line = "|" or line = "value") */
-				/* 	continue; */
-				/* pos = line.find('|'); */
-				/* endpos = line.find('\n'); */
-				/* this->_input.insert(std::make_pair(line.substr(0, pos), line.substr(pos + 1, endpos))); */
-				/* std::cout << line << std::endl; */
+	if (ext != "txt" and ext != "csv" )
+		throw std::runtime_error("Error: bad file => " + file);
+	std::string line;
+	int lnbr;
+
+	lnbr = 0;
+	std::ifstream myfile(file);
+
+	if (myfile.is_open()){
+		while (std::getline(myfile,line)){
+			if (line.empty())
+				throw std::runtime_error("Error: bad file => " + file);
+			if (line == "date | value" and lnbr == 0)
+				continue;
+			try {
+				ClKeyVal(line);
 			}
-			myfile.close();
-		  }
-		  else std::cout << "Unable to open file" << std::endl; 
+			catch(std::exception &e){
+				std::cout << e.what() << std::endl;
+				continue;
+			}
+			std::cout << ClKeyVal(line).first << std::endl;
+			lnbr++;
 		}
-	  else 
-		throw std::runtime_error("Invalid Input extension");
+		myfile.close();
+		if (lnbr == 0)
+		  throw std::runtime_error("Error: bad file => " + file);
+	  }
+	  else throw std::runtime_error("Error: bad file => " + file);
 }
 
 

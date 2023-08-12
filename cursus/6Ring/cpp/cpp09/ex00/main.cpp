@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:44:48 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/07 19:28:22 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/12 20:29:50 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void initBtc(char **argv){
 
-	(void) argv;
+	/* (void) argv; */
 	BitcoinExchange btc;
 
 	btc.addData("Data.csv");
 	btc.addInput(argv[1]);
-	btc.printMap(btc.getData());
+	/* btc.printMap(btc.getData()); */
 	/* btc.printMap(btc.getInput()); */
 }
 
