@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/12 20:29:54 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:52:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ class BitcoinExchange{
 	private:
 			/* std::string _input; */
 			std::map<std::string, double> _data;
-			std::map<std::string, double> _input;
+			/* std::map<std::string, double> _input; */
 
 	public:
 			BitcoinExchange(void);
-			BitcoinExchange(std::string input);
+			/* BitcoinExchange(std::string input); */
 			BitcoinExchange(BitcoinExchange const & src);
 			~BitcoinExchange(void);
+
+			BitcoinExchange& operator=(const BitcoinExchange &rhs);
 
 			const std::map<std::string, double> & getData(void) const;
 			const std::map<std::string, double> & getInput(void) const;
@@ -47,6 +49,7 @@ class BitcoinExchange{
 			std::string trim(const std::string &s);
 			std::pair<std::string, double> ClKeyVal(std::string &line, bool isData);
 
+
 			template<typename T, typename U>
 			void printMap(std::map<T, U> map){
 				for(typename std::map<T, U>::const_iterator it = map.begin();
@@ -56,6 +59,11 @@ class BitcoinExchange{
 					/* std::cout << (*it).first << ":" << std::setprecision(std::numeric_limits<U>::digits10) << (*it).second << std::endl; */
 				/* std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n"; */
 				}
+			}
+
+			template<typename T, typename U>
+			void printPair(std::pair<T, U> pair){
+				std::cout << pair.first << " => " << std::setprecision(std::numeric_limits<U>::digits10) << pair.second << std::endl;
 			}
 };
 #endif

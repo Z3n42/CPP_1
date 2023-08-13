@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:10:37 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/12 20:29:42 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:52:28 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,26 @@ BitcoinExchange::BitcoinExchange(void){
 
 /* }; */
 
-/* BitcoinExchange::BitcoinExchange(BitcoinExchange const & src){ */
-
-/* }; */
+BitcoinExchange::BitcoinExchange(BitcoinExchange const & src){
+	*this = src;
+}
 
 BitcoinExchange::~BitcoinExchange(void){
 
+}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &rhs){
+	this->_data = rhs.getData();
+	return (*this);
 }
 
 const std::map<std::string, double> & BitcoinExchange::getData(void) const{
 	return(this->_data);
 }
 
-const std::map<std::string, double> & BitcoinExchange::getInput(void) const{
-	return(this->_input);
-}
+/* const std::map<std::string, double> & BitcoinExchange::getInput(void) const{ */
+/* 	return(this->_input); */
+/* } */
 
 std::string const BitcoinExchange::checkDate(std::string date, bool isData = false){
 
@@ -92,10 +97,14 @@ std::pair<std::string, double> BitcoinExchange::ClKeyVal(std::string &line, bool
 				ispunct(*(--trim(line).end())))
 			throw std::runtime_error("Error: bad input => " + trim(line));
 		key = trim(line.substr(0, line.find(sep)));
-		value = strtod(trim(line.substr(line.find(sep)+1, line.find('\n'))).data(), &endPtr);
 		checkDate(key, isData);
+		value = strtod(trim(line.substr(line.find(sep)+1, line.find('\n'))).data(), &endPtr);
 		if (*endPtr)
 			throw std::runtime_error("Error: bad input => " + trim(line));
+		if (value < 0)
+			throw std::runtime_error("Error: not a positive number");
+		if (value > 1000 and not isData)
+			throw std::runtime_error("Error: too large a number.");
 
 		return (std::make_pair(key, value));
 }
@@ -148,7 +157,7 @@ void BitcoinExchange::addInput(std::string file){
 				std::cout << e.what() << std::endl;
 				continue;
 			}
-			std::cout << ClKeyVal(line).first << std::endl;
+			printPair(ClKeyVal(line));
 			lnbr++;
 		}
 		myfile.close();
