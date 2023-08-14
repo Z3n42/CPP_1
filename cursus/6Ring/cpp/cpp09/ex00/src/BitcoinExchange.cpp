@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:10:37 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/13 19:52:28 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:53:25 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ std::string const BitcoinExchange::checkDate(std::string date, bool isData = fal
 
 	if (year%400 == 0 or (year%100 != 0 and year%4 == 0))
 		leap = true;
-	if (year < 2009 or year >= 2024){
+	if ((year < 2009 or year >= 2024) or (year == 2009 and mon == 1 and day < 2)){
 		if (isData)
 			throw std::runtime_error("Error: bad data => " + trim(date));
 		throw std::runtime_error("Error: bad input => " + trim(date));

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/13 19:52:29 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:53:22 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,14 @@ class BitcoinExchange{
 
 			template<typename T, typename U>
 			void printPair(std::pair<T, U> pair){
-				std::cout << pair.first << " => " << std::setprecision(std::numeric_limits<U>::digits10) << pair.second << std::endl;
+			typename std::map<T,U>::iterator itlow;
+			/* std::string itlow; */
+			itlow = this->_data.upper_bound(pair.first);
+			/* std::cout << "=====" << pair.first << std::endl; */
+			/* std::cout << ">>>>>" << itlow << std::endl; */
+			/* std::cout << ">>>>>" << (*--itlow).first << std::endl; */
+				std::cout << pair.first << " => " << std::setprecision(std::numeric_limits<U>::digits10) << pair.second << " = " << this->_data[(*--itlow).first] * pair.second  << std::endl;
+				/* std::cout << pair.first << " => " << std::setprecision(std::numeric_limits<U>::digits10) << pair.second << " = " << this->_data[itlow] * pair.second  << std::endl; */
 			}
 };
 #endif
