@@ -6,11 +6,11 @@
 #    By: ingonzal <ingonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 20:12:25 by ingonzal          #+#    #+#              #
-#    Updated: 2023/08/19 16:43:04 by ingonzal         ###   ########.fr        #
+#    Updated: 2023/08/20 14:57:10 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME   = RNP
-NAME_V = RNP_sanitized
+NAME   = RPN
+NAME_V = RPN_sanitized
 
 CC = c++
 

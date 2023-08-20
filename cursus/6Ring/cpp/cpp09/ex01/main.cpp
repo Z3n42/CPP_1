@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:44:48 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/19 20:45:05 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:16:43 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void initRnp(char **argv){
 
 	Rnp a(argv[1]);
-	std::cout << a << std::endl;
+	a.calculus();
+	/* std::cout << a << std::endl; */
 }
 
 int main(int argc, char** argv){
@@ -24,7 +25,7 @@ int main(int argc, char** argv){
 			initRnp(argv);
 		}
 		catch(std::runtime_error &e){
-			std::cout << e.what() << std::endl << std::endl;
+			std::cout << RED << e.what() << RESET << std::endl;
 		}
 	}
 	else

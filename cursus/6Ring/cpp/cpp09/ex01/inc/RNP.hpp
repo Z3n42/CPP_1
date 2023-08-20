@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 17:26:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/19 20:44:59 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:21:57 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 
 #include <algorithm> 
 #include <iostream>
+#include <stdlib.h>
 #include <stack>
 
 class Rnp{
 
 	private:
 			Rnp(void);
-			/* std::string _input; */
-			std::stack<char> _stack;	
+			std::string _input;
+			std::stack<int> _stack;	
 
 	public:
 			Rnp(std::string input);
@@ -35,13 +36,10 @@ class Rnp{
 
 			Rnp& operator=(const Rnp &rhs);
 
-			const std::stack<char> & getStack(void) const;
+			const std::stack<int> & getStack(void) const;
 			
-			int calculus(void);
-
 			bool checkInput(char c);
+			void calculus(void);
 };
-
-std::ostream & operator<<(std::ostream & o, Rnp const & ref);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 18:20:01 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/19 20:44:56 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:21:06 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,8 @@ Rnp::Rnp(void){
 
 }
 
-Rnp::Rnp(std::string input){
-	for(std::string::iterator it = input.begin(); it != input.end(); it++){
-		if (!checkInput(*it)){
-			std::string c(1, *it);
-			throw std::runtime_error("Error: bad input => " + c);
-		}
-		if (!isspace(*it))
-			this->_stack.push(*it);
-	}
+Rnp::Rnp(std::string input) : _input(input){
+
 }
 
 Rnp::Rnp(Rnp const & src){
@@ -42,7 +35,7 @@ Rnp& Rnp::operator=(const Rnp &rhs){
 	return (*this);
 }
 
-const std::stack<char> & Rnp::getStack(void) const{
+const std::stack<int> & Rnp::getStack(void) const{
 	return(this->_stack);
 }
 
@@ -55,33 +48,32 @@ bool Rnp::checkInput(char c){
 }
 
 
-int Rnp::calculus(void){
+void Rnp::calculus(void){
 
-	int 	a;
-	int 	b;
-	char 	c
-
-	for 
-	if(isdigit(this->_stack.top())
-		
+	for(std::string::iterator it = this->_input.begin(); it != this->_input.end(); it++){
+		if (!checkInput(*it)){
+			std::string c(1, *it);
+			throw std::runtime_error("Error: bad input => " + c);
+		}
+		if (!isspace(*it)){
+			if (isdigit(*it))
+				this->_stack.push(*it - '0');
+			else {
+				int b = this->_stack.top();
+				this->_stack.pop();
+				int a = this->_stack.top();
+				this->_stack.pop();
+				if (*it == '+')
+					this->_stack.push(a + b);
+				else if (*it == '-')
+					this->_stack.push(a - b);
+				else if (*it == '*')
+					this->_stack.push(a * b);
+				else
+					this->_stack.push(a / b);
+			}
+		}
+	}
+	std::cout << GREEN << this->_stack.top() << RESET << std::endl;
 }
 
-std::ostream & operator<<(std::ostream & o, Rnp const & ref){
-	std::stack<char> tmp = ref.getStack();
-	unsigned int i;
-	i = tmp.size() - 1;
-	std::cout << std::endl;
-	std::cout << "Stack capacity " << tmp.size() << " elementes max" << std::endl;
-	std::cout << GREEN << "####################" << RESET << std::endl;
-	  while (tmp.size()){
-		std::cout << "[" << i << "]" << tmp.top() << std::endl;
-		tmp.pop();
-		i--;
-	  }
-	std::cout << RED << "####################" << RESET << std::endl;
-	std::cout << std::endl;
-	return (o);
-}
-/* const std::stack<std::string, double> & Rnp::getInput(void) const{ */
-/* 	return(this->_input); */
-/* } */
