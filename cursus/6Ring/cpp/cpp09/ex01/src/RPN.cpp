@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RNP.cpp                                            :+:      :+:    :+:   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 18:20:01 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/20 15:21:06 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:26:31 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "RNP.hpp"
+#include "RPN.hpp"
 
 
-Rnp::Rnp(void){
-
-}
-
-Rnp::Rnp(std::string input) : _input(input){
+Rpn::Rpn(void){
 
 }
 
-Rnp::Rnp(Rnp const & src){
+Rpn::Rpn(std::string input) : _input(input){
+
+}
+
+Rpn::Rpn(Rpn const & src){
 	*this = src;
 }
 
-Rnp::~Rnp(void){
+Rpn::~Rpn(void){
 
 }
 
-Rnp& Rnp::operator=(const Rnp &rhs){
+Rpn& Rpn::operator=(const Rpn &rhs){
 	this->_stack = rhs.getStack();
 	return (*this);
 }
 
-const std::stack<int> & Rnp::getStack(void) const{
+const std::stack<int> & Rpn::getStack(void) const{
 	return(this->_stack);
 }
 
-bool Rnp::checkInput(char c){
+bool Rpn::checkInput(char c){
 	char opt[] = {'+', '-', '/', '*'};
 
 	if(!isdigit(c) and !std::count(opt, opt+sizeof(opt), c) and !isspace(c))
@@ -48,7 +48,7 @@ bool Rnp::checkInput(char c){
 }
 
 
-void Rnp::calculus(void){
+void Rpn::calculus(void){
 
 	for(std::string::iterator it = this->_input.begin(); it != this->_input.end(); it++){
 		if (!checkInput(*it)){

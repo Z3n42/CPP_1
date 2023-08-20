@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RNP.hpp                                            :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 17:26:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/20 15:21:57 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:26:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RNP_HPP
-# define RNP_HPP
+#ifndef RPN_HPP
+# define RPN_HPP
 
 # define RESET		"\033[0m"
 # define RED		"\033[31m"
@@ -22,19 +22,19 @@
 #include <stdlib.h>
 #include <stack>
 
-class Rnp{
+class Rpn{
 
 	private:
-			Rnp(void);
+			Rpn(void);
 			std::string _input;
 			std::stack<int> _stack;	
 
 	public:
-			Rnp(std::string input);
-			Rnp(Rnp const & src);
-			~Rnp(void);
+			Rpn(std::string input);
+			Rpn(Rpn const & src);
+			~Rpn(void);
 
-			Rnp& operator=(const Rnp &rhs);
+			Rpn& operator=(const Rpn &rhs);
 
 			const std::stack<int> & getStack(void) const;
 			
