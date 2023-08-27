@@ -6,20 +6,14 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:05:20 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/20 20:01:21 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:57:48 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-/* void initRpn(std::string input){ */
-/* 	if (input.compare("T35T") == 0) */
-/* 		test(); */
-/* 	else{ */
-/* 		Rpn a(input); */
-/* 		Rpn b(a); */
-/* 		b.calculus(); */
-/* 	} */
+/* void initPmergeMe(int max, std::string nums){ */
+
 /* } */
 
 /* void test(void){ */
@@ -37,14 +31,16 @@
 
 int main(int argc, char** argv){
 	if (argc >= 2){
+		PmergeMe a;
 		try{
-			initPmegeMe(argc, argv);
+			a.initPmergeMe(argc, argv);
+			a.printContainers();
 		}
 		catch(std::runtime_error &e){
 			std::cout << RED << e.what() << RESET << std::endl;
-			std::cout << std::endl;
-			system("leaks PmergeMe");	
-			std::cout << std::endl;
+			/* std::cout << std::endl; */
+			/* system("leaks PmergeMe"); */	
+			/* std::cout << std::endl; */
 		}
 	}
 	else
