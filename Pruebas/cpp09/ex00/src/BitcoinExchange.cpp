@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:10:37 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/29 16:43:31 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:53:25 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ BitcoinExchange::BitcoinExchange(void){
 
 }
 
+/* BitcoinExchange::BitcoinExchange(std::string input){ */
+
+/* }; */
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const & src){
 	*this = src;
@@ -35,6 +38,9 @@ const std::map<std::string, double> & BitcoinExchange::getData(void) const{
 	return(this->_data);
 }
 
+/* const std::map<std::string, double> & BitcoinExchange::getInput(void) const{ */
+/* 	return(this->_input); */
+/* } */
 
 std::string const BitcoinExchange::checkDate(std::string date, bool isData = false){
 

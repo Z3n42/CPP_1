@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:50:41 by ingonzal          #+#    #+#             */
-/*   Updated: 2023/08/29 16:43:10 by ingonzal         ###   ########.fr       */
+/*   Updated: 2023/08/29 16:33:41 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,13 @@
 class BitcoinExchange{
 
 	private:
+			/* std::string _input; */
 			std::map<std::string, double> _data;
+			/* std::map<std::string, double> _input; */
 
 	public:
 			BitcoinExchange(void);
+			/* BitcoinExchange(std::string input); */
 			BitcoinExchange(BitcoinExchange const & src);
 			~BitcoinExchange(void);
 
@@ -50,15 +53,24 @@ class BitcoinExchange{
 			template<typename T, typename U>
 			void printMap(std::map<T, U> map){
 				for(typename std::map<T, U>::const_iterator it = map.begin();
-				it != map.end(); ++it)
+				it != map.end(); ++it){
+				/* std::cout << (*it) << "\n"; */
 					std::cout << (*it).first << ":" << std::setprecision(std::numeric_limits<U>::digits10) << (*it).second << std::endl;
+					/* std::cout << (*it).first << ":" << std::setprecision(std::numeric_limits<U>::digits10) << (*it).second << std::endl; */
+				/* std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n"; */
+				}
 			}
 
 			template<typename T, typename U>
 			void printPair(std::pair<T, U> pair){
 			typename std::map<T,U>::iterator itlow;
+			/* std::string itlow; */
 			itlow = this->_data.upper_bound(pair.first);
+			/* std::cout << "=====" << pair.first << std::endl; */
+			/* std::cout << ">>>>>" << itlow << std::endl; */
+			/* std::cout << ">>>>>" << (*--itlow).first << std::endl; */
 				std::cout << pair.first << " => " << std::setprecision(std::numeric_limits<U>::digits10) << pair.second << " = " << this->_data[(*--itlow).first] * pair.second  << std::endl;
+				/* std::cout << pair.first << " => " << std::setprecision(std::numeric_limits<U>::digits10) << pair.second << " = " << this->_data[itlow] * pair.second  << std::endl; */
 			}
 };
 #endif
