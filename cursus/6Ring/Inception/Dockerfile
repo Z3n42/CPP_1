@@ -4,7 +4,7 @@ FROM debian:oldstable
 RUN apt-get update && apt-get install -y \
 	nginx
 
-WORKDIR /valgrind
+# COPY default.conf /etc/nginx/conf.d/default.conf
+ 
 
-
-ENTRYPOINT "bash"
+CMD ["nginx", "-g", "daemon off;"]
