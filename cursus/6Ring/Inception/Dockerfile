@@ -2,7 +2,9 @@ FROM debian:oldstable
 
 
 RUN apt-get update && apt-get install -y \
-	nginx
+	nginx \
+	vim \
+	dnsmasq
 
 # COPY default.conf /etc/nginx/conf.d/default.conf
  
