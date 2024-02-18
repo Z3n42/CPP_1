@@ -52,6 +52,7 @@ Mkfile.old
 dkms.conf
 
 # Propias
+.vscode/
 *.swp
 *.swo
 a.out
