@@ -1,15 +1,5 @@
 version: '3'
 services:
-    nginx:
-        build:
-            context: .
-            dockerfile: nginx/Dockerfile
-        container_name: nginx
-        ports:
-          - "443:443"
-        restart: always
-        networks:
-          - docker_network
     mariadb:
         build:
             context: .
@@ -30,8 +20,27 @@ services:
         restart: always
         networks:
           - docker_network
+
+    nginx:
+        build:
+            context: .
+            dockerfile: nginx/Dockerfile
+        container_name: nginx
+        ports:
+          - "443:443"
+        restart: always
+        networks:
+          - docker_network
+
 networks:
     docker_network:
             driver: bridge
+
 volumes:
   db_data:
+      driver: local
+      driver_opts:
+            type: none
+            device: /home/yakhoudr/data/mariadb
+            o: bind
+
