@@ -67,4 +67,4 @@ webserv
 webserv_sanitized
 \
 /www/html/uploads/**
-.env
+# .env
