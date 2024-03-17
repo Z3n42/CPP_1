@@ -1,28 +1,30 @@
 FROM debian:oldstable
 
-
+# Install necessary packages and clean apt cache
 RUN apt-get update && apt-get install -y \
-	mariadb-server \
-	tini \
-	vim 
+    mariadb-server \
+    tini \
+    vim && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# COPY nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
-# COPY nginx/default.conf /etc/nginx/conf.d/default.conf
-# COPY nginx/cert.sh 	/tmp/cert.sh	
+# Create directory for scripts
+RUN mkdir -p /scripts
 
-# RUN ["chmod", "+x", "/tmp/cert.sh"]
-# RUN /tmp/cert.sh
+# Create directory for mysqld and change ownership
+RUN mkdir /run/mysqld && chown -R mysql:mysql /run/mysqld
 
-# COPY nginx/my-site.crt /etc/ssl/certs/my-site.crt
-# COPY nginx/my-site.key /etc/ssl/private/my-site.key
-# RUN /tmp/init-letsencrypt.sh
+# Copy script files and configuration
+COPY mariadb/scripts/init.sh /scripts/init.sh
+COPY mariadb/scripts/init.sql /scripts/init.sql
+COPY mariadb/scripts/50-server.cnf /etc/mysql/mariadb.conf.d/
 
-# ENTRYPOINT ["/usr/bin/tini", "--"]
-# ENTRYPOINT ["/tmp/cert.sh"]
+# Set permissions for the entry script
+RUN chmod +x /scripts/init.sh
 
-# COPY mariadb/init.sh /usr/src/app/entrypoint.sh
-# RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
-# ENTRYPOINT /usr/src/app/entrypoint.sh
+# Define entry point
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["mysqld_safe"]
-# CMD /usr/src/app/entrypoint.sh
+
+# Define default command
+CMD ["/scripts/init.sh"]
+
