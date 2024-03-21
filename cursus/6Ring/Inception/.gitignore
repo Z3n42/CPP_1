@@ -69,3 +69,4 @@ webserv_sanitized
 /www/html/uploads/**
 # .env
 mariadb/db_data/*
+wordpress/data/*

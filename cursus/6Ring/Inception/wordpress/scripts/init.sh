@@ -10,8 +10,8 @@ chown -R mysql:mysql /var/run/mysqld /run/mysqld
 
 # Initialize the database if not present
 if [ ! -d /var/lib/mysql/mysql ]; then
-    echo "Initializing the database..."
-    mysql_install_db --user=root
+  echo "Initializing the database..."
+  mysql_install_db --user=root
 fi
 
 # Start MariaDB service in the background
@@ -21,19 +21,18 @@ service mariadb start
 # Wait until MariaDB server is online
 echo "Waiting for MariaDB server to be online..."
 while ! mysqladmin ping -hlocalhost --silent 2>/dev/null; do
-    echo "Waiting..."
-	  sleep 1
+	 sleep 1
 done
 
 # Execute initial SQL queries
 if [[ -f /scripts/init.sql ]]; then
-    echo "Executing initial SQL queries..."
-    # Create a temporary SQL file with environment variables substituted
-    envsubst < /scripts/init.sql > /tmp/init.sql
-    # Execute the SQL queries in the temporary file
-    mysql -u root -p${MYSQL_ROOT_PASSWORD} < /tmp/init.sql
-    # Remove the temporary file
-    rm /tmp/init.sql
+  echo "Executing initial SQL queries..."
+  # Create a temporary SQL file with environment variables substituted
+  envsubst < /scripts/init.sql > /tmp/init.sql
+  # Execute the SQL queries in the temporary file
+  mysql -u root -p${MYSQL_ROOT_PASSWORD} < /tmp/init.sql
+  # Remove the temporary file
+  rm /tmp/init.sql
 fi
 
 # Stop MariaDB service
@@ -43,8 +42,8 @@ service mariadb stop
 # Wait until MariaDB server has stopped
 echo "Waiting for MariaDB server to stop..."
 while mysqladmin ping -hlocalhost --silent 2>/dev/null; do
-    echo "Waiting..."
-    sleep 1
+	echo "Waiting..."
+	sleep 1
 done
 
 
