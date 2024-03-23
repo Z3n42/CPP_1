@@ -2,32 +2,27 @@ FROM debian:oldstable
 
 # Install necessary packages and clean apt cache
 RUN apt-get update && apt-get install -y \
-    mariadb-server \
+    php \
+    php-fpm \
+    php-mysql \
+    mariadb-client \
+    curl \
     tini \
-    gettext-base \
     vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Create directory for scripts
-RUN mkdir -p /scripts
-
-# # Create directory for mysqld and change ownership
-# RUN mkdir /run/mysqld && chown -R mysql:mysql /run/mysqld
-
 # Copy script files and configuration
-COPY mariadb/scripts/init.sh /scripts/init.sh
-COPY mariadb/scripts/init.sql /scripts/init.sql
-COPY mariadb/scripts/50-server.cnf /etc/mysql/mariadb.conf.d/
+COPY scripts/cnf /etc/php/7.4/fpm/pool.d/www.conf
+COPY scripts/init.sh /createwsite.sh
 
 # Set permissions for the entry script
-RUN chmod +x /scripts/init.sh
-RUN chown -R mysql:mysql /var/lib/mysql
+RUN chmod +x /createwsite.sh
 
 # Define entry point
-# ENTRYPOINT ["/usr/bin/tini", "--"]
-ENTRYPOINT ["/scripts/init.sh"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
+#ENTRYPOINT ["/scripts/init.sh"]
 
 # Define default command
-CMD ["mysqld"]
+CMD ["bash", "./createwsite.sh"]
 

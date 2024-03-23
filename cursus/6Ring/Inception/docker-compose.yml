@@ -18,6 +18,37 @@ services:
       networks:
         - docker_network
 
+    wordpress:
+        build:
+          context: .
+          dockerfile: wordpress/Dockerfile
+        container_name: wordpress
+        #hostname: php_fpm_server
+        #image: "wordpress_image"
+
+        depends_on:
+          mariadb:
+            # condition: service_healthy
+        environment:
+          MYSQL_DATABASE: ${MYSQL_DATABASE}
+          MYSQL_USER: ${MYSQL_USER}
+          MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+          DB_HOST: ${DB_HOST}
+          WORD_ADMIN: ${WORD_ADMIN}
+          WORD_ADMIN_PASSWORD: ${WORD_ADMIN_PASSWORD}
+          WORD_ADMIN_EMAIL: ${WORD_ADMIN_EMAIL}
+          WORD_USER: ${WORD_USER}
+          WORD_USER_PASS: ${WORD_USER_PASS}
+          WORD_USER_EMAIL: ${WORD_USER_EMAIL}
+          WORD_USER_ROLE: ${WORD_USER_ROLE}
+        volumes:
+          - wordpress-volume:/var/www/Inception-website
+        ports:
+          - "9000:9000"
+        restart: unless-stopped
+        networks:
+          - docker_network
+
     nginx:
       build:
         context: .
@@ -39,4 +70,10 @@ volumes:
       driver_opts:
         type: none
         device: /Users/ingonzal/42/cursus/6Ring/Inception/mariadb/db_data
+        o: bind
+    wp_data:
+      driver: local
+      driver_opts:
+        type: none
+        device: /Users/ingonzal/42/cursus/6Ring/Inception/wp_data
         o: bind
