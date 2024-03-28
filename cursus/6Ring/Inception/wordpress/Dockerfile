@@ -13,16 +13,16 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 # Copy script files and configuration
-COPY scripts/cnf /etc/php/7.4/fpm/pool.d/www.conf
-COPY scripts/init.sh /createwsite.sh
+COPY wordpress/scripts/cnf /etc/php/7.4/fpm/pool.d/www.conf
+COPY wordpress/scripts/init.sh /init.sh
 
 # Set permissions for the entry script
-RUN chmod +x /createwsite.sh
+RUN chmod +x /init.sh
 
 # Define entry point
 ENTRYPOINT ["/usr/bin/tini", "--"]
 #ENTRYPOINT ["/scripts/init.sh"]
 
 # Define default command
-CMD ["bash", "./createwsite.sh"]
+CMD ["bash", "./init.sh"]
 
