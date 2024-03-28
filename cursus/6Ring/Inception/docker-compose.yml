@@ -30,6 +30,10 @@ services:
       mariadb:
         condition: service_started
     environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
       WORDPRESS_URL: ${WORDPRESS_URL}
       WORDPRESS_TITLE: ${WORDPRESS_TITLE}
@@ -40,6 +44,8 @@ services:
       WORDPRESS_USER_PASSWORD: ${WORDPRESS_USER_PASSWORD}
       WORDPRESS_USER_EMAIL: ${WORDPRESS_USER_EMAIL}
       WORDPRESS_USER_ROLE: ${WORDPRESS_USER_ROLE}
+      WP_DIR: ${WP_DIR}
+      WP_CONFIG: ${WP_CONFIG}
     volumes:
       - wp_data:/var/www/Inception-website
     ports:
@@ -71,11 +77,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /Users/z3n42/42/cursus/6Ring/Inception/mariadb/db_data
+      device: /Users/$USER/42/cursus/6Ring/Inception/mariadb/db_data
       o: bind
   wp_data:
     driver: local
     driver_opts:
       type: none
-      device: /Users/z3n42/42/cursus/6Ring/Inception/wordpress/wp_data
+      device: /Users/$USER/42/cursus/6Ring/Inception/wordpress/wp_data
       o: bind
