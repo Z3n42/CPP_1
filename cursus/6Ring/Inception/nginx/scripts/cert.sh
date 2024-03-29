@@ -34,16 +34,17 @@ if [ ! -f "$cert_dir/ingonzal.42.fr.crt" ] && [ ! -f "$cert_dir/ingonzal.42.fr.k
     echo "Certificados movidos a su ubicación final."
 else
     echo "Certificados ya existen en $cert_dir."
-rm $cert_dir/ingonzal.42.fr.key &&  $cert_dir ingonzal.42.fr.crt
+rm $cert_dir/ingonzal.42.fr.key &&  $cert_dir/ingonzal.42.fr.crt
 fi
 
 
 # Configurar NGINX para usar los certificados
+echo "Creando la configuración de nginx"
 cat <<EOF > /etc/nginx/conf.d/default.conf
 server {
     listen 	443 ssl;
     listen  [::]:443;
-    server_name  localhost;
+    server_name  ingonzal.42.fr;
 
 	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
 	ssl_ciphers ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM;
@@ -68,7 +69,7 @@ server {
 
     location ~ \.php$ {
         root           html;
-        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_pass   wordpress:9000;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
         include        fastcgi_params;
@@ -78,7 +79,8 @@ server {
 EOF
 
 echo "Recargando NGINX..."
-nginx -s reload
+service nginx reload
+# nginx -s reload
 
 # Manejar señales para un apagado limpio
 # trap 'nginx -s stop' SIGTERM

@@ -3,15 +3,12 @@ FROM debian:oldstable
 
 RUN apt-get update && apt-get install -y \
 	nginx \
-	# certbot \ 
-	# python3-certbot-nginx \
-	# wget \
-	net-tools \
 	openssl \
 	procps \
 	tini \
-	vim \
-	dnsmasq
+    vim && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # COPY nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
 # COPY nginx/default.conf /etc/nginx/conf.d/default.conf
@@ -27,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 # ENTRYPOINT ["/usr/bin/tini", "--"]
 # ENTRYPOINT ["/tmp/cert.sh"]
 
-COPY nginx/cert.sh /usr/src/app/entrypoint.sh
+COPY nginx/scripts/cert.sh /usr/src/app/entrypoint.sh
 RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
 # ENTRYPOINT /usr/src/app/entrypoint.sh
 ENTRYPOINT ["/usr/bin/tini", "--"]

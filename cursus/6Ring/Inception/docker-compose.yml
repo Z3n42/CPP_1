@@ -47,7 +47,7 @@ services:
       WP_DIR: ${WP_DIR}
       WP_CONFIG: ${WP_CONFIG}
     volumes:
-      - wp_data:/var/www/Inception-website
+      - wp_data:/var/www/inception
     ports:
       - "9000:9000"
     restart: unless-stopped
@@ -77,11 +77,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /Users/$USER/42/cursus/6Ring/Inception/mariadb/db_data
+      device: ${HOME}/42/cursus/6Ring/Inception/mariadb/db_data
       o: bind
   wp_data:
     driver: local
     driver_opts:
       type: none
-      device: /Users/$USER/42/cursus/6Ring/Inception/wordpress/wp_data
+      device: ${HOME}/42/cursus/6Ring/Inception/wordpress/wp_data
       o: bind
