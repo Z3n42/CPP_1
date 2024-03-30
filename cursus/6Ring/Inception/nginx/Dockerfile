@@ -26,7 +26,8 @@ RUN apt-get update && apt-get install -y \
 
 COPY nginx/scripts/cert.sh /usr/src/app/entrypoint.sh
 RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
+
 # ENTRYPOINT /usr/src/app/entrypoint.sh
-ENTRYPOINT ["/usr/bin/tini", "--"]
+# ENTRYPOINT ["/usr/bin/tini", "--"]
 # CMD ["nginx", "-g", "daemon off;"]
 CMD /usr/src/app/entrypoint.sh

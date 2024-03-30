@@ -12,81 +12,92 @@
 # **************************************************************************** #
 #!/bin/bash
 
-# Directorio donde se almacenarán los certificados
+echo "Linux release ==>"
+cat /etc/*-release
+echo -e "<== Linux release END\n"
+
+# Directory where certificates will be stored
 cert_dir="/tmp"
 # mkdir $cert_dir
 
-# Comprobar si ya existen certificados
+# Check if certificates already exist
 if [ ! -f "$cert_dir/ingonzal.42.fr.crt" ] && [ ! -f "$cert_dir/ingonzal.42.fr.key" ]; then
-    echo "Creando certificados SSL auto-firmados..."
+    echo "Creating self-signed SSL certificates..."
 
-    # Generar certificados SSL auto-firmados
+    # Generate self-signed SSL certificates
     openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 \
         -subj "/C=US/ST=California/L=San Francisco/O=Example/CN=localhost" \
         -keyout "$cert_dir/ingonzal.42.fr.key" -out "$cert_dir/ingonzal.42.fr.crt" &&
 
-    echo "Certificados creados." &&
+    echo "Certificates created."
 
-    # Mover certificados a su ubicación final
-    mv $cert_dir/ingonzal.42.fr.crt /etc/ssl/certs/ &&
-    mv $cert_dir/ingonzal.42.fr.key /etc/ssl/private/ &&
+    # Move certificates to their final location
+    mv "$cert_dir/ingonzal.42.fr.crt" /etc/ssl/
+    mv "$cert_dir/ingonzal.42.fr.key" /etc/ssl/
 
-    echo "Certificados movidos a su ubicación final."
+    echo "Certificates moved to their final location."
+
+	# Change permissions of the certificate files
+    chmod 644 /etc/ssl/ingonzal.42.fr.crt
+    chmod 600 /etc/ssl/ingonzal.42.fr.key
+
+    echo "Permissions changed for the certificate files."
 else
-    echo "Certificados ya existen en $cert_dir."
-rm $cert_dir/ingonzal.42.fr.key &&  $cert_dir/ingonzal.42.fr.crt
+    echo "Certificates already exist in $cert_dir."
+    # rm "$cert_dir/ingonzal.42.fr.key" && "$cert_dir/ingonzal.42.fr.crt"
 fi
 
-
-# Configurar NGINX para usar los certificados
-echo "Creando la configuración de nginx"
-cat <<EOF > /etc/nginx/conf.d/default.conf
+# Configure NGINX to use the certificates
+echo "Creating nginx configuration"
+# cat <<EOF > /etc/nginx/sites-available/default
+cat <<EOF > /etc/nginx/sites-available/default
 server {
-    listen 	443 ssl;
-    listen  [::]:443;
-    server_name  ingonzal.42.fr;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name ingonzal.42.fr www.ingonzal.42.fr;
 
-	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-	ssl_ciphers ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM;
+	root /var/www/inception/wordpress;
+	index index.html index.htm index.nginx-debian.html index.php;
 
-    keepalive_timeout 75 75;
+    # ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_protocols TLSv1.3;
+    # ssl_ciphers ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM;
 
-    ssl_certificate /etc/ssl/certs/ingonzal.42.fr.crt;
-    ssl_certificate_key /etc/ssl/private/ingonzal.42.fr.key;
-	ssl_session_timeout  5m;
+    keepalive_timeout 75;
 
-    add_header Strict-Transport-Security "max-age=7200";
+    ssl_certificate /etc/ssl/ingonzal.42.fr.crt;
+    ssl_certificate_key /etc/ssl/ingonzal.42.fr.key;
+    ssl_session_timeout 5m;
+
+    # add_header Strict-Transport-Security "max-age=7200";
 
     location / {
-        root /usr/share/nginx/html;
-        index index.html;
-    }
+		try_files $uri $uri/ /index.php?$args;
+	}
 
-    error_page   500 502 503 504  /50x.html;
+    error_page 500 502 503 504 /50x.html;
     location = /50x.html {
-        root   /usr/share/nginx/html;
+        root /usr/share/nginx/html;
     }
 
     location ~ \.php$ {
-        root           html;
-        fastcgi_pass   wordpress:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-        include        fastcgi_params;
-	}
-
+		include snippets/fastcgi-php.conf;
+        fastcgi_pass wordpress:9000;
+        # fastcgi_index index.php;
+		include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME /var/www/inception/wordpress$fastcgi_script_name;
+    }
 }
 EOF
 
-echo "Recargando NGINX..."
+echo "Reloading NGINX..."
 service nginx reload
-# nginx -s reload
 
-# Manejar señales para un apagado limpio
-# trap 'nginx -s stop' SIGTERM
+chmod 755 /var/www/inception/wordpress
+chown -R www-data:www-data /var/www/inception/wordpress
 
-# Iniciar el servidor NGINX
-echo "Iniciando el servidor NGINX..."
+# Start the NGINX server
+echo "Starting NGINX server..."
 nginx -g 'daemon off;'
 
 #!/bin/bash

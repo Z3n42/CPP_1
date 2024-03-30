@@ -1,8 +1,12 @@
 #!/bin/bash
 
 # Enable the shell option to exit immediately if a pipeline returns a non-zero status
-set -e
-set -o pipefail
+# set -e
+# set -o pipefail
+
+echo "Linux release ==>"
+cat /etc/*-release
+echo -e "<== Linux release END\n"
 
 # Create necessary directories for MariaDB
 mkdir -p /var/run/mysqld /run/mysqld

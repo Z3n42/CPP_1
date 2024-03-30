@@ -25,8 +25,9 @@ RUN chmod +x /scripts/init.sh
 RUN chown -R mysql:mysql /var/lib/mysql
 
 # Define entry point
-ENTRYPOINT ["/usr/bin/tini", "--"]
+# ENTRYPOINT ["/usr/bin/tini", "--"]
 #ENTRYPOINT ["/scripts/init.sh"]
+
 
 # Define default command
 # CMD ["mysqld"]
