@@ -1,0 +1,80 @@
+
+version: '3'
+services:
+  mariadb:
+    build:
+      context: .
+      dockerfile: mariadb/Dockerfile
+    image: mariadb
+    container_name: mariadb
+    env_file: .env
+    volumes:
+      - db_data:/var/lib/mysql
+    expose:
+      - "3306"
+    restart: unless-stopped
+    networks:
+      - docker_network
+    healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "-h" ,"localhost"]
+        interval: 5s
+        retries: 5
+
+  wordpress:
+    build:
+      context: .
+      dockerfile: wordpress/Dockerfile
+    container_name: wordpress
+    image: wordpress
+    # hostname: php_fpm_server
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    env_file: .env
+    volumes:
+      - wp_data:/var/www/inception/wordpress
+    expose:
+      - "9000"
+    restart: unless-stopped
+    networks:
+      - docker_network
+    healthcheck:
+        test: ["CMD", "pidof", "php-fpm7.4", ">/dev/null"]
+        interval: 5s
+        retries: 30
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    container_name: nginx
+    image: nginx
+    depends_on:
+      wordpress:
+        condition: service_healthy
+    env_file: .env
+    volumes:
+      - wp_data:/var/www/inception/wordpress
+    ports:
+      - "443:443"
+    restart: unless-stopped
+    networks:
+      - docker_network
+
+networks:
+  docker_network:
+    driver: bridge
+
+volumes:
+  db_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/42/cursus/6Ring/Inception/mariadb/db_data
+      o: bind
+  wp_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/42/cursus/6Ring/Inception/wordpress/wp_data
+      o: bind

@@ -45,8 +45,9 @@ if [ ! -f "$WP_DIR/wp-config.php" ]; then
 	echo "WordPress core install"
 	wp user create ${WORDPRESS_USER} ${WORDPRESS_USER_EMAIL} --role=${WORDPRESS_USER_ROLE} --user_pass=${WORDPRESS_USER_PASSWORD} --allow-root
 	wp config set --raw WP_DEBUG true --allow-root && wp config set --raw WP_DEBUG_LOG true --allow-root && wp config set --raw WP_DEBUG_DISPLAY false --allow-root
+	# wp cache flush --allow-roots
 	# # Assign appropriate permissions
-  	# chown -R www-data:www-data $WP_DIR
+  	chown -R www-data:www-data $WP_DIR
   	# find "$WP_DIR" -type d -exec chmod 755 {} \;
   	# find "$WP_DIR" -type f -exec chmod 644 {} \;
 

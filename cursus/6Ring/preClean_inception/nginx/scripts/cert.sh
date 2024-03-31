@@ -50,48 +50,48 @@ fi
 # Configure NGINX to use the certificates
 echo "Creating nginx configuration"
 # cat <<EOF > /etc/nginx/sites-available/default
-cat <<EOF > /etc/nginx/sites-available/default
-server {
-    listen 443 ssl;
-    listen [::]:443 ssl;
-    server_name ingonzal.42.fr www.ingonzal.42.fr;
+# server {
+#     listen 443 ssl;
+#     listen [::]:443 ssl;
+#     server_name ingonzal.42.fr www.ingonzal.42.fr;
 
-	root /var/www/inception/wordpress;
-	index index.html index.htm index.nginx-debian.html index.php;
+# 	root /var/www/inception/wordpress;
+# 	index index.php;
 
-    # ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-    ssl_protocols TLSv1.3;
-    # ssl_ciphers ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM;
+#     # ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+#     ssl_protocols TLSv1.3;
+#     # ssl_ciphers ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM;
 
-    keepalive_timeout 75;
+#     keepalive_timeout 75;
 
-    ssl_certificate /etc/ssl/ingonzal.42.fr.crt;
-    ssl_certificate_key /etc/ssl/ingonzal.42.fr.key;
-    ssl_session_timeout 5m;
+#     ssl_certificate /etc/ssl/ingonzal.42.fr.crt;
+#     ssl_certificate_key /etc/ssl/ingonzal.42.fr.key;
+#     ssl_session_timeout 5m;
 
-    # add_header Strict-Transport-Security "max-age=7200";
+#     # add_header Strict-Transport-Security "max-age=7200";
 
-    location / {
-		try_files $uri $uri/ /index.php?$args;
-	}
+#     location / {
+# 		try_files $uri $uri/ /index.php?$args;
+# 	}
 
-    error_page 500 502 503 504 /50x.html;
-    location = /50x.html {
-        root /usr/share/nginx/html;
-    }
+#     # error_page 500 502 503 504 /50x.html;
+#     # location = /50x.html {
+#     #     root /usr/share/nginx/html;
+#     # }
 
-    location ~ \.php$ {
-		include snippets/fastcgi-php.conf;
-        fastcgi_pass wordpress:9000;
-        # fastcgi_index index.php;
-		include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME /var/www/inception/wordpress$fastcgi_script_name;
-    }
-}
-EOF
+#     location ~ \.php$ {
+# 		include snippets/fastcgi-php.conf;
+#         fastcgi_pass wordpress:9000;
+#         # fastcgi_index index.php;
+# 		include fastcgi_params;
+#         fastcgi_param SCRIPT_FILENAME /var/www/inception/wordpress$fastcgi_script_name;
+#     }
+# }
+# # }
+# EOF
 
-echo "Reloading NGINX..."
-service nginx reload
+# echo "Reloading NGINX..."
+# service nginx reload
 
 chmod 755 /var/www/inception/wordpress
 chown -R www-data:www-data /var/www/inception/wordpress

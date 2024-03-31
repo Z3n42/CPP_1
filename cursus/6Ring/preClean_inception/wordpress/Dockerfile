@@ -21,7 +21,8 @@ COPY wordpress/scripts/cnf /etc/php/7.4/fpm/pool.d/www.conf
 COPY wordpress/scripts/init.sh /scripts/init.sh
 
 # Set permissions for the entry script
-RUN chmod +x /scripts/init.sh	
+RUN chmod +x /scripts/init.sh
+# RUN chown -R www-data:www-data /var/www/inception/wordpress
 # RUN chown -R root:root /var/www/inception/wordpress
 
 # Define entry point

@@ -4,21 +4,14 @@ services:
   mariadb:
     build:
       context: .
-      dockerfile: mariadb/Dockerfile
+      dockerfile: requirements/mariadb/Dockerfile
     image: mariadb
     container_name: mariadb
     env_file: .env
-    # environment:
-    #   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    #   MYSQL_DATABASE: ${MYSQL_DATABASE}
-    #   MYSQL_USER: ${MYSQL_USER}
-    #   MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
     expose:
       - "3306"
-    # ports:
-    #   - "3306:3306"
     restart: unless-stopped
     networks:
       - docker_network
@@ -30,38 +23,17 @@ services:
   wordpress:
     build:
       context: .
-      dockerfile: wordpress/Dockerfile
+      dockerfile: requirements/wordpress/Dockerfile
     container_name: wordpress
     image: wordpress
-    hostname: php_fpm_server
-    #image: "wordpress_image"
     depends_on:
       mariadb:
         condition: service_healthy
     env_file: .env
-    # environment:
-    #   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    #   MYSQL_DATABASE: ${MYSQL_DATABASE}
-    #   MYSQL_USER: ${MYSQL_USER}
-    #   MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    #   WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
-    #   WORDPRESS_URL: ${WORDPRESS_URL}
-    #   WORDPRESS_TITLE: ${WORDPRESS_TITLE}
-    #   WORDPRESS_ADMIN_USER: ${WORDPRESS_ADMIN_USER}
-    #   WORDPRESS_ADMIN_PASSWORD: ${WORDPRESS_ADMIN_PASSWORD}
-    #   WORDPRESS_ADMIN_EMAIL: ${WORDPRESS_ADMIN_EMAIL}
-    #   WORDPRESS_USER: ${WORDPRESS_USER}
-    #   WORDPRESS_USER_PASSWORD: ${WORDPRESS_USER_PASSWORD}
-    #   WORDPRESS_USER_EMAIL: ${WORDPRESS_USER_EMAIL}
-    #   WORDPRESS_USER_ROLE: ${WORDPRESS_USER_ROLE}
-    #   WP_DIR: ${WP_DIR}
-    #   WP_CONFIG: ${WP_CONFIG}
     volumes:
       - wp_data:/var/www/inception/wordpress
     expose:
       - "9000"
-    # ports:
-    #   - "9000:9000"
     restart: unless-stopped
     networks:
       - docker_network
@@ -73,7 +45,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: nginx/Dockerfile
+      dockerfile: requirements/nginx/Dockerfile
     container_name: nginx
     image: nginx
     depends_on:
@@ -97,11 +69,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ${HOME}/42/cursus/6Ring/Inception/mariadb/db_data
+      device: ${HOME}/42/cursus/6Ring/Inception/srcs/requirements/mariadb/db_data
       o: bind
   wp_data:
     driver: local
     driver_opts:
       type: none
-      device: ${HOME}/42/cursus/6Ring/Inception/wordpress/wp_data
+      device: ${HOME}/42/cursus/6Ring/Inception/srcs/requirements/wordpress/wp_data
       o: bind
