@@ -12,8 +12,7 @@ destroy:
 	@docker-compose -f srcs/docker-compose.yml down --rmi all; \
 	docker volume rm srcs_db_data; docker volume rm srcs_wp_data; \
 	docker system prune -a -f; docker network prune -f; \
-	rm -rf srcs/requirements/mariadb/db_data; mkdir srcs/requirements/mariadb/db_data; \
-	rm -rf srcs/requirements/wordpress/wp_data; mkdir srcs/requirements/wordpress/wp_data
+	rm -rf srcs/requirements/mariadb/db_data; rm -rf srcs/requirements/wordpress/wp_data;
 
 all: $(NAME)
 

@@ -69,11 +69,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ${HOME}/42/cursus/6Ring/Inception/srcs/requirements/mariadb/db_data
+      device: ${PWD}/srcs/requirements/mariadb/db_data
       o: bind
   wp_data:
     driver: local
     driver_opts:
       type: none
-      device: ${HOME}/42/cursus/6Ring/Inception/srcs/requirements/wordpress/wp_data
+      device: ${PWD}/srcs/requirements/wordpress/wp_data
       o: bind
