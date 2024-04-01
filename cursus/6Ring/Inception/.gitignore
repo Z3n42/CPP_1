@@ -67,6 +67,7 @@ webserv
 webserv_sanitized
 \
 /www/html/uploads/**
-.env
+srcs/.env
 srcs/requirements/mariadb/db_data/
 srcs/requirements/wordpress/wp_data/
+.env
