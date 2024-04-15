@@ -76,3 +76,13 @@ FFVII*/
 FFVII*
 Bureaucracy*
 *_shubbery
+.vscode
+**/.idea
+webserv
+webserv_sanitized
+\
+/www/html/uploads/**
+srcs/.env
+srcs/requirements/mariadb/db_data/
+srcs/requirements/wordpress/wp_data/
+.env
