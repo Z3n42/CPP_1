@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - 'alert_rules.yml'
+
+scrape_configs:
+  - job_name: 'monitoring'
+    metrics_path: '/prometheus/metrics'
+    scheme: 'https'
+    static_configs:
+      - targets: ['apacheback:443']
+    tls_config:
+      insecure_skip_verify: true
+      cert_file: '/etc/prometheus/ssl/server.crt'
+      key_file: '/etc/prometheus/ssl/server.key'

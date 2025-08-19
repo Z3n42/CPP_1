@@ -1,0 +1,38 @@
+# Kibana server configuration
+server.port: 5601
+server.host: "0.0.0.0"
+
+# Elasticsearch configuration
+elasticsearch.hosts: ["${ELASTICSEARCH_URL}"]
+elasticsearch.username: ${ELASTICSEARCH_USERNAME}
+elasticsearch.password: ${ELASTICSEARCH_PASSWORD}
+
+# Logging configuration
+logging:
+  root:
+    level: info
+  appenders:
+    console:
+      type: console
+      layout:
+        type: pattern
+        pattern: "[%date][%level][%logger] %message"
+  loggers:
+    - name: root
+      level: info
+      appenders: [console]
+
+# Monitoring configuration
+monitoring.ui.container.elasticsearch.enabled: true
+
+# Security configuration
+xpack.security.encryptionKey: ${SECRET_KEY}
+xpack.encryptedSavedObjects.encryptionKey: ${SECRET_KEY}
+xpack.security.session.idleTimeout: "1h"
+xpack.security.session.lifespan: "30d"
+
+# Security configuration (if necessary)
+server.ssl.enabled: true
+elasticsearch.ssl.verificationMode: none
+server.ssl.certificate: /usr/share/kibana/config/server.crt
+server.ssl.key: /usr/share/kibana/config/server.key

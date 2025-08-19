@@ -1,0 +1,18 @@
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Profile</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username"> 
+        </div>
+        <div class="mb-3">
+          <label for="avatar" class="form-label">Avatar</label>
+          <input type="file" class="form-control" id="avatar" (change)="onFileChange($event)">
+          <div *ngIf="fileError" class="text-danger">{{ fileError }}</div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!editForm.valid || fileError">Save changes</button>
+      </form>
+    </div>

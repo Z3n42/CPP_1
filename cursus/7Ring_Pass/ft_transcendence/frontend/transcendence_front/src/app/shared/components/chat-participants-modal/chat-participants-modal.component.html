@@ -1,0 +1,75 @@
+<div class="modal-header">
+	<h1 class="modal-title fs-5" id="exitConfirmationModalLabel">Chat Participants in {{room}} chat</h1>
+</div>
+<div class="modal-body ">
+	@for (data of roomParticipants; track data; let i = $index) {
+		<div class="participant-row row-{{i}} d-flex align-items-center justify-content-between pb-2 pt-2">
+			<div class="participant-info d-flex align-items-center">
+				<span>{{data.username}}</span>
+			</div>
+			<div class="participant-info">
+				@if (data.username == me){
+					<button id="start-chat" class="btn btn-outline-primary ms-2 btn-sm fs-5" disabled>
+						you
+					</button>
+				}
+				@else {
+					@if (!data.blocked) {
+						<button id="info-btn" class="btn btn-outline-success btn-sm border-0 fs-5" type="submit" (click)="handleUserInfo(data.username, userModal)">
+							<i class="bi bi-person"></i>
+						</button>
+						<button id="start-chat" class="btn btn-outline-primary ms-2 btn-sm border-0 fs-5" type="submit" (click)="handleStartChat(data.username)">
+							<i class="bi bi-send send-btn"></i>
+						</button>
+					} @else {
+						<button id="start-chat" class="btn btn-outline-disabled ms-2 btn-sm border-0 fs-5" disabled>
+							blocked
+						</button> 
+					}
+				}
+			</div>
+		</div>
+	}
+</div>
+
+<ng-template #userModal let-modal>
+	<div class="modal-header">
+    	<h3 class="modal-title">{{selectedUser?.username}}</h3>
+    	<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  	</div>
+  	<div class="modal-body">
+      		<div class="card user-card-full">
+        		<div class="row m-l-0 m-r-0">
+          			<div class="col-sm-4 user-profile">
+            			<div class="card-block text-center text-black">
+              				<div class="m-b-20">
+                				<img [src]="avatarUrl(selectedUser)" height="64" class="img-radius" alt="User-Profile-Image">
+              				</div>
+            			</div>
+          			</div>
+          			<div class="col-sm-8">
+            			<div class="card-block">
+              				<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+              				<div class="row">
+                				<div class="col-sm-8">
+                  					<p class="m-b-10 f-w-600">Email</p>
+                  					<h6 class="text-muted f-w-600">{{selectedUser?.email}}</h6>
+                				</div>
+              				</div>
+              				<h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Scores</h6>
+              				<div class="row">
+                				<div class="col-sm-6">
+                  					<p class="m-b-10 f-w-600">Wins</p>
+                  					<h6 class="text-muted f-w-400">{{selectedUser?.wins}}</h6>
+                				</div>
+                				<div class="col-sm-6">
+                  					<p class="m-b-10 f-w-600">Games</p>
+                  					<h6 class="text-muted f-w-400">{{selectedUser?.games}}</h6>
+                				</div>
+              				</div>
+            			</div>
+          			</div>
+        		</div>
+      		</div>
+  	</div>
+</ng-template>

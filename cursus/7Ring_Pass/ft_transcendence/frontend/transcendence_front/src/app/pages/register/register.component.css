@@ -1,0 +1,147 @@
+/*Bootstrap login*/
+.container {
+	border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	max-width: 60%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+input {
+	margin: 8px 0;
+
+}
+
+.login-form-1{
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    color: #fff;
+}
+
+.login-form-2{
+    padding: 5%;
+    background: #0062cc;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+
+.login-container form{
+    padding: 10%;
+}
+
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form-2 .btnSubmit{
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
+
+.has-error .form-control {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+.image-selection {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.selectable-image {
+  cursor: pointer;
+  border: 3px solid transparent;
+  max-width: 100px;
+  max-height: 100px;
+  transition: border-color 0.3s, transform 0.3s;
+  border-radius: 1rem;
+}
+
+.selectable-image:hover {
+  transform: scale(1.1);
+}
+
+.selectable-image.selected {
+  border-color: rgb(0, 255, 170); /* O cualquier color que prefieras */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.bi {
+  color: white;
+  margin: 2%;
+}
+
+@media (max-width: 768px) {
+  .selectable-image {
+    max-width: 80px;
+    max-height: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .selectable-image {
+    max-width: 60px;
+    max-height: 60px;
+  }
+}
+
+/* CSS for the overlay and message */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.message-box {
+  color: #0062cc;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  text-align: center;
+}
+
+.blur-background {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.btnLoginBack
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0062cc;
+}

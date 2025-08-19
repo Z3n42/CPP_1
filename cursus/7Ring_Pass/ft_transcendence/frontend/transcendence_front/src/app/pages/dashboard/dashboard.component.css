@@ -1,0 +1,77 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+main {
+	margin-top: 5 rem;
+	padding: 1 rem;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+	justify-content: center;
+	min-height: 80vh;
+}
+
+.row {
+	margin-bottom: 10px;
+	margin-left: 00px;
+}
+
+.roboto-condensed-700{
+	font-family: "Roboto Condensed", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.btn {
+	height: 80px;
+	width: 180px;
+}
+
+button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center; 
+	padding: 0.1em 0.25em;
+	width: 13em;
+	height: 4.2em;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+button span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center; 
+	position: relative;
+	bottom: 0.4em;
+	width: 8.25em;
+	height: 2.5em;
+	border-radius: 0.2em;
+	font-size: 1.5em;
+	color: #0062cc;
+	border: 0.08em solid #d8eefd;
+	box-shadow: 0 0.4em 0.1em 0.019em #d8eefd;
+}
+
+button span:hover {
+	transition: all 0.5s;
+	transform: translate(0, 0.4em);
+	box-shadow: 0 0 0 0 #fff;
+}
+
+button span:not(hover) {
+	transition: all 1s;
+}

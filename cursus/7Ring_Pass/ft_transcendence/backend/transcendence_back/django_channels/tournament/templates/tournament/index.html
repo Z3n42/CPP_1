@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Game Rooms</title>
+</head>
+<body>
+    What game room would you like to enter?<br>
+    <input id="room-name-input" type="text" size="100" placeholder="Enter Room Name"><br>
+    Enter your Player ID:<br>
+    <input id="player-id-input" type="text" size="100" placeholder="Enter Player ID"><br>
+    <input id="room-name-submit" type="button" value="Enter">
+
+    <script>
+        document.querySelector('#room-name-input').focus();
+
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.key === 'Enter') {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#player-id-input').onkeyup = function(e) {
+            if (e.key === 'Enter') {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            var playerId = document.querySelector('#player-id-input').value;
+            if(roomName && playerId) {
+                window.location.pathname = '/tournament/' + roomName + '/' + playerId + '/';
+            } else {
+                alert("Please enter both Room Name and Player ID");
+            }
+        };
+    </script>
+</body>
+</html>

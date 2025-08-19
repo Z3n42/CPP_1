@@ -1,0 +1,10 @@
+-Xms1g
+-Xmx1g
+-XX:+UseG1GC
+-XX:InitiatingHeapOccupancyPercent=75
+-XX:G1ReservePercent=25
+-XX:MaxGCPauseMillis=200
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=/var/lib/elasticsearch
+-XX:ErrorFile=/var/log/elasticsearch/hs_err_pid%p.log
+-Djava.awt.headless=true

@@ -1,0 +1,51 @@
+body {
+	margin: 2em;
+	font-family: helvetica, arial, sans-serif;
+}
+
+.row{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.bracket {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 150px;
+}
+
+.round {
+	flex: 1;
+	display: flex;
+	margin-right: 30px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 400px;
+}
+
+.match {
+	margin: 15px 0;
+	overflow: hidden;
+	border-radius: 5px;
+	justify-content: center;
+}
+
+.team {
+	color: #fff;
+	padding: 10px 8px;
+	background-color: #0062cc;
+	min-width: 200px;
+	max-width: 300px;
+}
+
+.team:nth-child(odd) {
+	border-bottom: 1px solid #8fc7ff;
+}
+
+.btn{
+	margin-top: 150px;
+	max-width: 250px;
+}
