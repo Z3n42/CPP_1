@@ -1,0 +1,204 @@
+Vagrant.configure("2") do |config|
+  # Detect the Vagrant provider
+  # HELP: vagrant up --provider=vmware_desktop or vagrant up --provider=virtualbox
+  provider = (ARGV.find { |a| a.start_with?("--provider=") }&.split("=")&.last) || ENV["VAGRANT_DEFAULT_PROVIDER"] || "virtualbox"
+
+  # Check if cleanup should run based on an environment variable
+  # HELP: DESTROY_ALL=true vagrant destroy -f
+  destroy_all = ENV["DESTROY_ALL"] == "true"
+
+  # Detect the host architecture
+  host_arch = RbConfig::CONFIG["host_cpu"].downcase
+
+  # Define the synced folder path
+  synced_folder_path = File.expand_path("./vagrant_shared")
+  synced_config_path = File.expand_path("./confs")
+
+  # Define VM's
+  server_name = "migarcia"
+  agent_name = "ingonzal"
+
+  puts "🔍 Using CPU architecture: #{host_arch}"
+  puts "🔍 Using provider: #{provider}"
+
+  # Ensure the folder exists before Vagrant starts
+  config.trigger.before :up do |t|
+    t.only_on = server_name
+    t.info = "📂 Creating synced folder: #{synced_folder_path}"
+
+    t.ruby do |env, machine|
+      require 'fileutils'
+      if !File.directory?(synced_folder_path)
+        FileUtils.mkdir_p(synced_folder_path)
+      else
+        env.ui.detail("📂 Directory already exists: #{synced_folder_path}")
+      end
+    end
+  end
+
+  # Force SSH to use only the specified identity
+  config.ssh.insert_key = true
+  config.ssh.forward_agent = true
+  config.ssh.extra_args = ["-o", "IdentitiesOnly=yes"]
+
+  # Choose box based on the architecture
+  # /arm|aarch64/ Only for development issues
+  case host_arch
+  when /x64|x86_64/
+    config.vm.box = "migarcia-ingonzal/IOT_Alpine_3.22"
+    config.vm.box_version = "2025.06.08"
+  else
+    abort "Unsupported architecture: #{host_arch}"
+  end
+
+  # Configure the provider
+  case provider
+  when "virtualbox"
+    config.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--cpus", "1"]
+      vb.customize ["modifyvm", :id, "--nic1", "nat"]
+      vb.customize ["modifyvm", :id, "--paravirtprovider", "kvm"]
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "80"]
+    end
+    config.vm.synced_folder "./vagrant_shared", "/home/vagrant/shared", mount_options: ["dmode=775", "fmode=664"]
+    config.vm.synced_folder "./confs", "/var/lib/rancher/k3s/server/manifests", owner: "root", group: "root", mount_options: ["dmode=755", "fmode=644"]
+  else
+    abort "Unsupported provider: #{provider}"
+  end
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  # Define the Server node (migarcia)
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "nameserver 8.8.8.8" > /etc/resolv.conf
+  SHELL
+
+  config.vm.define server_name do |s|
+    s.vm.network "private_network", ip: "192.168.56.110", hostname: true
+    s.vm.hostname = "#{server_name}S"
+
+    # Ensure passwordless SSH
+    s.vm.provision "shell", inline: <<-SHELL
+      echo "🔑 Setting up passwordless SSH on migarcia..."
+      echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
+      echo 'PermitRootLogin no' >> /etc/ssh/sshd_config
+      rc-service sshd restart
+    SHELL
+
+    # Install K3s and configure kubeconfig
+    s.vm.provision "shell", inline: <<-SHELL
+      echo "🌐 Checking internet connectivity..."
+      if ! ping -4 -c 4 google.com &> /dev/null; then
+        echo "❌ Error: No internet connectivity"
+        exit 1
+      fi
+
+      echo "🔍 Installing K3s in controller mode..."
+      curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --tls-san 192.168.56.110 --write-kubeconfig-mode=644 --write-kubeconfig=/home/vagrant/shared/kubeconfig.yaml" sh -
+  
+      # Verify the installation
+      if [ $? -ne 0 ]; then
+        echo "❌ Error: K3s installation failed"
+        exit 1
+      fi
+
+      # Wait until files are created
+      echo "⏳ Waiting for K3s to start..."
+      timeout 42 sh -c 'until rc-service k3s status | grep -q "started"; do sleep 2; done'
+      timeout 42 sh -c 'until [ -S /run/k3s/containerd/containerd.sock ]; do sleep 2; done'
+      timeout 42 sh -c 'until [ -f /home/vagrant/shared/kubeconfig.yaml ]; do sleep 2; done'
+
+      # Install Helm3
+      echo "🔧 Installing bash..."
+      apk update && apk add --no-cache bash
+      echo "🔍 Installing Helm 3..."
+      curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash -
+      echo "⏳ Waiting for Helm 3 to be available..."
+      timeout 42 sh -c 'until helm version &> /dev/null; do sleep 2; done' 
+  
+      if [ ! -f /home/vagrant/shared/kubeconfig.yaml ]; then
+        echo "❌ Error: kubeconfig.yaml not found"
+        exit 1
+      fi
+
+      if [ ! -f /var/lib/rancher/k3s/server/node-token ]; then
+        echo "❌ Error: node-token not found"
+        exit 1
+      fi
+
+      echo "🔧 Updating kubeconfig to use external IP..."
+      sed -i 's|127.0.0.1|192.168.56.110|g' /home/vagrant/shared/kubeconfig.yaml
+      echo 'export KUBECONFIG=/home/vagrant/shared/kubeconfig.yaml' >> /etc/profile
+      # Copy the node-token for workers
+      cp /var/lib/rancher/k3s/server/node-token /home/vagrant/shared/node-token
+    SHELL
+
+    # Set Hosts servers
+    s.vm.provision "shell", inline: <<-SHELL
+      echo "🔧 Set Hosts servers..."
+      echo "192.168.56.110 app1.com" | sudo tee -a "/etc/hosts" &&
+      echo "192.168.56.110 app2.com" | sudo tee -a "/etc/hosts" &&
+      echo "192.168.56.110 app3.com" | sudo tee -a "/etc/hosts" &&
+      cat /etc/hosts
+    SHELL
+  end
+
+  # Removing synced folder and .vagrant directory if Run 'DESTROY_ALL=true vagrant destroy -f'
+  # Removing config folder except necessary config files
+  config.trigger.after :destroy do |t|
+    if ENV["DESTROY_ALL"] == "true"
+      t.only_on = server_name
+      t.info = "🗑️ Checking if all machines are destroyed before removing synced folder..."
+      
+      t.ruby do |env, machine|
+        sleep 5
+        
+        output = `vagrant global-status --prune 2>/dev/null | grep running | wc -l`.strip
+        remaining_vms = output.to_i
+        
+
+        if remaining_vms == 0
+          env.ui.info("🗑️ Removing synced folder and .vagrant directory...")
+          require 'fileutils'
+          items_to_keep_in_manifests = [
+            "app1-helmchart.yaml",
+            "app2-helmchart.yaml",
+            "app3-helmchart.yaml",
+            "host-based-ingress.yaml",
+            "default-backend-ingress.yaml",
+            "traefik-crb.yaml",
+            "ingressroute.yaml.yaml",
+            "traefik-accesslog-config.yaml",
+            "traefik-dashboard-service.yaml",
+            "traefik-dashboard-ingress.yaml",
+            "namespace-hello-kubernetes.yaml" ]
+
+            if File.directory?(synced_config_path)
+              env.ui.detail("   Cleaning directory: #{synced_config_path}")
+              Dir.glob(File.join(synced_config_path, '*')).each do |item_path|
+                item_basename = File.basename(item_path)
+                if !items_to_keep_in_manifests.include?(item_basename)
+                  begin
+                    FileUtils.rm_rf(item_path)
+                  rescue => e
+                    env.ui.error("      Error deleting #{item_basename}: #{e.message}")
+                  end
+                end
+              end
+            else
+              env.ui.warn("   Directory not found, skipping cleanup: #{synced_config_path}")
+            end
+          FileUtils.rm_rf(synced_folder_path) if File.directory?(synced_folder_path)
+          FileUtils.rm_rf(".vagrant") if File.directory?(".vagrant")
+        else
+          env.ui.info("📌 Not removing synced folder yet, there are still active machines.")
+        end
+      end
+    else
+      t.info = "🚫 Skipping cleanup: Run 'DESTROY_ALL=true vagrant destroy -f' to remove synced folder."
+    end
+  end
+end

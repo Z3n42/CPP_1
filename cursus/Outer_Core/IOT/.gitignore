@@ -1,0 +1,189 @@
+# ---> Vagrant
+.vagrant/
+*.box
+*.vdi
+*.vmdk
+*.qcow2
+*.img
+*.ova
+*.ovf
+
+# ---> Operating System Files
+.DS_Store
+Thumbs.db
+
+# ---> Logs and Temporary Files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+*.pid
+*.seed
+*.pid.lock
+
+# ---> System generated files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# ---> macOS generated files
+*.localized
+.AppleDouble
+.LSOverride
+.DS_Store
+
+# ---> Windows generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ---> Linux generated files
+*~ 
+.nfs*
+
+# ---> IDEs and Editors
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse
+.metadata
+*.log
+*.bak
+*.swp
+*.swo
+*~
+
+# Visual Studio Code
+.vscode/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ---> Node Modules
+node_modules/
+
+# ---> Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ---> Java
+*.class
+*.jar
+*.war
+*.ear
+*.db
+
+# ---> Ruby
+*.gem
+*.rbc
+*.sass-cache/
+.rvm/
+.rbenv-version
+.rbenv-gemsets
+.bundle
+vendor/bundle/
+lib/assets/
+tmp/
+
+# ---> Go
+*.exe
+*.out
+*.test
+
+# ---> Configuration files
+*.env
+.env.local
+.env.test
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ---> Dependency directories
+.bundle
+vendor/
+yarn-error.log
+npm-debug.log
+yarn-debug.log*
+.yarn-integrity
+.pnp.*
+.lock-wscript
+.sass-cache/
+.project
+.cache/
+.parcel-cache/
+
+# ---> Coverage
+coverage/
+*.lcov
+*.lcov.info
+.nyc_output
+
+# ---> Build files
+build/
+dist/
+out/
+*.swp
+
+# ---> Databases
+*.sqlite3
+*.sqlite
+*.db
+*.h2.db
+
+# ---> Security
+*.key
+*.pem
+*.crt
+*.csr
+.ssh/
+*.pub
+
+# ---> Kubernetes & K3s
+/var/lib/rancher/
+/etc/rancher/
+/var/lib/kubelet/
+/var/lib/etcd/
+.kube/
+kubeconfig.yaml
+kubectl.log
+
+# ---> Helm
+charts/
+*.tgz
+
+# ---> Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+
+# ---> Argo CD
+/argocd-repo/
+argocd.yaml
+
+# ---> Ansible
+*.retry
+inventory
+
+# ---> Custom exclusions
+**/.bash_history
+**/.sudo_as_admin_successful
+**/node-token
+**/vagrant_shared/

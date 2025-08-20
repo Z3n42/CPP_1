@@ -1,0 +1,4 @@
+[submodule "p3/will_app"]
+	path = p3/will_app
+	url = https://github.com/Z3n42/Migarcia-Ingonzal.git
+	branch = main

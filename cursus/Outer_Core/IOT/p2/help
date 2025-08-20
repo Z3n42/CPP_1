@@ -1,0 +1,48 @@
+# --- Cluster and System Health ---
+
+# Check node status and IP addresses. Ensure the node 'migarcias' is 'Ready'.
+kubectl get nodes -o wide
+
+# Check essential system pods (CoreDNS, Metrics Server, Traefik-related) are 'Running' in the 'kube-system' namespace.
+kubectl get pods -n kube-system
+
+# Specifically check the Traefik Ingress Controller pod itself is 'Running' and 'READY'.
+kubectl get pods -n kube-system -l app.kubernetes.io/name=traefik
+
+# Verify the Traefik LoadBalancer service exists and has the correct 'EXTERNAL-IP' (e.g., 192.168.56.110 or the IP mapped by Vagrant).
+kubectl get svc -n kube-system traefik
+
+
+# --- Application Namespace and Resources ---
+
+# Ensure the application namespace 'hello-kubernetes' exists.
+kubectl get ns hello-kubernetes
+
+# Check all application pods (app1, app2, app3) are 'Running', 'READY', and check replica counts (app2 should have 3).
+kubectl get pods -n hello-kubernetes -o wide
+
+# Ensure ClusterIP services for each application (app1, app2, app3) exist in the correct namespace.
+kubectl get svc -n hello-kubernetes
+
+# Verify services are connected to the correct running pod IPs (Endpoints should NOT be '<none>').
+kubectl get endpoints -n hello-kubernetes
+
+
+# --- Traefik Logs (Post-Setup Check) ---
+
+# Check Traefik logs for any persistent errors after setup. If access logs are enabled, confirm successful routing (200 OK) during tests.
+# Use '-f' flag during live testing.
+kubectl logs -n kube-system -l app.kubernetes.io/name=traefik
+
+
+# --- End-to-End Functional Tests (Using curl) ---
+
+# Test: Verify App 1 is served correctly when requesting host 'app1.com' via the Traefik IP. Expect HTTP 200 OK and App 1 HTML.
+curl -v --resolve app1.com:80:192.168.56.110 http://app1.com/
+
+# Test: Verify App 2 is served correctly when requesting host 'app2.com' via the Traefik IP. Expect HTTP 200 OK and App 2 HTML.
+curl -v --resolve app2.com:80:192.168.56.110 http://app2.com/
+
+# Test: Verify App 3 (default backend) is served correctly when accessing the Traefik IP directly (no specific Host). Expect HTTP 200 OK and App 3 HTML.
+curl -v http://192.168.56.110/
+

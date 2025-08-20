@@ -1,0 +1,58 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # Detect the Vagrant provider
+  # HELP: vagrant up --provider=vmware_desktop or vagrant up --provider=virtualbox
+  provider = (ARGV.find { |a| a.start_with?("--provider=") }&.split("=")&.last) || ENV["VAGRANT_DEFAULT_PROVIDER"] || "virtualbox"
+
+  # Check if cleanup should run based on an environment variable
+  # HELP: DESTROY_ALL=true vagrant destroy -f
+  destroy_all = ENV["DESTROY_ALL"] == "true"
+
+  # Detect the host architecture
+  host_arch = RbConfig::CONFIG["host_cpu"].downcase
+
+
+  config.vm.box = "generic/ubuntu2004"
+  config.vm.box_version = "4.3.12"
+  config.vm.synced_folder "./confs", "/home/vagrant/manifests", owner: "root", group: "root", mount_options: ["dmode=755", "fmode=644"]
+  config.vm.synced_folder "./scripts", "/home/vagrant/scripts", owner: "root", group: "root", mount_options: ["dmode=777", "fmode=777"]
+  config.vm.hostname = "IOT"
+  config.vm.network "private_network", ip: "192.168.57.10"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "IOT_nested"
+    vb.memory = "8192"
+    vb.cpus = "4"      
+  end
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  # Removing synced folder and .vagrant directory if Run 'DESTROY_ALL=true vagrant destroy -f'
+  config.trigger.after :destroy do |t|
+    if ENV["DESTROY_ALL"] == "true"
+      t.info = "🗑️ Checking if all machines are destroyed before removing synced folder..."
+      
+      t.ruby do |env, machine|
+        sleep 5
+        
+        output = `vagrant global-status --prune 2>/dev/null | grep running | wc -l`.strip
+        remaining_vms = output.to_i
+        
+        if remaining_vms == 0
+          env.ui.info("🗑️ Removing synced folder and .vagrant directory...")
+          require 'fileutils'
+          FileUtils.rm_rf(".vagrant") if File.directory?(".vagrant")
+        else
+          env.ui.info("📌 Not removing synced folder yet, there are still active machines.")
+        end
+      end
+    else
+      t.info = "🚫 Skipping cleanup: Run 'DESTROY_ALL=true vagrant destroy -f' to remove synced folder."
+    end
+  end
+
+end
