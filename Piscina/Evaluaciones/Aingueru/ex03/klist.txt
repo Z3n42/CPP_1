@@ -1,5 +1,0 @@
-Credentials cache: API:7AFFB7CE-FD45-4628-A10C-E1F27E6E2920
-        Principal: aalvarez@42URDULIZ.COM
-
-  Issued                Expires               Principal
-Apr 12 18:37:29 2021  Apr 13 04:37:29 2021  krbtgt/42URDULIZ.COM@42URDULIZ.COM

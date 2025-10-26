@@ -1,5 +1,0 @@
-Credentials cache: API:A6A1816B-B9E3-400C-B844-AE886F0E7525
-        Principal: adel-cor@42URDULIZ.COM
-
-  Issued                Expires               Principal
-Apr 13 09:46:25 2021  Apr 13 19:46:11 2021  krbtgt/42URDULIZ.COM@42URDULIZ.COM

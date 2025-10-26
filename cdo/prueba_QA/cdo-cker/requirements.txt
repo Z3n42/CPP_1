@@ -1,5 +1,0 @@
-behave
-selenium
-requests
-pyvirtualdisplay
-webdriver-manager
